@@ -1,0 +1,121 @@
+.LayerTree {
+  color: var(--credbuild-color-grey-03);
+  font-family: var(--credbuild-font-family);
+  font-size: var(--credbuild-font-size-xxs);
+  margin: 0;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.LayerTree-zoneTitle {
+  color: var(--credbuild-color-grey-05);
+  font-size: var(--credbuild-font-size-xxxs);
+  text-transform: uppercase;
+}
+
+.LayerTree-helper {
+  text-align: center;
+  color: var(--credbuild-color-grey-07);
+  margin: 8px 4px;
+}
+
+.Layer {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.Layer-inner {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: color 50ms ease-in;
+}
+
+.Layer--containsZone > .Layer-inner {
+  padding-inline-start: 0;
+}
+
+.Layer-clickable {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  padding-inline-start: 4px;
+  padding-inline-end: 4px;
+  width: 100%;
+}
+
+.Layer-clickable:focus-visible {
+  outline: 2px solid var(--cb-gold);
+  outline-offset: -2px;
+}
+
+.Layer--isSelected .Layer-clickable {
+  background-color: var(--cb-gold-ghost);
+  color: var(--cb-gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .Layer-clickable:hover {
+    background-color: var(--cb-gold-faint);
+  }
+}
+
+.Layer--isSelected {
+  border-color: transparent;
+}
+
+.Layer--isSelected > .Layer-inner {
+  background: var(--credbuild-color-indigo-11);
+  color: var(--credbuild-color-indigo-03);
+  font-weight: 600;
+}
+
+.Layer--isSelected > .Layer-inner > .Layer-clickable > .Layer-chevron,
+.Layer--childIsSelected > .Layer-inner > .Layer-clickable > .Layer-chevron {
+  transform: scaleY(-1);
+}
+
+.Layer-zones {
+  display: none;
+  margin-inline-start: 12px;
+}
+
+.Layer--isSelected > .Layer-zones,
+.Layer--childIsSelected > .Layer-zones {
+  display: block;
+}
+
+.Layer-zones > .LayerTree {
+  margin-inline-start: 8px;
+}
+
+.Layer-title,
+.LayerTree-zoneTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 4px;
+  overflow-x: hidden;
+}
+
+.Layer-name {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Layer-icon {
+  color: var(--credbuild-color-rose-07);
+  margin-top: 2px;
+}
+
+.Layer-zoneIcon {
+  color: var(--credbuild-color-grey-08);
+  margin-top: 2px;
+}

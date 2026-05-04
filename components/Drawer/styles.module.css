@@ -1,0 +1,67 @@
+.Drawer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cb-bg-base); 
+}
+
+.Drawer-draggable {
+  position: relative;
+}
+
+.Drawer-draggableBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.DrawerItem-draggable {
+  background: transparent;
+  cursor: grab;
+  padding: 6px 12px;
+  display: flex;
+  border: none;
+  font-size: 11px;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  color: var(--cb-silver-muted);
+}
+
+.DrawerItem--disabled .DrawerItem-draggable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.DrawerItem:focus-visible {
+  outline: 0;
+}
+
+.Drawer:not(.Drawer--isDraggingFrom)
+  .DrawerItem-default {
+  background-color: transparent;
+  border: none;
+  color: var(--cb-silver-muted);
+  padding: 6px 12px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .DrawerItem-draggable:hover,
+  .DrawerItem-default:hover {
+    background-color: var(--cb-gold-faint);
+    color: var(--cb-gold);
+  }
+}
+
+.DrawerItem-name {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}

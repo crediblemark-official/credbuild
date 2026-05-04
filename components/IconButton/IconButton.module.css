@@ -1,0 +1,49 @@
+.IconButton {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--cb-radius-m);
+  color: currentColor;
+  display: flex;
+  font-family: var(--credbuild-font-family);
+  justify-content: center;
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+
+.IconButton--active {
+  color: var(--credbuild-color-azure-04);
+}
+
+.IconButton:focus-visible {
+  outline: 2px solid var(--credbuild-color-azure-05);
+  outline-offset: -2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .IconButton:hover:not(.IconButton--disabled) {
+    background: var(--credbuild-color-grey-10);
+    color: var(--credbuild-color-azure-04);
+    cursor: pointer;
+    transition: none;
+  }
+}
+
+.IconButton:active {
+  background: var(--credbuild-color-azure-11);
+  transition: none;
+}
+
+.IconButton-title {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.IconButton--disabled {
+  color: var(--credbuild-color-grey-07);
+}

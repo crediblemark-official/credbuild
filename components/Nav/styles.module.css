@@ -1,0 +1,98 @@
+.Nav {
+  display: flex;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  align-items: center;
+  background: var(--credbuild-color-grey-11);
+  border-bottom: 1px solid var(--credbuild-color-grey-10);
+}
+
+.Nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  align-items: stretch;
+}
+
+.Nav-mobileActions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 8px;
+}
+
+.Nav-mobileActions button {
+  color: var(--credbuild-color-grey-05);
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Nav-mobileActions button:hover {
+  background: var(--credbuild-color-grey-10);
+  color: var(--credbuild-color-black);
+}
+
+@media (min-width: 638px) {
+  .Nav-list {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.NavItem {
+  display: flex;
+}
+
+.NavItem-link {
+  text-align: center;
+  align-items: center;
+  color: var(--credbuild-color-grey-05);
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.NavItem-linkIcon {
+  height: 14px;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NavItem--active > .NavItem-link {
+  color: var(--credbuild-color-azure-04);
+  border-bottom-color: var(--credbuild-color-azure-04);
+}
+
+.NavItem:not(.NavItem--active) > .NavItem-link:hover {
+  background-color: var(--credbuild-color-grey-10);
+  color: var(--credbuild-color-black);
+}
+
+@media (min-width: 638px) {
+  .NavItem--mobileOnly {
+    display: none;
+  }
+
+  .NavItem--desktopOnly {
+    display: block;
+  }
+}
