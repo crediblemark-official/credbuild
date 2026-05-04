@@ -1,0 +1,14 @@
+[data-credbuild-overlay-portal],
+[data-credbuild-overlay-portal] * {
+  pointer-events: auto !important;
+}
+
+[data-credbuild-overlay-portal]:hover {
+  outline: 2px var(--credbuild-color-azure-09) dashed;
+  outline-offset: 2px;
+}
+
+[data-credbuild-overlay-portal]:focus-within {
+  outline: 2px var(--credbuild-color-azure-07) dashed;
+  outline-offset: 2px;
+}

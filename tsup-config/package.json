@@ -1,0 +1,12 @@
+{
+  "name": "tsup-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "postcss": "^8.4.24",
+    "postcss-modules": "^6.0.0"
+  }
+}

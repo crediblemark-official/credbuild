@@ -1,0 +1,46 @@
+.CredBuildFields {
+  position: relative;
+  font-family: var(--credbuild-font-family);
+}
+
+.CredBuildFields--isLoading {
+  min-height: 48px; /* Ensure there is sufficient room for loader if no fields */
+}
+
+.CredBuildFields-loadingOverlay {
+  background: var(--credbuild-color-white);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  position: absolute;
+  z-index: 1;
+  pointer-events: all;
+  box-sizing: border-box;
+  opacity: 0.8;
+}
+
+.CredBuildFields-loadingOverlayInner {
+  display: flex;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+
+.CredBuildFields-field * {
+  box-sizing: border-box;
+}
+
+.CredBuildFields--wrapFields .CredBuildFields-field {
+  color: var(--credbuild-color-grey-04);
+  padding: 16px;
+  padding-bottom: 12px;
+  display: block;
+}
+
+.CredBuildFields--wrapFields .CredBuildFields-field + .CredBuildFields-field {
+  border-top: 1px solid var(--credbuild-color-grey-09);
+  margin-top: 8px;
+}

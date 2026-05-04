@@ -1,0 +1,43 @@
+/* Prevent user from interacting with underlying component */
+[data-credbuild-component] * {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-credbuild-component] {
+  cursor: grab;
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-credbuild-dropzone] {
+  pointer-events: auto !important; /* Ensure DropZones still capture pointer events inside data-credbuild-components so elementsFromPoint triggers */
+}
+
+[data-credbuild-disabled] {
+  cursor: pointer;
+}
+
+/* Placeholder */
+[data-dnd-placeholder] {
+  background: var(--credbuild-color-azure-06) !important;
+  border: none !important;
+  color: #00000000 !important;
+  opacity: 0.3 !important;
+  outline: none !important;
+  transition: none !important;
+}
+
+[data-dnd-placeholder] *,
+[data-dnd-placeholder]::after,
+[data-dnd-placeholder]::before {
+  opacity: 0 !important;
+}
+
+[data-dnd-dragging][data-credbuild-component] {
+  pointer-events: none !important;
+  outline: 2px var(--credbuild-color-azure-09) solid !important;
+  outline-offset: -2px !important;
+}

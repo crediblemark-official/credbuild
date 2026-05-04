@@ -1,0 +1,55 @@
+.Sidebar {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: var(--cb-gap);
+  border-radius: var(--cb-radius-panel);
+  box-shadow: var(--cb-shadow-panel);
+  border: 1px solid var(--credbuild-color-grey-10);
+}
+
+.Sidebar--isVisible {
+  display: flex;
+}
+
+.Sidebar--left {
+  background: var(--credbuild-color-grey-11);
+  grid-area: left;
+  margin-right: 0;
+}
+
+@media (min-width: 766px) {
+  .Sidebar--left {
+    border-block-start: 0;
+  }
+}
+
+.Sidebar--right {
+  background: var(--credbuild-color-grey-11);
+  grid-area: right;
+  backdrop-filter: var(--cb-glass);
+  margin-left: 0;
+}
+
+@media (min-width: 766px) {
+  .Sidebar--right {
+    border-block-start: 0;
+  }
+}
+
+.Sidebar-resizeHandle {
+  position: absolute;
+  height: 100%;
+}
+
+.Sidebar--left + .Sidebar-resizeHandle {
+  grid-area: left;
+  justify-self: end;
+}
+
+.Sidebar--right + .Sidebar-resizeHandle {
+  grid-area: right;
+  justify-self: start;
+}

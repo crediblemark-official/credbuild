@@ -1,0 +1,86 @@
+:root {
+  /*
+   * Color palette
+   */
+
+  --credbuild-color-rose-01: #4a001c;
+  --credbuild-color-rose-02: #670833;
+  --credbuild-color-rose-03: #87114c;
+  --credbuild-color-rose-04: #a81a66;
+  --credbuild-color-rose-05: #bc5089;
+  --credbuild-color-rose-06: #cc7ca5;
+  --credbuild-color-rose-07: #d89aba;
+  --credbuild-color-rose-08: #e3b8cf;
+  --credbuild-color-rose-09: #efd6e3;
+  --credbuild-color-rose-10: #f6eaf1;
+  --credbuild-color-rose-11: #faf4f8;
+  --credbuild-color-rose-12: #fef8fc;
+
+  --credbuild-color-azure-01: #00175d;
+  --credbuild-color-azure-02: #002c77;
+  --credbuild-color-azure-03: #014292;
+  --credbuild-color-azure-04: #0158ad;
+  --credbuild-color-azure-05: #3479be;
+  --credbuild-color-azure-06: #6499cf;
+  --credbuild-color-azure-07: #88b0da;
+  --credbuild-color-azure-08: #abc7e5;
+  --credbuild-color-azure-09: #cfdff0;
+  --credbuild-color-azure-10: #e7eef7;
+  --credbuild-color-azure-11: #f3f6fb;
+  --credbuild-color-azure-12: #f7faff;
+
+  --credbuild-color-green-01: #002000;
+  --credbuild-color-green-02: #043604;
+  --credbuild-color-green-03: #084e08;
+  --credbuild-color-green-04: #0c680c;
+  --credbuild-color-green-05: #1d882f;
+  --credbuild-color-green-06: #2faa53;
+  --credbuild-color-green-07: #56c16f;
+  --credbuild-color-green-08: #7dd78b;
+  --credbuild-color-green-09: #b8e8bf;
+  --credbuild-color-green-10: #ddf3e0;
+  --credbuild-color-green-11: #eff8f0;
+  --credbuild-color-green-12: #f3fcf4;
+
+  --credbuild-color-yellow-01: #211000;
+  --credbuild-color-yellow-02: #362700;
+  --credbuild-color-yellow-03: #4c4000;
+  --credbuild-color-yellow-04: #645a00;
+  --credbuild-color-yellow-05: #877614;
+  --credbuild-color-yellow-06: #ab9429;
+  --credbuild-color-yellow-07: #bfac4e;
+  --credbuild-color-yellow-08: #d4c474;
+  --credbuild-color-yellow-09: #e6deb1;
+  --credbuild-color-yellow-10: #f3efd9;
+  --credbuild-color-yellow-11: #f9f7ed;
+  --credbuild-color-yellow-12: #fcfaf0;
+
+  --credbuild-color-red-01: #4c0000;
+  --credbuild-color-red-02: #6a0a10;
+  --credbuild-color-red-03: #8a1422;
+  --credbuild-color-red-04: #ac1f35;
+  --credbuild-color-red-05: #bf5366;
+  --credbuild-color-red-06: #ce7e8e;
+  --credbuild-color-red-07: #d99ca8;
+  --credbuild-color-red-08: #e4b9c2;
+  --credbuild-color-red-09: #efd7db;
+  --credbuild-color-red-10: #f6eaec;
+  --credbuild-color-red-11: #faf4f5;
+  --credbuild-color-red-12: #fff9fa;
+
+  --credbuild-color-grey-01: #181818;
+  --credbuild-color-grey-02: #292929;
+  --credbuild-color-grey-03: #404040;
+  --credbuild-color-grey-04: #5a5a5a;
+  --credbuild-color-grey-05: #767676;
+  --credbuild-color-grey-06: #949494;
+  --credbuild-color-grey-07: #ababab;
+  --credbuild-color-grey-08: #c3c3c3;
+  --credbuild-color-grey-09: #dcdcdc;
+  --credbuild-color-grey-10: #efefef;
+  --credbuild-color-grey-11: #f5f5f5;
+  --credbuild-color-grey-12: #fafafa;
+
+  --credbuild-color-black: #000000;
+  --credbuild-color-white: #ffffff;
+}

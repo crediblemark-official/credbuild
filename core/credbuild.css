@@ -1,0 +1,350 @@
+@import url("https://rsms.me/inter/inter.css");
+@import "./bundle/core.css";
+
+/* Luxury Dark Studio: Absolute Design Truth */
+.CredBuild {
+  --cb-bg-base: #020617;        /* Slate 950 */
+  --cb-bg-surface: #0f172a;     /* Slate 900 */
+  --cb-bg-panel: #1e293b;       /* Slate 800 */
+  --cb-gold: #fbbf24;           /* Vibrant Amber/Gold 400 */
+  --cb-gold-glow: rgba(251, 191, 36, 0.15);
+  --cb-silver: #f8fafc;         /* Slate 50 (Crystal White/Silver) */
+  --cb-silver-muted: #94a3b8;   /* Slate 400 */
+  --cb-border: rgba(248, 250, 252, 0.1);
+  --credbuild-font-family: 'Inter', sans-serif;
+}
+
+/* Forceful Overrides for Studio Shell */
+.CredBuild {
+  background-color: var(--cb-bg-base) !important;
+  color: var(--cb-silver) !important;
+}
+
+/* Header Overhaul */
+.CredBuildHeader {
+  background: var(--cb-bg-base) !important;
+  border-bottom: 1px solid var(--cb-border) !important;
+  height: 48px !important;
+}
+
+/* Global Icon Enforcing */
+.CredBuild svg {
+  color: var(--cb-gold) !important;
+  stroke: var(--cb-gold) !important;
+}
+
+/* Clean Typography */
+.CredBuild h1, .CredBuild h2, .CredBuild h3, .CredBuild h4, .CredBuild p, .CredBuild span, .CredBuild div {
+  color: var(--cb-silver);
+}
+
+/* Scrollbars */
+.CredBuild ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.CredBuild ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.CredBuild ::-webkit-scrollbar-thumb {
+  background: var(--cb-border);
+  border-radius: 10px;
+}
+
+.CredBuild ::-webkit-scrollbar-thumb:hover {
+  background: var(--cb-gold);
+}
+
+/* Form inputs & interactive elements */
+.CredBuild button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.CredBuild button:hover {
+  filter: brightness(1.2);
+}
+
+/* Forceful Overrides for Sidebars & Header */
+[class*="Layout-left"], [class*="Layout-right"], [class*="Layout-header"], [class*="Sidebar"] {
+  background-color: var(--cb-bg-surface) !important;
+  border-color: var(--cb-border) !important;
+  color: var(--cb-silver) !important;
+}
+
+[class*="Layout-header"] {
+  background-color: var(--cb-bg-base) !important;
+}
+
+/* Fix for Nav Tabs Visibility */
+[class*="Nav"] {
+  background-color: var(--cb-bg-surface) !important;
+  border-bottom: 1px solid var(--cb-border) !important;
+}
+
+[class*="NavItem-link"] {
+  color: var(--cb-silver-muted) !important;
+}
+
+[class*="NavItem--active"] [class*="NavItem-link"] {
+  color: var(--cb-gold) !important;
+}
+
+/* Canvas Area Reset */
+[class*="Layout-editor"] {
+  background-color: var(--cb-bg-base) !important;
+}
+
+/* Brute-force Dark Theme for Drawer & Items */
+[class*="Drawer"] {
+  background-color: var(--cb-bg-base) !important;
+}
+
+[class*="DrawerItem-default"], 
+[class*="DrawerItem-draggable"], 
+[class*="DrawerItem-draggableWrapper"],
+[class*="Drawer-draggableBg"] {
+  background-color: var(--cb-bg-surface) !important;
+  color: var(--cb-silver) !important;
+  border-color: var(--cb-border) !important;
+}
+
+[class*="DrawerItem-draggable"]:hover {
+  border-color: var(--cb-gold) !important;
+  background-color: var(--cb-gold-glow) !important;
+}
+
+/* Fix for Typography in Drawer Items */
+[class*="DrawerItem-name"] {
+  color: var(--cb-silver) !important;
+  font-weight: 500;
+}
+
+/* Ensure icons in drawer are Gold */
+[class*="DrawerItem-icon"] svg {
+  color: var(--cb-gold) !important;
+}
+
+/* Category Headers (e.g., HERO SECTIONS) */
+[class*="ComponentList-title"] {
+  background-color: var(--cb-bg-base) !important;
+  color: var(--cb-gold) !important;
+  border-radius: 0 !important;
+  margin-bottom: 2px !important;
+  font-weight: 600 !important;
+}
+
+[class*="ComponentList-title"]:hover {
+  background-color: var(--cb-gold-faint) !important;
+}
+
+/* Global Form & Input Overrides (Sidebar Right) */
+.CredBuild input, 
+.CredBuild textarea, 
+.CredBuild select,
+[class*="ExternalInput-input"],
+[class*="Select-select"] {
+  background-color: var(--cb-bg-base) !important;
+  border: 1px solid var(--cb-border) !important;
+  border-radius: var(--cb-radius-m) !important;
+  color: var(--cb-silver) !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  width: 100% !important;
+  transition: all 0.2s ease !important;
+}
+
+.CredBuild input:focus, 
+.CredBuild textarea:focus, 
+.CredBuild select:focus {
+  border-color: var(--cb-gold) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px var(--cb-gold-glow) !important;
+}
+
+/* Form Labels & Icons */
+[class*="AutoField-label"], [class*="SidebarSection-title"], [class*="Heading-item"] {
+  color: var(--cb-silver-muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Sidebar Sections */
+[class*="SidebarSection"] {
+  border-bottom: 1px solid var(--cb-border) !important;
+  background-color: transparent !important;
+}
+
+/* Multi-select/Custom Inputs */
+[class*="Select-button"] {
+  background-color: var(--cb-bg-base) !important;
+  border-color: var(--cb-border) !important;
+  color: var(--cb-silver) !important;
+}
+
+/* Extreme Sidebar Blackout for Fields & Arrays */
+[class*="SidebarSection-content"],
+[class*="Field-array"],
+[class*="ArrayField"],
+[class*="Sidebar"] div[class*="Section-"],
+[class*="Sidebar"] div[class*="Field-"] {
+  background-color: transparent !important; /* Kill the container background */
+  background: transparent !important;
+  border-color: var(--cb-border) !important;
+}
+
+/* Ensure the actual item boxes inside the array are dark */
+[class*="Array-item"], 
+[class*="Field-list"] > div {
+  background-color: var(--cb-bg-surface) !important;
+  border: 1px solid var(--cb-border) !important;
+  border-radius: var(--cb-radius-m) !important;
+  color: var(--cb-silver) !important;
+  padding: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+/* Fix for any white box containers that might be hard-to-target */
+.CredBuild [class*="Layout-right"] div {
+  background-image: none !important;
+}
+
+/* Header Overhaul (Absolute Dark) */
+[class*="CredBuildHeader"] {
+  background-color: var(--cb-bg-base) !important;
+  background: var(--cb-bg-base) !important;
+  border-bottom: 1px solid var(--cb-border) !important;
+}
+
+/* Breadcrumbs / Path Visibility (HOME, etc.) */
+[class*="Header-path"], [class*="Header-title"], [class*="Header-inner"] * {
+  color: var(--cb-gold) !important;
+  font-weight: 600 !important;
+}
+
+/* Final Header Cleanup - Absolute Dark & Gold */
+[class*="Header"] div, 
+[class*="Header"] button,
+[class*="Header"] span {
+  background-color: transparent !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Luxury Secondary Buttons (Dashboard, View Web) */
+[class*="Button--secondary"] {
+  background-color: var(--cb-bg-surface) !important;
+  border: 1px solid var(--cb-border) !important;
+  color: var(--cb-silver-muted) !important;
+}
+
+[class*="Button--secondary"]:hover {
+  background-color: var(--cb-bg-panel) !important;
+  border-color: var(--cb-gold) !important;
+  color: var(--cb-gold) !important;
+}
+
+/* Force the Publish/Primary Button to be GOLD */
+.CredBuild button[class*="primary"], 
+.CredBuild button[class*="Publish"],
+.CredBuild button[class*="Button--primary"] {
+  background-color: var(--cb-gold) !important;
+  background: var(--cb-gold) !important;
+  color: var(--cb-bg-base) !important;
+  border: none !important;
+  opacity: 1 !important;
+  padding: 6px 18px !important;
+  border-radius: var(--cb-radius-m) !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+
+.CredBuild button[class*="primary"]:hover {
+  background-color: #fcd34d !important; /* Lighter gold */
+  box-shadow: 0 0 15px var(--cb-gold-glow) !important;
+  transform: translateY(-1px);
+}
+
+/* Ensure icons are Gold */
+[class*="Header"] svg, [class*="Header"] svg * {
+  color: var(--cb-gold) !important;
+  stroke: var(--cb-gold) !important;
+  fill: none !important;
+}
+
+/* Special fix for the white box wrapper in Chrome/Safari */
+[class*="Header-tools"] > div, [class*="Header-rightActions"] > div {
+  background: transparent !important;
+}
+
+/* Component Drawer & Search Overhaul */
+[class*="Drawer"] input, 
+[class*="ComponentList"] input,
+[class*="Search"] input {
+  background-color: var(--cb-bg-base) !important;
+  color: var(--cb-silver) !important;
+  border: 1px solid var(--cb-border) !important;
+  border-radius: var(--cb-radius-m) !important;
+  padding: 10px 12px !important;
+  font-size: 13px !important;
+  transition: all 0.2s ease !important;
+}
+
+[class*="Drawer"] input:focus {
+  border-color: var(--cb-gold) !important;
+  box-shadow: 0 0 10px var(--cb-gold-glow) !important;
+  outline: none !important;
+}
+
+/* Component Category Titles (Hero, Agencies, etc.) */
+[class*="ComponentList-title"] {
+  color: var(--cb-silver) !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  opacity: 0.8 !important;
+}
+
+[class*="ComponentList-title"]:hover {
+  background-color: var(--cb-gold-glow) !important;
+  color: var(--cb-gold) !important;
+}
+
+/* Component List Icons */
+[class*="ComponentList-titleIcon"] svg {
+  color: var(--cb-gold) !important;
+}
+
+/* Component Item Refinement (Slim & Clean) */
+[class*="DrawerItem"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+[class*="DrawerItem-name"], 
+[class*="DrawerItem"] span,
+[class*="DrawerItem"] div {
+  background-color: transparent !important; /* Kill the black highlighter */
+  background: transparent !important;
+}
+
+/* System-wide Blue to Gold/Dark Override */
+:root {
+  --credbuild-color-azure-05: var(--cb-gold);
+  --credbuild-color-azure-06: var(--cb-gold);
+  --credbuild-color-azure-07: var(--cb-gold);
+  --credbuild-color-azure-10: var(--cb-gold-glow);
+  --credbuild-color-azure-11: var(--cb-gold-glow);
+  --credbuild-color-white: transparent;
+  --credbuild-color-grey-11: var(--cb-bg-surface);
+  --credbuild-color-grey-10: var(--cb-border);
+  --credbuild-color-grey-09: var(--cb-bg-base);
+}
