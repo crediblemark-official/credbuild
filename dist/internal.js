@@ -1,27 +1,10 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -51,7 +34,7 @@ __export(internal_exports, {
 });
 module.exports = __toCommonJS(internal_exports);
 
-// ../tsup-config/react-import.js
+// react-import.js
 var import_react = __toESM(require("react"));
 
 // lib/root-droppable-id.ts
@@ -82,13 +65,13 @@ function forRelatedZones(item, data, cb, path = []) {
 
 // lib/data/default-slots.ts
 var defaultSlots = (value, fields) => Object.keys(fields).reduce(
-  (acc, fieldName) => fields[fieldName].type === "slot" ? __spreadValues({ [fieldName]: [] }, acc) : acc,
+  (acc, fieldName) => fields[fieldName].type === "slot" ? { [fieldName]: [], ...acc } : acc,
   value
 );
 
 // lib/data/map-fields.ts
 var isPromise = (v) => !!v && typeof v.then === "function";
-var flatten = (values) => values.reduce((acc, item) => __spreadValues(__spreadValues({}, acc), item), {});
+var flatten = (values) => values.reduce((acc, item) => ({ ...acc, ...item }), {});
 var containsPromise = (arr) => arr.some(isPromise);
 var walkField = ({
   value,
@@ -100,20 +83,18 @@ var walkField = ({
   config,
   recurseSlots = false
 }) => {
-  var _a, _b, _c;
-  const fieldType = (_a = fields[propKey]) == null ? void 0 : _a.type;
+  const fieldType = fields[propKey]?.type;
   const map = mappers[fieldType];
   if (map && fieldType === "slot") {
     const content = value || [];
     const mappedContent = recurseSlots ? content.map((el) => {
-      var _a2;
       const componentConfig = config.components[el.type];
       if (!componentConfig) {
         throw new Error(`Could not find component config for ${el.type}`);
       }
-      const fields2 = (_a2 = componentConfig.fields) != null ? _a2 : {};
+      const fields2 = componentConfig.fields ?? {};
       return walkField({
-        value: __spreadProps(__spreadValues({}, el), { props: defaultSlots(el.props, fields2) }),
+        value: { ...el, props: defaultSlots(el.props, fields2) },
         fields: fields2,
         mappers,
         id: el.props.id,
@@ -142,7 +123,7 @@ var walkField = ({
   }
   if (value && typeof value === "object") {
     if (Array.isArray(value)) {
-      const arrayFields = ((_b = fields[propKey]) == null ? void 0 : _b.type) === "array" ? fields[propKey].arrayFields : null;
+      const arrayFields = fields[propKey]?.type === "array" ? fields[propKey].arrayFields : null;
       if (!arrayFields) return value;
       const newValue = value.map(
         (el, idx) => walkField({
@@ -163,7 +144,7 @@ var walkField = ({
     } else if ("$$typeof" in value) {
       return value;
     } else {
-      const objectFields = ((_c = fields[propKey]) == null ? void 0 : _c.type) === "object" ? fields[propKey].objectFields : fields;
+      const objectFields = fields[propKey]?.type === "object" ? fields[propKey].objectFields : fields;
       return walkObject({
         value,
         fields: objectFields,
@@ -213,26 +194,27 @@ var walkObject = ({
   return flatten(newProps);
 };
 function mapFields(item, mappers, config, recurseSlots = false, shouldDefaultSlots = true) {
-  var _a, _b, _c, _d, _e;
   const itemType = "type" in item ? item.type : "root";
-  const componentConfig = itemType === "root" ? config.root : (_a = config.components) == null ? void 0 : _a[itemType];
+  const componentConfig = itemType === "root" ? config.root : config.components?.[itemType];
   const newProps = walkObject({
-    value: shouldDefaultSlots ? defaultSlots((_b = item.props) != null ? _b : {}, (_c = componentConfig == null ? void 0 : componentConfig.fields) != null ? _c : {}) : item.props,
-    fields: (_d = componentConfig == null ? void 0 : componentConfig.fields) != null ? _d : {},
+    value: shouldDefaultSlots ? defaultSlots(item.props ?? {}, componentConfig?.fields ?? {}) : item.props,
+    fields: componentConfig?.fields ?? {},
     mappers,
-    id: item.props ? (_e = item.props.id) != null ? _e : "root" : "root",
+    id: item.props ? item.props.id ?? "root" : "root",
     getPropPath: (k) => k,
     config,
     recurseSlots
   });
   if (isPromise(newProps)) {
-    return newProps.then((resolvedProps) => __spreadProps(__spreadValues({}, item), {
+    return newProps.then((resolvedProps) => ({
+      ...item,
       props: resolvedProps
     }));
   }
-  return __spreadProps(__spreadValues({}, item), {
+  return {
+    ...item,
     props: newProps
-  });
+  };
 }
 
 // lib/data/flatten-node.ts
@@ -264,29 +246,29 @@ function encodeEmptyObjects(props = {}) {
   return result;
 }
 var flattenNode = (node, config) => {
-  return __spreadProps(__spreadValues({}, node), {
+  return {
+    ...node,
     props: encodeEmptyObjects(flatten2(stripSlots(node, config).props))
-  });
+  };
 };
 
 // lib/data/to-component.ts
 var toComponent = (item) => {
-  return "type" in item ? item : __spreadProps(__spreadValues({}, item), {
-    props: __spreadProps(__spreadValues({}, item.props), { id: "root" }),
+  return "type" in item ? item : {
+    ...item,
+    props: { ...item.props, id: "root" },
     type: "root"
-  });
+  };
 };
 
 // lib/data/walk-app-state.ts
 function walkAppState(state, config, mapContent = (content) => content, mapNodeOrSkip = (item) => item) {
-  var _a;
   let newZones = {};
   const newZoneIndex = {};
   const newNodeIndex = {};
   const processContent = (path, zoneCompound, content, zoneType, newId) => {
-    var _a2;
     const [parentId] = zoneCompound.split(":");
-    const mappedContent = ((_a2 = mapContent(content, zoneCompound, zoneType)) != null ? _a2 : content) || [];
+    const mappedContent = (mapContent(content, zoneCompound, zoneType) ?? content) || [];
     const [_2, zone] = zoneCompound.split(":");
     const newZoneCompound = `${newId || parentId}:${zone}`;
     const newContent2 = mappedContent.map(
@@ -319,28 +301,29 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     const mappedItem = mapNodeOrSkip(item, path, index);
     if (!mappedItem) return item;
     const id = mappedItem.props.id;
-    const newProps = __spreadProps(__spreadValues({}, mapFields(
-      mappedItem,
-      {
-        slot: ({ value, parentId: parentId2, propPath }) => {
-          const content = value;
-          const zoneCompound = `${parentId2}:${propPath}`;
-          const [_2, newContent2] = processContent(
-            path,
-            zoneCompound,
-            content,
-            "slot",
-            parentId2
-          );
-          return newContent2;
-        }
-      },
-      config
-    ).props), {
+    const newProps = {
+      ...mapFields(
+        mappedItem,
+        {
+          slot: ({ value, parentId: parentId2, propPath }) => {
+            const content = value;
+            const zoneCompound = `${parentId2}:${propPath}`;
+            const [_2, newContent2] = processContent(
+              path,
+              zoneCompound,
+              content,
+              "slot",
+              parentId2
+            );
+            return newContent2;
+          }
+        },
+        config
+      ).props,
       id
-    });
+    };
     processRelatedZones(item, id, path);
-    const newItem = __spreadProps(__spreadValues({}, mappedItem), { props: newProps });
+    const newItem = { ...mappedItem, props: newProps };
     const thisZoneCompound = path[path.length - 1];
     const [parentId, zone] = thisZoneCompound ? thisZoneCompound.split(":") : [null, ""];
     newNodeIndex[id] = {
@@ -350,7 +333,7 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
       parentId,
       zone
     };
-    const finalData = __spreadProps(__spreadValues({}, newItem), { props: __spreadValues({}, newItem.props) });
+    const finalData = { ...newItem, props: { ...newItem.props } };
     if (newProps.id === "root") {
       delete finalData["type"];
       delete finalData.props["id"];
@@ -381,30 +364,40 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     newZones[zoneCompound] = newContent2;
   }, newZones);
   let rootAsComponent = toComponent({
-    props: __spreadValues({}, (_a = state.data.root.props) != null ? _a : state.data.root)
+    props: { ...state.data.root.props ?? state.data.root }
   });
   if (state.data.root.readOnly) {
     rootAsComponent.readOnly = state.data.root.readOnly;
   }
   const processedRoot = processItem(rootAsComponent, [], -1);
-  const root = __spreadValues(__spreadValues({}, state.data.root), processedRoot);
-  return __spreadProps(__spreadValues({}, state), {
+  const root = {
+    ...state.data.root,
+    ...processedRoot
+  };
+  return {
+    ...state,
     data: {
       root,
       content: processedContent,
-      zones: __spreadValues(__spreadValues({}, state.data.zones), newZones)
+      zones: {
+        ...state.data.zones,
+        ...newZones
+      }
     },
     indexes: {
-      nodes: __spreadValues(__spreadValues({}, state.indexes.nodes), newNodeIndex),
-      zones: __spreadValues(__spreadValues({}, state.indexes.zones), newZoneIndex)
+      nodes: { ...state.indexes.nodes, ...newNodeIndex },
+      zones: { ...state.indexes.zones, ...newZoneIndex }
     }
-  });
+  };
 }
 
 // reducer/actions/set.ts
 var setAction = (state, action, appStore) => {
   if (typeof action.state === "object") {
-    const newState = __spreadValues(__spreadValues({}, state), action.state);
+    const newState = {
+      ...state,
+      ...action.state
+    };
     if (action.state.indexes) {
       return newState;
     }
@@ -413,7 +406,7 @@ var setAction = (state, action, appStore) => {
     );
     return walkAppState(newState, appStore.config);
   }
-  return __spreadValues(__spreadValues({}, state), action.state(state));
+  return { ...state, ...action.state(state) };
 };
 
 // lib/data/insert.ts
@@ -431,20 +424,18 @@ var generateId = (type) => type ? `${type}-${(0, import_uuid.v4)()}` : (0, impor
 var getIdsForParent = (zoneCompound, state) => {
   const [parentId] = zoneCompound.split(":");
   const node = state.indexes.nodes[parentId];
-  return ((node == null ? void 0 : node.path) || []).map((p) => p.split(":")[0]);
+  return (node?.path || []).map((p) => p.split(":")[0]);
 };
 
 // lib/data/walk-tree.ts
 function walkTree(data, config, callbackFn) {
-  var _a, _b;
   const walkItem = (item) => {
     return mapFields(
       item,
       {
         slot: ({ value, parentId, propName }) => {
-          var _a2;
           const content = value;
-          return (_a2 = callbackFn(content, { parentId, propName })) != null ? _a2 : content;
+          return callbackFn(content, { parentId, propName }) ?? content;
         }
       },
       config,
@@ -455,16 +446,17 @@ function walkTree(data, config, callbackFn) {
     return walkItem(data);
   }
   const _data = data;
-  const zones = (_a = _data.zones) != null ? _a : {};
+  const zones = _data.zones ?? {};
   const mappedContent = _data.content.map(walkItem);
   return {
     root: walkItem(_data.root),
-    content: (_b = callbackFn(mappedContent, {
+    content: callbackFn(mappedContent, {
       parentId: "root",
       propName: "default-zone"
-    })) != null ? _b : mappedContent,
+    }) ?? mappedContent,
     zones: Object.keys(zones).reduce(
-      (acc, zoneCompound) => __spreadProps(__spreadValues({}, acc), {
+      (acc, zoneCompound) => ({
+        ...acc,
         [zoneCompound]: zones[zoneCompound].map(walkItem)
       }),
       {}
@@ -476,15 +468,17 @@ function walkTree(data, config, callbackFn) {
 var populateIds = (data, config, override = false) => {
   const id = generateId(data.type);
   return walkTree(
-    __spreadProps(__spreadValues({}, data), {
-      props: override ? __spreadProps(__spreadValues({}, data.props), { id }) : __spreadValues({}, data.props)
-    }),
+    {
+      ...data,
+      props: override ? { ...data.props, id } : { ...data.props }
+    },
     config,
     (contents) => contents.map((item) => {
       const id2 = generateId(item.type);
-      return __spreadProps(__spreadValues({}, item), {
-        props: override ? __spreadProps(__spreadValues({}, item.props), { id: id2 }) : __spreadValues({ id: id2 }, item.props)
-      });
+      return {
+        ...item,
+        props: override ? { ...item.props, id: id2 } : { id: id2, ...item.props }
+      };
     })
   );
 };
@@ -495,9 +489,10 @@ function insertAction(state, action, appStore) {
   const emptyComponentData = populateIds(
     {
       type: action.componentType,
-      props: __spreadProps(__spreadValues({}, appStore.config.components[action.componentType].defaultProps || {}), {
+      props: {
+        ...appStore.config.components[action.componentType].defaultProps || {},
         id
-      })
+      }
     },
     appStore.config
   );
@@ -545,14 +540,16 @@ var replaceAction = (state, action, appStore) => {
     newSlotIds.push(`${opts.parentId}:${opts.propName}`);
     return contents.map((item) => {
       const id = generateId(item.type);
-      return __spreadProps(__spreadValues({}, item), {
-        props: __spreadValues({ id }, item.props)
-      });
+      return {
+        ...item,
+        props: { id, ...item.props }
+      };
     });
   });
-  const stateWithDeepSlotsRemoved = __spreadProps(__spreadValues({}, state), {
-    ui: __spreadValues(__spreadValues({}, state.ui), action.ui)
-  });
+  const stateWithDeepSlotsRemoved = {
+    ...state,
+    ui: { ...state.ui, ...action.ui }
+  };
   Object.keys(state.indexes.zones).forEach((zoneCompound) => {
     const id = zoneCompound.split(":")[0];
     if (id === originalId) {
@@ -595,10 +592,11 @@ var replaceRootAction = (state, action, appStore) => {
     (content) => content,
     (childItem) => {
       if (childItem.props.id === "root") {
-        return __spreadProps(__spreadValues({}, childItem), {
-          props: __spreadValues(__spreadValues({}, childItem.props), action.root.props),
+        return {
+          ...childItem,
+          props: { ...childItem.props, ...action.root.props },
           readOnly: action.root.readOnly
-        });
+        };
       }
       return childItem;
     }
@@ -607,9 +605,8 @@ var replaceRootAction = (state, action, appStore) => {
 
 // lib/data/get-item.ts
 function getItem(selector, state) {
-  var _a, _b;
-  const zone = (_a = state.indexes.zones) == null ? void 0 : _a[selector.zone || rootDroppableId];
-  return zone ? (_b = state.indexes.nodes[zone.contentIds[selector.index]]) == null ? void 0 : _b.data : void 0;
+  const zone = state.indexes.zones?.[selector.zone || rootDroppableId];
+  return zone ? state.indexes.nodes[zone.contentIds[selector.index]]?.data : void 0;
 }
 
 // reducer/actions/duplicate.ts
@@ -619,11 +616,13 @@ function duplicateAction(state, action, appStore) {
     state
   );
   const idsInPath = getIdsForParent(action.sourceZone, state);
-  const newItem = __spreadProps(__spreadValues({}, item), {
-    props: __spreadProps(__spreadValues({}, item.props), {
+  const newItem = {
+    ...item,
+    props: {
+      ...item.props,
       id: generateId(item.type)
-    })
-  });
+    }
+  };
   const modified = walkAppState(
     state,
     appStore.config,
@@ -637,11 +636,13 @@ function duplicateAction(state, action, appStore) {
       const zoneCompound = path[path.length - 1];
       const parents = path.map((p) => p.split(":")[0]);
       if (parents.indexOf(newItem.props.id) > -1) {
-        return __spreadProps(__spreadValues({}, childItem), {
-          props: __spreadProps(__spreadValues({}, childItem.props), {
+        return {
+          ...childItem,
+          props: {
+            ...childItem.props,
             id: generateId(childItem.type)
-          })
-        });
+          }
+        };
       }
       if (zoneCompound === action.sourceZone && index === action.sourceIndex + 1) {
         return newItem;
@@ -653,14 +654,16 @@ function duplicateAction(state, action, appStore) {
       return null;
     }
   );
-  return __spreadProps(__spreadValues({}, modified), {
-    ui: __spreadProps(__spreadValues({}, modified.ui), {
+  return {
+    ...modified,
+    ui: {
+      ...modified.ui,
       itemSelector: {
         index: action.sourceIndex + 1,
         zone: action.sourceZone
       }
-    })
-  });
+    }
+  };
 }
 
 // lib/data/remove.ts
@@ -772,9 +775,10 @@ var setupZone = (data, zoneKey) => {
   if (zoneKey === rootDroppableId) {
     return data;
   }
-  const newData = __spreadProps(__spreadValues({}, data), {
-    zones: data.zones ? __spreadValues({}, data.zones) : {}
-  });
+  const newData = {
+    ...data,
+    zones: data.zones ? { ...data.zones } : {}
+  };
   newData.zones[zoneKey] = newData.zones[zoneKey] || [];
   return newData;
 };
@@ -783,40 +787,49 @@ var setupZone = (data, zoneKey) => {
 var zoneCache = {};
 function registerZoneAction(state, action) {
   if (zoneCache[action.zone]) {
-    return __spreadProps(__spreadValues({}, state), {
-      data: __spreadProps(__spreadValues({}, state.data), {
-        zones: __spreadProps(__spreadValues({}, state.data.zones), {
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        zones: {
+          ...state.data.zones,
           [action.zone]: zoneCache[action.zone]
-        })
-      }),
-      indexes: __spreadProps(__spreadValues({}, state.indexes), {
-        zones: __spreadProps(__spreadValues({}, state.indexes.zones), {
-          [action.zone]: __spreadProps(__spreadValues({}, state.indexes.zones[action.zone]), {
+        }
+      },
+      indexes: {
+        ...state.indexes,
+        zones: {
+          ...state.indexes.zones,
+          [action.zone]: {
+            ...state.indexes.zones[action.zone],
             contentIds: zoneCache[action.zone].map((item) => item.props.id),
             type: "dropzone"
-          })
-        })
-      })
-    });
+          }
+        }
+      }
+    };
   }
-  return __spreadProps(__spreadValues({}, state), { data: setupZone(state.data, action.zone) });
+  return { ...state, data: setupZone(state.data, action.zone) };
 }
 function unregisterZoneAction(state, action) {
-  const _zones = __spreadValues({}, state.data.zones || {});
-  const zoneIndex = __spreadValues({}, state.indexes.zones || {});
+  const _zones = { ...state.data.zones || {} };
+  const zoneIndex = { ...state.indexes.zones || {} };
   if (_zones[action.zone]) {
     zoneCache[action.zone] = _zones[action.zone];
     delete _zones[action.zone];
   }
   delete zoneIndex[action.zone];
-  return __spreadProps(__spreadValues({}, state), {
-    data: __spreadProps(__spreadValues({}, state.data), {
+  return {
+    ...state,
+    data: {
+      ...state.data,
       zones: _zones
-    }),
-    indexes: __spreadProps(__spreadValues({}, state.indexes), {
+    },
+    indexes: {
+      ...state.indexes,
       zones: zoneIndex
-    })
-  });
+    }
+  };
 }
 
 // reducer/actions/set-data.ts
@@ -826,16 +839,24 @@ var setDataAction = (state, action, appStore) => {
       "`setData` is expensive and may cause unnecessary re-renders. Consider using a more atomic action instead."
     );
     return walkAppState(
-      __spreadProps(__spreadValues({}, state), {
-        data: __spreadValues(__spreadValues({}, state.data), action.data)
-      }),
+      {
+        ...state,
+        data: {
+          ...state.data,
+          ...action.data
+        }
+      },
       appStore.config
     );
   }
   return walkAppState(
-    __spreadProps(__spreadValues({}, state), {
-      data: __spreadValues(__spreadValues({}, state.data), action.data(state.data))
-    }),
+    {
+      ...state,
+      data: {
+        ...state.data,
+        ...action.data(state.data)
+      }
+    },
     appStore.config
   );
 };
@@ -843,13 +864,21 @@ var setDataAction = (state, action, appStore) => {
 // reducer/actions/set-ui.ts
 var setUiAction = (state, action) => {
   if (typeof action.ui === "object") {
-    return __spreadProps(__spreadValues({}, state), {
-      ui: __spreadValues(__spreadValues({}, state.ui), action.ui)
-    });
+    return {
+      ...state,
+      ui: {
+        ...state.ui,
+        ...action.ui
+      }
+    };
   }
-  return __spreadProps(__spreadValues({}, state), {
-    ui: __spreadValues(__spreadValues({}, state.ui), action.ui(state.ui))
-  });
+  return {
+    ...state,
+    ui: {
+      ...state.ui,
+      ...action.ui(state.ui)
+    }
+  };
 };
 
 // lib/data/make-state-public.ts
@@ -872,7 +901,7 @@ function storeInterceptor(reducer, record, onAction) {
     if (typeof action.recordHistory !== "undefined" ? action.recordHistory : isValidType) {
       if (record) record(newAppState);
     }
-    onAction == null ? void 0 : onAction(action, makeStatePublic(newAppState), makeStatePublic(state));
+    onAction?.(action, makeStatePublic(newAppState), makeStatePublic(state));
     return newAppState;
   };
 }

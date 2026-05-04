@@ -12,7 +12,7 @@ const config: Options = {
   external: [
     "react",
     "react-dom",
-    "@credbuild/core",
+    "@crediblemark/build",
     "@dnd-kit/react",
     "@dnd-kit/dom",
     "@dnd-kit/abstract",

@@ -1,40 +1,10 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __restKey = (key) => typeof key === "symbol" ? key : key + "";
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
@@ -62,39 +32,19 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
-};
 
-// ../tsup-config/react-import.js
+// react-import.js
 var import_react;
 var init_react_import = __esm({
-  "../tsup-config/react-import.js"() {
+  "react-import.js"() {
     "use strict";
     import_react = __toESM(require("react"));
   }
 });
 
-// ../../node_modules/classnames/index.js
+// ../node_modules/classnames/index.js
 var require_classnames = __commonJS({
-  "../../node_modules/classnames/index.js"(exports2, module2) {
+  "../node_modules/classnames/index.js"(exports2, module2) {
     "use strict";
     init_react_import();
     (function() {
@@ -176,9 +126,11 @@ var init_get_class_name_factory = __esm({
           prefixedModifiers[styles2[`${rootClass}--${modifier}`]] = modifiers[modifier];
         }
         const c = styles2[rootClass];
-        return config.baseClass + (0, import_classnames.default)(__spreadValues({
-          [c]: !!c
-        }, prefixedModifiers));
+        return config.baseClass + (0, import_classnames.default)({
+          [c]: !!c,
+          // only apply the class if it exists
+          ...prefixedModifiers
+        });
       } else {
         return config.baseClass + styles2[rootClass] || "";
       }
@@ -187,16 +139,16 @@ var init_get_class_name_factory = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ActionBar/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css/#css-module-data
 var init_css_module_data = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ActionBar/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ActionBar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css#css-module
 var styles_module_default;
 var init_styles_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ActionBar/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data();
@@ -259,10 +211,10 @@ var init_ActionBar = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/shared/src/utils.js
+// ../node_modules/lucide-react/dist/esm/shared/src/utils.js
 var toKebabCase, toCamelCase, toPascalCase, mergeClasses, hasA11yProp;
 var init_utils = __esm({
-  "../../node_modules/lucide-react/dist/esm/shared/src/utils.js"() {
+  "../node_modules/lucide-react/dist/esm/shared/src/utils.js"() {
     "use strict";
     init_react_import();
     toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
@@ -287,10 +239,10 @@ var init_utils = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/defaultAttributes.js
+// ../node_modules/lucide-react/dist/esm/defaultAttributes.js
 var defaultAttributes;
 var init_defaultAttributes = __esm({
-  "../../node_modules/lucide-react/dist/esm/defaultAttributes.js"() {
+  "../node_modules/lucide-react/dist/esm/defaultAttributes.js"() {
     "use strict";
     init_react_import();
     defaultAttributes = {
@@ -307,59 +259,51 @@ var init_defaultAttributes = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/Icon.js
+// ../node_modules/lucide-react/dist/esm/Icon.js
 var import_react2, Icon;
 var init_Icon = __esm({
-  "../../node_modules/lucide-react/dist/esm/Icon.js"() {
+  "../node_modules/lucide-react/dist/esm/Icon.js"() {
     "use strict";
     init_react_import();
     import_react2 = require("react");
     init_defaultAttributes();
     init_utils();
     Icon = (0, import_react2.forwardRef)(
-      (_a, ref) => {
-        var _b = _a, {
-          color = "currentColor",
-          size = 24,
-          strokeWidth = 2,
-          absoluteStrokeWidth,
-          className = "",
-          children,
-          iconNode
-        } = _b, rest = __objRest(_b, [
-          "color",
-          "size",
-          "strokeWidth",
-          "absoluteStrokeWidth",
-          "className",
-          "children",
-          "iconNode"
-        ]);
-        return (0, import_react2.createElement)(
-          "svg",
-          __spreadValues(__spreadValues(__spreadProps(__spreadValues({
-            ref
-          }, defaultAttributes), {
-            width: size,
-            height: size,
-            stroke: color,
-            strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
-            className: mergeClasses("lucide", className)
-          }), !children && !hasA11yProp(rest) && { "aria-hidden": "true" }), rest),
-          [
-            ...iconNode.map(([tag, attrs]) => (0, import_react2.createElement)(tag, attrs)),
-            ...Array.isArray(children) ? children : [children]
-          ]
-        );
-      }
+      ({
+        color = "currentColor",
+        size = 24,
+        strokeWidth = 2,
+        absoluteStrokeWidth,
+        className = "",
+        children,
+        iconNode,
+        ...rest
+      }, ref) => (0, import_react2.createElement)(
+        "svg",
+        {
+          ref,
+          ...defaultAttributes,
+          width: size,
+          height: size,
+          stroke: color,
+          strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+          className: mergeClasses("lucide", className),
+          ...!children && !hasA11yProp(rest) && { "aria-hidden": "true" },
+          ...rest
+        },
+        [
+          ...iconNode.map(([tag, attrs]) => (0, import_react2.createElement)(tag, attrs)),
+          ...Array.isArray(children) ? children : [children]
+        ]
+      )
     );
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/createLucideIcon.js
+// ../node_modules/lucide-react/dist/esm/createLucideIcon.js
 var import_react3, createLucideIcon;
 var init_createLucideIcon = __esm({
-  "../../node_modules/lucide-react/dist/esm/createLucideIcon.js"() {
+  "../node_modules/lucide-react/dist/esm/createLucideIcon.js"() {
     "use strict";
     init_react_import();
     import_react3 = require("react");
@@ -367,18 +311,16 @@ var init_createLucideIcon = __esm({
     init_Icon();
     createLucideIcon = (iconName, iconNode) => {
       const Component = (0, import_react3.forwardRef)(
-        (_a, ref) => {
-          var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-          return (0, import_react3.createElement)(Icon, __spreadValues({
-            ref,
-            iconNode,
-            className: mergeClasses(
-              `lucide-${toKebabCase(toPascalCase(iconName))}`,
-              `lucide-${iconName}`,
-              className
-            )
-          }, props));
-        }
+        ({ className, ...props }, ref) => (0, import_react3.createElement)(Icon, {
+          ref,
+          iconNode,
+          className: mergeClasses(
+            `lucide-${toKebabCase(toPascalCase(iconName))}`,
+            `lucide-${iconName}`,
+            className
+          ),
+          ...props
+        })
       );
       Component.displayName = toPascalCase(iconName);
       return Component;
@@ -386,10 +328,10 @@ var init_createLucideIcon = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/bold.js
+// ../node_modules/lucide-react/dist/esm/icons/bold.js
 var __iconNode, Bold;
 var init_bold = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/bold.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/bold.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -403,10 +345,10 @@ var init_bold = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/box.js
+// ../node_modules/lucide-react/dist/esm/icons/box.js
 var __iconNode2, Box;
 var init_box = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/box.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/box.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -425,10 +367,10 @@ var init_box = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/chart-column.js
+// ../node_modules/lucide-react/dist/esm/icons/chart-column.js
 var __iconNode3, ChartColumn;
 var init_chart_column = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/chart-column.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/chart-column.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -442,10 +384,10 @@ var init_chart_column = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/chevron-down.js
+// ../node_modules/lucide-react/dist/esm/icons/chevron-down.js
 var __iconNode4, ChevronDown;
 var init_chevron_down = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/chevron-down.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/chevron-down.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -454,10 +396,10 @@ var init_chevron_down = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/chevron-right.js
+// ../node_modules/lucide-react/dist/esm/icons/chevron-right.js
 var __iconNode5, ChevronRight;
 var init_chevron_right = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/chevron-right.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/chevron-right.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -466,10 +408,10 @@ var init_chevron_right = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/chevron-up.js
+// ../node_modules/lucide-react/dist/esm/icons/chevron-up.js
 var __iconNode6, ChevronUp;
 var init_chevron_up = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/chevron-up.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/chevron-up.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -478,10 +420,10 @@ var init_chevron_up = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/circle-check-big.js
+// ../node_modules/lucide-react/dist/esm/icons/circle-check-big.js
 var __iconNode7, CircleCheckBig;
 var init_circle_check_big = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/circle-check-big.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/circle-check-big.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -493,10 +435,10 @@ var init_circle_check_big = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/code.js
+// ../node_modules/lucide-react/dist/esm/icons/code.js
 var __iconNode8, Code;
 var init_code = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/code.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/code.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -508,10 +450,10 @@ var init_code = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/copy.js
+// ../node_modules/lucide-react/dist/esm/icons/copy.js
 var __iconNode9, Copy;
 var init_copy = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/copy.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/copy.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -523,10 +465,10 @@ var init_copy = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/corner-left-up.js
+// ../node_modules/lucide-react/dist/esm/icons/corner-left-up.js
 var __iconNode10, CornerLeftUp;
 var init_corner_left_up = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/corner-left-up.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/corner-left-up.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -538,10 +480,10 @@ var init_corner_left_up = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/credit-card.js
+// ../node_modules/lucide-react/dist/esm/icons/credit-card.js
 var __iconNode11, CreditCard;
 var init_credit_card = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/credit-card.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/credit-card.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -553,10 +495,10 @@ var init_credit_card = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js
+// ../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js
 var __iconNode12, EllipsisVertical;
 var init_ellipsis_vertical = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -569,10 +511,10 @@ var init_ellipsis_vertical = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/expand.js
+// ../node_modules/lucide-react/dist/esm/icons/expand.js
 var __iconNode13, Expand;
 var init_expand = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/expand.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/expand.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -590,10 +532,10 @@ var init_expand = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/external-link.js
+// ../node_modules/lucide-react/dist/esm/icons/external-link.js
 var __iconNode14, ExternalLink;
 var init_external_link = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/external-link.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/external-link.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -606,10 +548,10 @@ var init_external_link = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/file-text.js
+// ../node_modules/lucide-react/dist/esm/icons/file-text.js
 var __iconNode15, FileText;
 var init_file_text = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/file-text.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/file-text.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -630,10 +572,10 @@ var init_file_text = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/globe.js
+// ../node_modules/lucide-react/dist/esm/icons/globe.js
 var __iconNode16, Globe;
 var init_globe = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/globe.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/globe.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -646,10 +588,10 @@ var init_globe = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/grip-vertical.js
+// ../node_modules/lucide-react/dist/esm/icons/grip-vertical.js
 var __iconNode17, GripVertical;
 var init_grip_vertical = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/grip-vertical.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/grip-vertical.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -665,10 +607,10 @@ var init_grip_vertical = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/hash.js
+// ../node_modules/lucide-react/dist/esm/icons/hash.js
 var __iconNode18, Hash;
 var init_hash = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/hash.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/hash.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -682,10 +624,10 @@ var init_hash = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-1.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-1.js
 var __iconNode19, Heading1;
 var init_heading_1 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-1.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-1.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -699,10 +641,10 @@ var init_heading_1 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-2.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-2.js
 var __iconNode20, Heading2;
 var init_heading_2 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-2.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -716,10 +658,10 @@ var init_heading_2 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-3.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-3.js
 var __iconNode21, Heading3;
 var init_heading_3 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-3.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-3.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -734,10 +676,10 @@ var init_heading_3 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-4.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-4.js
 var __iconNode22, Heading4;
 var init_heading_4 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-4.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-4.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -752,10 +694,10 @@ var init_heading_4 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-5.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-5.js
 var __iconNode23, Heading5;
 var init_heading_5 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-5.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-5.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -773,10 +715,10 @@ var init_heading_5 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading-6.js
+// ../node_modules/lucide-react/dist/esm/icons/heading-6.js
 var __iconNode24, Heading6;
 var init_heading_6 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading-6.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading-6.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -791,10 +733,10 @@ var init_heading_6 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/heading.js
+// ../node_modules/lucide-react/dist/esm/icons/heading.js
 var __iconNode25, Heading;
 var init_heading = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/heading.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/heading.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -807,10 +749,10 @@ var init_heading = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/image.js
+// ../node_modules/lucide-react/dist/esm/icons/image.js
 var __iconNode26, Image;
 var init_image = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/image.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/image.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -823,10 +765,10 @@ var init_image = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/info.js
+// ../node_modules/lucide-react/dist/esm/icons/info.js
 var __iconNode27, Info;
 var init_info = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/info.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/info.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -839,10 +781,10 @@ var init_info = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/italic.js
+// ../node_modules/lucide-react/dist/esm/icons/italic.js
 var __iconNode28, Italic;
 var init_italic = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/italic.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/italic.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -855,10 +797,10 @@ var init_italic = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/layers.js
+// ../node_modules/lucide-react/dist/esm/icons/layers.js
 var __iconNode29, Layers;
 var init_layers = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/layers.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/layers.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -889,10 +831,10 @@ var init_layers = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js
+// ../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js
 var __iconNode30, LayoutDashboard;
 var init_layout_dashboard = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -906,10 +848,10 @@ var init_layout_dashboard = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/layout-grid.js
+// ../node_modules/lucide-react/dist/esm/icons/layout-grid.js
 var __iconNode31, LayoutGrid;
 var init_layout_grid = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/layout-grid.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/layout-grid.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -923,10 +865,10 @@ var init_layout_grid = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/layout-template.js
+// ../node_modules/lucide-react/dist/esm/icons/layout-template.js
 var __iconNode32, LayoutTemplate;
 var init_layout_template = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/layout-template.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/layout-template.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -939,10 +881,10 @@ var init_layout_template = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/link.js
+// ../node_modules/lucide-react/dist/esm/icons/link.js
 var __iconNode33, Link;
 var init_link = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/link.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/link.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -954,10 +896,10 @@ var init_link = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/list-ordered.js
+// ../node_modules/lucide-react/dist/esm/icons/list-ordered.js
 var __iconNode34, ListOrdered;
 var init_list_ordered = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/list-ordered.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/list-ordered.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -973,10 +915,10 @@ var init_list_ordered = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/list.js
+// ../node_modules/lucide-react/dist/esm/icons/list.js
 var __iconNode35, List;
 var init_list = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/list.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/list.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -992,10 +934,10 @@ var init_list = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/lock-open.js
+// ../node_modules/lucide-react/dist/esm/icons/lock-open.js
 var __iconNode36, LockOpen;
 var init_lock_open = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/lock-open.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/lock-open.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1007,10 +949,10 @@ var init_lock_open = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/lock.js
+// ../node_modules/lucide-react/dist/esm/icons/lock.js
 var __iconNode37, Lock;
 var init_lock = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/lock.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/lock.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1022,10 +964,10 @@ var init_lock = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/maximize-2.js
+// ../node_modules/lucide-react/dist/esm/icons/maximize-2.js
 var __iconNode38, Maximize2;
 var init_maximize_2 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/maximize-2.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/maximize-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1039,10 +981,10 @@ var init_maximize_2 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/megaphone.js
+// ../node_modules/lucide-react/dist/esm/icons/megaphone.js
 var __iconNode39, Megaphone;
 var init_megaphone = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/megaphone.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/megaphone.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1061,10 +1003,10 @@ var init_megaphone = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/minimize-2.js
+// ../node_modules/lucide-react/dist/esm/icons/minimize-2.js
 var __iconNode40, Minimize2;
 var init_minimize_2 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/minimize-2.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/minimize-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1078,10 +1020,10 @@ var init_minimize_2 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/minus.js
+// ../node_modules/lucide-react/dist/esm/icons/minus.js
 var __iconNode41, Minus;
 var init_minus = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/minus.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/minus.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1090,10 +1032,10 @@ var init_minus = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/monitor.js
+// ../node_modules/lucide-react/dist/esm/icons/monitor.js
 var __iconNode42, Monitor;
 var init_monitor = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/monitor.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/monitor.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1106,10 +1048,10 @@ var init_monitor = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/panel-left.js
+// ../node_modules/lucide-react/dist/esm/icons/panel-left.js
 var __iconNode43, PanelLeft;
 var init_panel_left = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/panel-left.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/panel-left.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1121,10 +1063,10 @@ var init_panel_left = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/panel-right.js
+// ../node_modules/lucide-react/dist/esm/icons/panel-right.js
 var __iconNode44, PanelRight;
 var init_panel_right = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/panel-right.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/panel-right.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1136,10 +1078,10 @@ var init_panel_right = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/plus.js
+// ../node_modules/lucide-react/dist/esm/icons/plus.js
 var __iconNode45, Plus;
 var init_plus = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/plus.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/plus.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1151,10 +1093,10 @@ var init_plus = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/quote.js
+// ../node_modules/lucide-react/dist/esm/icons/quote.js
 var __iconNode46, Quote;
 var init_quote = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/quote.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/quote.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1178,10 +1120,10 @@ var init_quote = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js
+// ../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js
 var __iconNode47, RectangleEllipsis;
 var init_rectangle_ellipsis = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1195,10 +1137,10 @@ var init_rectangle_ellipsis = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/redo-2.js
+// ../node_modules/lucide-react/dist/esm/icons/redo-2.js
 var __iconNode48, Redo2;
 var init_redo_2 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/redo-2.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/redo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1210,10 +1152,10 @@ var init_redo_2 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/search.js
+// ../node_modules/lucide-react/dist/esm/icons/search.js
 var __iconNode49, Search;
 var init_search = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/search.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/search.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1225,10 +1167,10 @@ var init_search = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/settings.js
+// ../node_modules/lucide-react/dist/esm/icons/settings.js
 var __iconNode50, Settings;
 var init_settings = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/settings.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/settings.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1246,10 +1188,10 @@ var init_settings = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/shapes.js
+// ../node_modules/lucide-react/dist/esm/icons/shapes.js
 var __iconNode51, Shapes;
 var init_shapes = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/shapes.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/shapes.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1268,10 +1210,10 @@ var init_shapes = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
+// ../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
 var __iconNode52, SlidersHorizontal;
 var init_sliders_horizontal = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1290,10 +1232,10 @@ var init_sliders_horizontal = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/smartphone.js
+// ../node_modules/lucide-react/dist/esm/icons/smartphone.js
 var __iconNode53, Smartphone;
 var init_smartphone = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/smartphone.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/smartphone.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1305,10 +1247,10 @@ var init_smartphone = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/square-code.js
+// ../node_modules/lucide-react/dist/esm/icons/square-code.js
 var __iconNode54, SquareCode;
 var init_square_code = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/square-code.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/square-code.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1321,10 +1263,10 @@ var init_square_code = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/strikethrough.js
+// ../node_modules/lucide-react/dist/esm/icons/strikethrough.js
 var __iconNode55, Strikethrough;
 var init_strikethrough = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/strikethrough.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/strikethrough.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1337,10 +1279,10 @@ var init_strikethrough = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/tablet.js
+// ../node_modules/lucide-react/dist/esm/icons/tablet.js
 var __iconNode56, Tablet;
 var init_tablet = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/tablet.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/tablet.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1352,10 +1294,10 @@ var init_tablet = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/text-align-center.js
+// ../node_modules/lucide-react/dist/esm/icons/text-align-center.js
 var __iconNode57, TextAlignCenter;
 var init_text_align_center = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/text-align-center.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/text-align-center.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1368,10 +1310,10 @@ var init_text_align_center = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/text-align-end.js
+// ../node_modules/lucide-react/dist/esm/icons/text-align-end.js
 var __iconNode58, TextAlignEnd;
 var init_text_align_end = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/text-align-end.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/text-align-end.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1384,10 +1326,10 @@ var init_text_align_end = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/text-align-justify.js
+// ../node_modules/lucide-react/dist/esm/icons/text-align-justify.js
 var __iconNode59, TextAlignJustify;
 var init_text_align_justify = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/text-align-justify.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/text-align-justify.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1400,10 +1342,10 @@ var init_text_align_justify = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/text-align-start.js
+// ../node_modules/lucide-react/dist/esm/icons/text-align-start.js
 var __iconNode60, TextAlignStart;
 var init_text_align_start = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/text-align-start.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/text-align-start.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1416,10 +1358,10 @@ var init_text_align_start = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/toy-brick.js
+// ../node_modules/lucide-react/dist/esm/icons/toy-brick.js
 var __iconNode61, ToyBrick;
 var init_toy_brick = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/toy-brick.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/toy-brick.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1432,10 +1374,10 @@ var init_toy_brick = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/trash.js
+// ../node_modules/lucide-react/dist/esm/icons/trash.js
 var __iconNode62, Trash;
 var init_trash = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/trash.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/trash.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1448,10 +1390,10 @@ var init_trash = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/type.js
+// ../node_modules/lucide-react/dist/esm/icons/type.js
 var __iconNode63, Type;
 var init_type = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/type.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/type.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1464,10 +1406,10 @@ var init_type = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/underline.js
+// ../node_modules/lucide-react/dist/esm/icons/underline.js
 var __iconNode64, Underline;
 var init_underline = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/underline.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/underline.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1479,10 +1421,10 @@ var init_underline = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/undo-2.js
+// ../node_modules/lucide-react/dist/esm/icons/undo-2.js
 var __iconNode65, Undo2;
 var init_undo_2 = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/undo-2.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/undo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1494,10 +1436,10 @@ var init_undo_2 = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/x.js
+// ../node_modules/lucide-react/dist/esm/icons/x.js
 var __iconNode66, X;
 var init_x = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/x.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/x.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1509,10 +1451,10 @@ var init_x = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/zoom-in.js
+// ../node_modules/lucide-react/dist/esm/icons/zoom-in.js
 var __iconNode67, ZoomIn;
 var init_zoom_in = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/zoom-in.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/zoom-in.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1526,10 +1468,10 @@ var init_zoom_in = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/icons/zoom-out.js
+// ../node_modules/lucide-react/dist/esm/icons/zoom-out.js
 var __iconNode68, ZoomOut;
 var init_zoom_out = __esm({
-  "../../node_modules/lucide-react/dist/esm/icons/zoom-out.js"() {
+  "../node_modules/lucide-react/dist/esm/icons/zoom-out.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1542,9 +1484,9 @@ var init_zoom_out = __esm({
   }
 });
 
-// ../../node_modules/lucide-react/dist/esm/lucide-react.js
+// ../node_modules/lucide-react/dist/esm/lucide-react.js
 var init_lucide_react = __esm({
-  "../../node_modules/lucide-react/dist/esm/lucide-react.js"() {
+  "../node_modules/lucide-react/dist/esm/lucide-react.js"() {
     "use strict";
     init_react_import();
     init_chart_column();
@@ -1618,16 +1560,16 @@ var init_lucide_react = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/IconButton/IconButton.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css/#css-module-data
 var init_css_module_data2 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/IconButton/IconButton.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/IconButton/IconButton.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css#css-module
 var IconButton_module_default;
 var init_IconButton_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/IconButton/IconButton.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data2();
@@ -1728,7 +1670,7 @@ var init_default_slots = __esm({
     "use strict";
     init_react_import();
     defaultSlots = (value, fields) => Object.keys(fields).reduce(
-      (acc, fieldName) => fields[fieldName].type === "slot" ? __spreadValues({ [fieldName]: [] }, acc) : acc,
+      (acc, fieldName) => fields[fieldName].type === "slot" ? { [fieldName]: [], ...acc } : acc,
       value
     );
   }
@@ -1736,26 +1678,27 @@ var init_default_slots = __esm({
 
 // lib/data/map-fields.ts
 function mapFields(item, mappers, config, recurseSlots = false, shouldDefaultSlots = true) {
-  var _a, _b, _c, _d, _e;
   const itemType = "type" in item ? item.type : "root";
-  const componentConfig = itemType === "root" ? config.root : (_a = config.components) == null ? void 0 : _a[itemType];
+  const componentConfig = itemType === "root" ? config.root : config.components?.[itemType];
   const newProps = walkObject({
-    value: shouldDefaultSlots ? defaultSlots((_b = item.props) != null ? _b : {}, (_c = componentConfig == null ? void 0 : componentConfig.fields) != null ? _c : {}) : item.props,
-    fields: (_d = componentConfig == null ? void 0 : componentConfig.fields) != null ? _d : {},
+    value: shouldDefaultSlots ? defaultSlots(item.props ?? {}, componentConfig?.fields ?? {}) : item.props,
+    fields: componentConfig?.fields ?? {},
     mappers,
-    id: item.props ? (_e = item.props.id) != null ? _e : "root" : "root",
+    id: item.props ? item.props.id ?? "root" : "root",
     getPropPath: (k) => k,
     config,
     recurseSlots
   });
   if (isPromise(newProps)) {
-    return newProps.then((resolvedProps) => __spreadProps(__spreadValues({}, item), {
+    return newProps.then((resolvedProps) => ({
+      ...item,
       props: resolvedProps
     }));
   }
-  return __spreadProps(__spreadValues({}, item), {
+  return {
+    ...item,
     props: newProps
-  });
+  };
 }
 var isPromise, flatten, containsPromise, walkField, walkObject;
 var init_map_fields = __esm({
@@ -1764,7 +1707,7 @@ var init_map_fields = __esm({
     init_react_import();
     init_default_slots();
     isPromise = (v) => !!v && typeof v.then === "function";
-    flatten = (values) => values.reduce((acc, item) => __spreadValues(__spreadValues({}, acc), item), {});
+    flatten = (values) => values.reduce((acc, item) => ({ ...acc, ...item }), {});
     containsPromise = (arr) => arr.some(isPromise);
     walkField = ({
       value,
@@ -1776,20 +1719,18 @@ var init_map_fields = __esm({
       config,
       recurseSlots = false
     }) => {
-      var _a, _b, _c;
-      const fieldType = (_a = fields[propKey]) == null ? void 0 : _a.type;
+      const fieldType = fields[propKey]?.type;
       const map = mappers[fieldType];
       if (map && fieldType === "slot") {
         const content = value || [];
         const mappedContent = recurseSlots ? content.map((el) => {
-          var _a2;
           const componentConfig = config.components[el.type];
           if (!componentConfig) {
             throw new Error(`Could not find component config for ${el.type}`);
           }
-          const fields2 = (_a2 = componentConfig.fields) != null ? _a2 : {};
+          const fields2 = componentConfig.fields ?? {};
           return walkField({
-            value: __spreadProps(__spreadValues({}, el), { props: defaultSlots(el.props, fields2) }),
+            value: { ...el, props: defaultSlots(el.props, fields2) },
             fields: fields2,
             mappers,
             id: el.props.id,
@@ -1818,7 +1759,7 @@ var init_map_fields = __esm({
       }
       if (value && typeof value === "object") {
         if (Array.isArray(value)) {
-          const arrayFields = ((_b = fields[propKey]) == null ? void 0 : _b.type) === "array" ? fields[propKey].arrayFields : null;
+          const arrayFields = fields[propKey]?.type === "array" ? fields[propKey].arrayFields : null;
           if (!arrayFields) return value;
           const newValue = value.map(
             (el, idx) => walkField({
@@ -1839,7 +1780,7 @@ var init_map_fields = __esm({
         } else if ("$$typeof" in value) {
           return value;
         } else {
-          const objectFields = ((_c = fields[propKey]) == null ? void 0 : _c.type) === "object" ? fields[propKey].objectFields : fields;
+          const objectFields = fields[propKey]?.type === "object" ? fields[propKey].objectFields : fields;
           return walkObject({
             value,
             fields: objectFields,
@@ -1947,15 +1888,17 @@ var init_flatten_node = __esm({
     emptyArrayStr = "__credbuild_[]";
     emptyObjectStr = "__credbuild_{}";
     flattenNode = (node, config) => {
-      return __spreadProps(__spreadValues({}, node), {
+      return {
+        ...node,
         props: encodeEmptyObjects(flatten2(stripSlots(node, config).props))
-      });
+      };
     };
     expandNode = (node) => {
       const props = unflatten(decodeEmptyObjects(node.props));
-      return __spreadProps(__spreadValues({}, node), {
+      return {
+        ...node,
         props
-      });
+      };
     };
   }
 });
@@ -1967,24 +1910,23 @@ var init_to_component = __esm({
     "use strict";
     init_react_import();
     toComponent = (item) => {
-      return "type" in item ? item : __spreadProps(__spreadValues({}, item), {
-        props: __spreadProps(__spreadValues({}, item.props), { id: "root" }),
+      return "type" in item ? item : {
+        ...item,
+        props: { ...item.props, id: "root" },
         type: "root"
-      });
+      };
     };
   }
 });
 
 // lib/data/walk-app-state.ts
 function walkAppState(state, config, mapContent = (content) => content, mapNodeOrSkip = (item) => item) {
-  var _a;
   let newZones = {};
   const newZoneIndex = {};
   const newNodeIndex = {};
   const processContent = (path, zoneCompound, content, zoneType, newId) => {
-    var _a2;
     const [parentId] = zoneCompound.split(":");
-    const mappedContent = ((_a2 = mapContent(content, zoneCompound, zoneType)) != null ? _a2 : content) || [];
+    const mappedContent = (mapContent(content, zoneCompound, zoneType) ?? content) || [];
     const [_2, zone] = zoneCompound.split(":");
     const newZoneCompound = `${newId || parentId}:${zone}`;
     const newContent2 = mappedContent.map(
@@ -2017,28 +1959,29 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     const mappedItem = mapNodeOrSkip(item, path, index);
     if (!mappedItem) return item;
     const id = mappedItem.props.id;
-    const newProps = __spreadProps(__spreadValues({}, mapFields(
-      mappedItem,
-      {
-        slot: ({ value, parentId: parentId2, propPath }) => {
-          const content = value;
-          const zoneCompound = `${parentId2}:${propPath}`;
-          const [_2, newContent2] = processContent(
-            path,
-            zoneCompound,
-            content,
-            "slot",
-            parentId2
-          );
-          return newContent2;
-        }
-      },
-      config
-    ).props), {
+    const newProps = {
+      ...mapFields(
+        mappedItem,
+        {
+          slot: ({ value, parentId: parentId2, propPath }) => {
+            const content = value;
+            const zoneCompound = `${parentId2}:${propPath}`;
+            const [_2, newContent2] = processContent(
+              path,
+              zoneCompound,
+              content,
+              "slot",
+              parentId2
+            );
+            return newContent2;
+          }
+        },
+        config
+      ).props,
       id
-    });
+    };
     processRelatedZones(item, id, path);
-    const newItem = __spreadProps(__spreadValues({}, mappedItem), { props: newProps });
+    const newItem = { ...mappedItem, props: newProps };
     const thisZoneCompound = path[path.length - 1];
     const [parentId, zone] = thisZoneCompound ? thisZoneCompound.split(":") : [null, ""];
     newNodeIndex[id] = {
@@ -2048,7 +1991,7 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
       parentId,
       zone
     };
-    const finalData = __spreadProps(__spreadValues({}, newItem), { props: __spreadValues({}, newItem.props) });
+    const finalData = { ...newItem, props: { ...newItem.props } };
     if (newProps.id === "root") {
       delete finalData["type"];
       delete finalData.props["id"];
@@ -2079,24 +2022,31 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     newZones[zoneCompound] = newContent2;
   }, newZones);
   let rootAsComponent = toComponent({
-    props: __spreadValues({}, (_a = state.data.root.props) != null ? _a : state.data.root)
+    props: { ...state.data.root.props ?? state.data.root }
   });
   if (state.data.root.readOnly) {
     rootAsComponent.readOnly = state.data.root.readOnly;
   }
   const processedRoot = processItem(rootAsComponent, [], -1);
-  const root = __spreadValues(__spreadValues({}, state.data.root), processedRoot);
-  return __spreadProps(__spreadValues({}, state), {
+  const root = {
+    ...state.data.root,
+    ...processedRoot
+  };
+  return {
+    ...state,
     data: {
       root,
       content: processedContent,
-      zones: __spreadValues(__spreadValues({}, state.data.zones), newZones)
+      zones: {
+        ...state.data.zones,
+        ...newZones
+      }
     },
     indexes: {
-      nodes: __spreadValues(__spreadValues({}, state.indexes.nodes), newNodeIndex),
-      zones: __spreadValues(__spreadValues({}, state.indexes.zones), newZoneIndex)
+      nodes: { ...state.indexes.nodes, ...newNodeIndex },
+      zones: { ...state.indexes.zones, ...newZoneIndex }
     }
-  });
+  };
 }
 var init_walk_app_state = __esm({
   "lib/data/walk-app-state.ts"() {
@@ -2119,7 +2069,10 @@ var init_set = __esm({
     init_walk_app_state();
     setAction = (state, action, appStore) => {
       if (typeof action.state === "object") {
-        const newState = __spreadValues(__spreadValues({}, state), action.state);
+        const newState = {
+          ...state,
+          ...action.state
+        };
         if (action.state.indexes) {
           return newState;
         }
@@ -2128,7 +2081,7 @@ var init_set = __esm({
         );
         return walkAppState(newState, appStore.config);
       }
-      return __spreadValues(__spreadValues({}, state), action.state(state));
+      return { ...state, ...action.state(state) };
     };
   }
 });
@@ -2167,22 +2120,20 @@ var init_get_ids_for_parent = __esm({
     getIdsForParent = (zoneCompound, state) => {
       const [parentId] = zoneCompound.split(":");
       const node = state.indexes.nodes[parentId];
-      return ((node == null ? void 0 : node.path) || []).map((p) => p.split(":")[0]);
+      return (node?.path || []).map((p) => p.split(":")[0]);
     };
   }
 });
 
 // lib/data/walk-tree.ts
 function walkTree(data, config, callbackFn) {
-  var _a, _b;
   const walkItem = (item) => {
     return mapFields(
       item,
       {
         slot: ({ value, parentId, propName }) => {
-          var _a2;
           const content = value;
-          return (_a2 = callbackFn(content, { parentId, propName })) != null ? _a2 : content;
+          return callbackFn(content, { parentId, propName }) ?? content;
         }
       },
       config,
@@ -2193,16 +2144,17 @@ function walkTree(data, config, callbackFn) {
     return walkItem(data);
   }
   const _data = data;
-  const zones = (_a = _data.zones) != null ? _a : {};
+  const zones = _data.zones ?? {};
   const mappedContent = _data.content.map(walkItem);
   return {
     root: walkItem(_data.root),
-    content: (_b = callbackFn(mappedContent, {
+    content: callbackFn(mappedContent, {
       parentId: "root",
       propName: "default-zone"
-    })) != null ? _b : mappedContent,
+    }) ?? mappedContent,
     zones: Object.keys(zones).reduce(
-      (acc, zoneCompound) => __spreadProps(__spreadValues({}, acc), {
+      (acc, zoneCompound) => ({
+        ...acc,
         [zoneCompound]: zones[zoneCompound].map(walkItem)
       }),
       {}
@@ -2228,15 +2180,17 @@ var init_populate_ids = __esm({
     populateIds = (data, config, override = false) => {
       const id = generateId(data.type);
       return walkTree(
-        __spreadProps(__spreadValues({}, data), {
-          props: override ? __spreadProps(__spreadValues({}, data.props), { id }) : __spreadValues({}, data.props)
-        }),
+        {
+          ...data,
+          props: override ? { ...data.props, id } : { ...data.props }
+        },
         config,
         (contents) => contents.map((item) => {
           const id2 = generateId(item.type);
-          return __spreadProps(__spreadValues({}, item), {
-            props: override ? __spreadProps(__spreadValues({}, item.props), { id: id2 }) : __spreadValues({ id: id2 }, item.props)
-          });
+          return {
+            ...item,
+            props: override ? { ...item.props, id: id2 } : { id: id2, ...item.props }
+          };
         })
       );
     };
@@ -2249,9 +2203,10 @@ function insertAction(state, action, appStore) {
   const emptyComponentData = populateIds(
     {
       type: action.componentType,
-      props: __spreadProps(__spreadValues({}, appStore.config.components[action.componentType].defaultProps || {}), {
+      props: {
+        ...appStore.config.components[action.componentType].defaultProps || {},
         id
-      })
+      }
     },
     appStore.config
   );
@@ -2319,14 +2274,16 @@ var init_replace2 = __esm({
         newSlotIds.push(`${opts.parentId}:${opts.propName}`);
         return contents.map((item) => {
           const id = generateId(item.type);
-          return __spreadProps(__spreadValues({}, item), {
-            props: __spreadValues({ id }, item.props)
-          });
+          return {
+            ...item,
+            props: { id, ...item.props }
+          };
         });
       });
-      const stateWithDeepSlotsRemoved = __spreadProps(__spreadValues({}, state), {
-        ui: __spreadValues(__spreadValues({}, state.ui), action.ui)
-      });
+      const stateWithDeepSlotsRemoved = {
+        ...state,
+        ui: { ...state.ui, ...action.ui }
+      };
       Object.keys(state.indexes.zones).forEach((zoneCompound) => {
         const id = zoneCompound.split(":")[0];
         if (id === originalId) {
@@ -2377,10 +2334,11 @@ var init_replace_root = __esm({
         (content) => content,
         (childItem) => {
           if (childItem.props.id === "root") {
-            return __spreadProps(__spreadValues({}, childItem), {
-              props: __spreadValues(__spreadValues({}, childItem.props), action.root.props),
+            return {
+              ...childItem,
+              props: { ...childItem.props, ...action.root.props },
               readOnly: action.root.readOnly
-            });
+            };
           }
           return childItem;
         }
@@ -2391,9 +2349,8 @@ var init_replace_root = __esm({
 
 // lib/data/get-item.ts
 function getItem(selector, state) {
-  var _a, _b;
-  const zone = (_a = state.indexes.zones) == null ? void 0 : _a[selector.zone || rootDroppableId];
-  return zone ? (_b = state.indexes.nodes[zone.contentIds[selector.index]]) == null ? void 0 : _b.data : void 0;
+  const zone = state.indexes.zones?.[selector.zone || rootDroppableId];
+  return zone ? state.indexes.nodes[zone.contentIds[selector.index]]?.data : void 0;
 }
 var init_get_item = __esm({
   "lib/data/get-item.ts"() {
@@ -2410,11 +2367,13 @@ function duplicateAction(state, action, appStore) {
     state
   );
   const idsInPath = getIdsForParent(action.sourceZone, state);
-  const newItem = __spreadProps(__spreadValues({}, item), {
-    props: __spreadProps(__spreadValues({}, item.props), {
+  const newItem = {
+    ...item,
+    props: {
+      ...item.props,
       id: generateId(item.type)
-    })
-  });
+    }
+  };
   const modified = walkAppState(
     state,
     appStore.config,
@@ -2428,11 +2387,13 @@ function duplicateAction(state, action, appStore) {
       const zoneCompound = path[path.length - 1];
       const parents = path.map((p) => p.split(":")[0]);
       if (parents.indexOf(newItem.props.id) > -1) {
-        return __spreadProps(__spreadValues({}, childItem), {
-          props: __spreadProps(__spreadValues({}, childItem.props), {
+        return {
+          ...childItem,
+          props: {
+            ...childItem.props,
             id: generateId(childItem.type)
-          })
-        });
+          }
+        };
       }
       if (zoneCompound === action.sourceZone && index === action.sourceIndex + 1) {
         return newItem;
@@ -2444,14 +2405,16 @@ function duplicateAction(state, action, appStore) {
       return null;
     }
   );
-  return __spreadProps(__spreadValues({}, modified), {
-    ui: __spreadProps(__spreadValues({}, modified.ui), {
+  return {
+    ...modified,
+    ui: {
+      ...modified.ui,
       itemSelector: {
         index: action.sourceIndex + 1,
         zone: action.sourceZone
       }
-    })
-  });
+    }
+  };
 }
 var init_duplicate = __esm({
   "reducer/actions/duplicate.ts"() {
@@ -2617,9 +2580,10 @@ var init_setup_zone = __esm({
       if (zoneKey === rootDroppableId) {
         return data;
       }
-      const newData = __spreadProps(__spreadValues({}, data), {
-        zones: data.zones ? __spreadValues({}, data.zones) : {}
-      });
+      const newData = {
+        ...data,
+        zones: data.zones ? { ...data.zones } : {}
+      };
       newData.zones[zoneKey] = newData.zones[zoneKey] || [];
       return newData;
     };
@@ -2629,40 +2593,49 @@ var init_setup_zone = __esm({
 // reducer/actions/register-zone.ts
 function registerZoneAction(state, action) {
   if (zoneCache[action.zone]) {
-    return __spreadProps(__spreadValues({}, state), {
-      data: __spreadProps(__spreadValues({}, state.data), {
-        zones: __spreadProps(__spreadValues({}, state.data.zones), {
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        zones: {
+          ...state.data.zones,
           [action.zone]: zoneCache[action.zone]
-        })
-      }),
-      indexes: __spreadProps(__spreadValues({}, state.indexes), {
-        zones: __spreadProps(__spreadValues({}, state.indexes.zones), {
-          [action.zone]: __spreadProps(__spreadValues({}, state.indexes.zones[action.zone]), {
+        }
+      },
+      indexes: {
+        ...state.indexes,
+        zones: {
+          ...state.indexes.zones,
+          [action.zone]: {
+            ...state.indexes.zones[action.zone],
             contentIds: zoneCache[action.zone].map((item) => item.props.id),
             type: "dropzone"
-          })
-        })
-      })
-    });
+          }
+        }
+      }
+    };
   }
-  return __spreadProps(__spreadValues({}, state), { data: setupZone(state.data, action.zone) });
+  return { ...state, data: setupZone(state.data, action.zone) };
 }
 function unregisterZoneAction(state, action) {
-  const _zones = __spreadValues({}, state.data.zones || {});
-  const zoneIndex = __spreadValues({}, state.indexes.zones || {});
+  const _zones = { ...state.data.zones || {} };
+  const zoneIndex = { ...state.indexes.zones || {} };
   if (_zones[action.zone]) {
     zoneCache[action.zone] = _zones[action.zone];
     delete _zones[action.zone];
   }
   delete zoneIndex[action.zone];
-  return __spreadProps(__spreadValues({}, state), {
-    data: __spreadProps(__spreadValues({}, state.data), {
+  return {
+    ...state,
+    data: {
+      ...state.data,
       zones: _zones
-    }),
-    indexes: __spreadProps(__spreadValues({}, state.indexes), {
+    },
+    indexes: {
+      ...state.indexes,
       zones: zoneIndex
-    })
-  });
+    }
+  };
 }
 var zoneCache;
 var init_register_zone = __esm({
@@ -2687,16 +2660,24 @@ var init_set_data = __esm({
           "`setData` is expensive and may cause unnecessary re-renders. Consider using a more atomic action instead."
         );
         return walkAppState(
-          __spreadProps(__spreadValues({}, state), {
-            data: __spreadValues(__spreadValues({}, state.data), action.data)
-          }),
+          {
+            ...state,
+            data: {
+              ...state.data,
+              ...action.data
+            }
+          },
           appStore.config
         );
       }
       return walkAppState(
-        __spreadProps(__spreadValues({}, state), {
-          data: __spreadValues(__spreadValues({}, state.data), action.data(state.data))
-        }),
+        {
+          ...state,
+          data: {
+            ...state.data,
+            ...action.data(state.data)
+          }
+        },
         appStore.config
       );
     };
@@ -2711,13 +2692,21 @@ var init_set_ui = __esm({
     init_react_import();
     setUiAction = (state, action) => {
       if (typeof action.ui === "object") {
-        return __spreadProps(__spreadValues({}, state), {
-          ui: __spreadValues(__spreadValues({}, state.ui), action.ui)
-        });
+        return {
+          ...state,
+          ui: {
+            ...state.ui,
+            ...action.ui
+          }
+        };
       }
-      return __spreadProps(__spreadValues({}, state), {
-        ui: __spreadValues(__spreadValues({}, state.ui), action.ui(state.ui))
-      });
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          ...action.ui(state.ui)
+        }
+      };
     };
   }
 });
@@ -2757,7 +2746,7 @@ function storeInterceptor(reducer, record, onAction) {
     if (typeof action.recordHistory !== "undefined" ? action.recordHistory : isValidType) {
       if (record) record(newAppState);
     }
-    onAction == null ? void 0 : onAction(action, makeStatePublic(newAppState), makeStatePublic(state));
+    onAction?.(action, makeStatePublic(newAppState), makeStatePublic(state));
     return newAppState;
   };
 }
@@ -2894,8 +2883,8 @@ var init_use_hotkey = __esm({
     useHotkeyStore = (0, import_zustand3.create)()(
       (0, import_middleware2.subscribeWithSelector)((set) => ({
         held: {},
-        hold: (key) => set((s) => s.held[key] ? s : { held: __spreadProps(__spreadValues({}, s.held), { [key]: true }) }),
-        release: (key) => set((s) => s.held[key] ? { held: __spreadProps(__spreadValues({}, s.held), { [key]: false }) } : s),
+        hold: (key) => set((s) => s.held[key] ? s : { held: { ...s.held, [key]: true } }),
+        release: (key) => set((s) => s.held[key] ? { held: { ...s.held, [key]: false } } : s),
         reset: (held = {}) => set(() => ({ held })),
         triggers: {}
       }))
@@ -2968,13 +2957,14 @@ var init_use_hotkey = __esm({
       (0, import_react6.useEffect)(() => {
         const key = `${Object.keys(combo).join("+")}`;
         useHotkeyStore.setState((s) => ({
-          triggers: __spreadProps(__spreadValues({}, s.triggers), {
+          triggers: {
+            ...s.triggers,
             [key]: { combo, cb }
-          })
+          }
         }));
         return () => {
           useHotkeyStore.setState((s) => {
-            const _a = s.triggers, { [key]: _ } = _a, triggers = __objRest(_a, [__restKey(key)]);
+            const { [key]: _, ...triggers } = s.triggers;
             return { triggers };
           });
         };
@@ -3000,11 +2990,12 @@ function useRegisterHistorySlice(appStore, {
 }) {
   (0, import_react7.useEffect)(
     () => appStore.setState({
-      history: __spreadProps(__spreadValues({}, appStore.getState().history), {
+      history: {
+        ...appStore.getState().history,
         histories,
         index,
         initialAppState
-      })
+      }
     }),
     [histories, index, initialAppState, appStore]
   );
@@ -3031,13 +3022,16 @@ var init_history = __esm({
     init_use_hotkey();
     EMPTY_HISTORY_INDEX = 0;
     tidyState = (state) => {
-      return __spreadProps(__spreadValues({}, state), {
-        ui: __spreadProps(__spreadValues({}, state.ui), {
-          field: __spreadProps(__spreadValues({}, state.ui.field), {
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          field: {
+            ...state.ui.field,
             focus: null
-          })
-        })
-      });
+          }
+        }
+      };
     };
     createHistorySlice = (set, get) => {
       const record = debounce((state) => {
@@ -3048,10 +3042,11 @@ var init_history = __esm({
         };
         const newHistories = [...histories.slice(0, index + 1), history];
         set({
-          history: __spreadProps(__spreadValues({}, get().history), {
+          history: {
+            ...get().history,
             histories: newHistories,
             index: newHistories.length - 1
-          })
+          }
         });
       }, 250);
       return {
@@ -3070,45 +3065,41 @@ var init_history = __esm({
         },
         currentHistory: () => get().history.histories[get().history.index],
         back: () => {
-          var _a;
           const { history, dispatch } = get();
           if (history.hasPast()) {
             const state = tidyState(
-              ((_a = history.prevHistory()) == null ? void 0 : _a.state) || history.initialAppState
+              history.prevHistory()?.state || history.initialAppState
             );
             dispatch({
               type: "set",
               state
             });
-            set({ history: __spreadProps(__spreadValues({}, history), { index: history.index - 1 }) });
+            set({ history: { ...history, index: history.index - 1 } });
           }
         },
         forward: () => {
-          var _a;
           const { history, dispatch } = get();
           if (history.hasFuture()) {
-            const state = (_a = history.nextHistory()) == null ? void 0 : _a.state;
+            const state = history.nextHistory()?.state;
             dispatch({ type: "set", state: state ? tidyState(state) : {} });
-            set({ history: __spreadProps(__spreadValues({}, history), { index: history.index + 1 }) });
+            set({ history: { ...history, index: history.index + 1 } });
           }
         },
         setHistories: (histories) => {
-          var _a;
           const { dispatch, history } = get();
           dispatch({
             type: "set",
-            state: ((_a = histories[histories.length - 1]) == null ? void 0 : _a.state) || history.initialAppState
+            state: histories[histories.length - 1]?.state || history.initialAppState
           });
-          set({ history: __spreadProps(__spreadValues({}, history), { histories, index: histories.length - 1 }) });
+          set({ history: { ...history, histories, index: histories.length - 1 } });
         },
         setHistoryIndex: (index) => {
-          var _a;
           const { dispatch, history } = get();
           dispatch({
             type: "set",
-            state: ((_a = history.histories[index]) == null ? void 0 : _a.state) || history.initialAppState
+            state: history.histories[index]?.state || history.initialAppState
           });
-          set({ history: __spreadProps(__spreadValues({}, history), { index }) });
+          set({ history: { ...history, index } });
         },
         record
       };
@@ -3132,15 +3123,13 @@ var init_nodes = __esm({
           registry.delete(id);
         },
         syncNode: (id) => {
-          var _a;
           if (!id) return;
-          (_a = registry.get(id)) == null ? void 0 : _a.sync();
+          registry.get(id)?.sync();
         },
         syncNodes: (ids) => {
           ids.forEach((id) => {
-            var _a;
             if (!id) return;
-            (_a = registry.get(id)) == null ? void 0 : _a.sync();
+            registry.get(id)?.sync();
           });
         },
         setOverlayVisible: (id, visible) => {
@@ -3190,11 +3179,12 @@ var init_get_changed = __esm({
     import_fast_equals = require("fast-equals");
     getChanged = (newItem, oldItem) => {
       return newItem ? Object.keys(newItem.props || {}).reduce((acc, item) => {
-        const newItemProps = (newItem == null ? void 0 : newItem.props) || {};
-        const oldItemProps = (oldItem == null ? void 0 : oldItem.props) || {};
-        return __spreadProps(__spreadValues({}, acc), {
+        const newItemProps = newItem?.props || {};
+        const oldItemProps = oldItem?.props || {};
+        return {
+          ...acc,
           [item]: !(0, import_fast_equals.deepEqual)(oldItemProps[item], newItemProps[item])
-        });
+        };
       }, {}) : {};
     };
   }
@@ -3211,84 +3201,89 @@ var init_permissions = __esm({
     init_get_changed();
     init_make_state_public();
     createPermissionsSlice = (set, get) => {
-      const resolvePermissions = (..._0) => __async(null, [..._0], function* (params = {}, force) {
+      const resolvePermissions = async (params = {}, force) => {
         const { state, permissions, config } = get();
         const { cache: cache2, globalPermissions } = permissions;
-        const resolvePermissionsForItem = (item2, force2 = false) => __async(null, null, function* () {
-          var _a, _b;
+        const resolvePermissionsForItem = async (item2, force2 = false) => {
           const { config: config2, state: appState, setComponentLoading } = get();
           const itemCache = cache2[item2.props.id];
           const nodes = appState.indexes.nodes;
-          const parentId = (_a = nodes[item2.props.id]) == null ? void 0 : _a.parentId;
+          const parentId = nodes[item2.props.id]?.parentId;
           const parentNode = parentId ? nodes[parentId] : null;
-          const parentData = (_b = parentNode == null ? void 0 : parentNode.data) != null ? _b : null;
+          const parentData = parentNode?.data ?? null;
           const componentConfig = item2.type === "root" ? config2.root : config2.components[item2.type];
           if (!componentConfig) {
             return;
           }
-          const initialPermissions = __spreadValues(__spreadValues({}, globalPermissions), componentConfig.permissions);
+          const initialPermissions = {
+            ...globalPermissions,
+            ...componentConfig.permissions
+          };
           if (componentConfig.resolvePermissions) {
-            const changed = getChanged(item2, itemCache == null ? void 0 : itemCache.lastData);
+            const changed = getChanged(item2, itemCache?.lastData);
             const propsChanged = Object.values(changed).some((el) => el === true);
-            const parentChanged = (itemCache == null ? void 0 : itemCache.lastParentId) !== parentId;
+            const parentChanged = itemCache?.lastParentId !== parentId;
             if (propsChanged || parentChanged || force2) {
               const clearTimeout2 = setComponentLoading(item2.props.id, true, 50);
-              const resolvedPermissions = yield componentConfig.resolvePermissions(
+              const resolvedPermissions = await componentConfig.resolvePermissions(
                 item2,
                 {
                   changed,
-                  lastPermissions: (itemCache == null ? void 0 : itemCache.lastPermissions) || null,
+                  lastPermissions: itemCache?.lastPermissions || null,
                   permissions: initialPermissions,
                   appState: makeStatePublic(appState),
-                  lastData: (itemCache == null ? void 0 : itemCache.lastData) || null,
+                  lastData: itemCache?.lastData || null,
                   parent: parentData
                 }
               );
               const latest = get().permissions;
               set({
-                permissions: __spreadProps(__spreadValues({}, latest), {
-                  cache: __spreadProps(__spreadValues({}, latest.cache), {
+                permissions: {
+                  ...latest,
+                  cache: {
+                    ...latest.cache,
                     [item2.props.id]: {
                       lastParentId: parentId,
                       lastData: item2,
                       lastPermissions: resolvedPermissions
                     }
-                  }),
-                  resolvedPermissions: __spreadProps(__spreadValues({}, latest.resolvedPermissions), {
+                  },
+                  resolvedPermissions: {
+                    ...latest.resolvedPermissions,
                     [item2.props.id]: resolvedPermissions
-                  })
-                })
+                  }
+                }
               });
               clearTimeout2();
             }
           }
-        });
+        };
         const resolvePermissionsForRoot = (force2 = false) => {
           const { state: appState } = get();
           resolvePermissionsForItem(
             // Shim the root data in by conforming to component data shape
             {
               type: "root",
-              props: __spreadProps(__spreadValues({}, appState.data.root.props), { id: "root" })
+              props: { ...appState.data.root.props, id: "root" }
             },
             force2
           );
         };
         const { item, type, root } = params;
         if (item) {
-          yield resolvePermissionsForItem(item, force);
+          await resolvePermissionsForItem(item, force);
         } else if (type) {
-          flattenData(state, config).filter((item2) => item2.type === type).map((item2) => __async(null, null, function* () {
-            yield resolvePermissionsForItem(item2, force);
-          }));
+          flattenData(state, config).filter((item2) => item2.type === type).map(async (item2) => {
+            await resolvePermissionsForItem(item2, force);
+          });
         } else if (root) {
           resolvePermissionsForRoot(force);
         } else {
-          flattenData(state, config).map((item2) => __async(null, null, function* () {
-            yield resolvePermissionsForItem(item2, force);
-          }));
+          flattenData(state, config).map(async (item2) => {
+            await resolvePermissionsForItem(item2, force);
+          });
         }
-      });
+      };
       const refreshPermissions = (params) => resolvePermissions(params, true);
       return {
         cache: {},
@@ -3305,17 +3300,26 @@ var init_permissions = __esm({
           const { globalPermissions, resolvedPermissions } = permissions;
           if (item) {
             const componentConfig = config.components[item.type];
-            const initialPermissions = __spreadValues(__spreadValues({}, globalPermissions), componentConfig == null ? void 0 : componentConfig.permissions);
+            const initialPermissions = {
+              ...globalPermissions,
+              ...componentConfig?.permissions
+            };
             const resolvedForItem = resolvedPermissions[item.props.id];
-            return resolvedForItem ? __spreadValues(__spreadValues({}, globalPermissions), resolvedForItem) : initialPermissions;
+            return resolvedForItem ? { ...globalPermissions, ...resolvedForItem } : initialPermissions;
           } else if (type) {
             const componentConfig = config.components[type];
-            return __spreadValues(__spreadValues({}, globalPermissions), componentConfig == null ? void 0 : componentConfig.permissions);
+            return {
+              ...globalPermissions,
+              ...componentConfig?.permissions
+            };
           } else if (root) {
             const rootConfig = config.root;
-            const initialPermissions = __spreadValues(__spreadValues({}, globalPermissions), rootConfig == null ? void 0 : rootConfig.permissions);
+            const initialPermissions = {
+              ...globalPermissions,
+              ...rootConfig?.permissions
+            };
             const resolvedForItem = resolvedPermissions["root"];
-            return resolvedForItem ? __spreadValues(__spreadValues({}, globalPermissions), resolvedForItem) : initialPermissions;
+            return resolvedForItem ? { ...globalPermissions, ...resolvedForItem } : initialPermissions;
           }
           return globalPermissions;
         },
@@ -3328,9 +3332,13 @@ var init_permissions = __esm({
         const { permissions } = appStore.getState();
         const { globalPermissions: existingGlobalPermissions } = permissions;
         appStore.setState({
-          permissions: __spreadProps(__spreadValues({}, permissions), {
-            globalPermissions: __spreadValues(__spreadValues({}, existingGlobalPermissions), globalPermissions)
-          })
+          permissions: {
+            ...permissions,
+            globalPermissions: {
+              ...existingGlobalPermissions,
+              ...globalPermissions
+            }
+          }
         });
         permissions.resolvePermissions();
       }, [globalPermissions, appStore]);
@@ -3373,46 +3381,45 @@ var init_fields = __esm({
     };
     useRegisterFieldsSlice = (appStore, id) => {
       const resolveFields = (0, import_react9.useCallback)(
-        (reset) => __async(null, null, function* () {
-          var _a, _b;
+        async (reset) => {
           const { fields, lastResolvedData } = appStore.getState().fields;
           const metadata = appStore.getState().metadata;
           const nodes = appStore.getState().state.indexes.nodes;
           const node = nodes[id || "root"];
-          const componentData = node == null ? void 0 : node.data;
-          const parentNode = (node == null ? void 0 : node.parentId) ? nodes[node.parentId] : null;
-          const parent = (parentNode == null ? void 0 : parentNode.data) || null;
+          const componentData = node?.data;
+          const parentNode = node?.parentId ? nodes[node.parentId] : null;
+          const parent = parentNode?.data || null;
           const { getComponentConfig, state } = appStore.getState();
-          const componentConfig = getComponentConfig(componentData == null ? void 0 : componentData.type);
+          const componentConfig = getComponentConfig(componentData?.type);
           if (!componentData || !componentConfig) return;
           const defaultFields2 = componentConfig.fields || {};
           const resolver = componentConfig.resolveFields;
           let lastFields = fields;
           if (reset) {
             appStore.setState((s) => ({
-              fields: __spreadProps(__spreadValues({}, s.fields), { fields: defaultFields2, id })
+              fields: { ...s.fields, fields: defaultFields2, id }
             }));
             lastFields = defaultFields2;
           }
           if (resolver) {
             const timeout3 = setTimeout(() => {
               appStore.setState((s) => ({
-                fields: __spreadProps(__spreadValues({}, s.fields), { loading: true })
+                fields: { ...s.fields, loading: true }
               }));
             }, 50);
-            const lastData = ((_a = lastResolvedData.props) == null ? void 0 : _a.id) === id ? lastResolvedData : null;
+            const lastData = lastResolvedData.props?.id === id ? lastResolvedData : null;
             const changed = getChanged(componentData, lastData);
-            const newFields = yield resolver(componentData, {
+            const newFields = await resolver(componentData, {
               changed,
               fields: defaultFields2,
               lastFields,
-              metadata: __spreadValues(__spreadValues({}, metadata), componentConfig.metadata),
+              metadata: { ...metadata, ...componentConfig.metadata },
               lastData,
               appState: makeStatePublic(state),
               parent
             });
             clearTimeout(timeout3);
-            if (((_b = appStore.getState().selectedItem) == null ? void 0 : _b.props.id) !== id) {
+            if (appStore.getState().selectedItem?.props.id !== id) {
               return;
             }
             appStore.setState({
@@ -3425,10 +3432,10 @@ var init_fields = __esm({
             });
           } else {
             appStore.setState((s) => ({
-              fields: __spreadProps(__spreadValues({}, s.fields), { fields: defaultFields2, id })
+              fields: { ...s.fields, fields: defaultFields2, id }
             }));
           }
-        }),
+        },
         [id, appStore]
       );
       (0, import_react9.useEffect)(() => {
@@ -3453,10 +3460,12 @@ var init_resolve_component_data = __esm({
     init_get_changed();
     import_fast_equals2 = require("fast-equals");
     cache = { lastChange: {} };
-    resolveComponentData = (_0, _1, ..._2) => __async(null, [_0, _1, ..._2], function* (item, config, metadata = {}, onResolveStart, onResolveEnd, trigger = "replace", parent = null) {
+    resolveComponentData = async (item, config, metadata = {}, onResolveStart, onResolveEnd, trigger = "replace", parent = null) => {
       const configForItem = "type" in item && item.type !== "root" ? config.components[item.type] : config.root;
-      const resolvedItem = __spreadValues({}, item);
-      const shouldRunResolver = (configForItem == null ? void 0 : configForItem.resolveData) && item.props;
+      const resolvedItem = {
+        ...item
+      };
+      const shouldRunResolver = configForItem?.resolveData && item.props;
       const id = "id" in item.props ? item.props.id : "root";
       if (shouldRunResolver) {
         const {
@@ -3465,7 +3474,7 @@ var init_resolve_component_data = __esm({
           parentId: oldParentId = null
         } = cache.lastChange[id] || {};
         const isRootOrInserted = oldParentId === null;
-        const parentChanged = !isRootOrInserted && (parent == null ? void 0 : parent.props.id) !== oldParentId;
+        const parentChanged = !isRootOrInserted && parent?.props.id !== oldParentId;
         const dataChanged = item && !(0, import_fast_equals2.deepEqual)(item, oldItem);
         const shouldSkip = trigger === "move" && !parentChanged || trigger !== "move" && trigger !== "force" && !dataChanged;
         if (shouldSkip) {
@@ -3475,40 +3484,41 @@ var init_resolve_component_data = __esm({
         if (onResolveStart) {
           onResolveStart(item);
         }
-        const { props: resolvedProps, readOnly = {} } = yield configForItem.resolveData(item, {
+        const { props: resolvedProps, readOnly = {} } = await configForItem.resolveData(item, {
           changed,
           lastData: oldItem,
-          metadata: __spreadValues(__spreadValues({}, metadata), configForItem.metadata),
+          metadata: { ...metadata, ...configForItem.metadata },
           trigger,
           parent
         });
-        resolvedItem.props = __spreadValues(__spreadValues({}, item.props), resolvedProps);
+        resolvedItem.props = {
+          ...item.props,
+          ...resolvedProps
+        };
         if (Object.keys(readOnly).length) {
           resolvedItem.readOnly = readOnly;
         }
       }
       const itemAsComponentData = toComponent(resolvedItem);
-      let itemWithResolvedChildren = yield mapFields(
+      let itemWithResolvedChildren = await mapFields(
         resolvedItem,
         {
-          slot: (_02) => __async(null, [_02], function* ({ value }) {
+          slot: async ({ value }) => {
             const content = value;
-            return yield Promise.all(
+            return await Promise.all(
               content.map(
-                (childItem) => __async(null, null, function* () {
-                  return (yield resolveComponentData(
-                    childItem,
-                    config,
-                    metadata,
-                    onResolveStart,
-                    onResolveEnd,
-                    trigger,
-                    itemAsComponentData
-                  )).node;
-                })
+                async (childItem) => (await resolveComponentData(
+                  childItem,
+                  config,
+                  metadata,
+                  onResolveStart,
+                  onResolveEnd,
+                  trigger,
+                  itemAsComponentData
+                )).node
               )
             );
-          })
+          }
         },
         config
       );
@@ -3518,13 +3528,13 @@ var init_resolve_component_data = __esm({
       cache.lastChange[id] = {
         item,
         resolved: itemWithResolvedChildren,
-        parentId: parent == null ? void 0 : parent.props.id
+        parentId: parent?.props.id
       };
       return {
         node: itemWithResolvedChildren,
         didChange: !(0, import_fast_equals2.deepEqual)(item, itemWithResolvedChildren)
       };
-    });
+    };
   }
 });
 
@@ -3541,7 +3551,7 @@ var init_to_root = __esm({
       const { readOnly } = item;
       if (item.props) {
         if ("id" in item.props) {
-          const _a = item.props, { id } = _a, props = __objRest(_a, ["id"]);
+          const { id, ...props } = item.props;
           return { props, readOnly };
         }
         return { props: item.props, readOnly };
@@ -3620,196 +3630,193 @@ var init_store = __esm({
       title: { type: "text" }
     };
     createAppStore = (initialAppStore) => (0, import_zustand4.create)()(
-      (0, import_middleware3.subscribeWithSelector)((set, get) => {
-        var _a, _b;
-        return __spreadProps(__spreadValues({
-          instanceId: generateId(),
-          state: defaultAppState,
-          config: { components: {} },
-          componentState: {},
-          plugins: [],
-          overrides: {},
-          viewports: defaultViewports,
-          zoomConfig: {
-            autoZoom: 1,
-            rootHeight: 0,
-            zoom: 1
-          },
-          status: "LOADING",
-          iframe: {},
-          _experimentalFullScreenCanvas: false,
-          _experimentalVirtualization: false,
-          metadata: {},
-          fieldTransforms: {}
-        }, initialAppStore), {
-          fields: createFieldsSlice(set, get),
-          history: createHistorySlice(set, get),
-          nodes: createNodesSlice(set, get),
-          permissions: createPermissionsSlice(set, get),
-          getCurrentData: () => {
-            var _a2;
-            const s = get();
-            return (_a2 = s.selectedItem) != null ? _a2 : s.state.data.root;
-          },
-          getComponentConfig: (type) => {
-            var _a2;
-            const { config, selectedItem } = get();
-            const rootFields = ((_a2 = config.root) == null ? void 0 : _a2.fields) || defaultPageFields;
-            return type && type !== "root" ? config.components[type] : selectedItem ? config.components[selectedItem.type] : __spreadProps(__spreadValues({}, config.root), { fields: rootFields });
-          },
-          selectedItem: ((_a = initialAppStore == null ? void 0 : initialAppStore.state) == null ? void 0 : _a.ui.itemSelector) ? getItem(
-            (_b = initialAppStore == null ? void 0 : initialAppStore.state) == null ? void 0 : _b.ui.itemSelector,
-            initialAppStore.state
-          ) : null,
-          dispatch: (action) => set((s) => {
-            const { record } = get().history;
-            const reducer = createReducer({
-              record,
-              appStore: s
+      (0, import_middleware3.subscribeWithSelector)((set, get) => ({
+        instanceId: generateId(),
+        state: defaultAppState,
+        config: { components: {} },
+        componentState: {},
+        plugins: [],
+        overrides: {},
+        viewports: defaultViewports,
+        zoomConfig: {
+          autoZoom: 1,
+          rootHeight: 0,
+          zoom: 1
+        },
+        status: "LOADING",
+        iframe: {},
+        _experimentalFullScreenCanvas: false,
+        _experimentalVirtualization: false,
+        metadata: {},
+        fieldTransforms: {},
+        ...initialAppStore,
+        fields: createFieldsSlice(set, get),
+        history: createHistorySlice(set, get),
+        nodes: createNodesSlice(set, get),
+        permissions: createPermissionsSlice(set, get),
+        getCurrentData: () => {
+          const s = get();
+          return s.selectedItem ?? s.state.data.root;
+        },
+        getComponentConfig: (type) => {
+          const { config, selectedItem } = get();
+          const rootFields = config.root?.fields || defaultPageFields;
+          return type && type !== "root" ? config.components[type] : selectedItem ? config.components[selectedItem.type] : { ...config.root, fields: rootFields };
+        },
+        selectedItem: initialAppStore?.state?.ui.itemSelector ? getItem(
+          initialAppStore?.state?.ui.itemSelector,
+          initialAppStore.state
+        ) : null,
+        dispatch: (action) => set((s) => {
+          const { record } = get().history;
+          const reducer = createReducer({
+            record,
+            appStore: s
+          });
+          const state = reducer(s.state, action);
+          const selectedItem = state.ui.itemSelector ? getItem(state.ui.itemSelector, state) : null;
+          return { ...s, state, selectedItem };
+        }),
+        setZoomConfig: (zoomConfig) => set({ zoomConfig }),
+        setStatus: (status) => set({ status }),
+        setComponentState: (componentState) => set({ componentState }),
+        pendingLoadTimeouts: {},
+        setComponentLoading: (id, loading = true, defer2 = 0) => {
+          const { setComponentState, pendingLoadTimeouts } = get();
+          const loadId = generateId();
+          const setLoading = () => {
+            const { componentState } = get();
+            setComponentState({
+              ...componentState,
+              [id]: {
+                ...componentState[id],
+                loadingCount: (componentState[id]?.loadingCount || 0) + 1
+              }
             });
-            const state = reducer(s.state, action);
-            const selectedItem = state.ui.itemSelector ? getItem(state.ui.itemSelector, state) : null;
-            return __spreadProps(__spreadValues({}, s), { state, selectedItem });
-          }),
-          setZoomConfig: (zoomConfig) => set({ zoomConfig }),
-          setStatus: (status) => set({ status }),
-          setComponentState: (componentState) => set({ componentState }),
-          pendingLoadTimeouts: {},
-          setComponentLoading: (id, loading = true, defer2 = 0) => {
-            const { setComponentState, pendingLoadTimeouts } = get();
-            const loadId = generateId();
-            const setLoading = () => {
-              var _a2;
-              const { componentState } = get();
-              setComponentState(__spreadProps(__spreadValues({}, componentState), {
-                [id]: __spreadProps(__spreadValues({}, componentState[id]), {
-                  loadingCount: (((_a2 = componentState[id]) == null ? void 0 : _a2.loadingCount) || 0) + 1
-                })
-              }));
-            };
-            const unsetLoading = () => {
-              var _a2;
-              const { componentState } = get();
-              clearTimeout(timeout3);
-              delete pendingLoadTimeouts[loadId];
-              set({ pendingLoadTimeouts });
-              setComponentState(__spreadProps(__spreadValues({}, componentState), {
-                [id]: __spreadProps(__spreadValues({}, componentState[id]), {
-                  loadingCount: Math.max(
-                    (((_a2 = componentState[id]) == null ? void 0 : _a2.loadingCount) || 0) - 1,
-                    0
-                  )
-                })
-              }));
-            };
-            const timeout3 = setTimeout(() => {
-              if (loading) {
-                setLoading();
+          };
+          const unsetLoading = () => {
+            const { componentState } = get();
+            clearTimeout(timeout3);
+            delete pendingLoadTimeouts[loadId];
+            set({ pendingLoadTimeouts });
+            setComponentState({
+              ...componentState,
+              [id]: {
+                ...componentState[id],
+                loadingCount: Math.max(
+                  (componentState[id]?.loadingCount || 0) - 1,
+                  0
+                )
+              }
+            });
+          };
+          const timeout3 = setTimeout(() => {
+            if (loading) {
+              setLoading();
+            } else {
+              unsetLoading();
+            }
+            delete pendingLoadTimeouts[loadId];
+            set({ pendingLoadTimeouts });
+          }, defer2);
+          set({
+            pendingLoadTimeouts: {
+              ...pendingLoadTimeouts,
+              [id]: timeout3
+            }
+          });
+          return unsetLoading;
+        },
+        unsetComponentLoading: (id) => {
+          const { setComponentLoading } = get();
+          setComponentLoading(id, false);
+        },
+        // Helper
+        setUi: (ui, recordHistory) => set((s) => {
+          const dispatch = createReducer({
+            record: () => {
+            },
+            appStore: s
+          });
+          const state = dispatch(s.state, {
+            type: "setUi",
+            ui,
+            recordHistory
+          });
+          const selectedItem = state.ui.itemSelector ? getItem(state.ui.itemSelector, state) : null;
+          return { ...s, state, selectedItem };
+        }),
+        resolveComponentData: async (componentData, trigger) => {
+          const { config, metadata, setComponentLoading, permissions, state } = get();
+          const componentId = "id" in componentData.props ? componentData.props.id : "root";
+          const parentId = state.indexes.nodes[componentId]?.parentId;
+          const parentNode = parentId ? state.indexes.nodes[parentId] : null;
+          const parentData = parentNode?.data ?? null;
+          const timeouts = {};
+          return await resolveComponentData(
+            componentData,
+            config,
+            metadata,
+            (item) => {
+              const id = "id" in item.props ? item.props.id : "root";
+              timeouts[id] = setComponentLoading(id, true, 50);
+            },
+            async (item) => {
+              const id = "id" in item.props ? item.props.id : "root";
+              if ("type" in item) {
+                await permissions.refreshPermissions({ item });
               } else {
-                unsetLoading();
+                await permissions.refreshPermissions({ root: true });
               }
-              delete pendingLoadTimeouts[loadId];
-              set({ pendingLoadTimeouts });
-            }, defer2);
-            set({
-              pendingLoadTimeouts: __spreadProps(__spreadValues({}, pendingLoadTimeouts), {
-                [id]: timeout3
-              })
-            });
-            return unsetLoading;
-          },
-          unsetComponentLoading: (id) => {
-            const { setComponentLoading } = get();
-            setComponentLoading(id, false);
-          },
-          // Helper
-          setUi: (ui, recordHistory) => set((s) => {
-            const dispatch = createReducer({
-              record: () => {
-              },
-              appStore: s
-            });
-            const state = dispatch(s.state, {
-              type: "setUi",
-              ui,
-              recordHistory
-            });
-            const selectedItem = state.ui.itemSelector ? getItem(state.ui.itemSelector, state) : null;
-            return __spreadProps(__spreadValues({}, s), { state, selectedItem });
-          }),
-          resolveComponentData: (componentData, trigger) => __async(null, null, function* () {
-            var _a2, _b2;
-            const { config, metadata, setComponentLoading, permissions, state } = get();
-            const componentId = "id" in componentData.props ? componentData.props.id : "root";
-            const parentId = (_a2 = state.indexes.nodes[componentId]) == null ? void 0 : _a2.parentId;
-            const parentNode = parentId ? state.indexes.nodes[parentId] : null;
-            const parentData = (_b2 = parentNode == null ? void 0 : parentNode.data) != null ? _b2 : null;
-            const timeouts = {};
-            return yield resolveComponentData(
-              componentData,
-              config,
-              metadata,
-              (item) => {
-                const id = "id" in item.props ? item.props.id : "root";
-                timeouts[id] = setComponentLoading(id, true, 50);
-              },
-              (item) => __async(null, null, function* () {
-                const id = "id" in item.props ? item.props.id : "root";
-                if ("type" in item) {
-                  yield permissions.refreshPermissions({ item });
-                } else {
-                  yield permissions.refreshPermissions({ root: true });
-                }
-                timeouts[id]();
-              }),
-              trigger,
-              parentData
-            );
-          }),
-          resolveAndCommitData: () => __async(null, null, function* () {
-            const { config, state, dispatch, resolveComponentData: resolveComponentData2 } = get();
-            walkAppState(
-              state,
-              config,
-              (content) => content,
-              (childItem, path) => {
-                if (path.length > 1) return childItem;
-                resolveComponentData2(childItem, "load").then((resolved) => {
-                  const { state: state2 } = get();
-                  const node = state2.indexes.nodes[resolved.node.props.id];
-                  if (node && resolved.didChange) {
-                    if (resolved.node.props.id === "root") {
-                      dispatch({
-                        type: "replaceRoot",
-                        root: toRoot(resolved.node)
-                      });
-                    } else {
-                      const zoneCompound = `${node.parentId}:${node.zone}`;
-                      const parentZone = state2.indexes.zones[zoneCompound];
-                      const index = parentZone.contentIds.indexOf(
-                        resolved.node.props.id
-                      );
-                      dispatch({
-                        type: "replace",
-                        data: resolved.node,
-                        destinationIndex: index,
-                        destinationZone: zoneCompound
-                      });
-                    }
+              timeouts[id]();
+            },
+            trigger,
+            parentData
+          );
+        },
+        resolveAndCommitData: async () => {
+          const { config, state, dispatch, resolveComponentData: resolveComponentData2 } = get();
+          walkAppState(
+            state,
+            config,
+            (content) => content,
+            (childItem, path) => {
+              if (path.length > 1) return childItem;
+              resolveComponentData2(childItem, "load").then((resolved) => {
+                const { state: state2 } = get();
+                const node = state2.indexes.nodes[resolved.node.props.id];
+                if (node && resolved.didChange) {
+                  if (resolved.node.props.id === "root") {
+                    dispatch({
+                      type: "replaceRoot",
+                      root: toRoot(resolved.node)
+                    });
+                  } else {
+                    const zoneCompound = `${node.parentId}:${node.zone}`;
+                    const parentZone = state2.indexes.zones[zoneCompound];
+                    const index = parentZone.contentIds.indexOf(
+                      resolved.node.props.id
+                    );
+                    dispatch({
+                      type: "replace",
+                      data: resolved.node,
+                      destinationIndex: index,
+                      destinationZone: zoneCompound
+                    });
                   }
-                });
-                return childItem;
-              }
-            );
-          })
-        });
-      })
+                }
+              });
+              return childItem;
+            }
+          );
+        }
+      }))
     );
     appStoreContext = (0, import_react10.createContext)(createAppStore());
   }
 });
 
-// ../../node_modules/tiny-invariant/dist/esm/tiny-invariant.js
+// ../node_modules/tiny-invariant/dist/esm/tiny-invariant.js
 function invariant(condition, message) {
   if (condition) {
     return;
@@ -3823,7 +3830,7 @@ function invariant(condition, message) {
 }
 var isProduction, prefix;
 var init_tiny_invariant = __esm({
-  "../../node_modules/tiny-invariant/dist/esm/tiny-invariant.js"() {
+  "../node_modules/tiny-invariant/dist/esm/tiny-invariant.js"() {
     "use strict";
     init_react_import();
     isProduction = process.env.NODE_ENV === "production";
@@ -3831,10 +3838,10 @@ var init_tiny_invariant = __esm({
   }
 });
 
-// ../../node_modules/css-box-model/dist/css-box-model.esm.js
+// ../node_modules/css-box-model/dist/css-box-model.esm.js
 var getRect, expand, shrink, noSpacing, createBox, parse, calculateBox, getBox;
 var init_css_box_model_esm = __esm({
-  "../../node_modules/css-box-model/dist/css-box-model.esm.js"() {
+  "../node_modules/css-box-model/dist/css-box-model.esm.js"() {
     "use strict";
     init_react_import();
     init_tiny_invariant();
@@ -3991,10 +3998,10 @@ var init_use_reset_auto_zoom = __esm({
         (options) => {
           const { state, zoomConfig, setZoomConfig } = appStoreApi.getState();
           const { viewports } = state.ui;
-          const newViewports = (options == null ? void 0 : options.viewports) || viewports;
+          const newViewports = options?.viewports || viewports;
           if (frameRef.current) {
             setZoomConfig(
-              getZoomConfig(newViewports == null ? void 0 : newViewports.current, frameRef.current, zoomConfig.zoom)
+              getZoomConfig(newViewports?.current, frameRef.current, zoomConfig.zoom)
             );
           }
         },
@@ -4018,16 +4025,16 @@ var init_lib = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Loader/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css/#css-module-data
 var init_css_module_data3 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Loader/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Loader/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css#css-module
 var styles_module_default4;
 var init_styles_module2 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Loader/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data3();
@@ -4045,25 +4052,23 @@ var init_Loader = __esm({
     init_styles_module2();
     import_jsx_runtime3 = require("react/jsx-runtime");
     getClassName2 = get_class_name_factory_default("Loader", styles_module_default4);
-    Loader = (_a) => {
-      var _b = _a, {
-        color,
-        size = 16
-      } = _b, props = __objRest(_b, [
-        "color",
-        "size"
-      ]);
+    Loader = ({
+      color,
+      size = 16,
+      ...props
+    }) => {
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
         "span",
-        __spreadValues({
+        {
           className: getClassName2(),
           style: {
             width: size,
             height: size,
             color
           },
-          "aria-label": "loading"
-        }, props)
+          "aria-label": "loading",
+          ...props
+        }
       );
     };
   }
@@ -4143,16 +4148,16 @@ var init_IconButton2 = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css/#css-module-data
 var init_css_module_data4 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css#css-module
 var styles_module_default9;
 var init_styles_module3 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data4();
@@ -4160,16 +4165,16 @@ var init_styles_module3 = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/components/Control/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css/#css-module-data
 var init_css_module_data5 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/components/Control/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/components/Control/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css#css-module
 var styles_module_default10;
 var init_styles_module4 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextMenu/components/Control/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data5();
@@ -4247,10 +4252,10 @@ function AlignLeft() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(TextAlignStart, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().setTextAlign("left").run();
+        editor?.chain().focus().setTextAlign("left").run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canAlignLeft),
-      active: editorState == null ? void 0 : editorState.isAlignLeft,
+      disabled: !editorState?.canAlignLeft,
+      active: editorState?.isAlignLeft,
       title: "Align left"
     }
   );
@@ -4276,10 +4281,10 @@ function AlignCenter() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(TextAlignCenter, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().setTextAlign("center").run();
+        editor?.chain().focus().setTextAlign("center").run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canAlignCenter),
-      active: editorState == null ? void 0 : editorState.isAlignCenter,
+      disabled: !editorState?.canAlignCenter,
+      active: editorState?.isAlignCenter,
       title: "Align center"
     }
   );
@@ -4305,10 +4310,10 @@ function AlignRight() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TextAlignEnd, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().setTextAlign("right").run();
+        editor?.chain().focus().setTextAlign("right").run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canAlignRight),
-      active: editorState == null ? void 0 : editorState.isAlignRight,
+      disabled: !editorState?.canAlignRight,
+      active: editorState?.isAlignRight,
       title: "Align right"
     }
   );
@@ -4334,10 +4339,10 @@ function AlignJustify() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(TextAlignJustify, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().setTextAlign("justify").run();
+        editor?.chain().focus().setTextAlign("justify").run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canAlignJustify),
-      active: editorState == null ? void 0 : editorState.isAlignJustify,
+      disabled: !editorState?.canAlignJustify,
+      active: editorState?.isAlignJustify,
       title: "Justify"
     }
   );
@@ -4354,16 +4359,16 @@ var init_AlignJustify = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Select/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css/#css-module-data
 var init_css_module_data6 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Select/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Select/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css#css-module
 var styles_module_default11;
 var init_styles_module5 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Select/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data6();
@@ -4454,16 +4459,15 @@ function SelectControl({
   value,
   defaultValue
 }) {
-  var _a, _b;
   const { inline, readOnly } = useControlContext();
   const optionsByValue = (0, import_react26.useMemo)(
     () => options.reduce(
-      (acc, option) => __spreadProps(__spreadValues({}, acc), { [option.value]: option }),
+      (acc, option) => ({ ...acc, [option.value]: option }),
       {}
     ),
     [options]
   );
-  const Node2 = (_b = value && ((_a = optionsByValue[value]) == null ? void 0 : _a.icon)) != null ? _b : renderDefaultIcon;
+  const Node2 = (value && optionsByValue[value]?.icon) ?? renderDefaultIcon;
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
     Select,
     {
@@ -4505,28 +4509,27 @@ var init_use_options = __esm({
     };
     useAlignOptions = (fieldOptions) => {
       const blockOptions = (0, import_react27.useMemo)(() => {
-        var _a;
         const options = [];
-        if ((fieldOptions == null ? void 0 : fieldOptions.textAlign) !== false) {
-          if (!((_a = fieldOptions == null ? void 0 : fieldOptions.textAlign) == null ? void 0 : _a.alignments)) {
+        if (fieldOptions?.textAlign !== false) {
+          if (!fieldOptions?.textAlign?.alignments) {
             return ["left", "center", "right", "justify"];
           } else {
-            if (fieldOptions == null ? void 0 : fieldOptions.textAlign.alignments.includes("left")) {
+            if (fieldOptions?.textAlign.alignments.includes("left")) {
               options.push("left");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.textAlign.alignments.includes("center")) {
+            if (fieldOptions?.textAlign.alignments.includes("center")) {
               options.push("center");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.textAlign.alignments.includes("right")) {
+            if (fieldOptions?.textAlign.alignments.includes("right")) {
               options.push("right");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.textAlign.alignments.includes("justify")) {
+            if (fieldOptions?.textAlign.alignments.includes("justify")) {
               options.push("justify");
             }
           }
         }
         return options;
-      }, [fieldOptions == null ? void 0 : fieldOptions.textAlign]);
+      }, [fieldOptions?.textAlign]);
       return (0, import_react27.useMemo)(
         () => blockOptions.map((item) => ({
           value: item,
@@ -4574,27 +4577,25 @@ __export(loaded_exports, {
   AlignSelectLoaded: () => AlignSelectLoaded
 });
 function AlignSelectLoaded() {
-  var _a;
   const { options } = useControlContext();
   const alignOptions = useAlignOptions(options);
   const { editor } = useControlContext();
-  const currentValue = (_a = (0, import_react28.useEditorState)({
+  const currentValue = (0, import_react28.useEditorState)({
     editor,
     selector: (ctx) => {
-      var _a2, _b, _c, _d;
-      if ((_a2 = ctx.editor) == null ? void 0 : _a2.isActive({ textAlign: "center" })) {
+      if (ctx.editor?.isActive({ textAlign: "center" })) {
         return "center";
-      } else if ((_b = ctx.editor) == null ? void 0 : _b.isActive({ textAlign: "right" })) {
+      } else if (ctx.editor?.isActive({ textAlign: "right" })) {
         return "right";
-      } else if ((_c = ctx.editor) == null ? void 0 : _c.isActive({ textAlign: "justify" })) {
+      } else if (ctx.editor?.isActive({ textAlign: "justify" })) {
         return "justify";
       }
-      return (options == null ? void 0 : options.textAlign) ? (_d = options.textAlign.defaultAlignment) != null ? _d : "left" : "left";
+      return options?.textAlign ? options.textAlign.defaultAlignment ?? "left" : "left";
     }
-  })) != null ? _a : "left";
+  }) ?? "left";
   const handleChange = (val) => {
-    const chain = editor == null ? void 0 : editor.chain();
-    chain == null ? void 0 : chain.focus().setTextAlign(val).run();
+    const chain = editor?.chain();
+    chain?.focus().setTextAlign(val).run();
   };
   return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     SelectControl,
@@ -4648,10 +4649,10 @@ function Bold2() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Bold, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleBold().run();
+        editor?.chain().focus().toggleBold().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canBold),
-      active: editorState == null ? void 0 : editorState.isBold,
+      disabled: !editorState?.canBold,
+      active: editorState?.isBold,
       title: "Bold"
     }
   );
@@ -4677,10 +4678,10 @@ function Italic2() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Italic, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleItalic().run();
+        editor?.chain().focus().toggleItalic().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canItalic),
-      active: editorState == null ? void 0 : editorState.isItalic,
+      disabled: !editorState?.canItalic,
+      active: editorState?.isItalic,
       title: "Italic"
     }
   );
@@ -4706,10 +4707,10 @@ function Underline2() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(Underline, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleUnderline().run();
+        editor?.chain().focus().toggleUnderline().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canUnderline),
-      active: editorState == null ? void 0 : editorState.isUnderline,
+      disabled: !editorState?.canUnderline,
+      active: editorState?.isUnderline,
       title: "Underline"
     }
   );
@@ -4735,10 +4736,10 @@ function Strikethrough2() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Strikethrough, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleStrike().run();
+        editor?.chain().focus().toggleStrike().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canStrike),
-      active: editorState == null ? void 0 : editorState.isStrike,
+      disabled: !editorState?.canStrike,
+      active: editorState?.isStrike,
       title: "Strikethrough"
     }
   );
@@ -4764,10 +4765,10 @@ function InlineCode() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Code, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleCode().run();
+        editor?.chain().focus().toggleCode().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canInlineCode),
-      active: editorState == null ? void 0 : editorState.isInlineCode,
+      disabled: !editorState?.canInlineCode,
+      active: editorState?.isInlineCode,
       title: "Inline code"
     }
   );
@@ -4793,10 +4794,10 @@ function BulletList() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(List, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleBulletList().run();
+        editor?.chain().focus().toggleBulletList().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canBulletList),
-      active: editorState == null ? void 0 : editorState.isBulletList,
+      disabled: !editorState?.canBulletList,
+      active: editorState?.isBulletList,
       title: "Bullet list"
     }
   );
@@ -4822,10 +4823,10 @@ function OrderedList() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ListOrdered, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleOrderedList().run();
+        editor?.chain().focus().toggleOrderedList().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canOrderedList),
-      active: editorState == null ? void 0 : editorState.isOrderedList,
+      disabled: !editorState?.canOrderedList,
+      active: editorState?.isOrderedList,
       title: "Ordered list"
     }
   );
@@ -4851,10 +4852,10 @@ function CodeBlock() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SquareCode, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleCodeBlock().run();
+        editor?.chain().focus().toggleCodeBlock().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canCodeBlock),
-      active: editorState == null ? void 0 : editorState.isCodeBlock,
+      disabled: !editorState?.canCodeBlock,
+      active: editorState?.isCodeBlock,
       title: "Code block"
     }
   );
@@ -4880,10 +4881,10 @@ function Blockquote() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Quote, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().toggleBlockquote().run();
+        editor?.chain().focus().toggleBlockquote().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canBlockquote),
-      active: editorState == null ? void 0 : editorState.isBlockquote,
+      disabled: !editorState?.canBlockquote,
+      active: editorState?.isBlockquote,
       title: "Blockquote"
     }
   );
@@ -4909,9 +4910,9 @@ function HorizontalRule() {
       icon: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Minus, {}),
       onClick: (e) => {
         e.stopPropagation();
-        editor == null ? void 0 : editor.chain().focus().setHorizontalRule().run();
+        editor?.chain().focus().setHorizontalRule().run();
       },
-      disabled: !(editorState == null ? void 0 : editorState.canHorizontalRule),
+      disabled: !editorState?.canHorizontalRule,
       title: "Horizontal rule"
     }
   );
@@ -4946,34 +4947,33 @@ var init_use_options2 = __esm({
     };
     useHeadingOptions = (fieldOptions) => {
       const blockOptions = (0, import_react30.useMemo)(() => {
-        var _a;
         const options = [];
-        if ((fieldOptions == null ? void 0 : fieldOptions.heading) !== false) {
-          if (!((_a = fieldOptions == null ? void 0 : fieldOptions.heading) == null ? void 0 : _a.levels)) {
+        if (fieldOptions?.heading !== false) {
+          if (!fieldOptions?.heading?.levels) {
             return ["h1", "h2", "h3", "h4", "h5", "h6"];
           } else {
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(1)) {
+            if (fieldOptions?.heading.levels.includes(1)) {
               options.push("h1");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(2)) {
+            if (fieldOptions?.heading.levels.includes(2)) {
               options.push("h2");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(3)) {
+            if (fieldOptions?.heading.levels.includes(3)) {
               options.push("h3");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(4)) {
+            if (fieldOptions?.heading.levels.includes(4)) {
               options.push("h4");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(5)) {
+            if (fieldOptions?.heading.levels.includes(5)) {
               options.push("h5");
             }
-            if (fieldOptions == null ? void 0 : fieldOptions.heading.levels.includes(6)) {
+            if (fieldOptions?.heading.levels.includes(6)) {
               options.push("h6");
             }
           }
         }
         return options;
-      }, [fieldOptions == null ? void 0 : fieldOptions.heading]);
+      }, [fieldOptions?.heading]);
       return (0, import_react30.useMemo)(
         () => blockOptions.map((item) => ({
           value: item,
@@ -5027,10 +5027,9 @@ function HeadingSelectLoaded() {
   const currentValue = (0, import_react31.useEditorState)({
     editor,
     selector: (ctx) => {
-      var _a, _b;
-      if ((_a = ctx.editor) == null ? void 0 : _a.isActive("paragraph")) return "p";
+      if (ctx.editor?.isActive("paragraph")) return "p";
       for (let level = 1; level <= 6; level++) {
-        if ((_b = ctx.editor) == null ? void 0 : _b.isActive("heading", { level })) {
+        if (ctx.editor?.isActive("heading", { level })) {
           return `h${level}`;
         }
       }
@@ -5038,12 +5037,12 @@ function HeadingSelectLoaded() {
     }
   });
   const handleChange = (val) => {
-    const chain = editor == null ? void 0 : editor.chain();
+    const chain = editor?.chain();
     if (val === "p") {
-      chain == null ? void 0 : chain.focus().setParagraph().run();
+      chain?.focus().setParagraph().run();
     } else {
       const level = parseInt(val.replace("h", ""), 10);
-      chain == null ? void 0 : chain.focus().toggleHeading({ level }).run();
+      chain?.focus().toggleHeading({ level }).run();
     }
   };
   return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
@@ -5051,7 +5050,7 @@ function HeadingSelectLoaded() {
     {
       options: headingOptions,
       onChange: handleChange,
-      value: currentValue != null ? currentValue : "p",
+      value: currentValue ?? "p",
       defaultValue: "p",
       renderDefaultIcon: Heading
     }
@@ -5103,11 +5102,11 @@ var init_use_options3 = __esm({
     };
     useListOptions = (fieldOptions) => {
       const blockOptions = (0, import_react33.useMemo)(() => {
-        if ((fieldOptions == null ? void 0 : fieldOptions.listItem) !== false) {
+        if (fieldOptions?.listItem !== false) {
           return ["ul", "ol"];
         }
         return [];
-      }, [fieldOptions == null ? void 0 : fieldOptions.listItem]);
+      }, [fieldOptions?.listItem]);
       return (0, import_react33.useMemo)(
         () => blockOptions.map((item) => ({
           value: item,
@@ -5161,20 +5160,19 @@ function ListSelectLoaded() {
   const currentValue = (0, import_react34.useEditorState)({
     editor,
     selector: (ctx) => {
-      var _a, _b;
-      if ((_a = ctx.editor) == null ? void 0 : _a.isActive("bulletList")) return "ul";
-      if ((_b = ctx.editor) == null ? void 0 : _b.isActive("orderedList")) return "ol";
+      if (ctx.editor?.isActive("bulletList")) return "ul";
+      if (ctx.editor?.isActive("orderedList")) return "ol";
       return "p";
     }
   });
   const handleChange = (val) => {
-    const chain = editor == null ? void 0 : editor.chain();
+    const chain = editor?.chain();
     if (val === "p") {
-      chain == null ? void 0 : chain.focus().setParagraph().run();
+      chain?.focus().setParagraph().run();
     } else if (val === "ol") {
-      chain == null ? void 0 : chain.focus().toggleOrderedList().run();
+      chain?.focus().toggleOrderedList().run();
     } else if (val === "ul") {
-      chain == null ? void 0 : chain.focus().toggleBulletList().run();
+      chain?.focus().toggleBulletList().run();
     }
   };
   return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
@@ -5182,7 +5180,7 @@ function ListSelectLoaded() {
     {
       options: listOptions,
       onChange: handleChange,
-      value: currentValue != null ? currentValue : "p",
+      value: currentValue ?? "p",
       defaultValue: "p",
       renderDefaultIcon: List
     }
@@ -5336,16 +5334,16 @@ var init_inner = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data
 var init_css_module_data7 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module
 var styles_module_default12;
 var init_styles_module6 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data7();
@@ -5377,19 +5375,15 @@ var init_EditorInner = __esm({
       }) => {
         const { initialHeight } = field;
         const isActive = useAppStore(
-          (s) => {
-            var _a;
-            return ((_a = s.currentRichText) == null ? void 0 : _a.id) === id && inline === s.currentRichText.inline;
-          }
+          (s) => s.currentRichText?.id === id && inline === s.currentRichText.inline
         );
         const appStoreApi = useAppStoreApi();
         const handleHotkeyCapture = (0, import_react37.useCallback)(
           (event) => {
-            var _a, _b;
             if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "i") {
               event.stopPropagation();
               event.preventDefault();
-              (_b = editor == null ? void 0 : (_a = editor.commands).toggleItalic) == null ? void 0 : _b.call(_a);
+              editor?.commands.toggleItalic?.();
             }
             if (event.key.toLowerCase() === "backspace") {
               event.stopPropagation();
@@ -5399,11 +5393,9 @@ var init_EditorInner = __esm({
         );
         const handleBlur = (0, import_react37.useCallback)(
           (e) => {
-            var _a, _b;
-            const targetInMenu = !!((_b = (_a = e.relatedTarget) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(
-              _a,
+            const targetInMenu = !!e.relatedTarget?.closest?.(
               "[data-credbuild-rte-menu]"
-            ));
+            );
             if (e.relatedTarget && !targetInMenu) {
               appStoreApi.setState({
                 currentRichText: null
@@ -5423,7 +5415,7 @@ var init_EditorInner = __esm({
               isActive,
               disabled: readOnly
             }),
-            style: inline ? {} : { height: initialHeight != null ? initialHeight : 192, overflowY: "auto" },
+            style: inline ? {} : { height: initialHeight ?? 192, overflowY: "auto" },
             onKeyDownCapture: handleHotkeyCapture,
             onBlur: handleBlur,
             children: [
@@ -5488,7 +5480,7 @@ function useSyncedEditor({
   (0, import_react40.useEffect)(() => {
     if (!editor) return;
     const handleFocus = () => {
-      onFocusChange == null ? void 0 : onFocusChange(editor);
+      onFocusChange?.(editor);
     };
     editor.on("focus", handleFocus);
     return () => {
@@ -5499,17 +5491,17 @@ function useSyncedEditor({
     if (debouncedState) {
       const { ui } = appStoreApi.getState().state;
       onChange(debouncedState.html, {
-        field: __spreadProps(__spreadValues({}, ui.field), {
+        field: {
+          ...ui.field,
           metadata: { from: debouncedState.from, to: debouncedState.to }
-        })
+        }
       });
     }
   }, [editor, debouncedState, onChange, appStoreApi, name]);
   (0, import_react40.useEffect)(() => {
-    editor == null ? void 0 : editor.setEditable(editable);
+    editor?.setEditable(editable);
   }, [editor, editable]);
   (0, import_react40.useEffect)(() => {
-    var _a;
     if (!editor) return;
     if (isPending) {
       return;
@@ -5519,7 +5511,7 @@ function useSyncedEditor({
     syncingRef.current = true;
     editor.commands.setContent(content, { emitUpdate: false });
     const { ui } = appStoreApi.getState().state;
-    if (typeof ((_a = ui.field.metadata) == null ? void 0 : _a.from) !== "undefined") {
+    if (typeof ui.field.metadata?.from !== "undefined") {
       editor.commands.setTextSelection({
         from: ui.field.metadata.from,
         to: ui.field.metadata.to
@@ -5573,7 +5565,10 @@ var init_extension = __esm({
       name: "credbuildRichText",
       addExtensions() {
         const extensions = [];
-        const options = __spreadValues(__spreadValues({}, this.options), defaultCredBuildRichTextOptions);
+        const options = {
+          ...this.options,
+          ...defaultCredBuildRichTextOptions
+        };
         if (options.bold !== false) {
           extensions.push(import_extension_bold.Bold.configure(options.bold));
         }
@@ -5611,10 +5606,10 @@ var init_extension = __esm({
           }
         }
         if (options.listKeymap !== false) {
-          extensions.push(import_extension_list.ListKeymap.configure(options == null ? void 0 : options.listKeymap));
+          extensions.push(import_extension_list.ListKeymap.configure(options?.listKeymap));
         }
         if (options.link !== false) {
-          extensions.push(import_extension_link.Link.configure(options == null ? void 0 : options.link));
+          extensions.push(import_extension_link.Link.configure(options?.link));
         }
         if (options.paragraph !== false) {
           extensions.push(import_extension_paragraph.Paragraph.configure(options.paragraph));
@@ -5629,7 +5624,7 @@ var init_extension = __esm({
           extensions.push(import_extension_text_align.default.configure(options.textAlign));
         }
         if (options.underline !== false) {
-          extensions.push(import_extension_underline.Underline.configure(options == null ? void 0 : options.underline));
+          extensions.push(import_extension_underline.Underline.configure(options?.underline));
         }
         return extensions;
       }
@@ -5644,38 +5639,37 @@ var init_selector = __esm({
     "use strict";
     init_react_import();
     defaultEditorState = (ctx, readOnly) => {
-      var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B;
       const editor = ctx.editor;
       if (!editor) return {};
       const canChain = () => editor.can().chain();
       return {
         isAlignLeft: editor.isActive({ textAlign: "left" }),
-        canAlignLeft: !readOnly && ((_b = (_a = canChain()).setTextAlign) == null ? void 0 : _b.call(_a, "left").run()),
+        canAlignLeft: !readOnly && canChain().setTextAlign?.("left").run(),
         isAlignCenter: editor.isActive({ textAlign: "center" }),
-        canAlignCenter: !readOnly && ((_d = (_c = canChain()).setTextAlign) == null ? void 0 : _d.call(_c, "center").run()),
+        canAlignCenter: !readOnly && canChain().setTextAlign?.("center").run(),
         isAlignRight: editor.isActive({ textAlign: "right" }),
-        canAlignRight: !readOnly && ((_f = (_e = canChain()).setTextAlign) == null ? void 0 : _f.call(_e, "right").run()),
+        canAlignRight: !readOnly && canChain().setTextAlign?.("right").run(),
         isAlignJustify: editor.isActive({ textAlign: "justify" }),
-        canAlignJustify: !readOnly && ((_h = (_g = canChain()).setTextAlign) == null ? void 0 : _h.call(_g, "justify").run()),
+        canAlignJustify: !readOnly && canChain().setTextAlign?.("justify").run(),
         isBold: editor.isActive("bold"),
-        canBold: !readOnly && ((_j = (_i = canChain()).toggleBold) == null ? void 0 : _j.call(_i).run()),
+        canBold: !readOnly && canChain().toggleBold?.().run(),
         isItalic: editor.isActive("italic"),
-        canItalic: !readOnly && ((_l = (_k = canChain()).toggleItalic) == null ? void 0 : _l.call(_k).run()),
+        canItalic: !readOnly && canChain().toggleItalic?.().run(),
         isUnderline: editor.isActive("underline"),
-        canUnderline: !readOnly && ((_n = (_m = canChain()).toggleUnderline) == null ? void 0 : _n.call(_m).run()),
+        canUnderline: !readOnly && canChain().toggleUnderline?.().run(),
         isStrike: editor.isActive("strike"),
-        canStrike: !readOnly && ((_p = (_o = canChain()).toggleStrike) == null ? void 0 : _p.call(_o).run()),
+        canStrike: !readOnly && canChain().toggleStrike?.().run(),
         isInlineCode: editor.isActive("code"),
-        canInlineCode: !readOnly && ((_r = (_q = canChain()).toggleCode) == null ? void 0 : _r.call(_q).run()),
+        canInlineCode: !readOnly && canChain().toggleCode?.().run(),
         isBulletList: editor.isActive("bulletList"),
-        canBulletList: !readOnly && ((_t = (_s = canChain()).toggleBulletList) == null ? void 0 : _t.call(_s).run()),
+        canBulletList: !readOnly && canChain().toggleBulletList?.().run(),
         isOrderedList: editor.isActive("orderedList"),
-        canOrderedList: !readOnly && ((_v = (_u = canChain()).toggleOrderedList) == null ? void 0 : _v.call(_u).run()),
+        canOrderedList: !readOnly && canChain().toggleOrderedList?.().run(),
         isCodeBlock: editor.isActive("codeBlock"),
-        canCodeBlock: !readOnly && ((_x = (_w = canChain()).toggleCodeBlock) == null ? void 0 : _x.call(_w).run()),
+        canCodeBlock: !readOnly && canChain().toggleCodeBlock?.().run(),
         isBlockquote: editor.isActive("blockquote"),
-        canBlockquote: !readOnly && ((_z = (_y = canChain()).toggleBlockquote) == null ? void 0 : _z.call(_y).run()),
-        canHorizontalRule: !readOnly && ((_B = (_A = canChain()).setHorizontalRule) == null ? void 0 : _B.call(_A).run())
+        canBlockquote: !readOnly && canChain().toggleBlockquote?.().run(),
+        canHorizontalRule: !readOnly && canChain().setHorizontalRule?.().run()
       };
     };
   }
@@ -5705,7 +5699,10 @@ var init_full = __esm({
       const { tiptap = {} } = field;
       const { selector } = tiptap;
       const resolvedSelector = (0, import_react42.useMemo)(() => {
-        return (ctx) => __spreadValues(__spreadValues({}, defaultEditorState(ctx, readOnly)), selector ? selector(ctx, readOnly) : {});
+        return (ctx) => ({
+          ...defaultEditorState(ctx, readOnly),
+          ...selector ? selector(ctx, readOnly) : {}
+        });
       }, [selector, readOnly]);
       const editorState = (0, import_react41.useEditorState)({
         editor,
@@ -5743,7 +5740,7 @@ var init_RichTextMenu = __esm({
       }))
     );
     LoadedRichTextMenu = (props) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_react43.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(LoadedRichTextMenuInner, __spreadValues({}, props)), children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(LoadedRichTextMenuFull2, __spreadValues({}, props)) });
+      return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_react43.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(LoadedRichTextMenuInner, { ...props }), children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(LoadedRichTextMenuFull2, { ...props }) });
     };
   }
 });
@@ -5801,21 +5798,23 @@ var init_Editor = __esm({
                 id,
                 inline
               },
-              state: __spreadProps(__spreadValues({}, s.state), {
-                ui: __spreadProps(__spreadValues({}, s.state.ui), {
-                  field: __spreadProps(__spreadValues({}, s.state.ui.field), {
+              state: {
+                ...s.state,
+                ui: {
+                  ...s.state.ui,
+                  field: {
+                    ...s.state.ui.field,
                     focus: focusName
-                  })
-                })
-              })
+                  }
+                }
+              }
             });
-            onFocus == null ? void 0 : onFocus(editor2);
+            onFocus?.(editor2);
           }
         }
       });
       const menuEditor = useAppStore((s) => {
-        var _a, _b;
-        if (!inline && ((_a = s.currentRichText) == null ? void 0 : _a.id) === id && ((_b = s.currentRichText) == null ? void 0 : _b.inlineComponentId)) {
+        if (!inline && s.currentRichText?.id === id && s.currentRichText?.inlineComponentId) {
           return s.currentRichText.editor;
         }
         return editor;
@@ -5823,7 +5822,8 @@ var init_Editor = __esm({
       if (!editor) return null;
       return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
         EditorInner,
-        __spreadProps(__spreadValues({}, props), {
+        {
+          ...props,
           editor,
           menu: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             LoadedRichTextMenu,
@@ -5834,7 +5834,7 @@ var init_Editor = __esm({
             }
           ),
           children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_react45.EditorContent, { editor, className: "rich-text" })
-        })
+        }
       );
     });
     Editor.displayName = "Editor";
@@ -5857,7 +5857,7 @@ function RichTextRender({
     [extensions, options]
   );
   const normalized = (0, import_react59.useMemo)(() => {
-    if (typeof content === "object" && (content == null ? void 0 : content.type) === "doc") {
+    if (typeof content === "object" && content?.type === "doc") {
       return content;
     }
     if (typeof content === "string") {
@@ -5988,7 +5988,7 @@ init_ActionBar();
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/AutoField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/styles.module.css#css-module
 init_react_import();
 var styles_module_default2 = { "InputWrapper": "_InputWrapper_1q7gk_1", "Input-label": "_Input-label_1q7gk_5", "Input-labelIcon": "_Input-labelIcon_1q7gk_14", "Input-disabledIcon": "_Input-disabledIcon_1q7gk_21", "Input-input": "_Input-input_1q7gk_26", "Input": "_Input_1q7gk_1", "Input--readOnly": "_Input--readOnly_1q7gk_82", "Input-radioGroupItems": "_Input-radioGroupItems_1q7gk_93", "Input-radio": "_Input-radio_1q7gk_93", "Input-radioInner": "_Input-radioInner_1q7gk_110", "Input-radioInput": "_Input-radioInput_1q7gk_155" };
 
@@ -6002,7 +6002,7 @@ init_react_import();
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/AutoField/fields/ArrayField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ArrayField/styles.module.css#css-module
 init_react_import();
 var styles_module_default3 = { "ArrayField": "_ArrayField_1q029_5", "ArrayField--isDraggingFrom": "_ArrayField--isDraggingFrom_1q029_13", "ArrayField-addButton": "_ArrayField-addButton_1q029_18", "ArrayField--hasItems": "_ArrayField--hasItems_1q029_33", "ArrayField-inner": "_ArrayField-inner_1q029_59", "ArrayFieldItem": "_ArrayFieldItem_1q029_67", "ArrayFieldItem--isDragging": "_ArrayFieldItem--isDragging_1q029_78", "ArrayFieldItem--isExpanded": "_ArrayFieldItem--isExpanded_1q029_82", "ArrayFieldItem-summary": "_ArrayFieldItem-summary_1q029_97", "ArrayFieldItem--noFields": "_ArrayFieldItem--noFields_1q029_122", "ArrayField--addDisabled": "_ArrayField--addDisabled_1q029_131", "ArrayFieldItem-body": "_ArrayFieldItem-body_1q029_170", "ArrayFieldItem-fieldset": "_ArrayFieldItem-fieldset_1q029_179", "ArrayFieldItem-rhs": "_ArrayFieldItem-rhs_1q029_187", "ArrayFieldItem-actions": "_ArrayFieldItem-actions_1q029_193" };
 
@@ -6070,7 +6070,7 @@ init_react_import();
 init_lib();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/DragIcon/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DragIcon/styles.module.css#css-module
 init_react_import();
 var styles_module_default5 = { "DragIcon": "_DragIcon_ei1r9_1", "DragIcon--disabled": "_DragIcon--disabled_ei1r9_8" };
 
@@ -6107,9 +6107,8 @@ var useSensors = ({
   const [sensors] = (0, import_react13.useState)(() => [
     import_react14.PointerSensor.configure({
       activationConstraints(event, source) {
-        var _a;
         const { pointerType, target } = event;
-        if (pointerType === "mouse" && (0, import_utilities.isElement)(target) && (source.handle === target || ((_a = source.handle) == null ? void 0 : _a.contains(target)))) {
+        if (pointerType === "mouse" && (0, import_utilities.isElement)(target) && (source.handle === target || source.handle?.contains(target))) {
           return mouse;
         }
         if (pointerType === "touch") {
@@ -6146,10 +6145,9 @@ var collisionDebug = (a, b, id, color, label) => {
     });
   }, 1e3);
   requestAnimationFrame(() => {
-    var _a, _b;
     const existingEl = debugElements[debugId];
-    let line = (_a = debugElements[debugId]) == null ? void 0 : _a.line;
-    let text = (_b = debugElements[debugId]) == null ? void 0 : _b.text;
+    let line = debugElements[debugId]?.line;
+    let text = debugElements[debugId]?.text;
     if (!existingEl) {
       const svgNs = "http://www.w3.org/2000/svg";
       const svg = document.createElementNS(svgNs, "svg");
@@ -6182,11 +6180,10 @@ var collisionDebug = (a, b, id, color, label) => {
 // lib/dnd/collision/directional/index.ts
 var distanceChange = "increasing";
 var directionalCollision = (input, previous) => {
-  var _a;
   const { dragOperation, droppable } = input;
   const { shape: dropShape } = droppable;
   const { position } = dragOperation;
-  const dragShape = (_a = dragOperation.shape) == null ? void 0 : _a.current;
+  const dragShape = dragOperation.shape?.current;
   if (!dragShape || !dropShape) return null;
   const dropCenter = dropShape.center;
   const distanceToPrevious = Math.sqrt(
@@ -6282,10 +6279,9 @@ var collisionStore = (0, import_vanilla.createStore)(() => ({
 // lib/dnd/collision/dynamic/index.ts
 var flushNext = "";
 var createDynamicCollisionDetector = (dragAxis, midpointOffset = 0.05) => ((input) => {
-  var _a, _b, _c, _d, _e;
   const { dragOperation, droppable } = input;
   const { position } = dragOperation;
-  const dragShape = (_a = dragOperation.shape) == null ? void 0 : _a.current;
+  const dragShape = dragOperation.shape?.current;
   const { shape: dropShape } = droppable;
   if (!dragShape || !dropShape) {
     return null;
@@ -6303,14 +6299,15 @@ var createDynamicCollisionDetector = (dragAxis, midpointOffset = 0.05) => ((inpu
     interval.direction,
     midpointOffset
   );
-  if (((_b = dragOperation.source) == null ? void 0 : _b.id) === droppable.id) {
+  if (dragOperation.source?.id === droppable.id) {
     const collision = directionalCollision(input, interval.previous);
     collisionDebug(dragCenter, dropCenter, droppable.id.toString(), "yellow");
     if (collision) {
-      return __spreadProps(__spreadValues({}, collision), {
+      return {
+        ...collision,
         priority: import_abstract2.CollisionPriority.Highest,
         data
-      });
+      };
     }
   }
   const intersectionArea = dragShape.intersectionArea(dropShape);
@@ -6331,17 +6328,17 @@ var createDynamicCollisionDetector = (dragAxis, midpointOffset = 0.05) => ((inpu
     };
     const shouldFlushId = flushNext === droppable.id;
     flushNext = "";
-    return __spreadProps(__spreadValues({}, collision), { id: shouldFlushId ? "flush" : collision.id, data });
+    return { ...collision, id: shouldFlushId ? "flush" : collision.id, data };
   }
-  if (fallbackEnabled && ((_c = dragOperation.source) == null ? void 0 : _c.id) !== droppable.id) {
+  if (fallbackEnabled && dragOperation.source?.id !== droppable.id) {
     const xAxisIntersection = dropShape.boundingRectangle.right > dragShape.boundingRectangle.left && dropShape.boundingRectangle.left < dragShape.boundingRectangle.right;
     const yAxisIntersection = dropShape.boundingRectangle.bottom > dragShape.boundingRectangle.top && dropShape.boundingRectangle.top < dragShape.boundingRectangle.bottom;
     if (dragAxis === "y" && xAxisIntersection || yAxisIntersection) {
       const fallbackCollision = (0, import_collision.closestCorners)(input);
       if (fallbackCollision) {
         const direction = getDirection(dragAxis, {
-          x: dragShape.center.x - (((_d = droppable.shape) == null ? void 0 : _d.center.x) || 0),
-          y: dragShape.center.y - (((_e = droppable.shape) == null ? void 0 : _e.center.y) || 0)
+          x: dragShape.center.x - (droppable.shape?.center.x || 0),
+          y: dragShape.center.y - (droppable.shape?.center.y || 0)
         });
         data.direction = direction;
         if (intersectionArea) {
@@ -6353,10 +6350,11 @@ var createDynamicCollisionDetector = (dragAxis, midpointOffset = 0.05) => ((inpu
             direction || ""
           );
           flushNext = droppable.id;
-          return __spreadProps(__spreadValues({}, fallbackCollision), {
+          return {
+            ...fallbackCollision,
             priority: import_abstract2.CollisionPriority.Low,
             data
-          });
+          };
         }
         collisionDebug(
           dragCenter,
@@ -6365,10 +6363,11 @@ var createDynamicCollisionDetector = (dragAxis, midpointOffset = 0.05) => ((inpu
           "orange",
           direction || ""
         );
-        return __spreadProps(__spreadValues({}, fallbackCollision), {
+        return {
+          ...fallbackCollision,
           priority: import_abstract2.CollisionPriority.Lowest,
           data
-        });
+        };
       }
     }
   }
@@ -6392,21 +6391,17 @@ var SortableProvider = ({
     import_react15.DragDropProvider,
     {
       sensors,
-      onDragStart: (event) => {
-        var _a, _b;
-        return onDragStart((_b = (_a = event.operation.source) == null ? void 0 : _a.id.toString()) != null ? _b : "");
-      },
+      onDragStart: (event) => onDragStart(event.operation.source?.id.toString() ?? ""),
       onDragOver: (event, manager) => {
-        var _a;
         event.preventDefault();
         const { operation } = event;
         const { source, target } = operation;
         if (!source || !target) return;
         let sourceIndex = source.data.index;
         let targetIndex = target.data.index;
-        const collisionData = (_a = manager.collisionObserver.collisions[0]) == null ? void 0 : _a.data;
+        const collisionData = manager.collisionObserver.collisions[0]?.data;
         if (sourceIndex !== targetIndex && source.id !== target.id) {
-          const collisionPosition = (collisionData == null ? void 0 : collisionData.direction) === "up" ? "before" : "after";
+          const collisionPosition = collisionData?.direction === "up" ? "before" : "after";
           if (targetIndex >= sourceIndex) {
             targetIndex = targetIndex - 1;
           }
@@ -6458,9 +6453,10 @@ var import_jsx_runtime7 = require("react/jsx-runtime");
 var NestedFieldContext = (0, import_react16.createContext)({});
 var useNestedFieldContext = () => {
   const context = (0, import_react16.useContext)(NestedFieldContext);
-  return __spreadProps(__spreadValues({}, context), {
+  return {
+    ...context,
     readOnlyFields: context.readOnlyFields || {}
-  });
+  };
 };
 var NestedFieldProvider = ({
   children,
@@ -6479,9 +6475,10 @@ var NestedFieldProvider = ({
           `^(${name}|${wildcardName}).`.replace(/\[/g, "\\[").replace(/\]/g, "\\]").replace(/\./g, "\\.").replace(/\*/g, "\\*")
         );
         const localName = readOnlyKey.replace(subPathPattern, "");
-        return __spreadProps(__spreadValues({}, acc), {
+        return {
+          ...acc,
           [localName]: readOnlyFields[readOnlyKey]
-        });
+        };
       }
       return acc;
     }, {}),
@@ -6532,7 +6529,7 @@ var SubFieldInternal = ({
 }) => {
   const indexName = typeof index !== "undefined" ? `${name}[${index}]` : name;
   const subPath = name ? `${indexName}.${subName}` : subName;
-  const localIndexName = typeof index !== "undefined" ? `${localName}[${index}]` : localName != null ? localName : subName;
+  const localIndexName = typeof index !== "undefined" ? `${localName}[${index}]` : localName ?? subName;
   const localWildcardName = typeof index !== "undefined" ? `${localName}[*]` : localName;
   const localSubPath = `${localIndexName}.${subName}`;
   const localWildcardSubPath = `${localWildcardName}.${subName}`;
@@ -6553,10 +6550,11 @@ var SubFieldInternal = ({
           label,
           id,
           readOnly: subReadOnly,
-          field: __spreadProps(__spreadValues({}, field), {
+          field: {
+            ...field,
             label
             // May be used by custom fields
-          }),
+          },
           onChange: (val, ui) => {
             onChange(val, ui, subName);
           }
@@ -6571,7 +6569,7 @@ var SubField = (0, import_react17.memo)(SubFieldInternal);
 init_react_import();
 function setDeep(node, path, newVal) {
   const parts = path.split(".");
-  const newNode = __spreadValues({}, node);
+  const newNode = { ...node };
   let cur = newNode;
   for (let i = 0; i < parts.length; i++) {
     const [prop, idxStr] = parts[i].replace("]", "").split("[");
@@ -6598,7 +6596,7 @@ function setDeep(node, path, newVal) {
     }
     cur = cur[prop];
   }
-  return __spreadValues(__spreadValues({}, node), newNode);
+  return { ...node, ...newNode };
 }
 
 // components/AutoField/fields/ArrayField/index.tsx
@@ -6639,8 +6637,7 @@ var ArrayFieldItemInternal = ({
   localName
 }) => {
   const isExpanded = useAppStore((s) => {
-    var _a;
-    return ((_a = s.state.ui.arrayState[arrayId]) == null ? void 0 : _a.openId) === id;
+    return s.state.ui.arrayState[arrayId]?.openId === id;
   });
   const canEdit = useAppStore(
     (s) => s.permissions.getPermissions({ item: s.selectedItem }).edit
@@ -6722,21 +6719,17 @@ var ArrayField = ({
   label,
   labelIcon,
   readOnly,
-  Label: Label2 = (props) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", __spreadValues({}, props))
+  Label: Label2 = (props) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { ...props })
 }) => {
   const setUi = useAppStore((s) => s.setUi);
   const appStoreApi = useAppStoreApi();
   const fieldStore = useFieldStoreApi();
   const { localName = name } = useNestedFieldContext();
-  const getValue = (0, import_react18.useCallback)(() => {
-    var _a;
-    return (_a = getDeep(fieldStore.getState(), name)) != null ? _a : [];
-  }, [fieldStore, name]);
+  const getValue = (0, import_react18.useCallback)(() => getDeep(fieldStore.getState(), name) ?? [], [fieldStore, name]);
   const getArrayState = (0, import_react18.useCallback)(() => {
-    var _a;
     const { state } = appStoreApi.getState();
     const thisState = state.ui.arrayState[id];
-    if ((_a = thisState == null ? void 0 : thisState.items) == null ? void 0 : _a.length) return thisState;
+    if (thisState?.items?.length) return thisState;
     const value = getValue();
     return {
       items: Array.from(value || []).map((item, idx) => {
@@ -6755,16 +6748,17 @@ var ArrayField = ({
   const defaultArrayState = (0, import_react18.useMemo)(getArrayState, [getArrayState]);
   const mirror = useAppStore((s) => {
     const thisArrayState = s.state.ui.arrayState[id];
-    return thisArrayState != null ? thisArrayState : defaultArrayState;
+    return thisArrayState ?? defaultArrayState;
   });
   const appStore = useAppStoreApi();
   const mapArrayStateToUi = (0, import_react18.useCallback)(
     (partialArrayState) => {
       const state = appStore.getState().state;
       return {
-        arrayState: __spreadProps(__spreadValues({}, state.ui.arrayState), {
-          [id]: __spreadValues(__spreadValues({}, getArrayState()), partialArrayState)
-        })
+        arrayState: {
+          ...state.ui.arrayState,
+          [id]: { ...getArrayState(), ...partialArrayState }
+        }
       };
     },
     [appStore, id, getArrayState]
@@ -6779,19 +6773,18 @@ var ArrayField = ({
     let highestIndex = getHighestIndex();
     const arrayState = getArrayState();
     const newItems = Array.from(value || []).map((item, idx) => {
-      var _a, _b, _c;
       const arrayStateItem = arrayState.items[idx];
       const newItem = {
-        _originalIndex: (_a = arrayStateItem == null ? void 0 : arrayStateItem._originalIndex) != null ? _a : highestIndex + 1,
-        _currentIndex: (_b = arrayStateItem == null ? void 0 : arrayStateItem._currentIndex) != null ? _b : idx,
-        _arrayId: ((_c = arrayState.items[idx]) == null ? void 0 : _c._arrayId) || `${id}-${highestIndex + 1}`
+        _originalIndex: arrayStateItem?._originalIndex ?? highestIndex + 1,
+        _currentIndex: arrayStateItem?._currentIndex ?? idx,
+        _arrayId: arrayState.items[idx]?._arrayId || `${id}-${highestIndex + 1}`
       };
       if (newItem._originalIndex > highestIndex) {
         highestIndex = newItem._originalIndex;
       }
       return newItem;
     });
-    return __spreadProps(__spreadValues({}, arrayState), { items: newItems });
+    return { ...arrayState, items: newItems };
   }, [getArrayState, getHighestIndex, id]);
   const [draggedItem, setDraggedItem] = (0, import_react18.useState)("");
   const isDraggingAny = !!draggedItem;
@@ -6819,14 +6812,16 @@ var ArrayField = ({
   );
   const syncCurrentIndexes = (0, import_react18.useCallback)(() => {
     const arrayState = getArrayState();
-    const newArrayStateItems = arrayState.items.map((item, index) => __spreadProps(__spreadValues({}, item), {
+    const newArrayStateItems = arrayState.items.map((item, index) => ({
+      ...item,
       _currentIndex: index
     }));
     const state = appStore.getState().state;
     const newUi = {
-      arrayState: __spreadProps(__spreadValues({}, state.ui.arrayState), {
-        [id]: __spreadProps(__spreadValues({}, arrayState), { items: newArrayStateItems })
-      })
+      arrayState: {
+        ...state.ui.arrayState,
+        [id]: { ...arrayState, items: newArrayStateItems }
+      }
     };
     setUi(newUi, false);
   }, [appStore, id, getArrayState, setUi]);
@@ -6845,7 +6840,7 @@ var ArrayField = ({
   if (field.type !== "array" || !field.arrayFields) {
     return null;
   }
-  const addDisabled = field.max !== void 0 && (mirror == null ? void 0 : mirror.items.length) >= field.max || readOnly;
+  const addDisabled = field.max !== void 0 && mirror?.items.length >= field.max || readOnly;
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
     Label2,
     {
@@ -6881,9 +6876,10 @@ var ArrayField = ({
             );
             const state = appStore.getState().state;
             const newUi = {
-              arrayState: __spreadProps(__spreadValues({}, state.ui.arrayState), {
-                [id]: __spreadProps(__spreadValues({}, arrayState), { items: newArrayStateItems })
-              })
+              arrayState: {
+                ...state.ui.arrayState,
+                [id]: { ...arrayState, items: newArrayStateItems }
+              }
             };
             setUi(newUi, false);
             valueRef.current = newValue;
@@ -6918,9 +6914,10 @@ var ArrayField = ({
                         const value = getValue();
                         const data = Array.from(value || [])[index] || {};
                         onChange(
-                          replace(value, index, __spreadProps(__spreadValues({}, data), {
+                          replace(value, index, {
+                            ...data,
                             [subName]: val
-                          })),
+                          }),
                           ui
                         );
                       },
@@ -6984,11 +6981,10 @@ var ArrayField = ({
                     type: "button",
                     className: getClassName5("addButton"),
                     onClick: () => {
-                      var _a;
                       if (isDraggingAny) return;
                       const value = getValue();
                       const existingValue = value || [];
-                      const defaultProps = typeof field.defaultItemProps === "function" ? field.defaultItemProps(existingValue.length) : (_a = field.defaultItemProps) != null ? _a : {};
+                      const defaultProps = typeof field.defaultItemProps === "function" ? field.defaultItemProps(existingValue.length) : field.defaultItemProps ?? {};
                       const newItem = defaultSlots(
                         uniqifyItem(defaultProps),
                         field.arrayFields
@@ -7034,7 +7030,7 @@ var useIsFocused = (path) => {
 var useLocalValue = (path, onChange) => {
   const value = useDeepField(path);
   const isFocused = useIsFocused(path);
-  const [localValue, setLocalValue] = (0, import_react19.useState)(value == null ? void 0 : value.toString());
+  const [localValue, setLocalValue] = (0, import_react19.useState)(value?.toString());
   const onChangeLocal = (0, import_react19.useCallback)(
     (val) => {
       setLocalValue(val);
@@ -7047,7 +7043,7 @@ var useLocalValue = (path, onChange) => {
       setLocalValue(value);
     }
   }, [isFocused, value]);
-  return [localValue != null ? localValue : "", onChangeLocal];
+  return [localValue ?? "", onChangeLocal];
 };
 
 // components/AutoField/fields/DefaultField/index.tsx
@@ -7117,7 +7113,7 @@ var import_react23 = require("react");
 init_react_import();
 var import_react22 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ExternalInput/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ExternalInput/styles.module.css#css-module
 init_react_import();
 var styles_module_default6 = { "ExternalInput-actions": "_ExternalInput-actions_1gpb4_1", "ExternalInput-button": "_ExternalInput-button_1gpb4_5", "ExternalInput--dataSelected": "_ExternalInput--dataSelected_1gpb4_24", "ExternalInput--readOnly": "_ExternalInput--readOnly_1gpb4_31", "ExternalInput-detachButton": "_ExternalInput-detachButton_1gpb4_35", "ExternalInput": "_ExternalInput_1gpb4_1", "ExternalInputModal": "_ExternalInputModal_1gpb4_79", "ExternalInputModal-grid": "_ExternalInputModal-grid_1gpb4_89", "ExternalInputModal--filtersToggled": "_ExternalInputModal--filtersToggled_1gpb4_100", "ExternalInputModal-filters": "_ExternalInputModal-filters_1gpb4_105", "ExternalInputModal-masthead": "_ExternalInputModal-masthead_1gpb4_124", "ExternalInputModal-tableWrapper": "_ExternalInputModal-tableWrapper_1gpb4_133", "ExternalInputModal-table": "_ExternalInputModal-table_1gpb4_133", "ExternalInputModal-thead": "_ExternalInputModal-thead_1gpb4_149", "ExternalInputModal-th": "_ExternalInputModal-th_1gpb4_149", "ExternalInputModal-td": "_ExternalInputModal-td_1gpb4_164", "ExternalInputModal-tr": "_ExternalInputModal-tr_1gpb4_169", "ExternalInputModal-tbody": "_ExternalInputModal-tbody_1gpb4_176", "ExternalInputModal--hasData": "_ExternalInputModal--hasData_1gpb4_202", "ExternalInputModal-loadingBanner": "_ExternalInputModal-loadingBanner_1gpb4_206", "ExternalInputModal--isLoading": "_ExternalInputModal--isLoading_1gpb4_223", "ExternalInputModal-searchForm": "_ExternalInputModal-searchForm_1gpb4_227", "ExternalInputModal-search": "_ExternalInputModal-search_1gpb4_227", "ExternalInputModal-searchIcon": "_ExternalInputModal-searchIcon_1gpb4_264", "ExternalInputModal-searchIconText": "_ExternalInputModal-searchIconText_1gpb4_289", "ExternalInputModal-searchInput": "_ExternalInputModal-searchInput_1gpb4_299", "ExternalInputModal-searchActions": "_ExternalInputModal-searchActions_1gpb4_313", "ExternalInputModal-searchActionIcon": "_ExternalInputModal-searchActionIcon_1gpb4_326", "ExternalInputModal-footerContainer": "_ExternalInputModal-footerContainer_1gpb4_330", "ExternalInputModal-footer": "_ExternalInputModal-footer_1gpb4_330", "ExternalInputModal-field": "_ExternalInputModal-field_1gpb4_343" };
 
@@ -7130,7 +7126,7 @@ init_react_import();
 var import_react20 = require("react");
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Modal/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Modal/styles.module.css#css-module
 init_react_import();
 var styles_module_default7 = { "Modal": "_Modal_b422s_1", "Modal--isOpen": "_Modal--isOpen_b422s_15", "Modal-inner": "_Modal-inner_b422s_19" };
 
@@ -7166,7 +7162,7 @@ var Modal = ({
 // components/Heading/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Heading/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Heading/styles.module.css#css-module
 init_react_import();
 var styles_module_default8 = { "Heading": "_Heading_1tpsl_1", "Heading--xxxxl": "_Heading--xxxxl_1tpsl_12", "Heading--xxxl": "_Heading--xxxl_1tpsl_18", "Heading--xxl": "_Heading--xxl_1tpsl_22", "Heading--xl": "_Heading--xl_1tpsl_26", "Heading--l": "_Heading--l_1tpsl_30", "Heading--m": "_Heading--m_1tpsl_34", "Heading--s": "_Heading--s_1tpsl_38", "Heading--xs": "_Heading--xs_1tpsl_42" };
 
@@ -7197,7 +7193,7 @@ init_react_import();
 init_react_import();
 var import_react21 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Button/Button.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Button/Button.module.css#css-module
 init_react_import();
 var Button_module_default = { "Button": "_Button_164uz_1", "Button--medium": "_Button--medium_164uz_29", "Button--large": "_Button--large_164uz_34", "Button-icon": "_Button-icon_164uz_38", "Button--primary": "_Button--primary_164uz_42", "Button--secondary": "_Button--secondary_164uz_63", "Button--flush": "_Button--flush_164uz_80", "Button--disabled": "_Button--disabled_164uz_84", "Button--fullWidth": "_Button--fullWidth_164uz_92", "Button-spinner": "_Button-spinner_164uz_97" };
 
@@ -7221,41 +7217,28 @@ var filterDataAttrs = (props) => {
 // components/Button/Button.tsx
 var import_jsx_runtime13 = require("react/jsx-runtime");
 var getClassName9 = get_class_name_factory_default("Button", Button_module_default);
-var Button = (_a) => {
-  var _b = _a, {
-    children,
-    href,
-    onClick,
-    variant = "primary",
-    type,
-    disabled,
-    tabIndex,
-    newTab,
-    fullWidth,
-    icon,
-    size = "medium",
-    loading: loadingProp = false
-  } = _b, props = __objRest(_b, [
-    "children",
-    "href",
-    "onClick",
-    "variant",
-    "type",
-    "disabled",
-    "tabIndex",
-    "newTab",
-    "fullWidth",
-    "icon",
-    "size",
-    "loading"
-  ]);
+var Button = ({
+  children,
+  href,
+  onClick,
+  variant = "primary",
+  type,
+  disabled,
+  tabIndex,
+  newTab,
+  fullWidth,
+  icon,
+  size = "medium",
+  loading: loadingProp = false,
+  ...props
+}) => {
   const [loading, setLoading] = (0, import_react21.useState)(loadingProp);
   (0, import_react21.useEffect)(() => setLoading(loadingProp), [loadingProp]);
   const ElementType = href ? "a" : type ? "button" : "span";
   const dataAttrs = filterDataAttrs(props);
   const el = /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
     ElementType,
-    __spreadProps(__spreadValues({
+    {
       className: getClassName9({
         primary: variant === "primary",
         secondary: variant === "secondary",
@@ -7275,14 +7258,14 @@ var Button = (_a) => {
       tabIndex,
       target: newTab ? "_blank" : void 0,
       rel: newTab ? "noreferrer" : void 0,
-      href
-    }, dataAttrs), {
+      href,
+      ...dataAttrs,
       children: [
         icon && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: getClassName9("icon"), children: icon }),
         children,
         loading && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: getClassName9("spinner"), children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Loader, { size: 14 }) })
       ]
-    })
+    }
   );
   return el;
 };
@@ -7301,13 +7284,12 @@ var ExternalInput = ({
   id,
   readOnly
 }) => {
-  var _a;
   const {
     mapProp = (val) => val,
     mapRow = (val) => val,
     filterFields
   } = field || {};
-  const { enabled: shouldCacheData } = (_a = field.cache) != null ? _a : { enabled: true };
+  const { enabled: shouldCacheData } = field.cache ?? { enabled: true };
   const [data, setData] = (0, import_react22.useState)([]);
   const [isOpen, setOpen] = (0, import_react22.useState)(false);
   const [isLoading, setIsLoading] = (0, import_react22.useState)(true);
@@ -7330,14 +7312,14 @@ var ExternalInput = ({
   }, [mappedData]);
   const [searchQuery, setSearchQuery] = (0, import_react22.useState)(field.initialQuery || "");
   const search = (0, import_react22.useCallback)(
-    (query, filters2) => __async(null, null, function* () {
+    async (query, filters2) => {
       setIsLoading(true);
       const cacheKey = `${id}-${query}-${JSON.stringify(filters2)}`;
       let listData;
       if (shouldCacheData && dataCache[cacheKey]) {
         listData = dataCache[cacheKey];
       } else {
-        listData = yield field.fetchList({ query, filters: filters2 });
+        listData = await field.fetchList({ query, filters: filters2 });
       }
       if (listData) {
         setData(listData);
@@ -7346,7 +7328,7 @@ var ExternalInput = ({
           dataCache[cacheKey] = listData;
         }
       }
-    }),
+    },
     [id, field, shouldCacheData]
   );
   const Footer = (0, import_react22.useCallback)(
@@ -7463,9 +7445,10 @@ var ExternalInput = ({
                           value: filters[fieldName],
                           onChange: (value2) => {
                             setFilters((filters2) => {
-                              const newFilters = __spreadProps(__spreadValues({}, filters2), {
+                              const newFilters = {
+                                ...filters2,
                                 [fieldName]: value2
-                              });
+                              };
                               search(searchQuery, newFilters);
                               return newFilters;
                             });
@@ -7528,7 +7511,6 @@ var ExternalField = ({
   Label: Label2,
   readOnly
 }) => {
-  var _a, _b, _c;
   const value = useDeepField(name);
   const validField = field;
   const deprecatedField = field;
@@ -7552,17 +7534,16 @@ var ExternalField = ({
         ExternalInput,
         {
           name,
-          field: __spreadProps(__spreadValues({}, validField), {
+          field: {
+            ...validField,
             // DEPRECATED
-            placeholder: ((_a = deprecatedField.adaptor) == null ? void 0 : _a.name) ? `Select from ${deprecatedField.adaptor.name}` : validField.placeholder || "Select data",
-            mapProp: ((_b = deprecatedField.adaptor) == null ? void 0 : _b.mapProp) || validField.mapProp,
+            placeholder: deprecatedField.adaptor?.name ? `Select from ${deprecatedField.adaptor.name}` : validField.placeholder || "Select data",
+            mapProp: deprecatedField.adaptor?.mapProp || validField.mapProp,
             mapRow: validField.mapRow,
-            fetchList: ((_c = deprecatedField.adaptor) == null ? void 0 : _c.fetchList) ? () => __async(null, null, function* () {
-              return yield deprecatedField.adaptor.fetchList(
-                deprecatedField.adaptorParams
-              );
-            }) : validField.fetchList
-          }),
+            fetchList: deprecatedField.adaptor?.fetchList ? async () => await deprecatedField.adaptor.fetchList(
+              deprecatedField.adaptorParams
+            ) : validField.fetchList
+          },
           onChange,
           value,
           id,
@@ -7600,33 +7581,30 @@ var RadioField = ({
       label: label || name,
       readOnly,
       el: "div",
-      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: getClassName11("radioGroupItems"), id, children: field.options.map((option) => {
-        var _a;
-        return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
-          "label",
-          {
-            className: getClassName11("radio"),
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-                "input",
-                {
-                  type: "radio",
-                  className: getClassName11("radioInput"),
-                  value: JSON.stringify({ value: option.value }),
-                  name,
-                  onChange: (e) => {
-                    onChange(JSON.parse(e.target.value).value);
-                  },
-                  disabled: readOnly,
-                  checked: value === option.value
-                }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: getClassName11("radioInner"), children: option.label || ((_a = option.value) == null ? void 0 : _a.toString()) })
-            ]
-          },
-          option.label + option.value
-        );
-      }) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: getClassName11("radioGroupItems"), id, children: field.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        "label",
+        {
+          className: getClassName11("radio"),
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "radio",
+                className: getClassName11("radioInput"),
+                value: JSON.stringify({ value: option.value }),
+                name,
+                onChange: (e) => {
+                  onChange(JSON.parse(e.target.value).value);
+                },
+                disabled: readOnly,
+                checked: value === option.value
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: getClassName11("radioInner"), children: option.label || option.value?.toString() })
+          ]
+        },
+        option.label + option.value
+      )) })
     }
   );
 };
@@ -7736,10 +7714,10 @@ init_inner();
 init_EditorInner();
 var import_jsx_runtime47 = require("react/jsx-runtime");
 var EditorFallback = (0, import_react38.memo)((props) => {
-  var _a;
   return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
     EditorInner,
-    __spreadProps(__spreadValues({}, props), {
+    {
+      ...props,
       editor: null,
       menu: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
         LoadedRichTextMenuInner,
@@ -7747,7 +7725,7 @@ var EditorFallback = (0, import_react38.memo)((props) => {
           field: props.field,
           editor: null,
           editorState: null,
-          readOnly: (_a = props.readOnly) != null ? _a : false
+          readOnly: props.readOnly ?? false
         }
       ),
       children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
@@ -7758,7 +7736,7 @@ var EditorFallback = (0, import_react38.memo)((props) => {
           contentEditable: true
         }
       )
-    })
+    }
   );
 });
 EditorFallback.displayName = "EditorFallback";
@@ -7796,7 +7774,7 @@ var RichtextField = ({
       icon: labelIcon || /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Type, { size: 16 }),
       readOnly,
       el: "div",
-      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_react46.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(EditorFallback, __spreadValues({}, editorProps)), children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Editor2, __spreadValues({}, editorProps)) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_react46.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Editor2, { ...editorProps }) })
     }
   ) });
 };
@@ -7805,7 +7783,7 @@ var RichtextField = ({
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/AutoField/fields/ObjectField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ObjectField/styles.module.css#css-module
 init_react_import();
 var styles_module_default13 = { "ObjectField": "_ObjectField_b2xjm_5", "ObjectField-fieldset": "_ObjectField-fieldset_b2xjm_13" };
 
@@ -7829,10 +7807,7 @@ var ObjectField = ({
   const canEdit = useAppStore(
     (s) => s.permissions.getPermissions({ item: s.selectedItem }).edit
   );
-  const getValue = () => {
-    var _a;
-    return (_a = getDeep(fieldStore.getState(), name)) != null ? _a : {};
-  };
+  const getValue = () => getDeep(fieldStore.getState(), name) ?? {};
   if (field.type !== "object" || !field.objectFields) {
     return null;
   }
@@ -7860,7 +7835,7 @@ var ObjectField = ({
               if (value[subName2] === subValue) {
                 return;
               }
-              onChange(__spreadProps(__spreadValues({}, value), { [subName2]: subValue }), ui);
+              onChange({ ...value, [subName2]: subValue }, ui);
             }
           },
           subPath
@@ -7958,13 +7933,9 @@ var defaultFields = {
   richtext: RichtextField
 };
 function AutoFieldInternal(props) {
-  var _a;
   const dispatch = useAppStore((s) => s.dispatch);
   const overrides = useAppStore((s) => s.overrides);
-  const readOnly = useAppStore((0, import_shallow3.useShallow)((s) => {
-    var _a2;
-    return (_a2 = s.selectedItem) == null ? void 0 : _a2.readOnly;
-  }));
+  const readOnly = useAppStore((0, import_shallow3.useShallow)((s) => s.selectedItem?.readOnly));
   const nestedFieldContext = (0, import_react49.useContext)(NestedFieldContext);
   const { id, Label: Label2 = FieldLabelInternal } = props;
   const field = props.field;
@@ -7973,31 +7944,29 @@ function AutoFieldInternal(props) {
   const defaultId = useSafeId();
   const resolvedId = id || defaultId;
   const render = (0, import_react49.useMemo)(
-    () => {
-      var _a2, _b, _c, _d, _e, _f, _g, _h, _i, _j;
-      return __spreadProps(__spreadValues({}, overrides.fieldTypes), {
-        custom: (_a2 = overrides.fieldTypes) == null ? void 0 : _a2.custom,
-        array: ((_b = overrides.fieldTypes) == null ? void 0 : _b.array) || defaultFields.array,
-        external: ((_c = overrides.fieldTypes) == null ? void 0 : _c.external) || defaultFields.external,
-        object: ((_d = overrides.fieldTypes) == null ? void 0 : _d.object) || defaultFields.object,
-        select: ((_e = overrides.fieldTypes) == null ? void 0 : _e.select) || defaultFields.select,
-        textarea: ((_f = overrides.fieldTypes) == null ? void 0 : _f.textarea) || defaultFields.textarea,
-        radio: ((_g = overrides.fieldTypes) == null ? void 0 : _g.radio) || defaultFields.radio,
-        text: ((_h = overrides.fieldTypes) == null ? void 0 : _h.text) || defaultFields.text,
-        number: ((_i = overrides.fieldTypes) == null ? void 0 : _i.number) || defaultFields.number,
-        richtext: ((_j = overrides.fieldTypes) == null ? void 0 : _j.richtext) || defaultFields.richtext
-      });
-    },
+    () => ({
+      ...overrides.fieldTypes,
+      custom: overrides.fieldTypes?.custom,
+      array: overrides.fieldTypes?.array || defaultFields.array,
+      external: overrides.fieldTypes?.external || defaultFields.external,
+      object: overrides.fieldTypes?.object || defaultFields.object,
+      select: overrides.fieldTypes?.select || defaultFields.select,
+      textarea: overrides.fieldTypes?.textarea || defaultFields.textarea,
+      radio: overrides.fieldTypes?.radio || defaultFields.radio,
+      text: overrides.fieldTypes?.text || defaultFields.text,
+      number: overrides.fieldTypes?.number || defaultFields.number,
+      richtext: overrides.fieldTypes?.richtext || defaultFields.richtext
+    }),
     [overrides]
   );
   const fieldValue = useFieldStore((s) => {
-    var _a2, _b;
-    if (field.type === "custom" || ((_a2 = overrides.fieldTypes) == null ? void 0 : _a2[field.type])) {
-      return getDeep(s, (_b = props.name) != null ? _b : resolvedId);
+    if (field.type === "custom" || overrides.fieldTypes?.[field.type]) {
+      return getDeep(s, props.name ?? resolvedId);
     }
   });
   const mergedProps = (0, import_react49.useMemo)(
-    () => __spreadProps(__spreadValues({}, props), {
+    () => ({
+      ...props,
       field,
       label,
       labelIcon,
@@ -8064,7 +8033,7 @@ function AutoFieldInternal(props) {
     {
       value: {
         readOnlyFields: nestedFieldContext.readOnlyFields || readOnly || {},
-        localName: (_a = nestedFieldContext.localName) != null ? _a : mergedProps.name
+        localName: nestedFieldContext.localName ?? mergedProps.name
       },
       children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
         "div",
@@ -8075,23 +8044,23 @@ function AutoFieldInternal(props) {
           onClick: (e) => {
             e.stopPropagation();
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(FieldComponent, __spreadProps(__spreadValues({}, mergedProps), { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Children, __spreadValues({}, mergedProps)) }))
+          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(FieldComponent, { ...mergedProps, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Children, { ...mergedProps }) })
         }
       )
     }
   );
 }
 function AutoFieldPrivate(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(AutoFieldInternal, __spreadValues({}, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(AutoFieldInternal, { ...props });
 }
-function AutoFieldPublicInternal(_a) {
-  var _b = _a, { value } = _b, props = __objRest(_b, ["value"]);
+function AutoFieldPublicInternal({ value, ...props }) {
   const DefaultLabel = (0, import_react49.useMemo)(() => {
     const DefaultLabel2 = (labelProps) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "div",
-      __spreadProps(__spreadValues({}, labelProps), {
+      {
+        ...labelProps,
         className: getClassName20({ readOnly: props.readOnly })
-      })
+      }
     );
     return DefaultLabel2;
   }, [props.readOnly]);
@@ -8111,10 +8080,11 @@ function AutoFieldPublicInternal(_a) {
   }, [props.id, value, fieldStore]);
   return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
     AutoFieldInternal,
-    __spreadProps(__spreadValues({}, props), {
+    {
+      ...props,
       onChange,
       Label: DefaultLabel
-    })
+    }
   );
 }
 function AutoField(props) {
@@ -8123,13 +8093,13 @@ function AutoField(props) {
     return null;
   }
   const providerValue = (0, import_react49.useMemo)(() => ({ [id]: props.value }), [id, props.value]);
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(fieldContextStore.Provider, { value: providerValue, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(AutoFieldPublicInternal, __spreadProps(__spreadValues({}, props), { id })) });
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(fieldContextStore.Provider, { value: providerValue, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(AutoFieldPublicInternal, { ...props, id }) });
 }
 
 // components/Drawer/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Drawer/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Drawer/styles.module.css#css-module
 init_react_import();
 var styles_module_default14 = { "Drawer": "_Drawer_e1509_1", "Drawer-draggable": "_Drawer-draggable_e1509_7", "Drawer-draggableBg": "_Drawer-draggableBg_e1509_11", "DrawerItem-draggable": "_DrawerItem-draggable_e1509_21", "DrawerItem--disabled": "_DrawerItem--disabled_e1509_34", "DrawerItem": "_DrawerItem_e1509_21", "Drawer--isDraggingFrom": "_Drawer--isDraggingFrom_e1509_43", "DrawerItem-default": "_DrawerItem-default_e1509_44", "DrawerItem-name": "_DrawerItem-name_e1509_61" };
 
@@ -8153,7 +8123,7 @@ var import_react68 = require("react");
 init_react_import();
 var import_react52 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/DraggableComponent/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DraggableComponent/styles.module.css#css-module
 init_react_import();
 var styles_module_default15 = { "DraggableComponent": "_DraggableComponent_yrtpz_1", "DraggableComponent-overlayWrapper": "_DraggableComponent-overlayWrapper_yrtpz_12", "DraggableComponent-overlay": "_DraggableComponent-overlay_yrtpz_12", "DraggableComponent-loadingOverlay": "_DraggableComponent-loadingOverlay_yrtpz_34", "DraggableComponent--hover": "_DraggableComponent--hover_yrtpz_50", "DraggableComponent--isSelected": "_DraggableComponent--isSelected_yrtpz_57", "DraggableComponent-actionsOverlay": "_DraggableComponent-actionsOverlay_yrtpz_71", "DraggableComponent-actions": "_DraggableComponent-actions_yrtpz_71" };
 
@@ -8229,9 +8199,10 @@ var DropZoneProvider = ({
     [dispatch]
   );
   const memoValue = (0, import_react50.useMemo)(
-    () => __spreadValues({
-      registerZone
-    }, value),
+    () => ({
+      registerZone,
+      ...value
+    }),
     [value, registerZone]
   );
   return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(import_jsx_runtime55.Fragment, { children: memoValue && /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(dropZoneContext.Provider, { value: memoValue, children }) });
@@ -8333,10 +8304,7 @@ var DraggableComponent = ({
   itemRef
 }) => {
   const zoom = useAppStore(
-    (s) => {
-      var _a;
-      return ((_a = s.selectedItem) == null ? void 0 : _a.props.id) === id ? s.zoomConfig.zoom : 1;
-    }
+    (s) => s.selectedItem?.props.id === id ? s.zoomConfig.zoom : 1
   );
   const _experimentalFullScreenCanvas = useAppStore(
     (s) => s._experimentalFullScreenCanvas
@@ -8349,9 +8317,9 @@ var DraggableComponent = ({
   const [localZones, setLocalZones] = (0, import_react52.useState)({});
   const registerLocalZone = (0, import_react52.useCallback)(
     (zoneCompound2, active) => {
-      var _a;
-      (_a = ctx == null ? void 0 : ctx.registerLocalZone) == null ? void 0 : _a.call(ctx, zoneCompound2, active);
-      setLocalZones((obj) => __spreadProps(__spreadValues({}, obj), {
+      ctx?.registerLocalZone?.(zoneCompound2, active);
+      setLocalZones((obj) => ({
+        ...obj,
         [zoneCompound2]: active
       }));
     },
@@ -8359,10 +8327,11 @@ var DraggableComponent = ({
   );
   const unregisterLocalZone = (0, import_react52.useCallback)(
     (zoneCompound2) => {
-      var _a;
-      (_a = ctx == null ? void 0 : ctx.unregisterLocalZone) == null ? void 0 : _a.call(ctx, zoneCompound2);
+      ctx?.unregisterLocalZone?.(zoneCompound2);
       setLocalZones((obj) => {
-        const newLocalZones = __spreadValues({}, obj);
+        const newLocalZones = {
+          ...obj
+        };
         delete newLocalZones[zoneCompound2];
         return newLocalZones;
       });
@@ -8370,10 +8339,7 @@ var DraggableComponent = ({
     [setLocalZones, ctx]
   );
   const containsActiveZone = Object.values(localZones).filter(Boolean).length > 0;
-  const path = useAppStore((0, import_shallow4.useShallow)((s) => {
-    var _a;
-    return (_a = s.state.indexes.nodes[id]) == null ? void 0 : _a.path;
-  }));
+  const path = useAppStore((0, import_shallow4.useShallow)((s) => s.state.indexes.nodes[id]?.path));
   const permissions = useAppStore(
     (0, import_shallow4.useShallow)((s) => {
       const item = getItem({ index, zone: zoneCompound }, s.state);
@@ -8396,7 +8362,7 @@ var DraggableComponent = ({
     group: zoneCompound,
     type: "component",
     data: {
-      areaId: ctx == null ? void 0 : ctx.areaId,
+      areaId: ctx?.areaId,
       zone: zoneCompound,
       index,
       componentType,
@@ -8424,8 +8390,7 @@ var DraggableComponent = ({
     if (ref.current && !permissions.drag) {
       ref.current.setAttribute("data-credbuild-disabled", "");
       return () => {
-        var _a;
-        (_a = ref.current) == null ? void 0 : _a.removeAttribute("data-credbuild-disabled");
+        ref.current?.removeAttribute("data-credbuild-disabled");
         cleanup();
       };
     }
@@ -8448,13 +8413,11 @@ var DraggableComponent = ({
   );
   const [portalEl, setPortalEl] = (0, import_react52.useState)();
   (0, import_react52.useEffect)(() => {
-    var _a, _b, _c;
     setPortalEl(
-      iframe.enabled ? (_a = ref.current) == null ? void 0 : _a.ownerDocument.body : (_c = (_b = ref.current) == null ? void 0 : _b.closest("[data-credbuild-preview]")) != null ? _c : document.body
+      iframe.enabled ? ref.current?.ownerDocument.body : ref.current?.closest("[data-credbuild-preview]") ?? document.body
     );
   }, [iframe.enabled]);
   const getStyle = (0, import_react52.useCallback)(() => {
-    var _a, _b;
     if (!ref.current) return;
     const el = ref.current;
     const rect = el.getBoundingClientRect();
@@ -8469,12 +8432,12 @@ var DraggableComponent = ({
       }
       return false;
     })();
-    const portalContainerRect = portalContainerEl == null ? void 0 : portalContainerEl.getBoundingClientRect();
+    const portalContainerRect = portalContainerEl?.getBoundingClientRect();
     const portalScroll = portalContainerEl ? getDeepScrollPosition(portalContainerEl) : { x: 0, y: 0 };
     const deepScrollPosition = targetIsFixed ? { x: 0, y: 0 } : getDeepScrollPosition(el);
     const scroll = targetIsFixed ? { x: 0, y: 0 } : {
-      x: deepScrollPosition.x - portalScroll.x - ((_a = portalContainerRect == null ? void 0 : portalContainerRect.left) != null ? _a : 0),
-      y: deepScrollPosition.y - portalScroll.y - ((_b = portalContainerRect == null ? void 0 : portalContainerRect.top) != null ? _b : 0)
+      x: deepScrollPosition.x - portalScroll.x - (portalContainerRect?.left ?? 0),
+      y: deepScrollPosition.y - portalScroll.y - (portalContainerRect?.top ?? 0)
     };
     const style2 = {
       left: `${rect.left + scroll.x}px`,
@@ -8584,7 +8547,7 @@ var DraggableComponent = ({
   const onSelectParent = (0, import_react52.useCallback)(() => {
     const { nodes, zones } = appStore.getState().state.indexes;
     const node = nodes[id];
-    const parentNode = (node == null ? void 0 : node.parentId) ? nodes[node == null ? void 0 : node.parentId] : null;
+    const parentNode = node?.parentId ? nodes[node?.parentId] : null;
     if (!parentNode || !node.parentId) {
       return;
     }
@@ -8783,11 +8746,12 @@ var DraggableComponent = ({
     setDragAxis(autoDragAxis);
   }, [ref, userDragAxis, autoDragAxis]);
   const parentAction = (0, import_react52.useMemo)(
-    () => (ctx == null ? void 0 : ctx.areaId) && (ctx == null ? void 0 : ctx.areaId) !== "root" && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ActionBar.Action, { onClick: onSelectParent, label: "Select parent", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(CornerLeftUp, { size: 16 }) }),
-    [ctx == null ? void 0 : ctx.areaId, onSelectParent]
+    () => ctx?.areaId && ctx?.areaId !== "root" && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ActionBar.Action, { onClick: onSelectParent, label: "Select parent", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(CornerLeftUp, { size: 16 }) }),
+    [ctx?.areaId, onSelectParent]
   );
   const nextContextValue = (0, import_react52.useMemo)(
-    () => __spreadProps(__spreadValues({}, ctx), {
+    () => ({
+      ...ctx,
       areaId: id,
       zoneCompound,
       index,
@@ -8806,10 +8770,7 @@ var DraggableComponent = ({
     ]
   );
   const richText = useAppStore(
-    (s) => {
-      var _a;
-      return ((_a = s.currentRichText) == null ? void 0 : _a.inlineComponentId) === id ? s.currentRichText : null;
-    }
+    (s) => s.currentRichText?.inlineComponentId === id ? s.currentRichText : null
   );
   const hasNormalActions = permissions.duplicate || permissions.delete;
   return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(DropZoneProvider, { value: nextContextValue, children: [
@@ -8822,7 +8783,7 @@ var DraggableComponent = ({
             isDragging: thisIsDragging,
             hover: hover || indicativeHover
           }),
-          style: __spreadValues({}, style),
+          style: { ...style },
           "data-credbuild-overlay": true,
           children: [
             debug,
@@ -8897,7 +8858,7 @@ init_setup_zone();
 init_root_droppable_id();
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/DropZone/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DropZone/styles.module.css#css-module
 init_react_import();
 var styles_module_default16 = { "DropZone": "_DropZone_1vmgt_1", "DropZone--hasChildren": "_DropZone--hasChildren_1vmgt_11", "DropZone--isAreaSelected": "_DropZone--isAreaSelected_1vmgt_24", "DropZone--hoveringOverArea": "_DropZone--hoveringOverArea_1vmgt_25", "DropZone--isRootZone": "_DropZone--isRootZone_1vmgt_25", "DropZone--isDestination": "_DropZone--isDestination_1vmgt_35", "DropZone-item": "_DropZone-item_1vmgt_47", "DropZone-hitbox": "_DropZone-hitbox_1vmgt_51", "DropZone--isEnabled": "_DropZone--isEnabled_1vmgt_59", "DropZone--isAnimating": "_DropZone--isAnimating_1vmgt_68" };
 
@@ -8920,10 +8881,9 @@ var useMinEmptyHeight = ({
   const [prevHeight, setPrevHeight] = (0, import_react53.useState)(0);
   const [isAnimating, setIsAnimating] = (0, import_react53.useState)(false);
   const { draggedItem, isZone } = useContextStore(ZoneStoreContext, (s) => {
-    var _a, _b;
     return {
-      draggedItem: ((_a = s.draggedItem) == null ? void 0 : _a.data.zone) === zoneCompound ? s.draggedItem : null,
-      isZone: ((_b = s.draggedItem) == null ? void 0 : _b.data.zone) === zoneCompound
+      draggedItem: s.draggedItem?.data.zone === zoneCompound ? s.draggedItem : null,
+      isZone: s.draggedItem?.data.zone === zoneCompound
     };
   });
   const numItems = (0, import_react53.useRef)(0);
@@ -8940,10 +8900,9 @@ var useMinEmptyHeight = ({
           const selectedItem = appStore.getState().selectedItem;
           const zones = appStore.getState().state.indexes.zones;
           const nodes = appStore.getState().nodes;
-          nodes.setOverlayVisible(selectedItem == null ? void 0 : selectedItem.props.id, false);
+          nodes.setOverlayVisible(selectedItem?.props.id, false);
           setTimeout(() => {
-            var _a;
-            const contentIds = ((_a = zones[zoneCompound]) == null ? void 0 : _a.contentIds) || [];
+            const contentIds = zones[zoneCompound]?.contentIds || [];
             nodes.syncNodes(contentIds);
             if (selectedItem) {
               setTimeout(() => {
@@ -8984,10 +8943,10 @@ var import_react55 = require("react");
 function useRenderedCallback(callback, _deps = []) {
   const manager = (0, import_react54.useDragDropManager)();
   return (0, import_react55.useCallback)(
-    (...args) => __async(null, null, function* () {
-      yield manager == null ? void 0 : manager.renderer.rendering;
+    async (...args) => {
+      await manager?.renderer.rendering;
       return callback(...args);
-    }),
+    },
     [manager, callback]
   );
 }
@@ -9041,9 +9000,8 @@ var useContentIdsWithPreview = (contentIds, zoneCompound) => {
     )
   );
   (0, import_react56.useEffect)(() => {
-    var _a;
     const s = zoneStore.getState();
-    const draggedItemId = (_a = s.draggedItem) == null ? void 0 : _a.id;
+    const draggedItemId = s.draggedItem?.id;
     const previewExists = Object.keys(s.previewIndex || {}).length > 0;
     updateContent(
       contentIds,
@@ -9113,22 +9071,22 @@ init_react_import();
 function buildMappers(transforms, readOnly, forceReadOnly) {
   return Object.keys(transforms).reduce((acc, _fieldType) => {
     const fieldType = _fieldType;
-    return __spreadProps(__spreadValues({}, acc), {
-      [fieldType]: (_a) => {
-        var _b = _a, {
-          parentId
-        } = _b, params = __objRest(_b, [
-          "parentId"
-        ]);
+    return {
+      ...acc,
+      [fieldType]: ({
+        parentId,
+        ...params
+      }) => {
         const wildcardPath = params.propPath.replace(/\[\d+\]/g, "[*]");
-        const isReadOnly = (readOnly == null ? void 0 : readOnly[params.propPath]) || (readOnly == null ? void 0 : readOnly[wildcardPath]) || forceReadOnly || false;
+        const isReadOnly = readOnly?.[params.propPath] || readOnly?.[wildcardPath] || forceReadOnly || false;
         const fn = transforms[fieldType];
-        return fn == null ? void 0 : fn(__spreadProps(__spreadValues({}, params), {
+        return fn?.({
+          ...params,
           isReadOnly,
           componentId: parentId
-        }));
+        });
       }
-    });
+    };
   }, {});
 }
 
@@ -9142,7 +9100,7 @@ function useFieldTransforms(config, item, transforms, readOnly, forceReadOnly) {
     return mapFields(item, mappers, config).props;
   }, [config, item, mappers]);
   const mergedProps = (0, import_react58.useMemo)(
-    () => __spreadValues(__spreadValues({}, item.props), transformedProps),
+    () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
   return mergedProps;
@@ -9153,13 +9111,13 @@ init_react_import();
 var getSlotTransform = (renderSlotEdit, renderSlotRender = renderSlotEdit) => ({
   slot: ({ value: content, propName, field, isReadOnly }) => {
     const render = isReadOnly ? renderSlotRender : renderSlotEdit;
-    const Slot = (dzProps) => render(__spreadProps(__spreadValues({
-      allow: (field == null ? void 0 : field.type) === "slot" ? field.allow : [],
-      disallow: (field == null ? void 0 : field.type) === "slot" ? field.disallow : []
-    }, dzProps), {
+    const Slot = (dzProps) => render({
+      allow: field?.type === "slot" ? field.allow : [],
+      disallow: field?.type === "slot" ? field.disallow : [],
+      ...dzProps,
       zone: propName,
       content
-    }));
+    });
     return Slot;
   }
 });
@@ -9223,9 +9181,10 @@ var mapDeep = (source, path, render) => {
   if (Array.isArray(source)) {
     return source.map((item) => mapDeep(item, path, render));
   }
-  return __spreadProps(__spreadValues({}, source), {
+  return {
+    ...source,
     [key]: mapDeep(source[key], rest, render)
-  });
+  };
 };
 
 // components/RichTextEditor/lib/use-richtext-props.tsx
@@ -9253,13 +9212,13 @@ var findAllRichtextKeys = (fields, path = []) => {
 function useRichtextProps(fields, props) {
   const richtextKeys = (0, import_react60.useMemo)(() => findAllRichtextKeys(fields), [fields]);
   const richtextProps = (0, import_react60.useMemo)(() => {
-    if (!(richtextKeys == null ? void 0 : richtextKeys.length)) return {};
+    if (!richtextKeys?.length) return {};
     const RichTextRender3 = (0, import_react60.lazy)(
       () => Promise.resolve().then(() => (init_Render(), Render_exports)).then((m) => ({
         default: m.RichTextRender
       }))
     );
-    let result = __spreadValues({}, props);
+    let result = { ...props };
     for (const { path, field } of richtextKeys) {
       result = mapDeep(result, path, (content) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
         import_react60.Suspense,
@@ -9277,27 +9236,30 @@ function useRichtextProps(fields, props) {
 
 // components/SlotRender/server.tsx
 var import_jsx_runtime60 = require("react/jsx-runtime");
-var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SlotRender, __spreadValues({}, props));
+var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SlotRender, { ...props });
 var Item2 = ({
   config,
   item,
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SlotRenderPure, __spreadProps(__spreadValues({}, slotProps), { config, metadata })));
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
   const richtextProps = useRichtextProps(Component.fields, props);
   return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
     Component.render,
-    __spreadProps(__spreadValues(__spreadValues({}, props), richtextProps), {
-      credbuild: __spreadProps(__spreadValues({}, props.credbuild), {
+    {
+      ...props,
+      ...richtextProps,
+      credbuild: {
+        ...props.credbuild,
         metadata: metadata || {}
-      })
-    })
+      }
+    }
   );
 };
 var SlotRender = (0, import_react61.forwardRef)(
   function SlotRenderInternal({ className, style, content, config, metadata, as }, ref) {
-    const El = as != null ? as : "div";
+    const El = as ?? "div";
     return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(El, { className, style, ref, children: content.map((item) => {
       if (!config.components[item.type]) {
         return null;
@@ -9325,9 +9287,8 @@ var ContextSlotRender = ({
   const metadata = useAppStore((s) => s.metadata);
   const slotContent = useAppStore(
     (0, import_shallow5.useShallow)((s) => {
-      var _a, _b;
       const indexes = s.state.indexes;
-      const contentIds = (_b = (_a = indexes.zones[`${componentId}:${zone}`]) == null ? void 0 : _a.contentIds) != null ? _b : [];
+      const contentIds = indexes.zones[`${componentId}:${zone}`]?.contentIds ?? [];
       return contentIds.map((contentId) => indexes.nodes[contentId].flatData);
     })
   );
@@ -9354,14 +9315,15 @@ function Render({
   data,
   metadata = {}
 }) {
-  var _a, _b;
-  const defaultedData = __spreadProps(__spreadValues({}, data), {
+  const defaultedData = {
+    ...data,
     root: data.root || {},
     content: data.content || []
-  });
+  };
   const rootProps = "props" in defaultedData.root ? defaultedData.root.props : defaultedData.root;
-  const title = (rootProps == null ? void 0 : rootProps.title) || "";
-  const pageProps = __spreadProps(__spreadValues({}, rootProps), {
+  const title = rootProps?.title || "";
+  const pageProps = {
+    ...rootProps,
     credbuild: {
       renderDropZone: DropZonePure,
       isEditing: false,
@@ -9371,13 +9333,13 @@ function Render({
     title,
     editMode: false,
     id: "credbuild-root"
-  });
+  };
   const propsWithSlots = useSlots(
     config,
     { type: "root", props: pageProps },
-    (props) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SlotRender, __spreadProps(__spreadValues({}, props), { config, metadata }))
+    (props) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SlotRender, { ...props, config, metadata })
   );
-  const richtextProps = useRichtextProps((_a = config.root) == null ? void 0 : _a.fields, pageProps);
+  const richtextProps = useRichtextProps(config.root?.fields, pageProps);
   const nextContextValue = (0, import_react62.useMemo)(
     () => ({
       mode: "render",
@@ -9385,8 +9347,8 @@ function Render({
     }),
     []
   );
-  if ((_b = config.root) == null ? void 0 : _b.render) {
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(config.root.render, __spreadProps(__spreadValues(__spreadValues({}, propsWithSlots), richtextProps), { children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneRenderPure, { zone: rootZone }) })) }) });
+  if (config.root?.render) {
+    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneRenderPure, { zone: rootZone }) }) }) });
   }
   return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneRenderPure, { zone: rootZone }) }) });
 }
@@ -9406,12 +9368,11 @@ function useFieldTransformsTracked(config, item, transforms, readOnly, forceRead
     [transforms, readOnly, forceReadOnly]
   );
   const transformedProps = (0, import_react63.useMemo)(() => {
-    var _a, _b, _c;
     const changedProps = {};
-    const componentConfig = item.type === "root" ? config.root : (_a = config.components) == null ? void 0 : _a[item.type];
+    const componentConfig = item.type === "root" ? config.root : config.components?.[item.type];
     let changeIncludesSlot = false;
     for (const fieldName in item.props) {
-      const fieldType = (_c = (_b = componentConfig == null ? void 0 : componentConfig.fields) == null ? void 0 : _b[fieldName]) == null ? void 0 : _c.type;
+      const fieldType = componentConfig?.fields?.[fieldName]?.type;
       if (!prevProps.current || item.props[fieldName] !== prevProps.current[fieldName]) {
         changedProps[fieldName] = item.props[fieldName];
         if (fieldType === "slot") {
@@ -9422,17 +9383,17 @@ function useFieldTransformsTracked(config, item, transforms, readOnly, forceRead
     changedProps.id = item.props.id;
     prevProps.current = item.props;
     const mapped = mapFields(
-      __spreadProps(__spreadValues({}, item), { props: changedProps }),
+      { ...item, props: changedProps },
       mappers,
       config,
       false,
       changeIncludesSlot
     ).props;
-    prevResult.current = __spreadValues(__spreadValues({}, prevResult.current), mapped);
+    prevResult.current = { ...prevResult.current, ...mapped };
     return prevResult.current;
   }, [config, item, mappers]);
   const mergedProps = (0, import_react63.useMemo)(
-    () => __spreadValues(__spreadValues({}, item.props), transformedProps),
+    () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
   return mergedProps;
@@ -9496,7 +9457,7 @@ var registerOverlayPortal = (el, opts = {}) => {
 // components/InlineTextField/index.tsx
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/InlineTextField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/InlineTextField/styles.module.css#css-module
 init_react_import();
 var styles_module_default17 = { "InlineTextField": "_InlineTextField_104qp_1" };
 
@@ -9523,10 +9484,9 @@ var InlineTextFieldInternal = ({
   isReadOnly,
   opts = {}
 }) => {
-  var _a;
   const ref = (0, import_react64.useRef)(null);
   const appStoreApi = useAppStoreApi();
-  const disableLineBreaks = (_a = opts.disableLineBreaks) != null ? _a : false;
+  const disableLineBreaks = opts.disableLineBreaks ?? false;
   (0, import_react64.useEffect)(() => {
     const appStore = appStoreApi.getState();
     const data = appStore.state.indexes.nodes[componentId].data;
@@ -9541,12 +9501,11 @@ var InlineTextFieldInternal = ({
         ref.current.replaceChildren(value);
       }
       const cleanupPortal = registerOverlayPortal(ref.current);
-      const handleInput = (e) => __async(null, null, function* () {
-        var _a2;
+      const handleInput = async (e) => {
         const appStore2 = appStoreApi.getState();
         const node = appStore2.state.indexes.nodes[componentId];
         const zoneCompound = `${node.parentId}:${node.zone}`;
-        const index = (_a2 = appStore2.state.indexes.zones[zoneCompound]) == null ? void 0 : _a2.contentIds.indexOf(
+        const index = appStore2.state.indexes.zones[zoneCompound]?.contentIds.indexOf(
           componentId
         );
         let value2 = e.target.innerText;
@@ -9554,8 +9513,8 @@ var InlineTextFieldInternal = ({
           value2 = value2.replaceAll(/\n/gm, "");
         }
         const newProps = setDeep(node.data.props, propPath, value2);
-        const resolvedData = yield appStore2.resolveComponentData(
-          __spreadProps(__spreadValues({}, node.data), { props: newProps }),
+        const resolvedData = await appStore2.resolveComponentData(
+          { ...node.data, props: newProps },
           "replace"
         );
         appStore2.dispatch({
@@ -9564,12 +9523,12 @@ var InlineTextFieldInternal = ({
           destinationIndex: index,
           destinationZone: zoneCompound
         });
-      });
+      };
       const el = ref.current;
       el.addEventListener("input", handleInput);
       return () => {
         el.removeEventListener("input", handleInput);
-        cleanupPortal == null ? void 0 : cleanupPortal();
+        cleanupPortal?.();
       };
     }
   }, [appStoreApi, ref, value, disableLineBreaks, componentId, propPath]);
@@ -9704,20 +9663,19 @@ var InlineEditorWrapper = (0, import_react65.memo)(
       const cleanup = registerOverlayPortal(portalRef.current, {
         disableDragOnFocus: true
       });
-      return () => cleanup == null ? void 0 : cleanup();
+      return () => cleanup?.();
     }, []);
     const handleChange = (0, import_react65.useCallback)(
-      (content, ui) => __async(null, null, function* () {
-        var _a;
+      async (content, ui) => {
         const appStore = appStoreApi.getState();
         const node = appStore.state.indexes.nodes[componentId];
         const zoneCompound = `${node.parentId}:${node.zone}`;
-        const index = (_a = appStore.state.indexes.zones[zoneCompound]) == null ? void 0 : _a.contentIds.indexOf(
+        const index = appStore.state.indexes.zones[zoneCompound]?.contentIds.indexOf(
           componentId
         );
         const newProps = setDeep(node.data.props, propPath, content);
-        const resolvedData = yield appStore.resolveComponentData(
-          __spreadProps(__spreadValues({}, node.data), { props: newProps }),
+        const resolvedData = await appStore.resolveComponentData(
+          { ...node.data, props: newProps },
           "replace"
         );
         appStore.dispatch({
@@ -9727,7 +9685,7 @@ var InlineEditorWrapper = (0, import_react65.memo)(
           destinationZone: zoneCompound,
           ui
         });
-      }),
+      },
       [appStoreApi, componentId, propPath]
     );
     const handleFocus = (0, import_react65.useCallback)(
@@ -9761,7 +9719,7 @@ var InlineEditorWrapper = (0, import_react65.memo)(
         ref: portalRef,
         onClick: onClickHandler,
         onClickCapture: onClickCaptureHandler,
-        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(EditorFallback, __spreadValues({}, editorProps)), children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Editor3, __spreadValues({}, editorProps)) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Editor3, { ...editorProps }) })
       }
     );
   }
@@ -9823,7 +9781,7 @@ var RenderComponent = ({
   Component,
   componentProps: renderProps
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Component, __spreadValues({}, renderProps));
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Component, { ...renderProps });
 };
 var MemoizeComponent = (0, import_react66.memo)(RenderComponent, (prev, next) => {
   let credbuildEquals = true;
@@ -9844,10 +9802,10 @@ init_react_import();
 var getFrame = () => {
   if (typeof window === "undefined") return;
   let frameEl = document.querySelector("#preview-frame");
-  if ((frameEl == null ? void 0 : frameEl.tagName) === "IFRAME") {
+  if (frameEl?.tagName === "IFRAME") {
     return frameEl.contentDocument || document;
   }
-  return (frameEl == null ? void 0 : frameEl.ownerDocument) || document;
+  return frameEl?.ownerDocument || document;
 };
 
 // components/DropZone/VirtualizedDropZone.tsx
@@ -9855,10 +9813,7 @@ var import_jsx_runtime67 = require("react/jsx-runtime");
 var ROOT_ZONE_VIRTUALIZATION_OVERSCAN = 5;
 var DEFAULT_VIRTUALIZED_ITEM_HEIGHT = 320;
 var measuredItemHeights = /* @__PURE__ */ new Map();
-var getEstimatedItemHeight = (componentId) => {
-  var _a;
-  return (_a = measuredItemHeights.get(componentId)) != null ? _a : DEFAULT_VIRTUALIZED_ITEM_HEIGHT;
-};
+var getEstimatedItemHeight = (componentId) => measuredItemHeights.get(componentId) ?? DEFAULT_VIRTUALIZED_ITEM_HEIGHT;
 var cacheMeasuredItemHeight = (componentId, height) => {
   if (height <= 0) {
     return;
@@ -9870,31 +9825,25 @@ var VirtualizedDropZone = ({
   zoneCompound,
   renderItem
 }) => {
-  const selectedId = useAppStore((s) => {
-    var _a, _b;
-    return (_b = (_a = s.selectedItem) == null ? void 0 : _a.props.id) != null ? _b : null;
-  });
+  const selectedId = useAppStore((s) => s.selectedItem?.props.id ?? null);
   const frame = getFrame();
   const zoneStore = (0, import_react67.useContext)(ZoneStoreContext);
   const draggedItemId = useContextStore(ZoneStoreContext, (s) => {
-    var _a;
-    const draggedId = (_a = s.draggedItem) == null ? void 0 : _a.id;
+    const draggedId = s.draggedItem?.id;
     return draggedId ? String(draggedId) : null;
   });
   const dragTargetParentId = useContextStore(ZoneStoreContext, (s) => {
-    var _a, _b;
-    if ((_a = s.draggedItem) == null ? void 0 : _a.id) {
-      const parentZone = Object.keys((_b = s.previewIndex) != null ? _b : {})[0];
-      return parentZone == null ? void 0 : parentZone.split(":")[0];
+    if (s.draggedItem?.id) {
+      const parentZone = Object.keys(s.previewIndex ?? {})[0];
+      return parentZone?.split(":")[0];
     }
     return null;
   });
-  const iframeWindow = frame == null ? void 0 : frame.defaultView;
+  const iframeWindow = frame?.defaultView;
   const measureRefsRef = (0, import_react67.useRef)(/* @__PURE__ */ new Map());
   const appStoreApi = useAppStoreApi();
   const resolveIndex = (0, import_react67.useCallback)(
     (targetId) => {
-      var _a, _b, _c, _d;
       if (!targetId || targetId === "root") {
         return -1;
       }
@@ -9902,9 +9851,9 @@ var VirtualizedDropZone = ({
       if (directIndex > -1) {
         return directIndex;
       }
-      const path = (_c = (_b = (_a = appStoreApi.getState().state.indexes.nodes) == null ? void 0 : _a[targetId]) == null ? void 0 : _b.path) != null ? _c : [];
+      const path = appStoreApi.getState().state.indexes.nodes?.[targetId]?.path ?? [];
       for (let i = path.length - 1; i >= 0; i -= 1) {
-        const candidateId = (_d = path[i]) == null ? void 0 : _d.split(":")[0];
+        const candidateId = path[i]?.split(":")[0];
         if (!candidateId || candidateId === "root") {
           continue;
         }
@@ -9944,7 +9893,7 @@ var VirtualizedDropZone = ({
     count: contentIds.length,
     getItemKey: (index) => contentIds[index],
     estimateSize: (index) => getEstimatedItemHeight(contentIds[index]),
-    getScrollElement: () => iframeWindow != null ? iframeWindow : null,
+    getScrollElement: () => iframeWindow ?? null,
     overscan: ROOT_ZONE_VIRTUALIZATION_OVERSCAN,
     observeElementRect: (instance, cb) => iframeWindow ? (0, import_react_virtual.observeWindowRect)(instance, cb) : (0, import_react_virtual.observeElementRect)(instance, cb),
     observeElementOffset: (instance, cb) => iframeWindow ? (0, import_react_virtual.observeWindowOffset)(instance, cb) : (0, import_react_virtual.observeElementOffset)(instance, cb),
@@ -10052,7 +10001,7 @@ var InsertPreview = ({
   }
   return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DrawerItemInner, { name: label, children: override });
 };
-var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, __spreadValues({}, props));
+var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, { ...props });
 var DropZoneChild = ({
   zoneCompound,
   componentId,
@@ -10062,28 +10011,20 @@ var DropZoneChild = ({
   inDroppableZone,
   itemRef
 }) => {
-  var _a, _b;
   const metadata = useAppStore((s) => s.metadata);
   const ctx = (0, import_react68.useContext)(dropZoneContext);
-  const { depth = 1 } = ctx != null ? ctx : {};
+  const { depth = 1 } = ctx ?? {};
   const zoneStore = (0, import_react68.useContext)(ZoneStoreContext);
   const nodeProps = useAppStore(
     (0, import_shallow6.useShallow)((s) => {
-      var _a2;
-      return (_a2 = s.state.indexes.nodes[componentId]) == null ? void 0 : _a2.flatData.props;
+      return s.state.indexes.nodes[componentId]?.flatData.props;
     })
   );
   const nodeType = useAppStore(
-    (s) => {
-      var _a2;
-      return (_a2 = s.state.indexes.nodes[componentId]) == null ? void 0 : _a2.data.type;
-    }
+    (s) => s.state.indexes.nodes[componentId]?.data.type
   );
   const nodeReadOnly = useAppStore(
-    (0, import_shallow6.useShallow)((s) => {
-      var _a2;
-      return (_a2 = s.state.indexes.nodes[componentId]) == null ? void 0 : _a2.data.readOnly;
-    })
+    (0, import_shallow6.useShallow)((s) => s.state.indexes.nodes[componentId]?.data.readOnly)
   );
   const appStore = useAppStoreApi();
   const item = (0, import_react68.useMemo)(() => {
@@ -10095,7 +10036,7 @@ var DropZoneChild = ({
       return expanded;
     }
     const preview = zoneStore.getState().previewIndex[zoneCompound];
-    if (componentId === (preview == null ? void 0 : preview.props.id)) {
+    if (componentId === preview?.props.id) {
       return {
         type: preview.componentType,
         props: preview.props,
@@ -10106,54 +10047,53 @@ var DropZoneChild = ({
     return null;
   }, [componentId, zoneCompound, nodeType, nodeProps, zoneStore]);
   const componentConfig = useAppStore(
-    (s) => (item == null ? void 0 : item.type) ? s.config.components[item.type] : null
+    (s) => item?.type ? s.config.components[item.type] : null
   );
   const credbuildProps = (0, import_react68.useMemo)(
     () => ({
       renderDropZone: DropZoneEditPure,
       isEditing: true,
       dragRef: null,
-      metadata: __spreadValues(__spreadValues({}, metadata), componentConfig == null ? void 0 : componentConfig.metadata)
+      metadata: { ...metadata, ...componentConfig?.metadata }
     }),
-    [metadata, componentConfig == null ? void 0 : componentConfig.metadata]
+    [metadata, componentConfig?.metadata]
   );
   const overrides = useAppStore((s) => s.overrides);
   const isLoading = useAppStore(
-    (s) => {
-      var _a2;
-      return ((_a2 = s.componentState[componentId]) == null ? void 0 : _a2.loadingCount) > 0;
-    }
+    (s) => s.componentState[componentId]?.loadingCount > 0
   );
   const isSelected = useAppStore(
-    (s) => {
-      var _a2;
-      return ((_a2 = s.selectedItem) == null ? void 0 : _a2.props.id) === componentId || false;
-    }
+    (s) => s.selectedItem?.props.id === componentId || false
   );
-  let label = (_b = (_a = componentConfig == null ? void 0 : componentConfig.label) != null ? _a : item == null ? void 0 : item.type.toString()) != null ? _b : "Component";
+  let label = componentConfig?.label ?? item?.type.toString() ?? "Component";
   const defaultsProps = (0, import_react68.useMemo)(
-    () => __spreadProps(__spreadValues(__spreadValues({}, componentConfig == null ? void 0 : componentConfig.defaultProps), item == null ? void 0 : item.props), {
+    () => ({
+      ...componentConfig?.defaultProps,
+      ...item?.props,
       credbuild: credbuildProps,
       editMode: true
       // DEPRECATED
     }),
-    [componentConfig == null ? void 0 : componentConfig.defaultProps, item == null ? void 0 : item.props, credbuildProps]
+    [componentConfig?.defaultProps, item?.props, credbuildProps]
   );
   const defaultedNode = (0, import_react68.useMemo)(
-    () => {
-      var _a2;
-      return { type: (_a2 = item == null ? void 0 : item.type) != null ? _a2 : nodeType, props: defaultsProps };
-    },
-    [item == null ? void 0 : item.type, nodeType, defaultsProps]
+    () => ({ type: item?.type ?? nodeType, props: defaultsProps }),
+    [item?.type, nodeType, defaultsProps]
   );
   const config = useAppStore((s) => s.config);
   const plugins = useAppStore((s) => s.plugins);
   const userFieldTransforms = useAppStore((s) => s.fieldTransforms);
   const combinedFieldTransforms = (0, import_react68.useMemo)(
-    () => __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone }))), getInlineTextTransform()), getRichTextTransform()), plugins.reduce(
-      (acc, plugin) => __spreadValues(__spreadValues({}, acc), plugin.fieldTransforms),
-      {}
-    )), userFieldTransforms),
+    () => ({
+      ...getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone })),
+      ...getInlineTextTransform(),
+      ...getRichTextTransform(),
+      ...plugins.reduce(
+        (acc, plugin) => ({ ...acc, ...plugin.fieldTransforms }),
+        {}
+      ),
+      ...userFieldTransforms
+    }),
     [plugins, userFieldTransforms, componentId]
   );
   const transformedProps = useFieldTransformsTracked(
@@ -10186,15 +10126,15 @@ var DropZoneChild = ({
       inDroppableZone,
       itemRef,
       children: (dragRef) => {
-        var _a2;
-        if ((componentConfig == null ? void 0 : componentConfig.inline) && !isInserting) {
+        if (componentConfig?.inline && !isInserting) {
           return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
             MemoizeComponent,
             {
               Component: Render2,
-              componentProps: __spreadProps(__spreadValues({}, transformedProps), {
-                credbuild: __spreadProps(__spreadValues({}, transformedProps.credbuild), { dragRef })
-              })
+              componentProps: {
+                ...transformedProps,
+                credbuild: { ...transformedProps.credbuild, dragRef }
+              }
             }
           );
         }
@@ -10202,7 +10142,7 @@ var DropZoneChild = ({
           InsertPreview,
           {
             label,
-            override: (_a2 = overrides.componentItem) != null ? _a2 : overrides.drawerItem,
+            override: overrides.componentItem ?? overrides.drawerItem,
             element: "element" in item && item.element ? item.element : void 0
           }
         ) : /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
@@ -10236,12 +10176,9 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
       depth = 0,
       registerLocalZone,
       unregisterLocalZone
-    } = ctx != null ? ctx : {};
+    } = ctx ?? {};
     const path = useAppStore(
-      (0, import_shallow6.useShallow)((s) => {
-        var _a;
-        return areaId ? (_a = s.state.indexes.nodes[areaId]) == null ? void 0 : _a.path : null;
-      })
+      (0, import_shallow6.useShallow)((s) => areaId ? s.state.indexes.nodes[areaId]?.path : null)
     );
     let zoneCompound = rootDroppableId;
     if (areaId) {
@@ -10256,20 +10193,18 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
     );
     const zoneContentIds = useAppStore(
       (0, import_shallow6.useShallow)((s) => {
-        var _a;
-        return (_a = s.state.indexes.zones[zoneCompound]) == null ? void 0 : _a.contentIds;
+        return s.state.indexes.zones[zoneCompound]?.contentIds;
       })
     );
     const zoneType = useAppStore(
       (0, import_shallow6.useShallow)((s) => {
-        var _a;
-        return (_a = s.state.indexes.zones[zoneCompound]) == null ? void 0 : _a.type;
+        return s.state.indexes.zones[zoneCompound]?.type;
       })
     );
     (0, import_react68.useEffect)(() => {
       if (!zoneType || zoneType === "dropzone") {
-        if (ctx == null ? void 0 : ctx.registerZone) {
-          ctx == null ? void 0 : ctx.registerZone(zoneCompound);
+        if (ctx?.registerZone) {
+          ctx?.registerZone(zoneCompound);
         }
       }
     }, [zoneType, appStoreApi, ctx, zoneCompound]);
@@ -10309,15 +10244,13 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
       [allow, disallow]
     );
     const targetAccepted = useContextStore(ZoneStoreContext, (s) => {
-      var _a;
-      const draggedComponentType = (_a = s.draggedItem) == null ? void 0 : _a.data.componentType;
+      const draggedComponentType = s.draggedItem?.data.componentType;
       return acceptsTarget(draggedComponentType);
     });
     const hoveringOverArea = inNextDeepestArea || isRootZone;
     const isEnabled = useContextStore(ZoneStoreContext, (s) => {
-      var _a;
       let _isEnabled = true;
-      const isDeepestZone = (_a = s.zoneDepthIndex[zoneCompound]) != null ? _a : false;
+      const isDeepestZone = s.zoneDepthIndex[zoneCompound] ?? false;
       _isEnabled = isDeepestZone;
       if (_isEnabled) {
         _isEnabled = targetAccepted;
@@ -10343,7 +10276,7 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
     (0, import_react68.useEffect)(() => {
       const { enabledIndex } = zoneStore.getState();
       zoneStore.setState({
-        enabledIndex: __spreadProps(__spreadValues({}, enabledIndex), { [zoneCompound]: isEnabled })
+        enabledIndex: { ...enabledIndex, [zoneCompound]: isEnabled }
       });
     }, [isEnabled, zoneStore, zoneCompound]);
     const droppableConfig = {
@@ -10361,7 +10294,7 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
     };
     const { ref: dropRef } = (0, import_react69.useDroppable)(droppableConfig);
     const isAreaSelected = useAppStore(
-      (s) => (s == null ? void 0 : s.selectedItem) && areaId === (s == null ? void 0 : s.selectedItem.props.id)
+      (s) => s?.selectedItem && areaId === s?.selectedItem.props.id
     );
     const [dragAxis] = useDragAxis(ref, collisionAxis);
     const [minEmptyHeight, isAnimating] = useMinEmptyHeight({
@@ -10378,8 +10311,8 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
     const _experimentalVirtualization = useAppStore(
       (s) => s._experimentalVirtualization
     );
-    const El = as != null ? as : "div";
-    const isRootAreaZone = (areaId != null ? areaId : rootAreaId) === rootAreaId && depth === 0;
+    const El = as ?? "div";
+    const isRootAreaZone = (areaId ?? rootAreaId) === rootAreaId && depth === 0;
     const shouldVirtualizeItems = _experimentalVirtualization && isRootAreaZone;
     return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
       El,
@@ -10395,10 +10328,11 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
         ref: setRefs,
         "data-testid": `dropzone:${zoneCompound}`,
         "data-credbuild-dropzone": zoneCompound,
-        style: __spreadProps(__spreadValues({}, style), {
+        style: {
+          ...style,
           "--min-empty-height": minEmptyHeight,
-          backgroundColor: RENDER_DEBUG ? getRandomColor() : style == null ? void 0 : style.backgroundColor
-        }),
+          backgroundColor: RENDER_DEBUG ? getRandomColor() : style?.backgroundColor
+        },
         children: shouldVirtualizeItems ? /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           VirtualizedDropZone,
           {
@@ -10440,7 +10374,7 @@ var DropZoneRenderItem = ({
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SlotRenderPure, __spreadProps(__spreadValues({}, slotProps), { config, metadata })));
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
   const nextContextValue = (0, import_react68.useMemo)(
     () => ({
       areaId: props.id,
@@ -10451,15 +10385,18 @@ var DropZoneRenderItem = ({
   const richtextProps = useRichtextProps(Component.fields, props);
   return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
     Component.render,
-    __spreadProps(__spreadValues(__spreadValues({}, props), richtextProps), {
-      credbuild: __spreadProps(__spreadValues({}, props.credbuild), {
+    {
+      ...props,
+      ...richtextProps,
+      credbuild: {
+        ...props.credbuild,
         renderDropZone: DropZoneRenderPure,
-        metadata: __spreadValues(__spreadValues({}, metadata), Component.metadata)
-      })
-    })
+        metadata: { ...metadata, ...Component.metadata }
+      }
+    }
   ) }, props.id);
 };
-var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, __spreadValues({}, props));
+var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, { ...props });
 var DropZoneRender = (0, import_react68.forwardRef)(
   function DropZoneRenderInternal({ className, style, zone, as }, ref) {
     const ctx = (0, import_react68.useContext)(dropZoneContext);
@@ -10470,16 +10407,16 @@ var DropZoneRender = (0, import_react68.forwardRef)(
       if (zoneCompound !== rootDroppableId) {
         return setupZone(data, zoneCompound).zones[zoneCompound];
       }
-      return (data == null ? void 0 : data.content) || [];
+      return data?.content || [];
     }, [data, zoneCompound]);
     (0, import_react68.useEffect)(() => {
       if (!content) {
-        if (ctx == null ? void 0 : ctx.registerZone) {
-          ctx == null ? void 0 : ctx.registerZone(zoneCompound);
+        if (ctx?.registerZone) {
+          ctx?.registerZone(zoneCompound);
         }
       }
     }, [content, ctx, zoneCompound]);
-    const El = as != null ? as : "div";
+    const El = as ?? "div";
     if (!data || !config) {
       return null;
     }
@@ -10500,14 +10437,14 @@ var DropZoneRender = (0, import_react68.forwardRef)(
     }) });
   }
 );
-var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZone, __spreadValues({}, props));
+var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZone, { ...props });
 var DropZone = (0, import_react68.forwardRef)(
   function DropZone2(props, ref) {
     const ctx = (0, import_react68.useContext)(dropZoneContext);
-    if ((ctx == null ? void 0 : ctx.mode) === "edit") {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, __spreadProps(__spreadValues({}, props), { ref })) });
+    if (ctx?.mode === "edit") {
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, { ...props, ref }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, __spreadProps(__spreadValues({}, props), { ref })) });
+    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, { ...props, ref }) });
   }
 );
 
@@ -10535,7 +10472,7 @@ function throttle(func, limit) {
       func.apply(context, args);
       lastRan = now;
     } else {
-      cancel == null ? void 0 : cancel();
+      cancel?.();
       cancel = timeout2(() => {
         func.apply(context, args);
         lastRan = time();
@@ -10551,13 +10488,12 @@ var GlobalPosition = class {
     this.scaleFactor = 1;
     this.frameEl = null;
     this.frameRect = null;
-    var _a;
     this.target = target;
     this.original = original;
     this.frameEl = document.querySelector("iframe#preview-frame");
     if (this.frameEl) {
       this.frameRect = this.frameEl.getBoundingClientRect();
-      this.scaleFactor = this.frameRect.width / (((_a = this.frameEl.contentWindow) == null ? void 0 : _a.innerWidth) || 1);
+      this.scaleFactor = this.frameRect.width / (this.frameEl.contentWindow?.innerWidth || 1);
     }
   }
   get x() {
@@ -10621,7 +10557,7 @@ var depthSort = (candidates) => {
   });
 };
 var getZoneId2 = (candidate) => {
-  let id = candidate == null ? void 0 : candidate.id;
+  let id = candidate?.id;
   if (!candidate) return null;
   if (candidate.type === "component") {
     const data = candidate.data;
@@ -10690,15 +10626,14 @@ var getPointerCollisions = (position, manager) => {
   return candidates;
 };
 var findDeepestCandidate = (position, manager) => {
-  var _a;
   const candidates = getPointerCollisions(position, manager);
   if (candidates.length > 0) {
     const sortedCandidates = depthSort(candidates);
     const draggable = manager.dragOperation.source;
     const draggedCandidateIndex = sortedCandidates.findIndex(
-      (candidate) => candidate.id === (draggable == null ? void 0 : draggable.id)
+      (candidate) => candidate.id === draggable?.id
     );
-    const draggedCandidateId = draggable == null ? void 0 : draggable.id;
+    const draggedCandidateId = draggable?.id;
     let filteredCandidates = [...sortedCandidates];
     if (draggedCandidateId && draggedCandidateIndex > -1) {
       filteredCandidates.splice(draggedCandidateIndex, 1);
@@ -10732,7 +10667,7 @@ var findDeepestCandidate = (position, manager) => {
     const primaryCandidateData = primaryCandidate.data;
     const primaryCandidateIsComponent = "containsActiveZone" in primaryCandidateData;
     const zone = getZoneId2(primaryCandidate);
-    const area = primaryCandidateIsComponent && primaryCandidateData.containsActiveZone ? filteredCandidates[0].id : (_a = filteredCandidates[0]) == null ? void 0 : _a.data.areaId;
+    const area = primaryCandidateIsComponent && primaryCandidateData.containsActiveZone ? filteredCandidates[0].id : filteredCandidates[0]?.data.areaId;
     return { zone, area };
   }
   return {
@@ -10785,7 +10720,7 @@ init_react_import();
 init_insert2();
 init_generate_id();
 init_get_item();
-var insertComponent = (componentType, zone, index, appStore) => __async(null, null, function* () {
+var insertComponent = async (componentType, zone, index, appStore) => {
   const { getState } = appStore;
   const id = generateId(componentType);
   const insertActionData = {
@@ -10798,19 +10733,20 @@ var insertComponent = (componentType, zone, index, appStore) => __async(null, nu
   const stateBefore = getState().state;
   const insertedState = insertAction(stateBefore, insertActionData, getState());
   const dispatch = getState().dispatch;
-  dispatch(__spreadProps(__spreadValues({}, insertActionData), {
+  dispatch({
+    ...insertActionData,
     // Dispatch insert rather set, as user's may rely on this via onAction
     // We must always record history here so the insert is added to user history
     // If the user has defined a resolveData method, they will end up with 2 history
     // entries on insert - one for the initial insert, and one when the data resolves
     recordHistory: true
-  }));
+  });
   const itemSelector = { index, zone };
   dispatch({ type: "setUi", ui: { itemSelector } });
   const itemData = getItem(itemSelector, insertedState);
   if (!itemData) return;
   const resolveComponentData2 = getState().resolveComponentData;
-  const resolved = yield resolveComponentData2(itemData, "insert");
+  const resolved = await resolveComponentData2(itemData, "insert");
   if (!resolved.didChange) return;
   const latestItemSelector = getSelectorForId(getState().state, id);
   if (!latestItemSelector) return;
@@ -10820,26 +10756,25 @@ var insertComponent = (componentType, zone, index, appStore) => __async(null, nu
     destinationIndex: latestItemSelector.index,
     data: resolved.node
   });
-});
+};
 
 // lib/move-component.ts
 init_react_import();
 init_root_droppable_id();
-var moveComponent = (id, sourceSelector, destinationSelector, appStore) => __async(null, null, function* () {
-  var _a, _b, _c, _d;
+var moveComponent = async (id, sourceSelector, destinationSelector, appStore) => {
   const dispatch = appStore.getState().dispatch;
   dispatch({
     type: "move",
     sourceIndex: sourceSelector.index,
-    sourceZone: (_a = sourceSelector.zone) != null ? _a : rootDroppableId,
+    sourceZone: sourceSelector.zone ?? rootDroppableId,
     destinationIndex: destinationSelector.index,
-    destinationZone: (_b = destinationSelector.zone) != null ? _b : rootDroppableId,
+    destinationZone: destinationSelector.zone ?? rootDroppableId,
     recordHistory: false
   });
-  const componentData = (_c = appStore.getState().state.indexes.nodes[id]) == null ? void 0 : _c.data;
+  const componentData = appStore.getState().state.indexes.nodes[id]?.data;
   if (!componentData) return;
   const resolveComponentData2 = appStore.getState().resolveComponentData;
-  const resolvedData = yield resolveComponentData2(componentData, "move");
+  const resolvedData = await resolveComponentData2(componentData, "move");
   const latestItemSelector = getSelectorForId(
     appStore.getState().state,
     componentData.props.id
@@ -10850,9 +10785,9 @@ var moveComponent = (id, sourceSelector, destinationSelector, appStore) => __asy
       type: "replace",
       data: resolvedData.node,
       destinationIndex: latestItemSelector.index,
-      destinationZone: (_d = latestItemSelector.zone) != null ? _d : rootDroppableId
+      destinationZone: latestItemSelector.zone ?? rootDroppableId
     });
-});
+};
 
 // components/DragDropContext/index.tsx
 var import_use_debounce2 = require("use-debounce");
@@ -10889,11 +10824,13 @@ function useDragListener(type, fn, deps = []) {
       const wrappedFn = ((...args) => {
         return fnRef.current(...args);
       });
-      setDragListeners((old) => __spreadProps(__spreadValues({}, old), {
+      setDragListeners((old) => ({
+        ...old,
         [type]: [...old[type] || [], { id, fn: wrappedFn }]
       }));
       return () => {
-        setDragListeners((old) => __spreadProps(__spreadValues({}, old), {
+        setDragListeners((old) => ({
+          ...old,
           [type]: (old[type] || []).filter((item) => item.id !== id)
         }));
       };
@@ -10957,8 +10894,8 @@ var DragDropContextClient = ({
           }
         } else {
           const frame = getFrame();
-          const el = frame == null ? void 0 : frame.querySelector(`[data-credbuild-component="${id}"]`);
-          el == null ? void 0 : el.scrollIntoView({ behavior: "smooth" });
+          const el = frame?.querySelector(`[data-credbuild-component="${id}"]`);
+          el?.scrollIntoView({ behavior: "smooth" });
         }
       }
     }));
@@ -11011,14 +10948,11 @@ var DragDropContextClient = ({
   (0, import_react71.useEffect)(() => {
     if (DEBUG3) {
       return zoneStore.subscribe(
-        (s) => {
-          var _a, _b;
-          return console.log(
-            s.previewIndex,
-            (_a = Object.entries(s.zoneDepthIndex || {})[0]) == null ? void 0 : _a[0],
-            (_b = Object.entries(s.areaDepthIndex || {})[0]) == null ? void 0 : _b[0]
-          );
-        }
+        (s) => console.log(
+          s.previewIndex,
+          Object.entries(s.zoneDepthIndex || {})[0]?.[0],
+          Object.entries(s.areaDepthIndex || {})[0]?.[0]
+        )
       );
     }
   }, [zoneStore]);
@@ -11041,7 +10975,7 @@ var DragDropContextClient = ({
             }
             zoneStore.setState({ nextZoneDepthIndex, nextAreaDepthIndex });
           }
-          if (params.zone !== "void" && (state == null ? void 0 : state.zoneDepthIndex["void"])) {
+          if (params.zone !== "void" && state?.zoneDepthIndex["void"]) {
             setDeepestAndCollide(params, manager);
             return;
           }
@@ -11094,9 +11028,8 @@ var DragDropContextClient = ({
           plugins,
           sensors,
           onDragEnd: (event, manager) => {
-            var _a, _b;
-            const entryEl = (_a = getFrame()) == null ? void 0 : _a.querySelector("[data-credbuild-entry]");
-            entryEl == null ? void 0 : entryEl.removeAttribute("data-credbuild-dragging");
+            const entryEl = getFrame()?.querySelector("[data-credbuild-entry]");
+            entryEl?.removeAttribute("data-credbuild-dragging");
             const { source, target } = event.operation;
             if (!source) {
               zoneStore.setState({ draggedItem: null });
@@ -11104,13 +11037,12 @@ var DragDropContextClient = ({
             }
             const { zone, index } = source.data;
             const { previewIndex = {} } = zoneStore.getState() || {};
-            const thisPreview = ((_b = previewIndex[zone]) == null ? void 0 : _b.props.id) === source.id ? previewIndex[zone] : null;
+            const thisPreview = previewIndex[zone]?.props.id === source.id ? previewIndex[zone] : null;
             const onAnimationEnd = () => {
-              var _a2, _b2, _c, _d;
               zoneStore.setState({ draggedItem: null });
-              if (event.canceled || (target == null ? void 0 : target.type) === "void") {
+              if (event.canceled || target?.type === "void") {
                 zoneStore.setState({ previewIndex: {} });
-                (_a2 = dragListeners.dragend) == null ? void 0 : _a2.forEach((item) => {
+                dragListeners.dragend?.forEach((item) => {
                   const fn = typeof item === "function" ? item : item.fn;
                   if (typeof fn === "function") {
                     fn(event, manager);
@@ -11143,7 +11075,7 @@ var DragDropContextClient = ({
                   );
                 }
               }
-              const movedToNewPosition = ((_b2 = initialSelector.current) == null ? void 0 : _b2.zone) !== (thisPreview == null ? void 0 : thisPreview.zone) || ((_c = initialSelector.current) == null ? void 0 : _c.index) !== (thisPreview == null ? void 0 : thisPreview.index);
+              const movedToNewPosition = initialSelector.current?.zone !== thisPreview?.zone || initialSelector.current?.index !== thisPreview?.index;
               dispatch({
                 type: "setUi",
                 ui: {
@@ -11152,7 +11084,7 @@ var DragDropContextClient = ({
                 },
                 recordHistory: movedToNewPosition
               });
-              (_d = dragListeners.dragend) == null ? void 0 : _d.forEach((item) => {
+              dragListeners.dragend?.forEach((item) => {
                 const fn = typeof item === "function" ? item : item.fn;
                 if (typeof fn === "function") {
                   fn(event, manager);
@@ -11163,14 +11095,13 @@ var DragDropContextClient = ({
             dispose = (0, import_state.effect)(() => {
               if (source.status === "idle") {
                 onAnimationEnd();
-                dispose == null ? void 0 : dispose();
+                dispose?.();
               }
             });
           },
           onDragOver: (event, manager) => {
-            var _a, _b, _c, _d;
             event.preventDefault();
-            const draggedItem = (_a = zoneStore.getState()) == null ? void 0 : _a.draggedItem;
+            const draggedItem = zoneStore.getState()?.draggedItem;
             if (!draggedItem) return;
             cancelDb();
             const { source, target } = event.operation;
@@ -11186,9 +11117,9 @@ var DragDropContextClient = ({
               const targetData = target.data;
               targetZone = targetData.zone;
               targetIndex = targetData.index;
-              const collisionData = (_b = manager.collisionObserver.collisions[0]) == null ? void 0 : _b.data;
+              const collisionData = manager.collisionObserver.collisions[0]?.data;
               const dir = getDeepDir(target.element);
-              const collisionPosition = (collisionData == null ? void 0 : collisionData.direction) === "up" || dir === "ltr" && (collisionData == null ? void 0 : collisionData.direction) === "left" || dir === "rtl" && (collisionData == null ? void 0 : collisionData.direction) === "right" ? "before" : "after";
+              const collisionPosition = collisionData?.direction === "up" || dir === "ltr" && collisionData?.direction === "left" || dir === "rtl" && collisionData?.direction === "right" ? "before" : "after";
               if (targetIndex >= sourceIndex && sourceZone === targetZone) {
                 targetIndex = targetIndex - 1;
               }
@@ -11199,7 +11130,7 @@ var DragDropContextClient = ({
               targetZone = target.id.toString();
               targetIndex = 0;
             }
-            const path = ((_c = appStore.getState().state.indexes.nodes[target.id]) == null ? void 0 : _c.path) || [];
+            const path = appStore.getState().state.indexes.nodes[target.id]?.path || [];
             if (targetId === sourceId || path.find((path2) => {
               const [pathId] = path2.split(":");
               return pathId === sourceId;
@@ -11247,7 +11178,7 @@ var DragDropContextClient = ({
                 });
               }
             }
-            (_d = dragListeners.dragover) == null ? void 0 : _d.forEach((item) => {
+            dragListeners.dragover?.forEach((item) => {
               const fn = typeof item === "function" ? item : item.fn;
               if (typeof fn === "function") {
                 fn(event, manager);
@@ -11255,7 +11186,6 @@ var DragDropContextClient = ({
             });
           },
           onDragStart: (event, manager) => {
-            var _a;
             const { source } = event.operation;
             if (source && source.type !== "void") {
               const sourceData = source.data;
@@ -11281,7 +11211,7 @@ var DragDropContextClient = ({
                 });
               }
             }
-            (_a = dragListeners.dragstart) == null ? void 0 : _a.forEach((item) => {
+            dragListeners.dragstart?.forEach((item) => {
               const fn = typeof item === "function" ? item : item.fn;
               if (typeof fn === "function") {
                 fn(event, manager);
@@ -11289,12 +11219,11 @@ var DragDropContextClient = ({
             });
           },
           onBeforeDragStart: (event) => {
-            var _a, _b, _c, _d;
-            const isNewComponent = ((_a = event.operation.source) == null ? void 0 : _a.type) === "drawer";
+            const isNewComponent = event.operation.source?.type === "drawer";
             dragMode.current = isNewComponent ? "new" : "existing";
             initialSelector.current = void 0;
             zoneStore.setState({ draggedItem: event.operation.source });
-            if (((_b = appStore.getState().selectedItem) == null ? void 0 : _b.props.id) !== ((_c = event.operation.source) == null ? void 0 : _c.id)) {
+            if (appStore.getState().selectedItem?.props.id !== event.operation.source?.id) {
               dispatch({
                 type: "setUi",
                 ui: {
@@ -11312,8 +11241,8 @@ var DragDropContextClient = ({
                 recordHistory: false
               });
             }
-            const entryEl = (_d = getFrame()) == null ? void 0 : _d.querySelector("[data-credbuild-entry]");
-            entryEl == null ? void 0 : entryEl.setAttribute("data-credbuild-dragging", "true");
+            const entryEl = getFrame()?.querySelector("[data-credbuild-entry]");
+            entryEl?.setAttribute("data-credbuild-dragging", "true");
           },
           children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ZoneStoreProvider, { store: zoneStore, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneProvider, { value: nextContextValue, children }) })
         }
@@ -11357,7 +11286,7 @@ var DrawerItemInner = ({
       "data-testid": dragRef ? `drawer-item:${name}` : "",
       "data-credbuild-drawer-item": true,
       children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(CustomInner, { name, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("draggableWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: getClassNameItem2("draggable"), children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("name"), children: label != null ? label : name }),
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("name"), children: label ?? name }),
         /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("icon"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(DragIcon, {}) })
       ] }) }) })
     }
@@ -11473,7 +11402,7 @@ init_Loader();
 init_root_droppable_id();
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Fields/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Fields/styles.module.css#css-module
 init_react_import();
 var styles_module_default18 = { "CredBuildFields": "_CredBuildFields_slc6y_1", "CredBuildFields--isLoading": "_CredBuildFields--isLoading_slc6y_6", "CredBuildFields-loadingOverlay": "_CredBuildFields-loadingOverlay_slc6y_10", "CredBuildFields-loadingOverlayInner": "_CredBuildFields-loadingOverlayInner_slc6y_25", "CredBuildFields-field": "_CredBuildFields-field_slc6y_32", "CredBuildFields--wrapFields": "_CredBuildFields--wrapFields_slc6y_36" };
 
@@ -11489,16 +11418,16 @@ var DefaultFields = ({
 }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_jsx_runtime71.Fragment, { children });
 };
-var createOnChange = (fieldName, appStore) => (value, updatedUi) => __async(null, null, function* () {
+var createOnChange = (fieldName, appStore) => async (value, updatedUi) => {
   const { dispatch, state, selectedItem, resolveComponentData: resolveComponentData2 } = appStore.getState();
   const { data, ui } = state;
   const { itemSelector } = ui;
   const rootProps = data.root.props || data.root;
   const currentProps = selectedItem ? selectedItem.props : rootProps;
-  const newProps = __spreadProps(__spreadValues({}, currentProps), { [fieldName]: value });
+  const newProps = { ...currentProps, [fieldName]: value };
   if (selectedItem && itemSelector) {
-    const resolved = yield resolveComponentData2(
-      __spreadProps(__spreadValues({}, selectedItem), { props: newProps }),
+    const resolved = await resolveComponentData2(
+      { ...selectedItem, props: newProps },
       "replace"
     );
     const latestSelector = getSelectorForId(
@@ -11518,11 +11447,11 @@ var createOnChange = (fieldName, appStore) => (value, updatedUi) => __async(null
   if (data.root.props) {
     dispatch({
       type: "replaceRoot",
-      root: (yield resolveComponentData2(
-        __spreadProps(__spreadValues({}, data.root), { props: newProps }),
+      root: (await resolveComponentData2(
+        { ...data.root, props: newProps },
         "replace"
       )).node,
-      ui: __spreadValues(__spreadValues({}, ui), updatedUi),
+      ui: { ...ui, ...updatedUi },
       recordHistory: true
     });
     return;
@@ -11531,7 +11460,7 @@ var createOnChange = (fieldName, appStore) => (value, updatedUi) => __async(null
     type: "setData",
     data: { root: newProps }
   });
-});
+};
 var FieldsChildInner = ({ fieldName }) => {
   const field = useAppStore((s) => s.fields.fields[fieldName]);
   const isReadOnly = useAppStore(
@@ -11549,19 +11478,18 @@ var FieldsChildInner = ({ fieldName }) => {
   );
   const appStore = useAppStoreApi();
   const onChange = (0, import_react74.useCallback)(
-    (value, updatedUi) => __async(null, null, function* () {
+    async (value, updatedUi) => {
       createOnChange(fieldName, appStore)(value, updatedUi);
-    }),
+    },
     [fieldName, appStore]
   );
-  const { visible = true } = field != null ? field : {};
+  const { visible = true } = field ?? {};
   const fieldStore = (0, import_react74.useContext)(fieldContextStore.ctx);
   (0, import_react74.useEffect)(() => {
     return appStore.subscribe(
       (s) => {
-        var _a;
         const data = s.getCurrentData();
-        return (_a = data.props) == null ? void 0 : _a[fieldName];
+        return data.props?.[fieldName];
       },
       (value) => {
         fieldStore.setState({ [fieldName]: value });
@@ -11584,8 +11512,7 @@ var FieldsChildInner = ({ fieldName }) => {
 var FieldsChild = ({ fieldName }) => {
   const appStore = useAppStoreApi();
   const initialValue = (0, import_react74.useMemo)(() => {
-    var _a;
-    const value = (_a = appStore.getState().getCurrentData().props) == null ? void 0 : _a[fieldName];
+    const value = appStore.getState().getCurrentData().props?.[fieldName];
     return { [fieldName]: value };
   }, [appStore, fieldName]);
   return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(fieldContextStore.Provider, { value: initialValue, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(FieldsChildInner, { fieldName }) });
@@ -11594,15 +11521,11 @@ var FieldsChildMemo = (0, import_react74.memo)(FieldsChild);
 var FieldsInternal = ({ wrapFields = true }) => {
   const overrides = useAppStore((s) => s.overrides);
   const componentResolving = useAppStore((s) => {
-    var _a, _b;
-    const loadingCount = s.selectedItem ? (_a = s.componentState[s.selectedItem.props.id]) == null ? void 0 : _a.loadingCount : (_b = s.componentState["root"]) == null ? void 0 : _b.loadingCount;
-    return (loadingCount != null ? loadingCount : 0) > 0;
+    const loadingCount = s.selectedItem ? s.componentState[s.selectedItem.props.id]?.loadingCount : s.componentState["root"]?.loadingCount;
+    return (loadingCount ?? 0) > 0;
   });
   const itemSelector = useAppStore((0, import_shallow7.useShallow)((s) => s.state.ui.itemSelector));
-  const id = useAppStore((s) => {
-    var _a;
-    return (_a = s.selectedItem) == null ? void 0 : _a.props.id;
-  });
+  const id = useAppStore((s) => s.selectedItem?.props.id);
   const appStore = useAppStoreApi();
   useRegisterFieldsSlice(appStore, id);
   const fieldsLoading = useAppStore((s) => s.fields.loading);
@@ -11642,7 +11565,7 @@ var import_react76 = require("react");
 // components/ComponentList/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ComponentList/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ComponentList/styles.module.css#css-module
 init_react_import();
 var styles_module_default19 = { "ComponentList": "_ComponentList_1jl8i_1", "ComponentList--isExpanded": "_ComponentList--isExpanded_1jl8i_5", "ComponentList-content": "_ComponentList-content_1jl8i_9", "ComponentList-title": "_ComponentList-title_1jl8i_17", "ComponentList-titleIcon": "_ComponentList-titleIcon_1jl8i_53" };
 
@@ -11657,7 +11580,6 @@ var ComponentListItem = ({
   name,
   label
 }) => {
-  var _a;
   const overrides = useAppStore((s) => s.overrides);
   const canInsert = useAppStore(
     (s) => s.permissions.getPermissions({
@@ -11671,7 +11593,7 @@ var ComponentListItem = ({
       );
     }
   }, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: (_a = overrides.componentItem) != null ? _a : overrides.drawerItem });
+  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: overrides.componentItem ?? overrides.drawerItem });
 };
 var ComponentList = ({
   children,
@@ -11689,11 +11611,13 @@ var ComponentList = ({
         type: "button",
         className: getClassName28("title"),
         onClick: () => setUi({
-          componentList: __spreadProps(__spreadValues({}, componentList), {
-            [id]: __spreadProps(__spreadValues({}, componentList[id]), {
+          componentList: {
+            ...componentList,
+            [id]: {
+              ...componentList[id],
               expanded: !expanded
-            })
-          })
+            }
+          }
         }),
         title: expanded ? `Collapse${title ? ` ${title}` : ""}` : `Expand${title ? ` ${title}` : ""}`,
         children: [
@@ -11704,18 +11628,17 @@ var ComponentList = ({
             id.toLowerCase().includes("layout") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Box, { size: 12, strokeWidth: 2.5 }),
             id.toLowerCase().includes("basic") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Settings, { size: 12, strokeWidth: 2.5 }),
             id === "other" && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Layers, { size: 12, strokeWidth: 2.5 }),
-            /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { children: title == null ? void 0 : title.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
+            /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { children: title?.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { className: getClassName28("titleIcon"), children: expanded ? /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ChevronUp, { size: 12 }) : /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ChevronDown, { size: 12 }) })
         ]
       }
     ),
     /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { className: getClassName28("content"), children: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Drawer, { children: children || Object.keys(config.components).map((componentKey) => {
-      var _a;
       return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
         ComponentListItem,
         {
-          label: (_a = config.components[componentKey]["label"]) != null ? _a : componentKey,
+          label: config.components[componentKey]["label"] ?? componentKey,
           name: componentKey
         },
         componentKey
@@ -11733,7 +11656,6 @@ var useComponentList = () => {
   const config = useAppStore((s) => s.config);
   const uiComponentList = useAppStore((s) => s.state.ui.componentList);
   (0, import_react76.useEffect)(() => {
-    var _a, _b, _c;
     if (Object.keys(uiComponentList).length > 0) {
       const matchedComponents = [];
       let _componentList;
@@ -11754,12 +11676,11 @@ var useComponentList = () => {
               id: categoryKey,
               title: category.title || categoryKey,
               children: category.components.map((componentName, i) => {
-                var _a2;
                 const componentConf = config.components[componentName] || {};
                 return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
                   ComponentList.Item,
                   {
-                    label: (_a2 = componentConf["label"]) != null ? _a2 : componentName,
+                    label: componentConf["label"] ?? componentName,
                     name: componentName,
                     index: i
                   },
@@ -11774,21 +11695,20 @@ var useComponentList = () => {
       const remainingComponents = Object.keys(config.components).filter(
         (component) => matchedComponents.indexOf(component) === -1
       );
-      if (remainingComponents.length > 0 && !((_a = uiComponentList.other) == null ? void 0 : _a.components) && ((_b = uiComponentList.other) == null ? void 0 : _b.visible) !== false) {
+      if (remainingComponents.length > 0 && !uiComponentList.other?.components && uiComponentList.other?.visible !== false) {
         _componentList.push(
           /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
             ComponentList,
             {
               id: "other",
-              title: ((_c = uiComponentList.other) == null ? void 0 : _c.title) || "Other",
+              title: uiComponentList.other?.title || "Other",
               children: remainingComponents.map((componentName, i) => {
-                var _a2;
                 const componentConf = config.components[componentName] || {};
                 return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
                   ComponentList.Item,
                   {
                     name: componentName,
-                    label: (_a2 = componentConf["label"]) != null ? _a2 : componentName,
+                    label: componentConf["label"] ?? componentName,
                     index: i
                   },
                   componentName
@@ -11871,7 +11791,7 @@ var getStyles = (styleSheet) => {
 };
 var syncAttributes = (sourceElement, targetElement) => {
   const attributes = sourceElement.attributes;
-  if ((attributes == null ? void 0 : attributes.length) > 0) {
+  if (attributes?.length > 0) {
     Array.from(attributes).forEach((attribute) => {
       targetElement.setAttribute(attribute.name, attribute.value);
     });
@@ -11892,14 +11812,14 @@ var CopyHostStyles = ({
     let elements = [];
     const hashes = {};
     const lookupEl = (el) => elements.findIndex((elementMap) => elementMap.original === el);
-    const mirrorEl = (el, inlineStyles = false) => __async(null, null, function* () {
+    const mirrorEl = async (el, inlineStyles = false) => {
       let mirror;
       if (el.nodeName === "LINK" && inlineStyles) {
         mirror = document.createElement("style");
         mirror.type = "text/css";
         let styleSheet = getStyleSheet(el);
         if (!styleSheet) {
-          yield new Promise((resolve) => {
+          await new Promise((resolve) => {
             const fn = () => {
               resolve();
               el.removeEventListener("load", fn);
@@ -11923,8 +11843,8 @@ var CopyHostStyles = ({
         mirror = el.cloneNode(true);
       }
       return mirror;
-    });
-    const addEl = (el) => __async(null, null, function* () {
+    };
+    const addEl = async (el) => {
       const index = lookupEl(el);
       if (index > -1) {
         if (debug)
@@ -11934,7 +11854,7 @@ var CopyHostStyles = ({
         elements[index].mirror.innerText = el.innerText;
         return;
       }
-      const mirror = yield mirrorEl(el);
+      const mirror = await mirrorEl(el);
       if (!mirror) {
         return;
       }
@@ -11950,9 +11870,8 @@ var CopyHostStyles = ({
       doc.head.append(mirror);
       elements.push({ original: el, mirror });
       if (debug) console.log(`Added style node ${el.outerHTML}`);
-    });
+    };
     const removeEl = (el) => {
-      var _a, _b;
       const index = lookupEl(el);
       if (index === -1) {
         if (debug)
@@ -11962,7 +11881,7 @@ var CopyHostStyles = ({
         return;
       }
       const elHash = (0, import_object_hash.default)(el.outerHTML);
-      (_b = (_a = elements[index]) == null ? void 0 : _a.mirror) == null ? void 0 : _b.remove();
+      elements[index]?.mirror?.remove();
       delete hashes[elHash];
       if (debug) console.log(`Removed style node ${el.outerHTML}`);
     };
@@ -11997,7 +11916,7 @@ var CopyHostStyles = ({
     const parentBody = parentDocument.getElementsByTagName("body")[0];
     syncAttributes(parentBody, doc.body);
     Promise.all(
-      collectedStyles.map((styleNode, i) => __async(null, null, function* () {
+      collectedStyles.map(async (styleNode, i) => {
         if (styleNode.nodeName === "LINK") {
           const linkHref = styleNode.href;
           if (hrefs.indexOf(linkHref) > -1) {
@@ -12005,11 +11924,11 @@ var CopyHostStyles = ({
           }
           hrefs.push(linkHref);
         }
-        const mirror = yield mirrorEl(styleNode);
+        const mirror = await mirrorEl(styleNode);
         if (!mirror) return;
         elements.push({ original: styleNode, mirror });
         return mirror;
-      }))
+      })
     ).then((mirrorStyles) => {
       const filtered = mirrorStyles.filter(
         (el) => typeof el !== "undefined"
@@ -12053,26 +11972,18 @@ var CopyHostStyles = ({
 };
 var autoFrameContext = (0, import_react78.createContext)({});
 var useFrame = () => (0, import_react78.useContext)(autoFrameContext);
-function AutoFrame(_a) {
-  var _b = _a, {
-    children,
-    className,
-    debug,
-    id,
-    onReady = () => {
-    },
-    onNotReady = () => {
-    },
-    frameRef
-  } = _b, props = __objRest(_b, [
-    "children",
-    "className",
-    "debug",
-    "id",
-    "onReady",
-    "onNotReady",
-    "frameRef"
-  ]);
+function AutoFrame({
+  children,
+  className,
+  debug,
+  id,
+  onReady = () => {
+  },
+  onNotReady = () => {
+  },
+  frameRef,
+  ...props
+}) {
   const [loaded, setLoaded] = (0, import_react78.useState)(false);
   const [ctx, setCtx] = (0, import_react78.useState)({});
   const [mountTarget, setMountTarget] = (0, import_react78.useState)();
@@ -12087,7 +11998,6 @@ function AutoFrame(_a) {
     onNotReadyRef.current = onNotReady;
   }, [onReady, onNotReady]);
   (0, import_react78.useEffect)(() => {
-    var _a2;
     if (frameRef.current) {
       const doc = frameRef.current.contentDocument;
       const win = frameRef.current.contentWindow;
@@ -12098,7 +12008,7 @@ function AutoFrame(_a) {
           window: win || void 0
         };
       });
-      const newMountTarget = (_a2 = frameRef.current.contentDocument) == null ? void 0 : _a2.getElementById("frame-root");
+      const newMountTarget = frameRef.current.contentDocument?.getElementById("frame-root");
       setMountTarget((prev) => {
         if (prev === newMountTarget) return prev;
         return newMountTarget;
@@ -12110,7 +12020,8 @@ function AutoFrame(_a) {
   }, [frameRef, loaded, stylesLoaded]);
   return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
     "iframe",
-    __spreadProps(__spreadValues({}, props), {
+    {
+      ...props,
       className,
       id,
       srcDoc: '<!DOCTYPE html><html><head></head><body><div id="frame-root" data-credbuild-entry></div></body></html>',
@@ -12126,13 +12037,13 @@ function AutoFrame(_a) {
           children: (0, import_react_dom3.createPortal)(children, mountTarget)
         }
       ) })
-    })
+    }
   );
 }
 AutoFrame.displayName = "AutoFrame";
 var AutoFrame_default = AutoFrame;
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Preview/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Preview/styles.module.css#css-module
 init_react_import();
 var styles_module_default20 = { "CredBuildPreview": "_CredBuildPreview_1z08a_1", "CredBuildPreview-frame": "_CredBuildPreview-frame_1z08a_6" };
 
@@ -12146,19 +12057,19 @@ var useBubbleIframeEvents = (ref) => {
     if (ref.current && status === "READY") {
       const iframe = ref.current;
       const handlePointerMove = (event) => {
-        const evt = new BubbledPointerEvent("pointermove", __spreadProps(__spreadValues({}, event), {
+        const evt = new BubbledPointerEvent("pointermove", {
+          ...event,
           bubbles: true,
           cancelable: false,
           clientX: event.clientX,
           clientY: event.clientY,
           originalTarget: event.target
-        }));
+        });
         iframe.dispatchEvent(evt);
       };
       const register = () => {
-        var _a;
         unregister();
-        (_a = iframe.contentDocument) == null ? void 0 : _a.addEventListener(
+        iframe.contentDocument?.addEventListener(
           "pointermove",
           handlePointerMove,
           {
@@ -12167,8 +12078,7 @@ var useBubbleIframeEvents = (ref) => {
         );
       };
       const unregister = () => {
-        var _a;
-        (_a = iframe.contentDocument) == null ? void 0 : _a.removeEventListener(
+        iframe.contentDocument?.removeEventListener(
           "pointermove",
           handlePointerMove
         );
@@ -12193,19 +12103,20 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
   );
   const Page = (0, import_react79.useCallback)(
     (pageProps) => {
-      var _a, _b, _c, _d;
       const propsWithSlots = useSlots(
         config,
         { type: "root", props: pageProps },
         DropZoneEditPure
       );
       const richtextProps = useRichtextProps(
-        (_b = (_a = config.root) == null ? void 0 : _a.fields) != null ? _b : {},
+        config.root?.fields ?? {},
         pageProps
       );
-      return ((_c = config.root) == null ? void 0 : _c.render) ? (_d = config.root) == null ? void 0 : _d.render(__spreadValues(__spreadValues({
-        id: "credbuild-root"
-      }, propsWithSlots), richtextProps)) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_jsx_runtime76.Fragment, { children: propsWithSlots.children });
+      return config.root?.render ? config.root?.render({
+        id: "credbuild-root",
+        ...propsWithSlots,
+        ...richtextProps
+      }) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_jsx_runtime76.Fragment, { children: propsWithSlots.children });
     },
     [config]
   );
@@ -12215,7 +12126,8 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
   useBubbleIframeEvents(ref);
   const inner = !renderData ? /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
     Page,
-    __spreadProps(__spreadValues({}, rootProps), {
+    {
+      ...rootProps,
       credbuild: {
         renderDropZone: DropZonePure,
         isEditing: true,
@@ -12224,7 +12136,7 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
       },
       editMode: true,
       children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(DropZonePure, { zone: rootDroppableId })
-    })
+    }
   ) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Render, { data: renderData, config, metadata });
   (0, import_react79.useEffect)(() => {
     if (!iframe.enabled) {
@@ -12283,7 +12195,7 @@ init_react_import();
 // components/LayerTree/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/LayerTree/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/LayerTree/styles.module.css#css-module
 init_react_import();
 var styles_module_default21 = { "LayerTree": "_LayerTree_nus40_1", "LayerTree-zoneTitle": "_LayerTree-zoneTitle_nus40_11", "LayerTree-helper": "_LayerTree-helper_nus40_17", "Layer": "_Layer_nus40_1", "Layer-inner": "_Layer-inner_nus40_29", "Layer--containsZone": "_Layer--containsZone_nus40_35", "Layer-clickable": "_Layer-clickable_nus40_39", "Layer--isSelected": "_Layer--isSelected_nus40_58", "Layer-chevron": "_Layer-chevron_nus40_79", "Layer--childIsSelected": "_Layer--childIsSelected_nus40_80", "Layer-zones": "_Layer-zones_nus40_84", "Layer-title": "_Layer-title_nus40_98", "Layer-name": "_Layer-name_nus40_107", "Layer-icon": "_Layer-icon_nus40_113", "Layer-zoneIcon": "_Layer-zoneIcon_nus40_118" };
 
@@ -12309,7 +12221,6 @@ var getZonesByParent = (zones) => {
   }, {});
 };
 var getZoneLabel = (zoneCompound, nodes, config, label) => {
-  var _a, _b, _c, _d;
   if (label !== void 0) {
     return label;
   }
@@ -12317,9 +12228,9 @@ var getZoneLabel = (zoneCompound, nodes, config, label) => {
   if (!slotId) {
     return;
   }
-  const componentType = (_a = nodes[componentId]) == null ? void 0 : _a.data.type;
+  const componentType = nodes[componentId]?.data.type;
   const configForComponent = componentType && componentType !== rootAreaId ? config.components[componentType] : config.root;
-  return (_d = (_c = (_b = configForComponent == null ? void 0 : configForComponent.fields) == null ? void 0 : _b[slotId]) == null ? void 0 : _c.label) != null ? _d : slotId;
+  return configForComponent?.fields?.[slotId]?.label ?? slotId;
 };
 var buildLayerNode = ({
   config,
@@ -12330,10 +12241,9 @@ var buildLayerNode = ({
   zones,
   zonesByParent
 }) => {
-  var _a, _b, _c;
   const nodeData = nodes[itemId];
-  const componentType = ((_a = nodeData == null ? void 0 : nodeData.data.type) == null ? void 0 : _a.toString()) || "Component";
-  const label = (_c = (_b = config.components[componentType]) == null ? void 0 : _b.label) != null ? _c : componentType;
+  const componentType = nodeData?.data.type?.toString() || "Component";
+  const label = config.components[componentType]?.label ?? componentType;
   const childZoneCompounds = zonesByParent[itemId] || [];
   return {
     childZones: childZoneCompounds.map(
@@ -12360,8 +12270,7 @@ var buildLayerTree = ({
   zones,
   zonesByParent = getZonesByParent(zones)
 }) => {
-  var _a, _b;
-  const contentIds = (_b = (_a = zones[zoneCompound]) == null ? void 0 : _a.contentIds) != null ? _b : [];
+  const contentIds = zones[zoneCompound]?.contentIds ?? [];
   return {
     items: contentIds.map(
       (itemId, index) => buildLayerNode({
@@ -12378,10 +12287,7 @@ var buildLayerTree = ({
     zoneCompound
   };
 };
-var getEstimatedRowHeight = (itemId) => {
-  var _a;
-  return (_a = measuredRowHeights.get(itemId)) != null ? _a : DEFAULT_LAYER_ROW_HEIGHT;
-};
+var getEstimatedRowHeight = (itemId) => measuredRowHeights.get(itemId) ?? DEFAULT_LAYER_ROW_HEIGHT;
 var cacheMeasuredRowHeight = (itemId, height) => {
   if (height <= 0) {
     return;
@@ -12389,8 +12295,7 @@ var cacheMeasuredRowHeight = (itemId, height) => {
   measuredRowHeights.set(itemId, height);
 };
 var getScrollParent = (el) => {
-  var _a;
-  let current = (_a = el == null ? void 0 : el.parentElement) != null ? _a : null;
+  let current = el?.parentElement ?? null;
   while (current) {
     const { overflow, overflowY } = getComputedStyle(current);
     if ([overflow, overflowY].some((value) => /auto|scroll/.test(value))) {
@@ -12679,18 +12584,14 @@ var Outline = () => {
   const config = useAppStore((s) => s.config);
   const nodes = useAppStore((s) => s.state.indexes.nodes);
   const zones = useAppStore((s) => s.state.indexes.zones);
-  const selectedId = useAppStore((s) => {
-    var _a;
-    return ((_a = s.selectedItem) == null ? void 0 : _a.props.id) || null;
-  });
+  const selectedId = useAppStore((s) => s.selectedItem?.props.id || null);
   const rootZones = useAppStore(
     (0, import_shallow8.useShallow)((s) => findZonesForArea(s.state, "root"))
   );
   const selectedPathIds = (0, import_react81.useMemo)(() => {
-    var _a;
-    const selectedPath = selectedId ? (_a = nodes[selectedId]) == null ? void 0 : _a.path : null;
+    const selectedPath = selectedId ? nodes[selectedId]?.path : null;
     return new Set(
-      (selectedPath == null ? void 0 : selectedPath.map((candidate) => candidate.split(":")[0]).filter(Boolean)) || []
+      selectedPath?.map((candidate) => candidate.split(":")[0]).filter(Boolean) || []
     );
   }, [nodes, selectedId]);
   const trees = (0, import_react81.useMemo)(
@@ -12729,29 +12630,30 @@ var loadOverrides = ({
   overrides,
   plugins
 }) => {
-  const collected = __spreadValues({}, overrides);
-  plugins == null ? void 0 : plugins.forEach((plugin) => {
+  const collected = { ...overrides };
+  plugins?.forEach((plugin) => {
     if (!plugin.overrides) return;
     Object.keys(plugin.overrides).forEach((_overridesType) => {
-      var _a;
       const overridesType = _overridesType;
-      if (!((_a = plugin.overrides) == null ? void 0 : _a[overridesType])) return;
+      if (!plugin.overrides?.[overridesType]) return;
       if (overridesType === "fieldTypes") {
         const fieldTypes = plugin.overrides.fieldTypes;
         Object.keys(fieldTypes).forEach((fieldType) => {
           collected.fieldTypes = collected.fieldTypes || {};
           const childNode2 = collected.fieldTypes[fieldType];
-          const Comp2 = (props) => fieldTypes[fieldType](__spreadProps(__spreadValues({}, props), {
+          const Comp2 = (props) => fieldTypes[fieldType]({
+            ...props,
             children: childNode2 ? childNode2(props) : props.children
-          }));
+          });
           collected.fieldTypes[fieldType] = Comp2;
         });
         return;
       }
       const childNode = collected[overridesType];
-      const Comp = (props) => plugin.overrides[overridesType](__spreadProps(__spreadValues({}, props), {
+      const Comp = (props) => plugin.overrides[overridesType]({
+        ...props,
         children: childNode ? childNode(props) : props.children
-      }));
+      });
       collected[overridesType] = Comp;
     });
   });
@@ -12785,64 +12687,58 @@ init_react_import();
 // lib/data/resolve-and-replace-data.ts
 init_react_import();
 init_to_component();
-function resolveAndReplaceData(currentData, getState, trigger = "force") {
-  return __async(this, null, function* () {
-    const resolvedResult = yield getState().resolveComponentData(
-      currentData,
-      trigger
+async function resolveAndReplaceData(currentData, getState, trigger = "force") {
+  const resolvedResult = await getState().resolveComponentData(
+    currentData,
+    trigger
+  );
+  if (!resolvedResult.didChange) return;
+  const itemSelector = getSelectorForId(
+    getState().state,
+    resolvedResult.node.props.id
+  );
+  if (!itemSelector) {
+    console.warn(
+      `Warning: Could not find component with id "${currentData.props.id}" to resolve its data. Component may have been removed or the id is invalid.`
     );
-    if (!resolvedResult.didChange) return;
-    const itemSelector = getSelectorForId(
-      getState().state,
-      resolvedResult.node.props.id
-    );
-    if (!itemSelector) {
-      console.warn(
-        `Warning: Could not find component with id "${currentData.props.id}" to resolve its data. Component may have been removed or the id is invalid.`
-      );
-      return;
-    }
-    getState().dispatch({
-      type: "replace",
-      data: toComponent(resolvedResult.node),
-      destinationIndex: itemSelector.index,
-      destinationZone: itemSelector.zone
-    });
+    return;
+  }
+  getState().dispatch({
+    type: "replace",
+    data: toComponent(resolvedResult.node),
+    destinationIndex: itemSelector.index,
+    destinationZone: itemSelector.zone
   });
 }
 
 // lib/data/resolve-data-by-id.ts
-function resolveDataById(id, getState, trigger) {
-  return __async(this, null, function* () {
-    const node = getState().state.indexes.nodes[id];
-    if (!node) {
-      console.warn(
-        `Warning: Could not find component with id "${id}" to resolve its data. Component may have been removed or the id is invalid.`
-      );
-      return;
-    }
-    yield resolveAndReplaceData(node.data, getState, trigger);
-  });
+async function resolveDataById(id, getState, trigger) {
+  const node = getState().state.indexes.nodes[id];
+  if (!node) {
+    console.warn(
+      `Warning: Could not find component with id "${id}" to resolve its data. Component may have been removed or the id is invalid.`
+    );
+    return;
+  }
+  await resolveAndReplaceData(node.data, getState, trigger);
 }
 
 // lib/data/resolve-data-by-selector.ts
 init_react_import();
 init_get_item();
 init_to_component();
-function resolveDataBySelector(selector, getState, trigger) {
-  return __async(this, null, function* () {
-    const item = getItem(selector, getState().state);
-    if (!item) {
-      console.warn(
-        `Warning: Could not find component for selector "${JSON.stringify(
-          selector
-        )}" to resolve its data. Component may have been removed or the selector is invalid.`
-      );
-      return;
-    }
-    const itemAsComponent = toComponent(item);
-    yield resolveAndReplaceData(itemAsComponent, getState, trigger);
-  });
+async function resolveDataBySelector(selector, getState, trigger) {
+  const item = getItem(selector, getState().state);
+  if (!item) {
+    console.warn(
+      `Warning: Could not find component for selector "${JSON.stringify(
+        selector
+      )}" to resolve its data. Component may have been removed or the selector is invalid.`
+    );
+    return;
+  }
+  const itemAsComponent = toComponent(item);
+  await resolveAndReplaceData(itemAsComponent, getState, trigger);
 }
 
 // lib/use-credbuild.ts
@@ -12926,7 +12822,7 @@ function createUseCredBuild() {
     }
     const result = (0, import_zustand7.useStore)(
       useCredBuildApi,
-      selector != null ? selector : ((s) => s)
+      selector ?? ((s) => s)
     );
     return result;
   };
@@ -12958,7 +12854,7 @@ init_react_import();
 var import_react94 = require("react");
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Layout/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Layout/styles.module.css#css-module
 init_react_import();
 var styles_module_default22 = { "CredBuildLayout": "_CredBuildLayout_ildl0_1", "CredBuildLayout-inner": "_CredBuildLayout-inner_ildl0_8", "CredBuildLayout--leftSideBarVisible": "_CredBuildLayout--leftSideBarVisible_ildl0_29", "CredBuildLayout--rightSideBarVisible": "_CredBuildLayout--rightSideBarVisible_ildl0_33", "CredBuild--hidePlugins": "_CredBuild--hidePlugins_ildl0_37", "CredBuildLayout-item": "_CredBuildLayout-item_ildl0_43", "CredBuildLayout-header": "_CredBuildLayout-header_ildl0_49", "CredBuildLayout-left": "_CredBuildLayout-left_ildl0_54", "CredBuildLayout-editor": "_CredBuildLayout-editor_ildl0_67", "CredBuildLayout-right": "_CredBuildLayout-right_ildl0_76", "CredBuildLayout-sidebar": "_CredBuildLayout-sidebar_ildl0_93", "CredBuildPluginTab": "_CredBuildPluginTab_ildl0_108", "CredBuildPluginTab--visible": "_CredBuildPluginTab--visible_ildl0_115", "CredBuildPluginTab-body": "_CredBuildPluginTab-body_ildl0_119", "CredBuildLayout--mounted": "_CredBuildLayout--mounted_ildl0_135" };
 
@@ -12972,14 +12868,13 @@ var useInjectStyleSheet = (initialStyles, iframeEnabled) => {
     setEl(document.createElement("style"));
   }, []);
   (0, import_react84.useEffect)(() => {
-    var _a;
     if (!el || typeof window === "undefined") {
       return;
     }
     el.innerHTML = initialStyles;
     if (iframeEnabled) {
       const frame = getFrame();
-      (_a = frame == null ? void 0 : frame.head) == null ? void 0 : _a.appendChild(el);
+      frame?.head?.appendChild(el);
     }
     document.head.appendChild(el);
   }, [iframeEnabled, el, initialStyles]);
@@ -13033,7 +12928,7 @@ init_lucide_react();
 init_IconButton();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/MenuBar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/MenuBar/styles.module.css#css-module
 init_react_import();
 var styles_module_default23 = { "MenuBar": "_MenuBar_1m2ld_1", "MenuBar--menuOpen": "_MenuBar--menuOpen_1m2ld_14", "MenuBar-inner": "_MenuBar-inner_1m2ld_29", "MenuBar-history": "_MenuBar-history_1m2ld_45" };
 
@@ -13055,12 +12950,11 @@ function MenuBar({
     {
       className: getClassName31({ menuOpen }),
       onClick: (event) => {
-        var _a;
         const element = event.target;
         if (window.matchMedia("(min-width: 638px)").matches) {
           return;
         }
-        if (element.tagName === "A" && ((_a = element.getAttribute("href")) == null ? void 0 : _a.startsWith("#"))) {
+        if (element.tagName === "A" && element.getAttribute("href")?.startsWith("#")) {
           setMenuOpen(false);
         }
       },
@@ -13104,7 +12998,7 @@ init_store();
 var import_react86 = require("react");
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/ViewportControls/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ViewportControls/styles.module.css#css-module
 init_react_import();
 var styles_module_default24 = { "ViewportControls": "_ViewportControls_1e0ai_1", "ViewportControls--fullScreen": "_ViewportControls--fullScreen_1e0ai_5", "ViewportControls-toggleButton": "_ViewportControls-toggleButton_1e0ai_14", "ViewportControls--isExpanded": "_ViewportControls--isExpanded_1e0ai_38", "ViewportControls-actions": "_ViewportControls-actions_1e0ai_42", "ViewportControls-actionsInner": "_ViewportControls-actionsInner_1e0ai_46", "ViewportControls-divider": "_ViewportControls-divider_1e0ai_75", "ViewportControls-zoomSelect": "_ViewportControls-zoomSelect_1e0ai_81", "ViewportControls-zoom": "_ViewportControls-zoom_1e0ai_81", "ViewportButton-inner": "_ViewportButton-inner_1e0ai_111", "ViewportButton--isActive": "_ViewportButton--isActive_1e0ai_119" };
 
@@ -13153,7 +13047,6 @@ var ViewportControls = ({
   onZoom,
   fullScreen
 }) => {
-  var _a, _b;
   const viewports = useAppStore((s) => s.viewports);
   const uiViewports = useAppStore((s) => s.state.ui.viewports);
   const defaultsContainAutoZoom = defaultZoomOptions.find(
@@ -13203,7 +13096,7 @@ var ViewportControls = ({
             ActionButton,
             {
               title: "Zoom viewport out",
-              disabled: zoom <= ((_a = zoomOptions[0]) == null ? void 0 : _a.value),
+              disabled: zoom <= zoomOptions[0]?.value,
               onClick: (e) => {
                 e.stopPropagation();
                 onZoom(
@@ -13220,7 +13113,7 @@ var ViewportControls = ({
             ActionButton,
             {
               title: "Zoom viewport in",
-              disabled: zoom >= ((_b = zoomOptions[zoomOptions.length - 1]) == null ? void 0 : _b.value),
+              disabled: zoom >= zoomOptions[zoomOptions.length - 1]?.value,
               onClick: (e) => {
                 e.stopPropagation();
                 onZoom(
@@ -13300,7 +13193,7 @@ var useCanvasFrame = () => {
   return context;
 };
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Header/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Header/styles.module.css#css-module
 init_react_import();
 var styles_module_default25 = { "CredBuildHeader": "_CredBuildHeader_qzv5u_1", "CredBuildHeader-inner": "_CredBuildHeader-inner_qzv5u_20", "CredBuildHeader-viewportTools": "_CredBuildHeader-viewportTools_qzv5u_28", "CredBuildHeader-leftActions": "_CredBuildHeader-leftActions_qzv5u_35", "CredBuildHeader-toggle": "_CredBuildHeader-toggle_qzv5u_41", "CredBuildHeader-leftSideBarToggle": "_CredBuildHeader-leftSideBarToggle_qzv5u_47", "CredBuildHeader-rightSideBarToggle": "_CredBuildHeader-rightSideBarToggle_qzv5u_48", "CredBuildHeader-title": "_CredBuildHeader-title_qzv5u_52", "CredBuildHeader-path": "_CredBuildHeader-path_qzv5u_57", "CredBuildHeader-tools": "_CredBuildHeader-tools_qzv5u_68", "CredBuildHeader-menuButton": "_CredBuildHeader-menuButton_qzv5u_75" };
 
@@ -13325,11 +13218,10 @@ var HeaderInner = ({
       console.warn(
         "`renderHeader` is deprecated. Please use `overrides.header` and the `useCredBuild` hook instead"
       );
-      const RenderHeader = (_a) => {
-        var _b = _a, { actions } = _b, props = __objRest(_b, ["actions"]);
+      const RenderHeader = ({ actions, ...props }) => {
         const Comp = renderHeader;
         const appState = useAppStore((s) => s.state);
-        return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Comp, __spreadProps(__spreadValues({}, props), { dispatch, state: appState, children: actions }));
+        return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Comp, { ...props, dispatch, state: appState, children: actions });
       };
       return RenderHeader;
     }
@@ -13343,7 +13235,7 @@ var HeaderInner = ({
       const RenderHeader = (props) => {
         const Comp = renderHeaderActions;
         const appState = useAppStore((s) => s.state);
-        return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Comp, __spreadProps(__spreadValues({}, props), { dispatch, state: appState }));
+        return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Comp, { ...props, dispatch, state: appState });
       };
       return RenderHeader;
     }
@@ -13357,9 +13249,8 @@ var HeaderInner = ({
   );
   const [menuOpen, setMenuOpen] = (0, import_react88.useState)(false);
   const rootTitle = useAppStore((s) => {
-    var _a, _b;
-    const rootData = (_a = s.state.indexes.nodes["root"]) == null ? void 0 : _a.data;
-    return (_b = rootData.props.title) != null ? _b : "";
+    const rootData = s.state.indexes.nodes["root"]?.data;
+    return rootData.props.title ?? "";
   });
   const leftSideBarVisible = useAppStore((s) => s.state.ui.leftSideBarVisible);
   const rightSideBarVisible = useAppStore(
@@ -13392,9 +13283,10 @@ var HeaderInner = ({
       const oppositeSideBar = sidebar === "left" ? "rightSideBarVisible" : "leftSideBarVisible";
       dispatch({
         type: "setUi",
-        ui: __spreadValues({
-          [`${sidebar}SideBarVisible`]: !sideBarVisible
-        }, !widerViewport ? { [oppositeSideBar]: false } : {})
+        ui: {
+          [`${sidebar}SideBarVisible`]: !sideBarVisible,
+          ...!widerViewport ? { [oppositeSideBar]: false } : {}
+        }
       });
     },
     [dispatch, leftSideBarVisible, rightSideBarVisible]
@@ -13482,20 +13374,21 @@ var HeaderInner = ({
                 zoom: zoomConfig.zoom,
                 onViewportChange: (viewport) => {
                   const isFullWidth = viewport.width === "100%";
-                  const uiViewport = __spreadProps(__spreadValues({}, viewport), {
+                  const uiViewport = {
+                    ...viewport,
                     height: viewport.height || "auto",
                     zoom: isFullWidth ? 1 : zoomConfig.zoom
-                  });
+                  };
                   const newUi = {
-                    viewports: __spreadProps(__spreadValues({}, viewports), { current: uiViewport })
+                    viewports: { ...viewports, current: uiViewport }
                   };
                   if (isFullWidth) {
-                    setZoomConfig(__spreadProps(__spreadValues({}, zoomConfig), { zoom: 1 }));
+                    setZoomConfig({ ...zoomConfig, zoom: 1 });
                   }
                   setUi(newUi);
                 },
                 onZoom: (zoom) => {
-                  setZoomConfig(__spreadProps(__spreadValues({}, zoomConfig), { zoom }));
+                  setZoomConfig({ ...zoomConfig, zoom });
                 }
               }
             ) }),
@@ -13555,7 +13448,7 @@ var Header = (0, import_react88.memo)(HeaderInner);
 // components/SidebarSection/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/SidebarSection/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/SidebarSection/styles.module.css#css-module
 init_react_import();
 var styles_module_default26 = { "SidebarSection": "_SidebarSection_1oj6d_1", "SidebarSection-title": "_SidebarSection-title_1oj6d_12", "SidebarSection--noBorderTop": "_SidebarSection--noBorderTop_1oj6d_38", "SidebarSection-content": "_SidebarSection-content_1oj6d_42", "SidebarSection-breadcrumbLabel": "_SidebarSection-breadcrumbLabel_1oj6d_51", "SidebarSection-breadcrumbs": "_SidebarSection-breadcrumbs_1oj6d_80", "SidebarSection-breadcrumb": "_SidebarSection-breadcrumb_1oj6d_51", "SidebarSection-heading": "_SidebarSection-heading_1oj6d_92", "SidebarSection-loadingOverlay": "_SidebarSection-loadingOverlay_1oj6d_96" };
 
@@ -13566,7 +13459,7 @@ init_Loader();
 // components/Breadcrumbs/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/Breadcrumbs/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Breadcrumbs/styles.module.css#css-module
 init_react_import();
 var styles_module_default27 = { "Breadcrumbs": "_Breadcrumbs_1e0gb_1", "Breadcrumbs-breadcrumbLabel": "_Breadcrumbs-breadcrumbLabel_1e0gb_7", "Breadcrumbs-breadcrumb": "_Breadcrumbs-breadcrumb_1e0gb_7" };
 
@@ -13579,32 +13472,24 @@ init_react_import();
 var import_react89 = require("react");
 init_store();
 var useBreadcrumbs = (renderCount) => {
-  var _a;
-  const selectedId = useAppStore((s) => {
-    var _a2;
-    return (_a2 = s.selectedItem) == null ? void 0 : _a2.props.id;
-  });
+  const selectedId = useAppStore((s) => s.selectedItem?.props.id);
   const config = useAppStore((s) => s.config);
-  const path = useAppStore((s) => {
-    var _a2;
-    return (_a2 = s.state.indexes.nodes[selectedId]) == null ? void 0 : _a2.path;
-  });
+  const path = useAppStore((s) => s.state.indexes.nodes[selectedId]?.path);
   const appStore = useAppStoreApi();
   return (0, import_react89.useMemo)(() => {
-    const breadcrumbs = (path == null ? void 0 : path.map((zoneCompound) => {
-      var _a2, _b, _c, _d;
+    const breadcrumbs = path?.map((zoneCompound) => {
       const [componentId] = zoneCompound.split(":");
       if (componentId === "root") {
         return {
-          label: ((_a2 = config == null ? void 0 : config.root) == null ? void 0 : _a2.label) || "Page",
+          label: config?.root?.label || "Page",
           selector: null
         };
       }
       const node = appStore.getState().state.indexes.nodes[componentId];
       const parentId = node.path[node.path.length - 1];
-      const contentIds = ((_b = appStore.getState().state.indexes.zones[parentId]) == null ? void 0 : _b.contentIds) || [];
+      const contentIds = appStore.getState().state.indexes.zones[parentId]?.contentIds || [];
       const index = contentIds.indexOf(componentId);
-      const label = node ? (_d = (_c = config.components[node.data.type]) == null ? void 0 : _c.label) != null ? _d : node.data.type : "Component";
+      const label = node ? config.components[node.data.type]?.label ?? node.data.type : "Component";
       return {
         label,
         selector: node ? {
@@ -13612,12 +13497,12 @@ var useBreadcrumbs = (renderCount) => {
           zone: node.path[node.path.length - 1]
         } : null
       };
-    })) || [];
+    }) || [];
     if (renderCount) {
       return breadcrumbs.slice(breadcrumbs.length - renderCount);
     }
     return breadcrumbs;
-  }, [path, renderCount, appStore, config.components, (_a = config == null ? void 0 : config.root) == null ? void 0 : _a.label]);
+  }, [path, renderCount, appStore, config.components, config?.root?.label]);
 };
 
 // components/Breadcrumbs/index.tsx
@@ -13674,7 +13559,7 @@ init_css_box_model_esm();
 var import_react90 = require("react");
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Canvas/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Canvas/styles.module.css#css-module
 init_react_import();
 var styles_module_default28 = { "CredBuildCanvas": "_CredBuildCanvas_1ivia_1", "CredBuildCanvas--fullScreen": "_CredBuildCanvas--fullScreen_1ivia_22", "CredBuildCanvas-inner": "_CredBuildCanvas-inner_1ivia_33", "CredBuildCanvas-root": "_CredBuildCanvas-root_1ivia_42", "CredBuildCanvas--ready": "_CredBuildCanvas--ready_1ivia_67", "CredBuildCanvas-loader": "_CredBuildCanvas-loader_1ivia_72", "CredBuildCanvas--showLoader": "_CredBuildCanvas--showLoader_1ivia_82" };
 
@@ -13760,9 +13645,10 @@ var Canvas = () => {
     if (viewports.current.height === "auto") {
       const newRootHeight = frameHeight / zoomConfig.zoom;
       if (zoomConfig.rootHeight !== newRootHeight) {
-        setZoomConfig(__spreadProps(__spreadValues({}, zoomConfig), {
+        setZoomConfig({
+          ...zoomConfig,
           rootHeight: newRootHeight
-        }));
+        });
       }
     }
   }, [
@@ -13797,11 +13683,10 @@ var Canvas = () => {
   }, []);
   const appStoreApi = useAppStoreApi();
   (0, import_react90.useEffect)(() => {
-    var _a, _b;
     if (typeof window === "undefined") return;
-    if ((_a = uiProp == null ? void 0 : uiProp.viewports) == null ? void 0 : _a.current) return;
+    if (uiProp?.viewports?.current) return;
     const viewportWidth = window.innerWidth;
-    const frameWidth = (_b = frameRef.current) == null ? void 0 : _b.getBoundingClientRect().width;
+    const frameWidth = frameRef.current?.getBoundingClientRect().width;
     if (!viewportWidth) return;
     if (!frameWidth) return;
     if (viewportOptions.length === 0) return;
@@ -13823,28 +13708,32 @@ var Canvas = () => {
     if (iframe.enabled) {
       const s = appStoreApi.getState();
       const appState = {
-        state: __spreadProps(__spreadValues({}, s.state), {
-          ui: __spreadProps(__spreadValues({}, s.state.ui), {
-            viewports: __spreadProps(__spreadValues({}, s.state.ui.viewports), {
-              current: __spreadProps(__spreadValues({}, s.state.ui.viewports.current), {
-                height: (closestViewport == null ? void 0 : closestViewport.height) || "auto",
-                width: closestViewport == null ? void 0 : closestViewport.width
-              })
-            })
-          })
-        })
+        state: {
+          ...s.state,
+          ui: {
+            ...s.state.ui,
+            viewports: {
+              ...s.state.ui.viewports,
+              current: {
+                ...s.state.ui.viewports.current,
+                height: closestViewport?.height || "auto",
+                width: closestViewport?.width
+              }
+            }
+          }
+        }
       };
       let history = s.history;
       if (s.history.histories.length === 1) {
-        history = __spreadProps(__spreadValues({}, history), { histories: [appState] });
+        history = { ...history, histories: [appState] };
       }
-      appStoreApi.setState(__spreadProps(__spreadValues({}, appState), { history }));
+      appStoreApi.setState({ ...appState, history });
     }
   }, [
     viewportOptions,
     iframe,
     appStoreApi,
-    uiProp == null ? void 0 : uiProp.viewports,
+    uiProp?.viewports,
     frameRef
   ]);
   return /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
@@ -13952,9 +13841,10 @@ function useSidebarResize(position, dispatch) {
       } finally {
         localStorage.setItem(
           "credbuild-sidebar-widths",
-          JSON.stringify(__spreadProps(__spreadValues({}, widths), {
+          JSON.stringify({
+            ...widths,
             [position]: width2
-          }))
+          })
         );
       }
       window.dispatchEvent(
@@ -13982,7 +13872,7 @@ init_react_import();
 var import_react92 = require("react");
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/ResizeHandle/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/ResizeHandle/styles.module.css#css-module
 init_react_import();
 var styles_module_default29 = { "ResizeHandle": "_ResizeHandle_144bf_2", "ResizeHandle--left": "_ResizeHandle--left_144bf_16", "ResizeHandle--right": "_ResizeHandle--right_144bf_20" };
 
@@ -14014,7 +13904,6 @@ var ResizeHandle = ({
     [onResize, position]
   );
   const handleMouseUp = (0, import_react92.useCallback)(() => {
-    var _a;
     if (!isDragging.current) return;
     isDragging.current = false;
     document.body.style.cursor = "";
@@ -14025,16 +13914,15 @@ var ResizeHandle = ({
     }
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
-    const finalWidth = ((_a = sidebarRef.current) == null ? void 0 : _a.getBoundingClientRect().width) || 0;
+    const finalWidth = sidebarRef.current?.getBoundingClientRect().width || 0;
     onResizeEnd(finalWidth);
     resetAutoZoom();
   }, [onResizeEnd, handleMouseMove, resetAutoZoom, sidebarRef]);
   const handleMouseDown = (0, import_react92.useCallback)(
     (e) => {
-      var _a;
       isDragging.current = true;
       startX.current = e.clientX;
-      startWidth.current = ((_a = sidebarRef.current) == null ? void 0 : _a.getBoundingClientRect().width) || 0;
+      startWidth.current = sidebarRef.current?.getBoundingClientRect().width || 0;
       document.body.style.cursor = "col-resize";
       document.body.style.userSelect = "none";
       const overlay = document.createElement("div");
@@ -14060,7 +13948,7 @@ var ResizeHandle = ({
 // components/CredBuild/components/Sidebar/index.tsx
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Sidebar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Sidebar/styles.module.css#css-module
 init_react_import();
 var styles_module_default30 = { "Sidebar": "_Sidebar_1kcif_1", "Sidebar--isVisible": "_Sidebar--isVisible_1kcif_13", "Sidebar--left": "_Sidebar--left_1kcif_17", "Sidebar--right": "_Sidebar--right_1kcif_29", "Sidebar-resizeHandle": "_Sidebar-resizeHandle_1kcif_42" };
 
@@ -14113,9 +14001,8 @@ var isElementVisible = (element) => {
   return true;
 };
 var shouldBlockDeleteHotkey = (e) => {
-  var _a;
-  if (e == null ? void 0 : e.defaultPrevented) return true;
-  const origin = ((_a = e == null ? void 0 : e.composedPath) == null ? void 0 : _a.call(e)[0]) || (e == null ? void 0 : e.target) || document.activeElement;
+  if (e?.defaultPrevented) return true;
+  const origin = e?.composedPath?.()[0] || e?.target || document.activeElement;
   if (origin instanceof HTMLElement) {
     const tag = origin.tagName.toLowerCase();
     if (tag === "input" || tag === "textarea" || tag === "select") return true;
@@ -14137,13 +14024,12 @@ var useDeleteHotkeys = () => {
   const appStore = useAppStoreApi();
   const deleteSelectedComponent = (0, import_react93.useCallback)(
     (e) => {
-      var _a;
       if (shouldBlockDeleteHotkey(e)) {
         return false;
       }
       const { state, dispatch, permissions, selectedItem } = appStore.getState();
-      const sel = (_a = state.ui) == null ? void 0 : _a.itemSelector;
-      if (!(sel == null ? void 0 : sel.zone) || !selectedItem) return true;
+      const sel = state.ui?.itemSelector;
+      if (!sel?.zone || !selectedItem) return true;
       if (!permissions.getPermissions({ item: selectedItem }).delete)
         return true;
       dispatch({
@@ -14162,7 +14048,7 @@ var useDeleteHotkeys = () => {
 // components/CredBuild/components/Nav/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/CredBuild/components/Nav/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Nav/styles.module.css#css-module
 init_react_import();
 var styles_module_default31 = { "Nav": "_Nav_wbh7e_1", "Nav-list": "_Nav-list_wbh7e_9", "CredBuildHeader-path": "_CredBuildHeader-path_wbh7e_20", "NavItem": "_NavItem_wbh7e_38", "NavItem-link": "_NavItem-link_wbh7e_43", "NavItem-linkIcon": "_NavItem-linkIcon_wbh7e_64", "NavItem--active": "_NavItem--active_wbh7e_77", "NavItem--mobileOnly": "_NavItem--mobileOnly_wbh7e_90", "NavItem--desktopOnly": "_NavItem--desktopOnly_wbh7e_95" };
 
@@ -14199,7 +14085,7 @@ var Nav = ({
   mobileActions
 }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)("nav", { className: getClassName39(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime89.jsx)("ul", { className: getClassName39("list"), children: Object.entries(items).map(([key, item]) => /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(MenuItem, __spreadValues({}, item), key)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime89.jsx)("ul", { className: getClassName39("list"), children: Object.entries(items).map(([key, item]) => /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(MenuItem, { ...item }, key)) }),
     mobileActions && /* @__PURE__ */ (0, import_jsx_runtime89.jsx)("div", { className: getClassName39("mobileActions"), children: mobileActions })
   ] });
 };
@@ -14212,7 +14098,7 @@ init_lucide_react();
 init_react_import();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/plugins/blocks/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/blocks/styles.module.css#css-module
 init_react_import();
 var styles_module_default32 = { "BlocksPlugin": "_BlocksPlugin_1ey1i_1" };
 
@@ -14231,7 +14117,7 @@ var blocksPlugin = () => ({
 init_react_import();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/plugins/outline/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/outline/styles.module.css#css-module
 init_react_import();
 var styles_module_default33 = { "OutlinePlugin": "_OutlinePlugin_q92j6_1" };
 
@@ -14251,7 +14137,7 @@ init_react_import();
 init_lucide_react();
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/plugins/fields/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/fields/styles.module.css#css-module
 init_react_import();
 var styles_module_default34 = { "FieldsPlugin": "_FieldsPlugin_6as57_1", "FieldsPlugin-header": "_FieldsPlugin-header_6as57_7" };
 
@@ -14261,9 +14147,8 @@ var import_jsx_runtime92 = require("react/jsx-runtime");
 var getClassName42 = get_class_name_factory_default("FieldsPlugin", styles_module_default34);
 var CurrentTitle = () => {
   const label = useAppStore((s) => {
-    var _a, _b;
     const selectedItem = s.selectedItem;
-    return selectedItem ? (_b = (_a = s.config.components[selectedItem.type]) == null ? void 0 : _a.label) != null ? _b : selectedItem.type : "Page";
+    return selectedItem ? s.config.components[selectedItem.type]?.label ?? selectedItem.type : "Page";
   });
   return label;
 };
@@ -14285,10 +14170,7 @@ var getLayoutClassName = get_class_name_factory_default("CredBuildLayout", style
 var getPluginTabClassName = get_class_name_factory_default("CredBuildPluginTab", styles_module_default22);
 var FieldSideBar = () => {
   const title = useAppStore(
-    (s) => {
-      var _a, _b, _c;
-      return s.selectedItem ? (_b = (_a = s.config.components[s.selectedItem.type]) == null ? void 0 : _a["label"]) != null ? _b : s.selectedItem.type.toString() : ((_c = s.config.root) == null ? void 0 : _c.label) || "Page";
-    }
+    (s) => s.selectedItem ? s.config.components[s.selectedItem.type]?.["label"] ?? s.selectedItem.type.toString() : s.config.root?.label || "Page"
   );
   return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SidebarSection, { noBorderTop: true, showBreadcrumbs: true, title, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Fields, {}) });
 };
@@ -14308,10 +14190,11 @@ var Layout = ({ children }) => {
     height
   } = usePropsContext();
   const iframe = (0, import_react94.useMemo)(
-    () => __spreadValues({
+    () => ({
       enabled: true,
-      waitForStyles: true
-    }, _iframe),
+      waitForStyles: true,
+      ..._iframe
+    }),
     [_iframe]
   );
   useInjectGlobalCss(iframe.enabled);
@@ -14347,7 +14230,10 @@ var Layout = ({ children }) => {
       if (!window.matchMedia("(min-width: 638px)").matches) {
         dispatch({
           type: "setUi",
-          ui: (ui) => __spreadValues(__spreadValues({}, ui), ui.rightSideBarVisible ? { leftSideBarVisible: false } : {})
+          ui: (ui) => ({
+            ...ui,
+            ...ui.rightSideBarVisible ? { leftSideBarVisible: false } : {}
+          })
         });
       }
     };
@@ -14385,14 +14271,11 @@ var Layout = ({ children }) => {
     layoutOptions["--credbuild-user-right-side-bar-width"] = `${rightWidth}px`;
   }
   const setUi = useAppStore((s) => s.setUi);
-  const currentPlugin = useAppStore((s) => {
-    var _a;
-    return (_a = s.state.ui.plugin) == null ? void 0 : _a.current;
-  });
+  const currentPlugin = useAppStore((s) => s.state.ui.plugin?.current);
   const appStoreApi = useAppStoreApi();
   const [mobilePanelHeightMode, setMobilePanelHeightMode] = (0, import_react94.useState)("toggle");
   const hasLegacySideBarPlugin = (0, import_react94.useMemo)(
-    () => !!(plugins == null ? void 0 : plugins.find((p) => p.name === "legacy-side-bar")),
+    () => !!plugins?.find((p) => p.name === "legacy-side-bar"),
     [plugins]
   );
   const pluginItems = (0, import_react94.useMemo)(() => {
@@ -14401,23 +14284,21 @@ var Layout = ({ children }) => {
     const isLegacy = (plugin) => plugin.name === "legacy-side-bar" ? -1 : 0;
     const combinedPlugins = [
       ...defaultPlugins,
-      ...plugins != null ? plugins : []
+      ...plugins ?? []
     ].sort((a, b) => isLegacy(a) - isLegacy(b));
-    if (!(plugins == null ? void 0 : plugins.some((p) => p.name === "fields"))) {
+    if (!plugins?.some((p) => p.name === "fields")) {
       combinedPlugins.push(fieldsPlugin());
     }
-    combinedPlugins == null ? void 0 : combinedPlugins.forEach((plugin) => {
-      var _a, _b;
+    combinedPlugins?.forEach((plugin) => {
       if (plugin.name && plugin.render) {
         if (details[plugin.name]) {
           delete details[plugin.name];
         }
         details[plugin.name] = {
-          label: (_a = plugin.label) != null ? _a : plugin.name,
-          icon: (_b = plugin.icon) != null ? _b : /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(ToyBrick, {}),
+          label: plugin.label ?? plugin.name,
+          icon: plugin.icon ?? /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(ToyBrick, {}),
           onClick: () => {
-            var _a2;
-            setMobilePanelHeightMode((_a2 = plugin.mobilePanelHeight) != null ? _a2 : "toggle");
+            setMobilePanelHeightMode(plugin.mobilePanelHeight ?? "toggle");
             if (plugin.name === currentPlugin) {
               if (leftSideBarVisible) {
                 setUi({ leftSideBarVisible: false });
@@ -14450,10 +14331,7 @@ var Layout = ({ children }) => {
   }, [pluginItems, currentPlugin, setUi]);
   const hasDesktopFieldsPlugin = pluginItems["fields"] && pluginItems["fields"].mobileOnly === false;
   const mobilePanelExpanded = useAppStore(
-    (s) => {
-      var _a;
-      return (_a = s.state.ui.mobilePanelExpanded) != null ? _a : false;
-    }
+    (s) => s.state.ui.mobilePanelExpanded ?? false
   );
   return /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(
     "div",
@@ -14464,7 +14342,7 @@ var Layout = ({ children }) => {
       id: instanceId,
       style: { height },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(DragDropContext, { disableAutoScroll: dnd == null ? void 0 : dnd.disableAutoScroll, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(CustomCredBuild, { children: children || /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FrameProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(DragDropContext, { disableAutoScroll: dnd?.disableAutoScroll, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(CustomCredBuild, { children: children || /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FrameProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
           "div",
           {
             className: getLayoutClassName({
@@ -14574,72 +14452,81 @@ function CredBuildProvider({ children }) {
     _experimentalVirtualization
   } = usePropsContext();
   const iframe = (0, import_react95.useMemo)(
-    () => __spreadValues({
+    () => ({
       enabled: true,
-      waitForStyles: true
-    }, _iframe),
+      waitForStyles: true,
+      ..._iframe
+    }),
     [_iframe]
   );
   const [generatedAppState] = (0, import_react95.useState)(() => {
-    var _a, _b, _c;
-    const initial = __spreadValues(__spreadValues({}, defaultAppState.ui), initialUi);
+    const initial = { ...defaultAppState.ui, ...initialUi };
     let clientUiState = {};
-    if (Object.keys((initialData == null ? void 0 : initialData.root) || {}).length > 0 && !((_a = initialData == null ? void 0 : initialData.root) == null ? void 0 : _a.props)) {
+    if (Object.keys(initialData?.root || {}).length > 0 && !initialData?.root?.props) {
       console.warn(
         "Warning: Defining props on `root` is deprecated. Please use `root.props`, or republish this page to migrate automatically."
       );
     }
-    const rootProps = ((_b = initialData == null ? void 0 : initialData.root) == null ? void 0 : _b.props) || (initialData == null ? void 0 : initialData.root) || {};
-    const defaultedRootProps = __spreadValues(__spreadValues({}, (_c = config.root) == null ? void 0 : _c.defaultProps), rootProps);
+    const rootProps = initialData?.root?.props || initialData?.root || {};
+    const defaultedRootProps = {
+      ...config.root?.defaultProps,
+      ...rootProps
+    };
     const root = populateIds(
-      toComponent(__spreadProps(__spreadValues({}, initialData == null ? void 0 : initialData.root), { props: defaultedRootProps })),
+      toComponent({ ...initialData?.root, props: defaultedRootProps }),
       config
     );
-    const newAppState = __spreadProps(__spreadValues({}, defaultAppState), {
-      data: __spreadProps(__spreadValues({}, initialData), {
-        root: __spreadProps(__spreadValues({}, initialData == null ? void 0 : initialData.root), { props: root.props }),
+    const newAppState = {
+      ...defaultAppState,
+      data: {
+        ...initialData,
+        root: { ...initialData?.root, props: root.props },
         content: initialData.content || []
-      }),
-      ui: __spreadProps(__spreadValues(__spreadValues({}, initial), clientUiState), {
+      },
+      ui: {
+        ...initial,
+        ...clientUiState,
         // Store categories under componentList on state to allow render functions and plugins to modify
         componentList: config.categories ? Object.entries(config.categories).reduce(
           (acc, [categoryName, category]) => {
-            return __spreadProps(__spreadValues({}, acc), {
+            return {
+              ...acc,
               [categoryName]: {
                 title: category.title,
                 components: category.components,
                 expanded: category.defaultExpanded,
                 visible: category.visible
               }
-            });
+            };
           },
           {}
         ) : {}
-      })
-    });
+      }
+    };
     return walkAppState(newAppState, config);
   });
   const { appendData = true } = _initialHistory || {};
   const [blendedHistories] = (0, import_react95.useState)(
     [
-      ...(_initialHistory == null ? void 0 : _initialHistory.histories) || [],
+      ..._initialHistory?.histories || [],
       ...appendData ? [{ state: generatedAppState }] : []
     ].map((history) => {
-      let newState = __spreadValues(__spreadValues({}, generatedAppState), history.state);
+      let newState = { ...generatedAppState, ...history.state };
       if (!history.state.indexes) {
         newState = walkAppState(newState, config);
       }
-      return __spreadProps(__spreadValues({}, history), {
+      return {
+        ...history,
         state: newState
-      });
+      };
     })
   );
   const initialHistoryIndex = (0, import_react95.useMemo)(() => {
-    if ((_initialHistory == null ? void 0 : _initialHistory.index) !== void 0 && (_initialHistory == null ? void 0 : _initialHistory.index) >= 0 && (_initialHistory == null ? void 0 : _initialHistory.index) < blendedHistories.length) {
-      return _initialHistory == null ? void 0 : _initialHistory.index;
+    if (_initialHistory?.index !== void 0 && _initialHistory?.index >= 0 && _initialHistory?.index < blendedHistories.length) {
+      return _initialHistory?.index;
     }
     return blendedHistories.length - 1;
-  }, [_initialHistory == null ? void 0 : _initialHistory.index, blendedHistories.length]);
+  }, [_initialHistory?.index, blendedHistories.length]);
   const initialAppState = blendedHistories[initialHistoryIndex].state;
   const loadedOverrides = useLoadedOverrides({
     overrides,
@@ -14648,10 +14535,13 @@ function CredBuildProvider({ children }) {
   const loadedFieldTransforms = (0, import_react95.useMemo)(() => {
     const _plugins = plugins || [];
     const pluginFieldTransforms = _plugins.reduce(
-      (acc, plugin) => __spreadValues(__spreadValues({}, acc), plugin.fieldTransforms),
+      (acc, plugin) => ({ ...acc, ...plugin.fieldTransforms }),
       {}
     );
-    return __spreadValues(__spreadValues({}, pluginFieldTransforms), fieldTransforms);
+    return {
+      ...pluginFieldTransforms,
+      ...fieldTransforms
+    };
   }, [fieldTransforms, plugins]);
   const instanceId = useSafeId();
   const generateAppStore = (0, import_react95.useCallback)(
@@ -14695,7 +14585,9 @@ function CredBuildProvider({ children }) {
   }, [appStore]);
   (0, import_react95.useEffect)(() => {
     const state = appStore.getState().state;
-    appStore.setState(__spreadValues({}, generateAppStore(state)));
+    appStore.setState({
+      ...generateAppStore(state)
+    });
   }, [generateAppStore, appStore]);
   useRegisterHistorySlice(appStore, {
     histories: blendedHistories,
@@ -14726,7 +14618,7 @@ function CredBuildProvider({ children }) {
   return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(appStoreContext.Provider, { value: appStore, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(UseCredBuildStoreContext.Provider, { value: uCredBuildStore, children }) });
 }
 function CredBuild(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(PropsProvider, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(CredBuildProvider, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Layout, { children: props.children }) })) }));
+  return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(PropsProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(CredBuildProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Layout, { children: props.children }) }) });
 }
 CredBuild.Components = Components;
 CredBuild.Fields = Fields;
@@ -14750,36 +14642,40 @@ var migrations = [
       console.warn(
         "Migration applied: Root props moved from `root` to `root.props`."
       );
-      return __spreadProps(__spreadValues({}, data), {
+      return {
+        ...data,
         root: {
-          props: __spreadValues({}, rootProps)
+          props: {
+            ...rootProps
+          }
         }
-      });
+      };
     }
     return data;
   },
   // Migrate zones to slots
   (data, config, migrationOptions) => {
-    var _a, _b;
     if (!config) return data;
     console.log("Migrating DropZones to slots...");
     const updatedItems = {};
-    const appState = __spreadProps(__spreadValues({}, defaultAppState), { data });
+    const appState = { ...defaultAppState, data };
     const { indexes } = walkAppState(appState, config);
     const deletedCompounds = [];
     walkAppState(appState, config, (content, zoneCompound, zoneType) => {
-      var _a2, _b2, _c;
       if (zoneType === "dropzone") {
         const [id, slotName] = zoneCompound.split(":");
         const nodeData = indexes.nodes[id].data;
         const componentType = nodeData.type;
         const configForComponent = id === "root" ? config.root : config.components[componentType];
-        if (((_b2 = (_a2 = configForComponent == null ? void 0 : configForComponent.fields) == null ? void 0 : _a2[slotName]) == null ? void 0 : _b2.type) === "slot") {
-          updatedItems[id] = __spreadProps(__spreadValues({}, nodeData), {
-            props: __spreadProps(__spreadValues(__spreadValues({}, nodeData.props), (_c = updatedItems[id]) == null ? void 0 : _c.props), {
+        if (configForComponent?.fields?.[slotName]?.type === "slot") {
+          updatedItems[id] = {
+            ...nodeData,
+            props: {
+              ...nodeData.props,
+              ...updatedItems[id]?.props,
               [slotName]: content
-            })
-          });
+            }
+          };
           deletedCompounds.push(zoneCompound);
         }
         return content;
@@ -14791,24 +14687,21 @@ var migrations = [
       config,
       (content) => content,
       (item) => {
-        var _a2;
-        return (_a2 = updatedItems[item.props.id]) != null ? _a2 : item;
+        return updatedItems[item.props.id] ?? item;
       }
     );
     deletedCompounds.forEach((zoneCompound) => {
-      var _a2;
       const [_, propName] = zoneCompound.split(":");
       console.log(
         `\u2713 Success: Migrated "${zoneCompound}" from DropZone to slot field "${propName}"`
       );
-      (_a2 = updated.data.zones) == null ? true : delete _a2[zoneCompound];
+      delete updated.data.zones?.[zoneCompound];
     });
-    if (migrationOptions == null ? void 0 : migrationOptions.migrateDynamicZonesForComponent) {
+    if (migrationOptions?.migrateDynamicZonesForComponent) {
       const unmigratedZonesGrouped = {};
-      Object.keys((_a = updated.data.zones) != null ? _a : {}).forEach((zoneCompound) => {
-        var _a2;
+      Object.keys(updated.data.zones ?? {}).forEach((zoneCompound) => {
         const [componentId, propName] = zoneCompound.split(":");
-        const content = (_a2 = updated.data.zones) == null ? void 0 : _a2[zoneCompound];
+        const content = updated.data.zones?.[zoneCompound];
         if (!content) {
           return;
         }
@@ -14822,30 +14715,29 @@ var migrations = [
       Object.keys(unmigratedZonesGrouped).forEach((componentId) => {
         updated.data = walkTree(updated.data, config, (content) => {
           return content.map((child) => {
-            var _a2;
             if (child.props.id !== componentId) {
               return child;
             }
-            const migrateFn = (_a2 = migrationOptions == null ? void 0 : migrationOptions.migrateDynamicZonesForComponent) == null ? void 0 : _a2[child.type];
+            const migrateFn = migrationOptions?.migrateDynamicZonesForComponent?.[child.type];
             if (!migrateFn) {
               return child;
             }
             const zones = unmigratedZonesGrouped[componentId];
             const migratedProps = migrateFn(child.props, zones);
             Object.keys(zones).forEach((propName) => {
-              var _a3;
               const zoneCompound = `${componentId}:${propName}`;
               console.log(`\u2713 Success: Migrated "${zoneCompound}" DropZone`);
-              (_a3 = updated.data.zones) == null ? true : delete _a3[zoneCompound];
+              delete updated.data.zones?.[zoneCompound];
             });
-            return __spreadProps(__spreadValues({}, child), {
+            return {
+              ...child,
               props: migratedProps
-            });
+            };
           });
         });
       });
     }
-    Object.keys((_b = updated.data.zones) != null ? _b : {}).forEach((zoneCompound) => {
+    Object.keys(updated.data.zones ?? {}).forEach((zoneCompound) => {
       const [_, propName] = zoneCompound.split(":");
       throw new Error(
         `Could not migrate DropZone "${zoneCompound}" to slot field. No slot exists with the name "${propName}".`
@@ -14856,7 +14748,7 @@ var migrations = [
   }
 ];
 function migrate(data, config, migrationOptions) {
-  return migrations == null ? void 0 : migrations.reduce(
+  return migrations?.reduce(
     (acc, migration) => migration(acc, config, migrationOptions),
     data
   );
@@ -14868,7 +14760,8 @@ init_walk_tree();
 
 // lib/data/default-data.ts
 init_react_import();
-var defaultData = (data) => __spreadProps(__spreadValues({}, data), {
+var defaultData = (data) => ({
+  ...data,
   root: data.root || {},
   content: data.content || []
 });
@@ -14877,21 +14770,23 @@ var defaultData = (data) => __spreadProps(__spreadValues({}, data), {
 function transformProps(data, propTransforms, config = { components: {} }) {
   const mapItem = (item) => {
     if (propTransforms[item.type]) {
-      return __spreadProps(__spreadValues({}, item), {
-        props: __spreadValues({
-          id: item.props.id
-        }, propTransforms[item.type](item.props))
-      });
+      return {
+        ...item,
+        props: {
+          id: item.props.id,
+          ...propTransforms[item.type](item.props)
+        }
+      };
     }
     return item;
   };
   const defaultedData = defaultData(data);
   const rootProps = defaultedData.root.props || defaultedData.root;
-  let newRoot = __spreadValues({}, defaultedData.root);
+  let newRoot = { ...defaultedData.root };
   if (propTransforms["root"]) {
     newRoot.props = propTransforms["root"](rootProps);
   }
-  const dataWithUpdatedRoot = __spreadProps(__spreadValues({}, defaultedData), { root: newRoot });
+  const dataWithUpdatedRoot = { ...defaultedData, root: newRoot };
   const updatedData = walkTree(
     dataWithUpdatedRoot,
     config,
@@ -14911,8 +14806,7 @@ init_resolve_component_data();
 init_react_import();
 init_get_zone_id();
 var groupZonesByComponent = (data) => {
-  var _a;
-  const zoneEntries = Object.entries((_a = data.zones) != null ? _a : {});
+  const zoneEntries = Object.entries(data.zones ?? {});
   return zoneEntries.reduce((acc, [zoneCompound, zoneContent]) => {
     const [componentId, zoneName] = getZoneId(zoneCompound);
     if (!componentId.length || !zoneName.length) return acc;
@@ -14927,61 +14821,59 @@ var groupZonesByComponent = (data) => {
 // lib/resolve-all-data.ts
 init_to_component();
 init_map_fields();
-function resolveAllData(_0, _1) {
-  return __async(this, arguments, function* (data, config, metadata = {}, onResolveStart, onResolveEnd) {
-    const defaultedData = defaultData(data);
-    const zonesByComponent = groupZonesByComponent(defaultedData);
-    let resolvedZones = {};
-    const resolveNode = (_node, parent) => __async(null, null, function* () {
-      const node = toComponent(_node);
-      onResolveStart == null ? void 0 : onResolveStart(node);
-      const resolved = (yield resolveComponentData(
-        node,
-        config,
-        metadata,
-        () => {
-        },
-        () => {
-        },
-        "force",
-        parent
-      )).node;
-      const resolvedAsComponent = toComponent(resolved);
-      const resolvedDeepPromise = mapFields(
-        resolved,
-        {
-          slot: ({ value }) => processContent(value, resolvedAsComponent)
-        },
-        config
-      );
-      let resolveZonePromises = [];
-      if (zonesByComponent[resolvedAsComponent.props.id]) {
-        resolveZonePromises = zonesByComponent[resolvedAsComponent.props.id].map(
-          (_02) => __async(null, [_02], function* ({ zoneCompound, content }) {
-            resolvedZones[zoneCompound] = yield processContent(
-              content,
-              resolvedAsComponent
-            );
-          })
-        );
-      }
-      const resolvedDeep = yield resolvedDeepPromise;
-      yield Promise.all(resolveZonePromises);
-      onResolveEnd == null ? void 0 : onResolveEnd(toComponent(resolvedDeep));
-      return resolvedDeep;
-    });
-    const processContent = (content, parent) => __async(null, null, function* () {
-      return Promise.all(content.map((item) => resolveNode(item, parent)));
-    });
-    const result = defaultData({});
-    result.root = yield resolveNode(defaultedData.root, null);
-    result.content = yield processContent(
-      defaultedData.content,
-      toComponent(result.root)
+async function resolveAllData(data, config, metadata = {}, onResolveStart, onResolveEnd) {
+  const defaultedData = defaultData(data);
+  const zonesByComponent = groupZonesByComponent(defaultedData);
+  let resolvedZones = {};
+  const resolveNode = async (_node, parent) => {
+    const node = toComponent(_node);
+    onResolveStart?.(node);
+    const resolved = (await resolveComponentData(
+      node,
+      config,
+      metadata,
+      () => {
+      },
+      () => {
+      },
+      "force",
+      parent
+    )).node;
+    const resolvedAsComponent = toComponent(resolved);
+    const resolvedDeepPromise = mapFields(
+      resolved,
+      {
+        slot: ({ value }) => processContent(value, resolvedAsComponent)
+      },
+      config
     );
-    result.zones = resolvedZones;
-    return result;
-  });
+    let resolveZonePromises = [];
+    if (zonesByComponent[resolvedAsComponent.props.id]) {
+      resolveZonePromises = zonesByComponent[resolvedAsComponent.props.id].map(
+        async ({ zoneCompound, content }) => {
+          resolvedZones[zoneCompound] = await processContent(
+            content,
+            resolvedAsComponent
+          );
+        }
+      );
+    }
+    const resolvedDeep = await resolvedDeepPromise;
+    await Promise.all(resolveZonePromises);
+    onResolveEnd?.(toComponent(resolvedDeep));
+    return resolvedDeep;
+  };
+  const processContent = async (content, parent) => {
+    return Promise.all(content.map((item) => resolveNode(item, parent)));
+  };
+  const result = defaultData({});
+  result.root = await resolveNode(defaultedData.root, null);
+  result.content = await processContent(
+    defaultedData.content,
+    toComponent(result.root)
+  );
+  result.zones = resolvedZones;
+  return result;
 }
 
 // bundle/core.ts

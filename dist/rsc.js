@@ -1,39 +1,10 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
@@ -61,39 +32,19 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
-};
 
-// ../tsup-config/react-import.js
+// react-import.js
 var import_react;
 var init_react_import = __esm({
-  "../tsup-config/react-import.js"() {
+  "react-import.js"() {
     "use strict";
     import_react = __toESM(require("react"));
   }
 });
 
-// ../../node_modules/classnames/index.js
+// ../node_modules/classnames/index.js
 var require_classnames = __commonJS({
-  "../../node_modules/classnames/index.js"(exports2, module2) {
+  "../node_modules/classnames/index.js"(exports2, module2) {
     "use strict";
     init_react_import();
     (function() {
@@ -175,9 +126,11 @@ var init_get_class_name_factory = __esm({
           prefixedModifiers[styles[`${rootClass}--${modifier}`]] = modifiers[modifier];
         }
         const c = styles[rootClass];
-        return config.baseClass + (0, import_classnames.default)(__spreadValues({
-          [c]: !!c
-        }, prefixedModifiers));
+        return config.baseClass + (0, import_classnames.default)({
+          [c]: !!c,
+          // only apply the class if it exists
+          ...prefixedModifiers
+        });
       } else {
         return config.baseClass + styles[rootClass] || "";
       }
@@ -186,16 +139,16 @@ var init_get_class_name_factory = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data
 var init_css_module_data = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module
 var styles_module_default;
 var init_styles_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/core/components/RichTextEditor/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data();
@@ -235,7 +188,10 @@ var init_extension = __esm({
       name: "credbuildRichText",
       addExtensions() {
         const extensions = [];
-        const options = __spreadValues(__spreadValues({}, this.options), defaultCredBuildRichTextOptions);
+        const options = {
+          ...this.options,
+          ...defaultCredBuildRichTextOptions
+        };
         if (options.bold !== false) {
           extensions.push(import_extension_bold.Bold.configure(options.bold));
         }
@@ -273,10 +229,10 @@ var init_extension = __esm({
           }
         }
         if (options.listKeymap !== false) {
-          extensions.push(import_extension_list.ListKeymap.configure(options == null ? void 0 : options.listKeymap));
+          extensions.push(import_extension_list.ListKeymap.configure(options?.listKeymap));
         }
         if (options.link !== false) {
-          extensions.push(import_extension_link.Link.configure(options == null ? void 0 : options.link));
+          extensions.push(import_extension_link.Link.configure(options?.link));
         }
         if (options.paragraph !== false) {
           extensions.push(import_extension_paragraph.Paragraph.configure(options.paragraph));
@@ -291,7 +247,7 @@ var init_extension = __esm({
           extensions.push(import_extension_text_align.default.configure(options.textAlign));
         }
         if (options.underline !== false) {
-          extensions.push(import_extension_underline.Underline.configure(options == null ? void 0 : options.underline));
+          extensions.push(import_extension_underline.Underline.configure(options?.underline));
         }
         return extensions;
       }
@@ -315,7 +271,7 @@ function RichTextRender({
     [extensions, options]
   );
   const normalized = (0, import_react3.useMemo)(() => {
-    if (typeof content === "object" && (content == null ? void 0 : content.type) === "doc") {
+    if (typeof content === "object" && content?.type === "doc") {
       return content;
     }
     if (typeof content === "string") {
@@ -379,9 +335,10 @@ var setupZone = (data, zoneKey) => {
   if (zoneKey === rootDroppableId) {
     return data;
   }
-  const newData = __spreadProps(__spreadValues({}, data), {
-    zones: data.zones ? __spreadValues({}, data.zones) : {}
-  });
+  const newData = {
+    ...data,
+    zones: data.zones ? { ...data.zones } : {}
+  };
   newData.zones[zoneKey] = newData.zones[zoneKey] || [];
   return newData;
 };
@@ -399,13 +356,13 @@ init_react_import();
 // lib/data/default-slots.ts
 init_react_import();
 var defaultSlots = (value, fields) => Object.keys(fields).reduce(
-  (acc, fieldName) => fields[fieldName].type === "slot" ? __spreadValues({ [fieldName]: [] }, acc) : acc,
+  (acc, fieldName) => fields[fieldName].type === "slot" ? { [fieldName]: [], ...acc } : acc,
   value
 );
 
 // lib/data/map-fields.ts
 var isPromise = (v) => !!v && typeof v.then === "function";
-var flatten = (values) => values.reduce((acc, item) => __spreadValues(__spreadValues({}, acc), item), {});
+var flatten = (values) => values.reduce((acc, item) => ({ ...acc, ...item }), {});
 var containsPromise = (arr) => arr.some(isPromise);
 var walkField = ({
   value,
@@ -417,20 +374,18 @@ var walkField = ({
   config,
   recurseSlots = false
 }) => {
-  var _a, _b, _c;
-  const fieldType = (_a = fields[propKey]) == null ? void 0 : _a.type;
+  const fieldType = fields[propKey]?.type;
   const map = mappers[fieldType];
   if (map && fieldType === "slot") {
     const content = value || [];
     const mappedContent = recurseSlots ? content.map((el) => {
-      var _a2;
       const componentConfig = config.components[el.type];
       if (!componentConfig) {
         throw new Error(`Could not find component config for ${el.type}`);
       }
-      const fields2 = (_a2 = componentConfig.fields) != null ? _a2 : {};
+      const fields2 = componentConfig.fields ?? {};
       return walkField({
-        value: __spreadProps(__spreadValues({}, el), { props: defaultSlots(el.props, fields2) }),
+        value: { ...el, props: defaultSlots(el.props, fields2) },
         fields: fields2,
         mappers,
         id: el.props.id,
@@ -459,7 +414,7 @@ var walkField = ({
   }
   if (value && typeof value === "object") {
     if (Array.isArray(value)) {
-      const arrayFields = ((_b = fields[propKey]) == null ? void 0 : _b.type) === "array" ? fields[propKey].arrayFields : null;
+      const arrayFields = fields[propKey]?.type === "array" ? fields[propKey].arrayFields : null;
       if (!arrayFields) return value;
       const newValue = value.map(
         (el, idx) => walkField({
@@ -480,7 +435,7 @@ var walkField = ({
     } else if ("$$typeof" in value) {
       return value;
     } else {
-      const objectFields = ((_c = fields[propKey]) == null ? void 0 : _c.type) === "object" ? fields[propKey].objectFields : fields;
+      const objectFields = fields[propKey]?.type === "object" ? fields[propKey].objectFields : fields;
       return walkObject({
         value,
         fields: objectFields,
@@ -530,26 +485,27 @@ var walkObject = ({
   return flatten(newProps);
 };
 function mapFields(item, mappers, config, recurseSlots = false, shouldDefaultSlots = true) {
-  var _a, _b, _c, _d, _e;
   const itemType = "type" in item ? item.type : "root";
-  const componentConfig = itemType === "root" ? config.root : (_a = config.components) == null ? void 0 : _a[itemType];
+  const componentConfig = itemType === "root" ? config.root : config.components?.[itemType];
   const newProps = walkObject({
-    value: shouldDefaultSlots ? defaultSlots((_b = item.props) != null ? _b : {}, (_c = componentConfig == null ? void 0 : componentConfig.fields) != null ? _c : {}) : item.props,
-    fields: (_d = componentConfig == null ? void 0 : componentConfig.fields) != null ? _d : {},
+    value: shouldDefaultSlots ? defaultSlots(item.props ?? {}, componentConfig?.fields ?? {}) : item.props,
+    fields: componentConfig?.fields ?? {},
     mappers,
-    id: item.props ? (_e = item.props.id) != null ? _e : "root" : "root",
+    id: item.props ? item.props.id ?? "root" : "root",
     getPropPath: (k) => k,
     config,
     recurseSlots
   });
   if (isPromise(newProps)) {
-    return newProps.then((resolvedProps) => __spreadProps(__spreadValues({}, item), {
+    return newProps.then((resolvedProps) => ({
+      ...item,
       props: resolvedProps
     }));
   }
-  return __spreadProps(__spreadValues({}, item), {
+  return {
+    ...item,
     props: newProps
-  });
+  };
 }
 
 // lib/field-transforms/build-mappers.ts
@@ -557,22 +513,22 @@ init_react_import();
 function buildMappers(transforms, readOnly, forceReadOnly) {
   return Object.keys(transforms).reduce((acc, _fieldType) => {
     const fieldType = _fieldType;
-    return __spreadProps(__spreadValues({}, acc), {
-      [fieldType]: (_a) => {
-        var _b = _a, {
-          parentId
-        } = _b, params = __objRest(_b, [
-          "parentId"
-        ]);
+    return {
+      ...acc,
+      [fieldType]: ({
+        parentId,
+        ...params
+      }) => {
         const wildcardPath = params.propPath.replace(/\[\d+\]/g, "[*]");
-        const isReadOnly = (readOnly == null ? void 0 : readOnly[params.propPath]) || (readOnly == null ? void 0 : readOnly[wildcardPath]) || forceReadOnly || false;
+        const isReadOnly = readOnly?.[params.propPath] || readOnly?.[wildcardPath] || forceReadOnly || false;
         const fn = transforms[fieldType];
-        return fn == null ? void 0 : fn(__spreadProps(__spreadValues({}, params), {
+        return fn?.({
+          ...params,
           isReadOnly,
           componentId: parentId
-        }));
+        });
       }
-    });
+    };
   }, {});
 }
 
@@ -586,7 +542,7 @@ function useFieldTransforms(config, item, transforms, readOnly, forceReadOnly) {
     return mapFields(item, mappers, config).props;
   }, [config, item, mappers]);
   const mergedProps = (0, import_react2.useMemo)(
-    () => __spreadValues(__spreadValues({}, item.props), transformedProps),
+    () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
   return mergedProps;
@@ -597,13 +553,13 @@ init_react_import();
 var getSlotTransform = (renderSlotEdit, renderSlotRender = renderSlotEdit) => ({
   slot: ({ value: content, propName, field, isReadOnly }) => {
     const render = isReadOnly ? renderSlotRender : renderSlotEdit;
-    const Slot = (dzProps) => render(__spreadProps(__spreadValues({
-      allow: (field == null ? void 0 : field.type) === "slot" ? field.allow : [],
-      disallow: (field == null ? void 0 : field.type) === "slot" ? field.disallow : []
-    }, dzProps), {
+    const Slot = (dzProps) => render({
+      allow: field?.type === "slot" ? field.allow : [],
+      disallow: field?.type === "slot" ? field.disallow : [],
+      ...dzProps,
       zone: propName,
       content
-    }));
+    });
     return Slot;
   }
 });
@@ -661,9 +617,10 @@ var mapDeep = (source, path, render) => {
   if (Array.isArray(source)) {
     return source.map((item) => mapDeep(item, path, render));
   }
-  return __spreadProps(__spreadValues({}, source), {
+  return {
+    ...source,
     [key]: mapDeep(source[key], rest, render)
-  });
+  };
 };
 
 // components/RichTextEditor/lib/use-richtext-props.tsx
@@ -691,13 +648,13 @@ var findAllRichtextKeys = (fields, path = []) => {
 function useRichtextProps(fields, props) {
   const richtextKeys = (0, import_react4.useMemo)(() => findAllRichtextKeys(fields), [fields]);
   const richtextProps = (0, import_react4.useMemo)(() => {
-    if (!(richtextKeys == null ? void 0 : richtextKeys.length)) return {};
+    if (!richtextKeys?.length) return {};
     const RichTextRender2 = (0, import_react4.lazy)(
       () => Promise.resolve().then(() => (init_Render(), Render_exports)).then((m) => ({
         default: m.RichTextRender
       }))
     );
-    let result = __spreadValues({}, props);
+    let result = { ...props };
     for (const { path, field } of richtextKeys) {
       result = mapDeep(result, path, (content) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
         import_react4.Suspense,
@@ -715,27 +672,30 @@ function useRichtextProps(fields, props) {
 
 // components/SlotRender/server.tsx
 var import_jsx_runtime4 = require("react/jsx-runtime");
-var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SlotRender, __spreadValues({}, props));
+var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SlotRender, { ...props });
 var Item = ({
   config,
   item,
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SlotRenderPure, __spreadProps(__spreadValues({}, slotProps), { config, metadata })));
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
   const richtextProps = useRichtextProps(Component.fields, props);
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
     Component.render,
-    __spreadProps(__spreadValues(__spreadValues({}, props), richtextProps), {
-      credbuild: __spreadProps(__spreadValues({}, props.credbuild), {
+    {
+      ...props,
+      ...richtextProps,
+      credbuild: {
+        ...props.credbuild,
         metadata: metadata || {}
-      })
-    })
+      }
+    }
   );
 };
 var SlotRender = (0, import_react5.forwardRef)(
   function SlotRenderInternal({ className, style, content, config, metadata, as }, ref) {
-    const El = as != null ? as : "div";
+    const El = as ?? "div";
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(El, { className, style, ref, children: content.map((item) => {
       if (!config.components[item.type]) {
         return null;
@@ -762,7 +722,8 @@ function DropZoneRenderItem({
   metadata
 }) {
   const Component = config.components[item.type];
-  const props = __spreadProps(__spreadValues({}, item.props), {
+  const props = {
+    ...item.props,
     credbuild: {
       renderDropZone: ({ zone }) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
         DropZoneRender,
@@ -778,14 +739,14 @@ function DropZoneRenderItem({
       dragRef: null,
       isEditing: false
     }
-  });
-  const renderItem = __spreadProps(__spreadValues({}, item), { props });
-  const propsWithSlots = useSlots(config, renderItem, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotRenderPure, __spreadProps(__spreadValues({}, slotProps), { config, metadata })));
-  const richtextProps = useRichtextProps(Component == null ? void 0 : Component.fields, propsWithSlots);
+  };
+  const renderItem = { ...item, props };
+  const propsWithSlots = useSlots(config, renderItem, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
+  const richtextProps = useRichtextProps(Component?.fields, propsWithSlots);
   if (!Component) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Component.render, __spreadValues(__spreadValues({}, propsWithSlots), richtextProps));
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Component.render, { ...propsWithSlots, ...richtextProps });
 }
 function DropZoneRender({
   zone,
@@ -795,7 +756,7 @@ function DropZoneRender({
   metadata = {}
 }) {
   let zoneCompound = rootDroppableId;
-  let content = (data == null ? void 0 : data.content) || [];
+  let content = data?.content || [];
   if (!data || !config) {
     return null;
   }
@@ -821,10 +782,10 @@ function Render({
   data,
   metadata = {}
 }) {
-  var _a, _b;
   const rootProps = "props" in data.root ? data.root.props : data.root;
   const title = rootProps.title || "";
-  const props = __spreadProps(__spreadValues({}, rootProps), {
+  const props = {
+    ...rootProps,
     credbuild: {
       renderDropZone: ({ zone }) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
         DropZoneRender,
@@ -842,11 +803,11 @@ function Render({
     title,
     editMode: false,
     id: "credbuild-root"
-  });
-  const propsWithSlots = useSlots(config, { type: "root", props }, (props2) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotRenderPure, __spreadProps(__spreadValues({}, props2), { config, metadata })));
-  const richtextProps = useRichtextProps((_a = config.root) == null ? void 0 : _a.fields, props);
-  if ((_b = config.root) == null ? void 0 : _b.render) {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(config.root.render, __spreadProps(__spreadValues(__spreadValues({}, propsWithSlots), richtextProps), { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+  };
+  const propsWithSlots = useSlots(config, { type: "root", props }, (props2) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotRenderPure, { ...props2, config, metadata }));
+  const richtextProps = useRichtextProps(config.root?.fields, props);
+  if (config.root?.render) {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       DropZoneRender,
       {
         config,
@@ -854,7 +815,7 @@ function Render({
         zone: rootZone,
         metadata
       }
-    ) }));
+    ) });
   }
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
     DropZoneRender,
@@ -876,10 +837,11 @@ init_react_import();
 // lib/data/to-component.ts
 init_react_import();
 var toComponent = (item) => {
-  return "type" in item ? item : __spreadProps(__spreadValues({}, item), {
-    props: __spreadProps(__spreadValues({}, item.props), { id: "root" }),
+  return "type" in item ? item : {
+    ...item,
+    props: { ...item.props, id: "root" },
     type: "root"
-  });
+  };
 };
 
 // lib/get-changed.ts
@@ -887,21 +849,24 @@ init_react_import();
 var import_fast_equals = require("fast-equals");
 var getChanged = (newItem, oldItem) => {
   return newItem ? Object.keys(newItem.props || {}).reduce((acc, item) => {
-    const newItemProps = (newItem == null ? void 0 : newItem.props) || {};
-    const oldItemProps = (oldItem == null ? void 0 : oldItem.props) || {};
-    return __spreadProps(__spreadValues({}, acc), {
+    const newItemProps = newItem?.props || {};
+    const oldItemProps = oldItem?.props || {};
+    return {
+      ...acc,
       [item]: !(0, import_fast_equals.deepEqual)(oldItemProps[item], newItemProps[item])
-    });
+    };
   }, {}) : {};
 };
 
 // lib/resolve-component-data.ts
 var import_fast_equals2 = require("fast-equals");
 var cache = { lastChange: {} };
-var resolveComponentData = (_0, _1, ..._2) => __async(null, [_0, _1, ..._2], function* (item, config, metadata = {}, onResolveStart, onResolveEnd, trigger = "replace", parent = null) {
+var resolveComponentData = async (item, config, metadata = {}, onResolveStart, onResolveEnd, trigger = "replace", parent = null) => {
   const configForItem = "type" in item && item.type !== "root" ? config.components[item.type] : config.root;
-  const resolvedItem = __spreadValues({}, item);
-  const shouldRunResolver = (configForItem == null ? void 0 : configForItem.resolveData) && item.props;
+  const resolvedItem = {
+    ...item
+  };
+  const shouldRunResolver = configForItem?.resolveData && item.props;
   const id = "id" in item.props ? item.props.id : "root";
   if (shouldRunResolver) {
     const {
@@ -910,7 +875,7 @@ var resolveComponentData = (_0, _1, ..._2) => __async(null, [_0, _1, ..._2], fun
       parentId: oldParentId = null
     } = cache.lastChange[id] || {};
     const isRootOrInserted = oldParentId === null;
-    const parentChanged = !isRootOrInserted && (parent == null ? void 0 : parent.props.id) !== oldParentId;
+    const parentChanged = !isRootOrInserted && parent?.props.id !== oldParentId;
     const dataChanged = item && !(0, import_fast_equals2.deepEqual)(item, oldItem);
     const shouldSkip = trigger === "move" && !parentChanged || trigger !== "move" && trigger !== "force" && !dataChanged;
     if (shouldSkip) {
@@ -920,40 +885,41 @@ var resolveComponentData = (_0, _1, ..._2) => __async(null, [_0, _1, ..._2], fun
     if (onResolveStart) {
       onResolveStart(item);
     }
-    const { props: resolvedProps, readOnly = {} } = yield configForItem.resolveData(item, {
+    const { props: resolvedProps, readOnly = {} } = await configForItem.resolveData(item, {
       changed,
       lastData: oldItem,
-      metadata: __spreadValues(__spreadValues({}, metadata), configForItem.metadata),
+      metadata: { ...metadata, ...configForItem.metadata },
       trigger,
       parent
     });
-    resolvedItem.props = __spreadValues(__spreadValues({}, item.props), resolvedProps);
+    resolvedItem.props = {
+      ...item.props,
+      ...resolvedProps
+    };
     if (Object.keys(readOnly).length) {
       resolvedItem.readOnly = readOnly;
     }
   }
   const itemAsComponentData = toComponent(resolvedItem);
-  let itemWithResolvedChildren = yield mapFields(
+  let itemWithResolvedChildren = await mapFields(
     resolvedItem,
     {
-      slot: (_02) => __async(null, [_02], function* ({ value }) {
+      slot: async ({ value }) => {
         const content = value;
-        return yield Promise.all(
+        return await Promise.all(
           content.map(
-            (childItem) => __async(null, null, function* () {
-              return (yield resolveComponentData(
-                childItem,
-                config,
-                metadata,
-                onResolveStart,
-                onResolveEnd,
-                trigger,
-                itemAsComponentData
-              )).node;
-            })
+            async (childItem) => (await resolveComponentData(
+              childItem,
+              config,
+              metadata,
+              onResolveStart,
+              onResolveEnd,
+              trigger,
+              itemAsComponentData
+            )).node
           )
         );
-      })
+      }
     },
     config
   );
@@ -963,13 +929,13 @@ var resolveComponentData = (_0, _1, ..._2) => __async(null, [_0, _1, ..._2], fun
   cache.lastChange[id] = {
     item,
     resolved: itemWithResolvedChildren,
-    parentId: parent == null ? void 0 : parent.props.id
+    parentId: parent?.props.id
   };
   return {
     node: itemWithResolvedChildren,
     didChange: !(0, import_fast_equals2.deepEqual)(item, itemWithResolvedChildren)
   };
-});
+};
 
 // lib/group-zones-by-component.ts
 init_react_import();
@@ -988,8 +954,7 @@ var getZoneId = (zoneCompound) => {
 
 // lib/group-zones-by-component.ts
 var groupZonesByComponent = (data) => {
-  var _a;
-  const zoneEntries = Object.entries((_a = data.zones) != null ? _a : {});
+  const zoneEntries = Object.entries(data.zones ?? {});
   return zoneEntries.reduce((acc, [zoneCompound, zoneContent]) => {
     const [componentId, zoneName] = getZoneId(zoneCompound);
     if (!componentId.length || !zoneName.length) return acc;
@@ -1003,67 +968,66 @@ var groupZonesByComponent = (data) => {
 
 // lib/data/default-data.ts
 init_react_import();
-var defaultData = (data) => __spreadProps(__spreadValues({}, data), {
+var defaultData = (data) => ({
+  ...data,
   root: data.root || {},
   content: data.content || []
 });
 
 // lib/resolve-all-data.ts
-function resolveAllData(_0, _1) {
-  return __async(this, arguments, function* (data, config, metadata = {}, onResolveStart, onResolveEnd) {
-    const defaultedData = defaultData(data);
-    const zonesByComponent = groupZonesByComponent(defaultedData);
-    let resolvedZones = {};
-    const resolveNode = (_node, parent) => __async(null, null, function* () {
-      const node = toComponent(_node);
-      onResolveStart == null ? void 0 : onResolveStart(node);
-      const resolved = (yield resolveComponentData(
-        node,
-        config,
-        metadata,
-        () => {
-        },
-        () => {
-        },
-        "force",
-        parent
-      )).node;
-      const resolvedAsComponent = toComponent(resolved);
-      const resolvedDeepPromise = mapFields(
-        resolved,
-        {
-          slot: ({ value }) => processContent(value, resolvedAsComponent)
-        },
-        config
-      );
-      let resolveZonePromises = [];
-      if (zonesByComponent[resolvedAsComponent.props.id]) {
-        resolveZonePromises = zonesByComponent[resolvedAsComponent.props.id].map(
-          (_02) => __async(null, [_02], function* ({ zoneCompound, content }) {
-            resolvedZones[zoneCompound] = yield processContent(
-              content,
-              resolvedAsComponent
-            );
-          })
-        );
-      }
-      const resolvedDeep = yield resolvedDeepPromise;
-      yield Promise.all(resolveZonePromises);
-      onResolveEnd == null ? void 0 : onResolveEnd(toComponent(resolvedDeep));
-      return resolvedDeep;
-    });
-    const processContent = (content, parent) => __async(null, null, function* () {
-      return Promise.all(content.map((item) => resolveNode(item, parent)));
-    });
-    const result = defaultData({});
-    result.root = yield resolveNode(defaultedData.root, null);
-    result.content = yield processContent(
-      defaultedData.content,
-      toComponent(result.root)
+async function resolveAllData(data, config, metadata = {}, onResolveStart, onResolveEnd) {
+  const defaultedData = defaultData(data);
+  const zonesByComponent = groupZonesByComponent(defaultedData);
+  let resolvedZones = {};
+  const resolveNode = async (_node, parent) => {
+    const node = toComponent(_node);
+    onResolveStart?.(node);
+    const resolved = (await resolveComponentData(
+      node,
+      config,
+      metadata,
+      () => {
+      },
+      () => {
+      },
+      "force",
+      parent
+    )).node;
+    const resolvedAsComponent = toComponent(resolved);
+    const resolvedDeepPromise = mapFields(
+      resolved,
+      {
+        slot: ({ value }) => processContent(value, resolvedAsComponent)
+      },
+      config
     );
-    result.zones = resolvedZones;
-    return result;
-  });
+    let resolveZonePromises = [];
+    if (zonesByComponent[resolvedAsComponent.props.id]) {
+      resolveZonePromises = zonesByComponent[resolvedAsComponent.props.id].map(
+        async ({ zoneCompound, content }) => {
+          resolvedZones[zoneCompound] = await processContent(
+            content,
+            resolvedAsComponent
+          );
+        }
+      );
+    }
+    const resolvedDeep = await resolvedDeepPromise;
+    await Promise.all(resolveZonePromises);
+    onResolveEnd?.(toComponent(resolvedDeep));
+    return resolvedDeep;
+  };
+  const processContent = async (content, parent) => {
+    return Promise.all(content.map((item) => resolveNode(item, parent)));
+  };
+  const result = defaultData({});
+  result.root = await resolveNode(defaultedData.root, null);
+  result.content = await processContent(
+    defaultedData.content,
+    toComponent(result.root)
+  );
+  result.zones = resolvedZones;
+  return result;
 }
 
 // lib/transform-props.ts
@@ -1072,15 +1036,13 @@ init_react_import();
 // lib/data/walk-tree.ts
 init_react_import();
 function walkTree(data, config, callbackFn) {
-  var _a, _b;
   const walkItem = (item) => {
     return mapFields(
       item,
       {
         slot: ({ value, parentId, propName }) => {
-          var _a2;
           const content = value;
-          return (_a2 = callbackFn(content, { parentId, propName })) != null ? _a2 : content;
+          return callbackFn(content, { parentId, propName }) ?? content;
         }
       },
       config,
@@ -1091,16 +1053,17 @@ function walkTree(data, config, callbackFn) {
     return walkItem(data);
   }
   const _data = data;
-  const zones = (_a = _data.zones) != null ? _a : {};
+  const zones = _data.zones ?? {};
   const mappedContent = _data.content.map(walkItem);
   return {
     root: walkItem(_data.root),
-    content: (_b = callbackFn(mappedContent, {
+    content: callbackFn(mappedContent, {
       parentId: "root",
       propName: "default-zone"
-    })) != null ? _b : mappedContent,
+    }) ?? mappedContent,
     zones: Object.keys(zones).reduce(
-      (acc, zoneCompound) => __spreadProps(__spreadValues({}, acc), {
+      (acc, zoneCompound) => ({
+        ...acc,
         [zoneCompound]: zones[zoneCompound].map(walkItem)
       }),
       {}
@@ -1112,21 +1075,23 @@ function walkTree(data, config, callbackFn) {
 function transformProps(data, propTransforms, config = { components: {} }) {
   const mapItem = (item) => {
     if (propTransforms[item.type]) {
-      return __spreadProps(__spreadValues({}, item), {
-        props: __spreadValues({
-          id: item.props.id
-        }, propTransforms[item.type](item.props))
-      });
+      return {
+        ...item,
+        props: {
+          id: item.props.id,
+          ...propTransforms[item.type](item.props)
+        }
+      };
     }
     return item;
   };
   const defaultedData = defaultData(data);
   const rootProps = defaultedData.root.props || defaultedData.root;
-  let newRoot = __spreadValues({}, defaultedData.root);
+  let newRoot = { ...defaultedData.root };
   if (propTransforms["root"]) {
     newRoot.props = propTransforms["root"](rootProps);
   }
-  const dataWithUpdatedRoot = __spreadProps(__spreadValues({}, defaultedData), { root: newRoot });
+  const dataWithUpdatedRoot = { ...defaultedData, root: newRoot };
   const updatedData = walkTree(
     dataWithUpdatedRoot,
     config,
@@ -1226,21 +1191,20 @@ function encodeEmptyObjects(props = {}) {
   return result;
 }
 var flattenNode = (node, config) => {
-  return __spreadProps(__spreadValues({}, node), {
+  return {
+    ...node,
     props: encodeEmptyObjects(flatten2(stripSlots(node, config).props))
-  });
+  };
 };
 
 // lib/data/walk-app-state.ts
 function walkAppState(state, config, mapContent = (content) => content, mapNodeOrSkip = (item) => item) {
-  var _a;
   let newZones = {};
   const newZoneIndex = {};
   const newNodeIndex = {};
   const processContent = (path, zoneCompound, content, zoneType, newId) => {
-    var _a2;
     const [parentId] = zoneCompound.split(":");
-    const mappedContent = ((_a2 = mapContent(content, zoneCompound, zoneType)) != null ? _a2 : content) || [];
+    const mappedContent = (mapContent(content, zoneCompound, zoneType) ?? content) || [];
     const [_2, zone] = zoneCompound.split(":");
     const newZoneCompound = `${newId || parentId}:${zone}`;
     const newContent2 = mappedContent.map(
@@ -1273,28 +1237,29 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     const mappedItem = mapNodeOrSkip(item, path, index);
     if (!mappedItem) return item;
     const id = mappedItem.props.id;
-    const newProps = __spreadProps(__spreadValues({}, mapFields(
-      mappedItem,
-      {
-        slot: ({ value, parentId: parentId2, propPath }) => {
-          const content = value;
-          const zoneCompound = `${parentId2}:${propPath}`;
-          const [_2, newContent2] = processContent(
-            path,
-            zoneCompound,
-            content,
-            "slot",
-            parentId2
-          );
-          return newContent2;
-        }
-      },
-      config
-    ).props), {
+    const newProps = {
+      ...mapFields(
+        mappedItem,
+        {
+          slot: ({ value, parentId: parentId2, propPath }) => {
+            const content = value;
+            const zoneCompound = `${parentId2}:${propPath}`;
+            const [_2, newContent2] = processContent(
+              path,
+              zoneCompound,
+              content,
+              "slot",
+              parentId2
+            );
+            return newContent2;
+          }
+        },
+        config
+      ).props,
       id
-    });
+    };
     processRelatedZones(item, id, path);
-    const newItem = __spreadProps(__spreadValues({}, mappedItem), { props: newProps });
+    const newItem = { ...mappedItem, props: newProps };
     const thisZoneCompound = path[path.length - 1];
     const [parentId, zone] = thisZoneCompound ? thisZoneCompound.split(":") : [null, ""];
     newNodeIndex[id] = {
@@ -1304,7 +1269,7 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
       parentId,
       zone
     };
-    const finalData = __spreadProps(__spreadValues({}, newItem), { props: __spreadValues({}, newItem.props) });
+    const finalData = { ...newItem, props: { ...newItem.props } };
     if (newProps.id === "root") {
       delete finalData["type"];
       delete finalData.props["id"];
@@ -1335,24 +1300,31 @@ function walkAppState(state, config, mapContent = (content) => content, mapNodeO
     newZones[zoneCompound] = newContent2;
   }, newZones);
   let rootAsComponent = toComponent({
-    props: __spreadValues({}, (_a = state.data.root.props) != null ? _a : state.data.root)
+    props: { ...state.data.root.props ?? state.data.root }
   });
   if (state.data.root.readOnly) {
     rootAsComponent.readOnly = state.data.root.readOnly;
   }
   const processedRoot = processItem(rootAsComponent, [], -1);
-  const root = __spreadValues(__spreadValues({}, state.data.root), processedRoot);
-  return __spreadProps(__spreadValues({}, state), {
+  const root = {
+    ...state.data.root,
+    ...processedRoot
+  };
+  return {
+    ...state,
     data: {
       root,
       content: processedContent,
-      zones: __spreadValues(__spreadValues({}, state.data.zones), newZones)
+      zones: {
+        ...state.data.zones,
+        ...newZones
+      }
     },
     indexes: {
-      nodes: __spreadValues(__spreadValues({}, state.indexes.nodes), newNodeIndex),
-      zones: __spreadValues(__spreadValues({}, state.indexes.zones), newZoneIndex)
+      nodes: { ...state.indexes.nodes, ...newNodeIndex },
+      zones: { ...state.indexes.zones, ...newZoneIndex }
     }
-  });
+  };
 }
 
 // lib/migrate.ts
@@ -1364,36 +1336,40 @@ var migrations = [
       console.warn(
         "Migration applied: Root props moved from `root` to `root.props`."
       );
-      return __spreadProps(__spreadValues({}, data), {
+      return {
+        ...data,
         root: {
-          props: __spreadValues({}, rootProps)
+          props: {
+            ...rootProps
+          }
         }
-      });
+      };
     }
     return data;
   },
   // Migrate zones to slots
   (data, config, migrationOptions) => {
-    var _a, _b;
     if (!config) return data;
     console.log("Migrating DropZones to slots...");
     const updatedItems = {};
-    const appState = __spreadProps(__spreadValues({}, defaultAppState), { data });
+    const appState = { ...defaultAppState, data };
     const { indexes } = walkAppState(appState, config);
     const deletedCompounds = [];
     walkAppState(appState, config, (content, zoneCompound, zoneType) => {
-      var _a2, _b2, _c;
       if (zoneType === "dropzone") {
         const [id, slotName] = zoneCompound.split(":");
         const nodeData = indexes.nodes[id].data;
         const componentType = nodeData.type;
         const configForComponent = id === "root" ? config.root : config.components[componentType];
-        if (((_b2 = (_a2 = configForComponent == null ? void 0 : configForComponent.fields) == null ? void 0 : _a2[slotName]) == null ? void 0 : _b2.type) === "slot") {
-          updatedItems[id] = __spreadProps(__spreadValues({}, nodeData), {
-            props: __spreadProps(__spreadValues(__spreadValues({}, nodeData.props), (_c = updatedItems[id]) == null ? void 0 : _c.props), {
+        if (configForComponent?.fields?.[slotName]?.type === "slot") {
+          updatedItems[id] = {
+            ...nodeData,
+            props: {
+              ...nodeData.props,
+              ...updatedItems[id]?.props,
               [slotName]: content
-            })
-          });
+            }
+          };
           deletedCompounds.push(zoneCompound);
         }
         return content;
@@ -1405,24 +1381,21 @@ var migrations = [
       config,
       (content) => content,
       (item) => {
-        var _a2;
-        return (_a2 = updatedItems[item.props.id]) != null ? _a2 : item;
+        return updatedItems[item.props.id] ?? item;
       }
     );
     deletedCompounds.forEach((zoneCompound) => {
-      var _a2;
       const [_, propName] = zoneCompound.split(":");
       console.log(
         `\u2713 Success: Migrated "${zoneCompound}" from DropZone to slot field "${propName}"`
       );
-      (_a2 = updated.data.zones) == null ? true : delete _a2[zoneCompound];
+      delete updated.data.zones?.[zoneCompound];
     });
-    if (migrationOptions == null ? void 0 : migrationOptions.migrateDynamicZonesForComponent) {
+    if (migrationOptions?.migrateDynamicZonesForComponent) {
       const unmigratedZonesGrouped = {};
-      Object.keys((_a = updated.data.zones) != null ? _a : {}).forEach((zoneCompound) => {
-        var _a2;
+      Object.keys(updated.data.zones ?? {}).forEach((zoneCompound) => {
         const [componentId, propName] = zoneCompound.split(":");
-        const content = (_a2 = updated.data.zones) == null ? void 0 : _a2[zoneCompound];
+        const content = updated.data.zones?.[zoneCompound];
         if (!content) {
           return;
         }
@@ -1436,30 +1409,29 @@ var migrations = [
       Object.keys(unmigratedZonesGrouped).forEach((componentId) => {
         updated.data = walkTree(updated.data, config, (content) => {
           return content.map((child) => {
-            var _a2;
             if (child.props.id !== componentId) {
               return child;
             }
-            const migrateFn = (_a2 = migrationOptions == null ? void 0 : migrationOptions.migrateDynamicZonesForComponent) == null ? void 0 : _a2[child.type];
+            const migrateFn = migrationOptions?.migrateDynamicZonesForComponent?.[child.type];
             if (!migrateFn) {
               return child;
             }
             const zones = unmigratedZonesGrouped[componentId];
             const migratedProps = migrateFn(child.props, zones);
             Object.keys(zones).forEach((propName) => {
-              var _a3;
               const zoneCompound = `${componentId}:${propName}`;
               console.log(`\u2713 Success: Migrated "${zoneCompound}" DropZone`);
-              (_a3 = updated.data.zones) == null ? true : delete _a3[zoneCompound];
+              delete updated.data.zones?.[zoneCompound];
             });
-            return __spreadProps(__spreadValues({}, child), {
+            return {
+              ...child,
               props: migratedProps
-            });
+            };
           });
         });
       });
     }
-    Object.keys((_b = updated.data.zones) != null ? _b : {}).forEach((zoneCompound) => {
+    Object.keys(updated.data.zones ?? {}).forEach((zoneCompound) => {
       const [_, propName] = zoneCompound.split(":");
       throw new Error(
         `Could not migrate DropZone "${zoneCompound}" to slot field. No slot exists with the name "${propName}".`
@@ -1470,7 +1442,7 @@ var migrations = [
   }
 ];
 function migrate(data, config, migrationOptions) {
-  return migrations == null ? void 0 : migrations.reduce(
+  return migrations?.reduce(
     (acc, migration) => migration(acc, config, migrationOptions),
     data
   );
