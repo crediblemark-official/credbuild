@@ -1,6 +1,6 @@
 {
   "name": "@crediblemark/build",
-  "version": "0.22.1",
+  "version": "0.22.2",
   "description": "The open-source visual editor for React",
   "author": "Rasyiqi Crediblemark",
   "repository": {
@@ -8,8 +8,8 @@
     "url": "git+https://github.com/crediblemark-official/credbuild.git",
     "directory": "."
   },
-  "bugs": "https://build.crediblemark.com/issues",
-  "homepage": "https://build.crediblemark.com",
+  "bugs": "https://crediblemark.com/id/contact",
+  "homepage": "https://blog.crediblemark.com/",
   "keywords": [
     "credbuild",
     "visual",
@@ -75,7 +75,9 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
