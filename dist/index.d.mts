@@ -56,6 +56,8 @@ declare const Label: ({ label }: {
 }) => react_jsx_runtime.JSX.Element;
 declare const Separator: () => react_jsx_runtime.JSX.Element;
 
+type FieldNoLabel<Props extends any = any> = Omit<Field<Props>, "label">;
+
 declare const FieldLabel: ({ children, icon, label, el, readOnly, className, }: {
     children?: ReactNode;
     icon?: ReactNode;
@@ -65,7 +67,6 @@ declare const FieldLabel: ({ children, icon, label, el, readOnly, className, }: 
     className?: string;
 }) => react_jsx_runtime.JSX.Element;
 
-type FieldNoLabel<Props extends any = any> = Omit<Field<Props>, "label">;
 declare function AutoField<ValueType = any, FieldType extends FieldNoLabel<ValueType> = FieldNoLabel<ValueType>>(props: FieldProps<FieldType, ValueType> & {
     value: any;
 }): react_jsx_runtime.JSX.Element | null;
@@ -154,6 +155,7 @@ type CredBuildProps<UserConfig extends Config = Config, G extends UserGenerics<U
     _experimentalFullScreenCanvas?: boolean;
     _experimentalVirtualization?: boolean;
 };
+
 declare function CredBuild<UserConfig extends Config = Config, G extends UserGenerics<UserConfig> = UserGenerics<UserConfig>>(props: CredBuildProps<UserConfig>): react_jsx_runtime.JSX.Element;
 declare namespace CredBuild {
     var Components: () => react_jsx_runtime.JSX.Element;

@@ -5,9 +5,9 @@ import {
   transformProps,
   useRichtextProps,
   useSlots
-} from "./chunk-JTNXSAIB.mjs";
+} from "./chunk-DVK7K7D6.mjs";
 import "./chunk-AL77I3BV.mjs";
-import "./chunk-LVGIYPBQ.mjs";
+import "./chunk-SMAWAXVX.mjs";
 import "./chunk-BFHV72KK.mjs";
 import {
   rootAreaId,
@@ -15,7 +15,7 @@ import {
   rootZone,
   setupZone,
   walkTree
-} from "./chunk-D4HNIB2M.mjs";
+} from "./chunk-7LXZOPYT.mjs";
 import "./chunk-AFVEAZTD.mjs";
 
 // components/ServerRender/index.tsx

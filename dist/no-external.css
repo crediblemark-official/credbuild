@@ -394,265 +394,6 @@ textarea._Input-input_1q7gk_26 {
   margin-bottom: -4px;
 }
 
-/* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ArrayField/styles.module.css/#css-module-data */
-._ArrayField_1q029_5 {
-  display: flex;
-  flex-direction: column;
-  background: var(--credbuild-color-azure-11);
-  border: 1px solid var(--credbuild-color-grey-09);
-  border-radius: 4px;
-}
-._ArrayField--isDraggingFrom_1q029_13 {
-  background-color: var(--credbuild-color-azure-11);
-  overflow: hidden;
-}
-._ArrayField-addButton_1q029_18 {
-  background-color: var(--credbuild-color-white);
-  border: none;
-  border-radius: 3px;
-  display: flex;
-  color: var(--credbuild-color-azure-05);
-  justify-content: center;
-  cursor: pointer;
-  width: 100%;
-  margin: 0;
-  padding: 14px;
-  text-align: left;
-  transition: background-color 50ms ease-in;
-}
-._ArrayField--hasItems_1q029_33 > ._ArrayField-addButton_1q029_18 {
-  border-top: 1px solid var(--credbuild-color-grey-09);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-._ArrayField-addButton_1q029_18:focus-visible {
-  outline: 2px solid var(--credbuild-color-azure-05);
-  outline-offset: 2px;
-  position: relative;
-}
-@media (hover: hover) and (pointer: fine) {
-  ._ArrayField_1q029_5:not(._ArrayField--isDraggingFrom_1q029_13) > ._ArrayField-addButton_1q029_18:hover {
-    background: var(--credbuild-color-azure-12);
-    color: var(--credbuild-color-azure-04);
-    transition: none;
-  }
-}
-._ArrayField_1q029_5:not(._ArrayField--isDraggingFrom_1q029_13) > ._ArrayField-addButton_1q029_18:active {
-  background: var(--credbuild-color-azure-11);
-  color: var(--credbuild-color-azure-04);
-  transition: none;
-}
-._ArrayField-inner_1q029_59 {
-  margin-top: -1px;
-}
-._ArrayFieldItem_1q029_67 {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  display: block;
-  position: relative;
-}
-._ArrayFieldItem_1q029_67 {
-  border-top: 1px solid var(--credbuild-color-grey-09);
-}
-._ArrayFieldItem--isDragging_1q029_78 {
-  border-top: transparent;
-}
-._ArrayFieldItem--isExpanded_1q029_82::before {
-  display: none;
-}
-._ArrayFieldItem--isExpanded_1q029_82 {
-  border-bottom: 0;
-  outline-offset: 0px !important;
-  outline: 1px solid var(--credbuild-color-azure-07) !important;
-  z-index: 2;
-}
-._ArrayFieldItem--isDragging_1q029_78 {
-  outline: 2px var(--credbuild-color-azure-09) solid !important;
-}
-._ArrayFieldItem--isDragging_1q029_78 ._ArrayFieldItem-summary_1q029_97:active {
-  background-color: var(--credbuild-color-white);
-}
-._ArrayFieldItem_1q029_67 + ._ArrayFieldItem_1q029_67 {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-._ArrayFieldItem-summary_1q029_97 {
-  background: var(--credbuild-color-white);
-  color: var(--credbuild-color-grey-04);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  justify-content: space-between;
-  font-size: var(--credbuild-font-size-xxs);
-  list-style: none;
-  padding: 12px 15px;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 50ms ease-in;
-}
-._ArrayFieldItem--noFields_1q029_122 > ._ArrayFieldItem-summary_1q029_97 {
-  cursor: grab;
-}
-._ArrayFieldItem_1q029_67:first-of-type > ._ArrayFieldItem-summary_1q029_97 {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-._ArrayField--addDisabled_1q029_131 > ._ArrayField-inner_1q029_59 > ._ArrayFieldItem_1q029_67:last-of-type:not(._ArrayFieldItem--isExpanded_1q029_82) > ._ArrayFieldItem-summary_1q029_97 {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-._ArrayField--addDisabled_1q029_131 > ._ArrayField-inner_1q029_59 > ._ArrayFieldItem--isExpanded_1q029_82:last-of-type {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-._ArrayFieldItem-summary_1q029_97:focus-visible {
-  outline: 2px solid var(--credbuild-color-azure-05);
-  outline-offset: 2px;
-}
-@media (hover: hover) and (pointer: fine) {
-  ._ArrayFieldItem-summary_1q029_97:hover {
-    background-color: var(--credbuild-color-azure-12);
-    transition: none;
-  }
-}
-._ArrayFieldItem-summary_1q029_97:active {
-  background-color: var(--credbuild-color-azure-11);
-  transition: none;
-}
-._ArrayFieldItem--isExpanded_1q029_82 > ._ArrayFieldItem-summary_1q029_97 {
-  background: var(--credbuild-color-azure-11);
-  color: var(--credbuild-color-azure-04);
-  font-weight: 600;
-  transition: none;
-}
-._ArrayFieldItem-body_1q029_170 {
-  background: var(--credbuild-color-white);
-  display: none;
-}
-._ArrayFieldItem--isExpanded_1q029_82 > ._ArrayFieldItem-body_1q029_170 {
-  display: block;
-}
-._ArrayFieldItem-fieldset_1q029_179 {
-  border: none;
-  border-top: 1px solid var(--credbuild-color-grey-09);
-  margin: 0;
-  min-width: 0;
-  padding: 16px 15px;
-}
-._ArrayFieldItem-rhs_1q029_187 {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-._ArrayFieldItem-actions_1q029_193 {
-  color: var(--credbuild-color-grey-04);
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-}
-._ArrayFieldItem-summary_1q029_97:focus-within > ._ArrayFieldItem-rhs_1q029_187 > ._ArrayFieldItem-actions_1q029_193,
-._ArrayFieldItem-summary_1q029_97:hover > ._ArrayFieldItem-rhs_1q029_187 > ._ArrayFieldItem-actions_1q029_193 {
-  opacity: 1;
-}
-
-/* css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css/#css-module-data */
-._IconButton_1a0fz_1 {
-  align-items: center;
-  background: transparent;
-  border: none;
-  border-radius: var(--cb-radius-m);
-  color: currentColor;
-  display: flex;
-  font-family: var(--credbuild-font-family);
-  justify-content: center;
-  padding: 2px;
-  transition: all 0.2s ease;
-}
-._IconButton--active_1a0fz_14 {
-  color: var(--credbuild-color-azure-04);
-}
-._IconButton_1a0fz_1:focus-visible {
-  outline: 2px solid var(--credbuild-color-azure-05);
-  outline-offset: -2px;
-}
-@media (hover: hover) and (pointer: fine) {
-  ._IconButton_1a0fz_1:hover:not(._IconButton--disabled_1a0fz_24) {
-    background: var(--credbuild-color-grey-10);
-    color: var(--credbuild-color-azure-04);
-    cursor: pointer;
-    transition: none;
-  }
-}
-._IconButton_1a0fz_1:active {
-  background: var(--credbuild-color-azure-11);
-  transition: none;
-}
-._IconButton-title_1a0fz_37 {
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-._IconButton--disabled_1a0fz_24 {
-  color: var(--credbuild-color-grey-07);
-}
-
-/* css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css/#css-module-data */
-@keyframes _loader-animation_nacdm_1 {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(0.8);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-._Loader_nacdm_13 {
-  background: transparent;
-  border-radius: 100%;
-  border: 2px solid currentColor;
-  border-bottom-color: transparent;
-  display: inline-block;
-  animation: _loader-animation_nacdm_1 1s 0s infinite linear;
-  animation-fill-mode: both;
-}
-
-/* css-module:/home/crediblemark/Project/Credibuild/components/DragIcon/styles.module.css/#css-module-data */
-._DragIcon_ei1r9_1 {
-  color: var(--credbuild-color-grey-05);
-  cursor: grab;
-  padding: 4px;
-  border-radius: 4px;
-}
-._DragIcon--disabled_ei1r9_8 {
-  cursor: no-drop;
-}
-@media (hover: hover) and (pointer: fine) {
-  ._DragIcon_ei1r9_1:not(._DragIcon--disabled_ei1r9_8):hover {
-    color: var(--credbuild-color-azure-05);
-    background-color: var(--credbuild-color-azure-12);
-  }
-}
-
-/* components/Sortable/styles.css */
-[data-dnd-placeholder] * {
-  opacity: 0 !important;
-}
-[data-dnd-placeholder] {
-  background: var(--credbuild-color-azure-09) !important;
-  border: none !important;
-  color: #00000000 !important;
-  opacity: 0.3 !important;
-  outline: none !important;
-  transition: none !important;
-}
-
 /* css-module:/home/crediblemark/Project/Credibuild/components/ExternalInput/styles.module.css/#css-module-data */
 ._ExternalInput-actions_1gpb4_1 {
   display: flex;
@@ -1010,6 +751,28 @@ textarea._Input-input_1q7gk_26 {
   font-size: var(--credbuild-font-size-xs);
 }
 
+/* css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css/#css-module-data */
+@keyframes _loader-animation_nacdm_1 {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+._Loader_nacdm_13 {
+  background: transparent;
+  border-radius: 100%;
+  border: 2px solid currentColor;
+  border-bottom-color: transparent;
+  display: inline-block;
+  animation: _loader-animation_nacdm_1 1s 0s infinite linear;
+  animation-fill-mode: both;
+}
+
 /* css-module:/home/crediblemark/Project/Credibuild/components/Button/Button.module.css/#css-module-data */
 ._Button_164uz_1 {
   appearance: none;
@@ -1101,6 +864,51 @@ textarea._Input-input_1q7gk_26 {
 }
 ._Button-spinner_164uz_97 {
   padding-inline-start: 8px;
+}
+
+/* css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css/#css-module-data */
+._IconButton_1a0fz_1 {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--cb-radius-m);
+  color: currentColor;
+  display: flex;
+  font-family: var(--credbuild-font-family);
+  justify-content: center;
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+._IconButton--active_1a0fz_14 {
+  color: var(--credbuild-color-azure-04);
+}
+._IconButton_1a0fz_1:focus-visible {
+  outline: 2px solid var(--credbuild-color-azure-05);
+  outline-offset: -2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  ._IconButton_1a0fz_1:hover:not(._IconButton--disabled_1a0fz_24) {
+    background: var(--credbuild-color-grey-10);
+    color: var(--credbuild-color-azure-04);
+    cursor: pointer;
+    transition: none;
+  }
+}
+._IconButton_1a0fz_1:active {
+  background: var(--credbuild-color-azure-11);
+  transition: none;
+}
+._IconButton-title_1a0fz_37 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+._IconButton--disabled_1a0fz_24 {
+  color: var(--credbuild-color-grey-07);
 }
 
 /* css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css/#css-module-data */
@@ -1344,6 +1152,198 @@ textarea._Input-input_1q7gk_26 {
 }
 ._RichTextEditor--disabled_hp4qf_107 ._RichTextEditor-menu_hp4qf_117 {
   border-bottom: 1px solid var(--credbuild-color-grey-09);
+}
+
+/* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ArrayField/styles.module.css/#css-module-data */
+._ArrayField_1q029_5 {
+  display: flex;
+  flex-direction: column;
+  background: var(--credbuild-color-azure-11);
+  border: 1px solid var(--credbuild-color-grey-09);
+  border-radius: 4px;
+}
+._ArrayField--isDraggingFrom_1q029_13 {
+  background-color: var(--credbuild-color-azure-11);
+  overflow: hidden;
+}
+._ArrayField-addButton_1q029_18 {
+  background-color: var(--credbuild-color-white);
+  border: none;
+  border-radius: 3px;
+  display: flex;
+  color: var(--credbuild-color-azure-05);
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  margin: 0;
+  padding: 14px;
+  text-align: left;
+  transition: background-color 50ms ease-in;
+}
+._ArrayField--hasItems_1q029_33 > ._ArrayField-addButton_1q029_18 {
+  border-top: 1px solid var(--credbuild-color-grey-09);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+._ArrayField-addButton_1q029_18:focus-visible {
+  outline: 2px solid var(--credbuild-color-azure-05);
+  outline-offset: 2px;
+  position: relative;
+}
+@media (hover: hover) and (pointer: fine) {
+  ._ArrayField_1q029_5:not(._ArrayField--isDraggingFrom_1q029_13) > ._ArrayField-addButton_1q029_18:hover {
+    background: var(--credbuild-color-azure-12);
+    color: var(--credbuild-color-azure-04);
+    transition: none;
+  }
+}
+._ArrayField_1q029_5:not(._ArrayField--isDraggingFrom_1q029_13) > ._ArrayField-addButton_1q029_18:active {
+  background: var(--credbuild-color-azure-11);
+  color: var(--credbuild-color-azure-04);
+  transition: none;
+}
+._ArrayField-inner_1q029_59 {
+  margin-top: -1px;
+}
+._ArrayFieldItem_1q029_67 {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  display: block;
+  position: relative;
+}
+._ArrayFieldItem_1q029_67 {
+  border-top: 1px solid var(--credbuild-color-grey-09);
+}
+._ArrayFieldItem--isDragging_1q029_78 {
+  border-top: transparent;
+}
+._ArrayFieldItem--isExpanded_1q029_82::before {
+  display: none;
+}
+._ArrayFieldItem--isExpanded_1q029_82 {
+  border-bottom: 0;
+  outline-offset: 0px !important;
+  outline: 1px solid var(--credbuild-color-azure-07) !important;
+  z-index: 2;
+}
+._ArrayFieldItem--isDragging_1q029_78 {
+  outline: 2px var(--credbuild-color-azure-09) solid !important;
+}
+._ArrayFieldItem--isDragging_1q029_78 ._ArrayFieldItem-summary_1q029_97:active {
+  background-color: var(--credbuild-color-white);
+}
+._ArrayFieldItem_1q029_67 + ._ArrayFieldItem_1q029_67 {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+._ArrayFieldItem-summary_1q029_97 {
+  background: var(--credbuild-color-white);
+  color: var(--credbuild-color-grey-04);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  justify-content: space-between;
+  font-size: var(--credbuild-font-size-xxs);
+  list-style: none;
+  padding: 12px 15px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 50ms ease-in;
+}
+._ArrayFieldItem--noFields_1q029_122 > ._ArrayFieldItem-summary_1q029_97 {
+  cursor: grab;
+}
+._ArrayFieldItem_1q029_67:first-of-type > ._ArrayFieldItem-summary_1q029_97 {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+._ArrayField--addDisabled_1q029_131 > ._ArrayField-inner_1q029_59 > ._ArrayFieldItem_1q029_67:last-of-type:not(._ArrayFieldItem--isExpanded_1q029_82) > ._ArrayFieldItem-summary_1q029_97 {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+._ArrayField--addDisabled_1q029_131 > ._ArrayField-inner_1q029_59 > ._ArrayFieldItem--isExpanded_1q029_82:last-of-type {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+._ArrayFieldItem-summary_1q029_97:focus-visible {
+  outline: 2px solid var(--credbuild-color-azure-05);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  ._ArrayFieldItem-summary_1q029_97:hover {
+    background-color: var(--credbuild-color-azure-12);
+    transition: none;
+  }
+}
+._ArrayFieldItem-summary_1q029_97:active {
+  background-color: var(--credbuild-color-azure-11);
+  transition: none;
+}
+._ArrayFieldItem--isExpanded_1q029_82 > ._ArrayFieldItem-summary_1q029_97 {
+  background: var(--credbuild-color-azure-11);
+  color: var(--credbuild-color-azure-04);
+  font-weight: 600;
+  transition: none;
+}
+._ArrayFieldItem-body_1q029_170 {
+  background: var(--credbuild-color-white);
+  display: none;
+}
+._ArrayFieldItem--isExpanded_1q029_82 > ._ArrayFieldItem-body_1q029_170 {
+  display: block;
+}
+._ArrayFieldItem-fieldset_1q029_179 {
+  border: none;
+  border-top: 1px solid var(--credbuild-color-grey-09);
+  margin: 0;
+  min-width: 0;
+  padding: 16px 15px;
+}
+._ArrayFieldItem-rhs_1q029_187 {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+._ArrayFieldItem-actions_1q029_193 {
+  color: var(--credbuild-color-grey-04);
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+}
+._ArrayFieldItem-summary_1q029_97:focus-within > ._ArrayFieldItem-rhs_1q029_187 > ._ArrayFieldItem-actions_1q029_193,
+._ArrayFieldItem-summary_1q029_97:hover > ._ArrayFieldItem-rhs_1q029_187 > ._ArrayFieldItem-actions_1q029_193 {
+  opacity: 1;
+}
+
+/* css-module:/home/crediblemark/Project/Credibuild/components/DragIcon/styles.module.css/#css-module-data */
+._DragIcon_ei1r9_1 {
+  color: var(--credbuild-color-grey-05);
+  cursor: grab;
+  padding: 4px;
+  border-radius: 4px;
+}
+._DragIcon--disabled_ei1r9_8 {
+  cursor: no-drop;
+}
+@media (hover: hover) and (pointer: fine) {
+  ._DragIcon_ei1r9_1:not(._DragIcon--disabled_ei1r9_8):hover {
+    color: var(--credbuild-color-azure-05);
+    background-color: var(--credbuild-color-azure-12);
+  }
+}
+
+/* components/Sortable/styles.css */
+[data-dnd-placeholder] * {
+  opacity: 0 !important;
+}
+[data-dnd-placeholder] {
+  background: var(--credbuild-color-azure-09) !important;
+  border: none !important;
+  color: #00000000 !important;
+  opacity: 0.3 !important;
+  outline: none !important;
+  transition: none !important;
 }
 
 /* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ObjectField/styles.module.css/#css-module-data */
