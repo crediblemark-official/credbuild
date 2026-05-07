@@ -1,5 +1,5 @@
 import { memo, useMemo } from "react";
-import { useSyncedEditor } from "@/lib/use-synced-editor";
+import { useSyncedEditor } from "@/components/RichTextEditor/lib/use-synced-editor";
 import { CredBuildRichText } from "@/components/RichTextEditor/extension";
 import { EditorContent } from "@tiptap/react";
 import { EditorProps } from "@/components/RichTextEditor/types";

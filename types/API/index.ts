@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from "react";
 import { CredBuildAction } from "@/reducer";
 import { WithDeepSlots } from "@/types/Internal";
 import { DefaultComponentProps } from "@/types/Props";
-import { AppState } from "@/types/API/AppState";
+import { AppState } from "@/types/AppState";
 import { ComponentDataOptionalId, Content, Data } from "@/types/Data";
 import { Overrides } from "./Overrides";
 import { FieldTransforms } from "./FieldTransforms";

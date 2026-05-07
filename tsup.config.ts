@@ -26,13 +26,24 @@ const config: Options = {
       setup(build): void {
         build.onResolve(
           { filter: /\.module\.css$/, namespace: "file" },
-          (args) => ({
-            path: `${path.join(args.resolveDir, args.path)}#css-module`,
-            namespace: "css-module",
-            pluginData: {
-              pathDir: path.join(args.resolveDir, args.path),
-            },
-          })
+          async (args) => {
+            const result = await build.resolve(args.path, {
+              resolveDir: args.resolveDir,
+              kind: args.kind,
+            });
+
+            if (result.errors.length > 0) {
+              return { errors: result.errors };
+            }
+
+            return {
+              path: `${result.path}#css-module`,
+              namespace: "css-module",
+              pluginData: {
+                pathDir: result.path,
+              },
+            };
+          }
         );
         build.onLoad(
           { filter: /#css-module$/, namespace: "css-module" },
