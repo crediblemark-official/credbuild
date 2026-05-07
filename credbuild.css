@@ -8,8 +8,9 @@
   --cb-bg-panel: #1e293b;       /* Slate 800 */
   --cb-gold: #fbbf24;           /* Vibrant Amber/Gold 400 */
   --cb-gold-glow: rgba(251, 191, 36, 0.15);
+  --cb-gold-faint: rgba(251, 191, 36, 0.05);
   --cb-silver: #f8fafc;         /* Slate 50 (Crystal White/Silver) */
-  --cb-silver-muted: #94a3b8;   /* Slate 400 */
+  --cb-silver-muted: #cbd5e1;   /* Slate 300 (Brighter for readability) */
   --cb-border: rgba(248, 250, 252, 0.1);
   --credbuild-font-family: 'Inter', sans-serif;
 }
@@ -107,7 +108,7 @@
 [class*="Drawer-draggableBg"] {
   background-color: var(--cb-bg-surface) !important;
   color: var(--cb-silver) !important;
-  border-color: var(--cb-border) !important;
+  border: 1px solid var(--cb-border) !important;
 }
 
 [class*="DrawerItem-draggable"]:hover {
@@ -122,17 +123,23 @@
 }
 
 /* Ensure icons in drawer are Gold */
-[class*="DrawerItem-icon"] svg {
+[class*="DrawerItem-icon"] svg,
+[class*="DrawerItem-draggable"] svg {
   color: var(--cb-gold) !important;
+  stroke: var(--cb-gold) !important;
+  opacity: 1 !important;
 }
 
 /* Category Headers (e.g., HERO SECTIONS) */
 [class*="ComponentList-title"] {
-  background-color: var(--cb-bg-base) !important;
+  background-color: var(--cb-bg-panel) !important;
   color: var(--cb-gold) !important;
   border-radius: 0 !important;
   margin-bottom: 2px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
 }
 
 [class*="ComponentList-title"]:hover {
@@ -304,11 +311,12 @@
 
 /* Component Category Titles (Hero, Agencies, etc.) */
 [class*="ComponentList-title"] {
-  color: var(--cb-silver) !important;
+  color: var(--cb-gold) !important;
   text-transform: uppercase !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-  opacity: 0.8 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  opacity: 1 !important;
+  padding: 12px !important;
 }
 
 [class*="ComponentList-title"]:hover {
@@ -343,7 +351,7 @@
   --credbuild-color-azure-07: var(--cb-gold);
   --credbuild-color-azure-10: var(--cb-gold-glow);
   --credbuild-color-azure-11: var(--cb-gold-glow);
-  --credbuild-color-white: transparent;
+  --credbuild-color-white: var(--cb-silver);
   --credbuild-color-grey-11: var(--cb-bg-surface);
   --credbuild-color-grey-10: var(--cb-border);
   --credbuild-color-grey-09: var(--cb-bg-base);
