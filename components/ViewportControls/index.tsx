@@ -84,23 +84,23 @@ export const ViewportControls = ({
     (option) => option.value === autoZoom
   );
 
-  const zoomOptions = useMemo(
-    () =>
-      [
-        ...defaultZoomOptions,
-        ...(defaultsContainAutoZoom
-          ? []
-          : [
-              {
-                value: autoZoom,
-                label: `${(autoZoom * 100).toFixed(0)}% (Auto)`,
-              },
-            ]),
-      ]
-        .filter((a) => a.value <= autoZoom)
-        .sort((a, b) => (a.value > b.value ? 1 : -1)),
-    [autoZoom, defaultsContainAutoZoom]
-  );
+  const zoomOptions = useMemo(() => {
+    const options = [
+      ...defaultZoomOptions,
+      ...(defaultsContainAutoZoom || isNaN(autoZoom)
+        ? []
+        : [
+            {
+              value: autoZoom,
+              label: `${(autoZoom * 100).toFixed(0)}% (Auto)`,
+            },
+          ]),
+    ]
+      .filter((a) => a.value <= (autoZoom || 1))
+      .sort((a, b) => (a.value > b.value ? 1 : -1));
+
+    return options.length > 0 ? options : defaultZoomOptions;
+  }, [autoZoom, defaultsContainAutoZoom]);
 
   const [activeViewport, setActiveViewport] = useState(
     uiViewports.current.width
@@ -141,37 +141,31 @@ export const ViewportControls = ({
           <div className={getClassName("divider")} />
           <ActionButton
             title="Zoom viewport out"
-            disabled={zoom <= zoomOptions[0]?.value}
+            disabled={zoom <= (zoomOptions[0]?.value || 0)}
             onClick={(e) => {
               e.stopPropagation();
-              onZoom(
-                zoomOptions[
-                  Math.max(
-                    zoomOptions.findIndex((option) => option.value === zoom) -
-                      1,
-                    0
-                  )
-                ].value
+              const currentIndex = zoomOptions.findIndex((option) => option.value === zoom);
+              const nextIndex = Math.max(
+                (currentIndex === -1 ? zoomOptions.length : currentIndex) - 1,
+                0
               );
+              onZoom(zoomOptions[nextIndex]?.value || 1);
             }}
           >
             <ZoomOut size={16} />
           </ActionButton>
           <ActionButton
             title="Zoom viewport in"
-            disabled={zoom >= zoomOptions[zoomOptions.length - 1]?.value}
+            disabled={zoom >= (zoomOptions[zoomOptions.length - 1]?.value || 2)}
             onClick={(e) => {
               e.stopPropagation();
 
-              onZoom(
-                zoomOptions[
-                  Math.min(
-                    zoomOptions.findIndex((option) => option.value === zoom) +
-                      1,
-                    zoomOptions.length - 1
-                  )
-                ].value
+              const currentIndex = zoomOptions.findIndex((option) => option.value === zoom);
+              const nextIndex = Math.min(
+                (currentIndex === -1 ? -1 : currentIndex) + 1,
+                zoomOptions.length - 1
               );
+              onZoom(zoomOptions[nextIndex]?.value || 1);
             }}
           >
             <ZoomIn size={16} />

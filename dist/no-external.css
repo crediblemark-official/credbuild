@@ -1817,13 +1817,13 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
 }
 
 /* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Layout/styles.module.css/#css-module-data */
-._CredBuildLayout_ildl0_1 {
+._CredBuildLayout_14aaz_1 {
   display: flex;
   flex: 1;
   height: 100vh;
   overflow: hidden;
 }
-._CredBuildLayout-inner_ildl0_8 {
+._CredBuildLayout-inner_14aaz_8 {
   display: grid;
   flex: 1;
   grid-template-areas: "header";
@@ -1833,7 +1833,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   overflow: hidden;
 }
 @media (min-width: 638px) {
-  ._CredBuildLayout-inner_ildl0_8 {
+  ._CredBuildLayout-inner_14aaz_8 {
     --credbuild-side-bar-width: 300px;
     --cb-left-sidebar-width: 0px;
     --cb-right-sidebar-width: 0px;
@@ -1841,27 +1841,27 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
     grid-template-columns: var(--cb-left-sidebar-width) 1fr var(--cb-right-sidebar-width);
     grid-template-rows: 40px 1fr;
   }
-  ._CredBuildLayout--leftSideBarVisible_ildl0_29 ._CredBuildLayout-inner_ildl0_8 {
+  ._CredBuildLayout--leftSideBarVisible_14aaz_29 ._CredBuildLayout-inner_14aaz_8 {
     --cb-left-sidebar-width: var(--credbuild-user-left-side-bar-width, var(--credbuild-side-bar-width));
   }
-  ._CredBuildLayout--rightSideBarVisible_ildl0_33 ._CredBuildLayout-inner_ildl0_8 {
+  ._CredBuildLayout--rightSideBarVisible_14aaz_33 ._CredBuildLayout-inner_14aaz_8 {
     --cb-right-sidebar-width: var(--credbuild-user-right-side-bar-width, var(--credbuild-side-bar-width));
   }
-  ._CredBuild--hidePlugins_ildl0_37 ._CredBuildLayout-inner_ildl0_8 {
+  ._CredBuild--hidePlugins_14aaz_37 ._CredBuildLayout-inner_14aaz_8 {
     grid-template-areas: "header header" "editor right";
     grid-template-columns: 1fr auto;
   }
 }
-._CredBuildLayout-item_ildl0_43 {
+._CredBuildLayout-item_14aaz_43 {
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
 }
-._CredBuildLayout-header_ildl0_49 {
+._CredBuildLayout-header_14aaz_49 {
   grid-area: header;
   z-index: 20;
 }
-._CredBuildLayout-left_ildl0_54 {
+._CredBuildLayout-left_14aaz_54 {
   grid-area: left;
   display: flex;
   flex-direction: column;
@@ -1869,36 +1869,35 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   overflow: hidden;
   border-right: 1px solid var(--credbuild-color-grey-10);
 }
-._CredBuildLayout_ildl0_1:not(._CredBuildLayout--leftSideBarVisible_ildl0_29) ._CredBuildLayout-left_ildl0_54 {
+._CredBuildLayout_14aaz_1:not(._CredBuildLayout--leftSideBarVisible_14aaz_29) ._CredBuildLayout-left_14aaz_54 {
   border-right: none;
 }
-._CredBuildLayout-editor_ildl0_67 {
+._CredBuildLayout-editor_14aaz_67 {
   grid-area: editor;
   background-color: var(--credbuild-color-grey-09);
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: auto;
 }
-._CredBuildLayout-right_ildl0_76 {
+._CredBuildLayout-right_14aaz_75 {
   grid-area: right;
   z-index: 10;
   border-left: 1px solid var(--credbuild-color-grey-10);
   overflow: auto;
 }
-._CredBuildLayout_ildl0_1:not(._CredBuildLayout--rightSideBarVisible_ildl0_33) ._CredBuildLayout-right_ildl0_76 {
+._CredBuildLayout_14aaz_1:not(._CredBuildLayout--rightSideBarVisible_14aaz_33) ._CredBuildLayout-right_14aaz_75 {
   border-left: none;
 }
-._CredBuildLayout-left_ildl0_54,
-._CredBuildLayout-right_ildl0_76 {
+._CredBuildLayout-left_14aaz_54,
+._CredBuildLayout-right_14aaz_75 {
   background-color: var(--credbuild-color-white);
   height: 100%;
 }
-._CredBuildLayout-sidebar_ildl0_93 {
+._CredBuildLayout-sidebar_14aaz_92 {
   display: none;
 }
 @media (min-width: 638px) {
-  ._CredBuildLayout-sidebar_ildl0_93 {
+  ._CredBuildLayout-sidebar_14aaz_92 {
     display: block;
     height: 100%;
     overflow: hidden;
@@ -1906,31 +1905,31 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
     flex-direction: column;
   }
 }
-._CredBuildPluginTab_ildl0_108 {
+._CredBuildPluginTab_14aaz_107 {
   display: none;
   flex-direction: column;
   flex: 1;
   overflow: hidden;
 }
-._CredBuildPluginTab--visible_ildl0_115 {
+._CredBuildPluginTab--visible_14aaz_114 {
   display: flex;
 }
-._CredBuildPluginTab-body_ildl0_119 {
+._CredBuildPluginTab-body_14aaz_118 {
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
   padding-bottom: 32px;
 }
-._CredBuildLayout-left_ildl0_54,
-._CredBuildLayout-right_ildl0_76,
-._CredBuildLayout-header_ildl0_49 {
+._CredBuildLayout-left_14aaz_54,
+._CredBuildLayout-right_14aaz_75,
+._CredBuildLayout-header_14aaz_49 {
   border-radius: 0 !important;
   margin: 0 !important;
   box-shadow: none !important;
   border-top: none;
 }
-._CredBuildLayout--mounted_ildl0_135 ._CredBuildLayout-inner_ildl0_8 {
+._CredBuildLayout--mounted_14aaz_134 ._CredBuildLayout-inner_14aaz_8 {
   opacity: 1;
 }
 

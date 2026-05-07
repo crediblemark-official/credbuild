@@ -1091,59 +1091,79 @@ var init_monitor = __esm({
   }
 });
 
+// node_modules/lucide-react/dist/esm/icons/moon.js
+var __iconNode43, Moon;
+var init_moon = __esm({
+  "node_modules/lucide-react/dist/esm/icons/moon.js"() {
+    "use strict";
+    init_react_import();
+    init_createLucideIcon();
+    __iconNode43 = [
+      [
+        "path",
+        {
+          d: "M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401",
+          key: "kfwtm"
+        }
+      ]
+    ];
+    Moon = createLucideIcon("moon", __iconNode43);
+  }
+});
+
 // node_modules/lucide-react/dist/esm/icons/panel-left.js
-var __iconNode43, PanelLeft;
+var __iconNode44, PanelLeft;
 var init_panel_left = __esm({
   "node_modules/lucide-react/dist/esm/icons/panel-left.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode43 = [
+    __iconNode44 = [
       ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
       ["path", { d: "M9 3v18", key: "fh3hqa" }]
     ];
-    PanelLeft = createLucideIcon("panel-left", __iconNode43);
+    PanelLeft = createLucideIcon("panel-left", __iconNode44);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/panel-right.js
-var __iconNode44, PanelRight;
+var __iconNode45, PanelRight;
 var init_panel_right = __esm({
   "node_modules/lucide-react/dist/esm/icons/panel-right.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode44 = [
+    __iconNode45 = [
       ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
       ["path", { d: "M15 3v18", key: "14nvp0" }]
     ];
-    PanelRight = createLucideIcon("panel-right", __iconNode44);
+    PanelRight = createLucideIcon("panel-right", __iconNode45);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/plus.js
-var __iconNode45, Plus;
+var __iconNode46, Plus;
 var init_plus = __esm({
   "node_modules/lucide-react/dist/esm/icons/plus.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode45 = [
+    __iconNode46 = [
       ["path", { d: "M5 12h14", key: "1ays0h" }],
       ["path", { d: "M12 5v14", key: "s699le" }]
     ];
-    Plus = createLucideIcon("plus", __iconNode45);
+    Plus = createLucideIcon("plus", __iconNode46);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/quote.js
-var __iconNode46, Quote;
+var __iconNode47, Quote;
 var init_quote = __esm({
   "node_modules/lucide-react/dist/esm/icons/quote.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode46 = [
+    __iconNode47 = [
       [
         "path",
         {
@@ -1159,65 +1179,65 @@ var init_quote = __esm({
         }
       ]
     ];
-    Quote = createLucideIcon("quote", __iconNode46);
+    Quote = createLucideIcon("quote", __iconNode47);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js
-var __iconNode47, RectangleEllipsis;
+var __iconNode48, RectangleEllipsis;
 var init_rectangle_ellipsis = __esm({
   "node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode47 = [
+    __iconNode48 = [
       ["rect", { width: "20", height: "12", x: "2", y: "6", rx: "2", key: "9lu3g6" }],
       ["path", { d: "M12 12h.01", key: "1mp3jc" }],
       ["path", { d: "M17 12h.01", key: "1m0b6t" }],
       ["path", { d: "M7 12h.01", key: "eqddd0" }]
     ];
-    RectangleEllipsis = createLucideIcon("rectangle-ellipsis", __iconNode47);
+    RectangleEllipsis = createLucideIcon("rectangle-ellipsis", __iconNode48);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/redo-2.js
-var __iconNode48, Redo2;
+var __iconNode49, Redo2;
 var init_redo_2 = __esm({
   "node_modules/lucide-react/dist/esm/icons/redo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode48 = [
+    __iconNode49 = [
       ["path", { d: "m15 14 5-5-5-5", key: "12vg1m" }],
       ["path", { d: "M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13", key: "6uklza" }]
     ];
-    Redo2 = createLucideIcon("redo-2", __iconNode48);
+    Redo2 = createLucideIcon("redo-2", __iconNode49);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/search.js
-var __iconNode49, Search;
+var __iconNode50, Search;
 var init_search = __esm({
   "node_modules/lucide-react/dist/esm/icons/search.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode49 = [
+    __iconNode50 = [
       ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
       ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
     ];
-    Search = createLucideIcon("search", __iconNode49);
+    Search = createLucideIcon("search", __iconNode50);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/settings.js
-var __iconNode50, Settings;
+var __iconNode51, Settings;
 var init_settings = __esm({
   "node_modules/lucide-react/dist/esm/icons/settings.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode50 = [
+    __iconNode51 = [
       [
         "path",
         {
@@ -1227,18 +1247,18 @@ var init_settings = __esm({
       ],
       ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
     ];
-    Settings = createLucideIcon("settings", __iconNode50);
+    Settings = createLucideIcon("settings", __iconNode51);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/shapes.js
-var __iconNode51, Shapes;
+var __iconNode52, Shapes;
 var init_shapes = __esm({
   "node_modules/lucide-react/dist/esm/icons/shapes.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode51 = [
+    __iconNode52 = [
       [
         "path",
         {
@@ -1249,18 +1269,18 @@ var init_shapes = __esm({
       ["rect", { x: "3", y: "14", width: "7", height: "7", rx: "1", key: "1bkyp8" }],
       ["circle", { cx: "17.5", cy: "17.5", r: "3.5", key: "w3z12y" }]
     ];
-    Shapes = createLucideIcon("shapes", __iconNode51);
+    Shapes = createLucideIcon("shapes", __iconNode52);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
-var __iconNode52, SlidersHorizontal;
+var __iconNode53, SlidersHorizontal;
 var init_sliders_horizontal = __esm({
   "node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode52 = [
+    __iconNode53 = [
       ["path", { d: "M10 5H3", key: "1qgfaw" }],
       ["path", { d: "M12 19H3", key: "yhmn1j" }],
       ["path", { d: "M14 3v4", key: "1sua03" }],
@@ -1271,259 +1291,281 @@ var init_sliders_horizontal = __esm({
       ["path", { d: "M8 10v4", key: "tgpxqk" }],
       ["path", { d: "M8 12H3", key: "a7s4jb" }]
     ];
-    SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode52);
+    SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode53);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/smartphone.js
-var __iconNode53, Smartphone;
+var __iconNode54, Smartphone;
 var init_smartphone = __esm({
   "node_modules/lucide-react/dist/esm/icons/smartphone.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode53 = [
+    __iconNode54 = [
       ["rect", { width: "14", height: "20", x: "5", y: "2", rx: "2", ry: "2", key: "1yt0o3" }],
       ["path", { d: "M12 18h.01", key: "mhygvu" }]
     ];
-    Smartphone = createLucideIcon("smartphone", __iconNode53);
+    Smartphone = createLucideIcon("smartphone", __iconNode54);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/square-code.js
-var __iconNode54, SquareCode;
+var __iconNode55, SquareCode;
 var init_square_code = __esm({
   "node_modules/lucide-react/dist/esm/icons/square-code.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode54 = [
+    __iconNode55 = [
       ["path", { d: "m10 9-3 3 3 3", key: "1oro0q" }],
       ["path", { d: "m14 15 3-3-3-3", key: "bz13h7" }],
       ["rect", { x: "3", y: "3", width: "18", height: "18", rx: "2", key: "h1oib" }]
     ];
-    SquareCode = createLucideIcon("square-code", __iconNode54);
+    SquareCode = createLucideIcon("square-code", __iconNode55);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/strikethrough.js
-var __iconNode55, Strikethrough;
+var __iconNode56, Strikethrough;
 var init_strikethrough = __esm({
   "node_modules/lucide-react/dist/esm/icons/strikethrough.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode55 = [
+    __iconNode56 = [
       ["path", { d: "M16 4H9a3 3 0 0 0-2.83 4", key: "43sutm" }],
       ["path", { d: "M14 12a4 4 0 0 1 0 8H6", key: "nlfj13" }],
       ["line", { x1: "4", x2: "20", y1: "12", y2: "12", key: "1e0a9i" }]
     ];
-    Strikethrough = createLucideIcon("strikethrough", __iconNode55);
+    Strikethrough = createLucideIcon("strikethrough", __iconNode56);
+  }
+});
+
+// node_modules/lucide-react/dist/esm/icons/sun.js
+var __iconNode57, Sun;
+var init_sun = __esm({
+  "node_modules/lucide-react/dist/esm/icons/sun.js"() {
+    "use strict";
+    init_react_import();
+    init_createLucideIcon();
+    __iconNode57 = [
+      ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
+      ["path", { d: "M12 2v2", key: "tus03m" }],
+      ["path", { d: "M12 20v2", key: "1lh1kg" }],
+      ["path", { d: "m4.93 4.93 1.41 1.41", key: "149t6j" }],
+      ["path", { d: "m17.66 17.66 1.41 1.41", key: "ptbguv" }],
+      ["path", { d: "M2 12h2", key: "1t8f8n" }],
+      ["path", { d: "M20 12h2", key: "1q8mjw" }],
+      ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
+      ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
+    ];
+    Sun = createLucideIcon("sun", __iconNode57);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/tablet.js
-var __iconNode56, Tablet;
+var __iconNode58, Tablet;
 var init_tablet = __esm({
   "node_modules/lucide-react/dist/esm/icons/tablet.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode56 = [
+    __iconNode58 = [
       ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", ry: "2", key: "76otgf" }],
       ["line", { x1: "12", x2: "12.01", y1: "18", y2: "18", key: "1dp563" }]
     ];
-    Tablet = createLucideIcon("tablet", __iconNode56);
+    Tablet = createLucideIcon("tablet", __iconNode58);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/text-align-center.js
-var __iconNode57, TextAlignCenter;
+var __iconNode59, TextAlignCenter;
 var init_text_align_center = __esm({
   "node_modules/lucide-react/dist/esm/icons/text-align-center.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode57 = [
+    __iconNode59 = [
       ["path", { d: "M21 5H3", key: "1fi0y6" }],
       ["path", { d: "M17 12H7", key: "16if0g" }],
       ["path", { d: "M19 19H5", key: "vjpgq2" }]
     ];
-    TextAlignCenter = createLucideIcon("text-align-center", __iconNode57);
+    TextAlignCenter = createLucideIcon("text-align-center", __iconNode59);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/text-align-end.js
-var __iconNode58, TextAlignEnd;
+var __iconNode60, TextAlignEnd;
 var init_text_align_end = __esm({
   "node_modules/lucide-react/dist/esm/icons/text-align-end.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode58 = [
+    __iconNode60 = [
       ["path", { d: "M21 5H3", key: "1fi0y6" }],
       ["path", { d: "M21 12H9", key: "dn1m92" }],
       ["path", { d: "M21 19H7", key: "4cu937" }]
     ];
-    TextAlignEnd = createLucideIcon("text-align-end", __iconNode58);
+    TextAlignEnd = createLucideIcon("text-align-end", __iconNode60);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/text-align-justify.js
-var __iconNode59, TextAlignJustify;
+var __iconNode61, TextAlignJustify;
 var init_text_align_justify = __esm({
   "node_modules/lucide-react/dist/esm/icons/text-align-justify.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode59 = [
+    __iconNode61 = [
       ["path", { d: "M3 5h18", key: "1u36vt" }],
       ["path", { d: "M3 12h18", key: "1i2n21" }],
       ["path", { d: "M3 19h18", key: "awlh7x" }]
     ];
-    TextAlignJustify = createLucideIcon("text-align-justify", __iconNode59);
+    TextAlignJustify = createLucideIcon("text-align-justify", __iconNode61);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/text-align-start.js
-var __iconNode60, TextAlignStart;
+var __iconNode62, TextAlignStart;
 var init_text_align_start = __esm({
   "node_modules/lucide-react/dist/esm/icons/text-align-start.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode60 = [
+    __iconNode62 = [
       ["path", { d: "M21 5H3", key: "1fi0y6" }],
       ["path", { d: "M15 12H3", key: "6jk70r" }],
       ["path", { d: "M17 19H3", key: "z6ezky" }]
     ];
-    TextAlignStart = createLucideIcon("text-align-start", __iconNode60);
+    TextAlignStart = createLucideIcon("text-align-start", __iconNode62);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/toy-brick.js
-var __iconNode61, ToyBrick;
+var __iconNode63, ToyBrick;
 var init_toy_brick = __esm({
   "node_modules/lucide-react/dist/esm/icons/toy-brick.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode61 = [
+    __iconNode63 = [
       ["rect", { width: "18", height: "12", x: "3", y: "8", rx: "1", key: "158fvp" }],
       ["path", { d: "M10 8V5c0-.6-.4-1-1-1H6a1 1 0 0 0-1 1v3", key: "s0042v" }],
       ["path", { d: "M19 8V5c0-.6-.4-1-1-1h-3a1 1 0 0 0-1 1v3", key: "9wmeh2" }]
     ];
-    ToyBrick = createLucideIcon("toy-brick", __iconNode61);
+    ToyBrick = createLucideIcon("toy-brick", __iconNode63);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/trash.js
-var __iconNode62, Trash;
+var __iconNode64, Trash;
 var init_trash = __esm({
   "node_modules/lucide-react/dist/esm/icons/trash.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode62 = [
+    __iconNode64 = [
       ["path", { d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6", key: "miytrc" }],
       ["path", { d: "M3 6h18", key: "d0wm0j" }],
       ["path", { d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2", key: "e791ji" }]
     ];
-    Trash = createLucideIcon("trash", __iconNode62);
+    Trash = createLucideIcon("trash", __iconNode64);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/type.js
-var __iconNode63, Type;
+var __iconNode65, Type;
 var init_type = __esm({
   "node_modules/lucide-react/dist/esm/icons/type.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode63 = [
+    __iconNode65 = [
       ["path", { d: "M12 4v16", key: "1654pz" }],
       ["path", { d: "M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2", key: "e0r10z" }],
       ["path", { d: "M9 20h6", key: "s66wpe" }]
     ];
-    Type = createLucideIcon("type", __iconNode63);
+    Type = createLucideIcon("type", __iconNode65);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/underline.js
-var __iconNode64, Underline;
+var __iconNode66, Underline;
 var init_underline = __esm({
   "node_modules/lucide-react/dist/esm/icons/underline.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode64 = [
+    __iconNode66 = [
       ["path", { d: "M6 4v6a6 6 0 0 0 12 0V4", key: "9kb039" }],
       ["line", { x1: "4", x2: "20", y1: "20", y2: "20", key: "nun2al" }]
     ];
-    Underline = createLucideIcon("underline", __iconNode64);
+    Underline = createLucideIcon("underline", __iconNode66);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/undo-2.js
-var __iconNode65, Undo2;
+var __iconNode67, Undo2;
 var init_undo_2 = __esm({
   "node_modules/lucide-react/dist/esm/icons/undo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode65 = [
+    __iconNode67 = [
       ["path", { d: "M9 14 4 9l5-5", key: "102s5s" }],
       ["path", { d: "M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11", key: "f3b9sd" }]
     ];
-    Undo2 = createLucideIcon("undo-2", __iconNode65);
+    Undo2 = createLucideIcon("undo-2", __iconNode67);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/x.js
-var __iconNode66, X;
+var __iconNode68, X;
 var init_x = __esm({
   "node_modules/lucide-react/dist/esm/icons/x.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode66 = [
+    __iconNode68 = [
       ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
       ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
     ];
-    X = createLucideIcon("x", __iconNode66);
+    X = createLucideIcon("x", __iconNode68);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/zoom-in.js
-var __iconNode67, ZoomIn;
+var __iconNode69, ZoomIn;
 var init_zoom_in = __esm({
   "node_modules/lucide-react/dist/esm/icons/zoom-in.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode67 = [
+    __iconNode69 = [
       ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
       ["line", { x1: "21", x2: "16.65", y1: "21", y2: "16.65", key: "13gj7c" }],
       ["line", { x1: "11", x2: "11", y1: "8", y2: "14", key: "1vmskp" }],
       ["line", { x1: "8", x2: "14", y1: "11", y2: "11", key: "durymu" }]
     ];
-    ZoomIn = createLucideIcon("zoom-in", __iconNode67);
+    ZoomIn = createLucideIcon("zoom-in", __iconNode69);
   }
 });
 
 // node_modules/lucide-react/dist/esm/icons/zoom-out.js
-var __iconNode68, ZoomOut;
+var __iconNode70, ZoomOut;
 var init_zoom_out = __esm({
   "node_modules/lucide-react/dist/esm/icons/zoom-out.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
-    __iconNode68 = [
+    __iconNode70 = [
       ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
       ["line", { x1: "21", x2: "16.65", y1: "21", y2: "16.65", key: "13gj7c" }],
       ["line", { x1: "8", x2: "14", y1: "11", y2: "11", key: "durymu" }]
     ];
-    ZoomOut = createLucideIcon("zoom-out", __iconNode68);
+    ZoomOut = createLucideIcon("zoom-out", __iconNode70);
   }
 });
 
@@ -1581,6 +1623,7 @@ var init_lucide_react = __esm({
     init_minimize_2();
     init_minus();
     init_monitor();
+    init_moon();
     init_panel_right();
     init_plus();
     init_quote();
@@ -1591,6 +1634,7 @@ var init_lucide_react = __esm({
     init_sliders_horizontal();
     init_smartphone();
     init_strikethrough();
+    init_sun();
     init_tablet();
     init_toy_brick();
     init_trash();
@@ -4361,22 +4405,22 @@ var init_get_zoom_config = __esm({
       const viewportHeight = uiViewport.height === "auto" ? frameHeight : uiViewport.height;
       let rootHeight = 0;
       let autoZoom = 1;
-      if (typeof uiViewport.width === "number" && (uiViewport.width > frameWidth || viewportHeight > frameHeight)) {
+      if (typeof uiViewport.width === "number" && uiViewport.width > 0 && (uiViewport.width > frameWidth || typeof viewportHeight === "number" && viewportHeight > frameHeight)) {
         const widthZoom = Math.min(frameWidth / uiViewport.width, 1);
-        const heightZoom = Math.min(frameHeight / viewportHeight, 1);
-        zoom = widthZoom;
+        const heightZoom = typeof viewportHeight === "number" ? Math.min(frameHeight / viewportHeight, 1) : 1;
+        zoom = Math.max(widthZoom, 0.01);
         if (widthZoom < heightZoom) {
-          rootHeight = viewportHeight / zoom;
+          rootHeight = typeof viewportHeight === "number" ? viewportHeight / zoom : frameHeight;
         } else {
-          rootHeight = viewportHeight;
-          zoom = heightZoom;
+          rootHeight = typeof viewportHeight === "number" ? viewportHeight : 0;
+          zoom = Math.max(heightZoom, 0.01);
         }
         autoZoom = zoom;
       } else {
         if (RESET_ZOOM_SMALLER_THAN_FRAME) {
           autoZoom = 1;
           zoom = 1;
-          rootHeight = viewportHeight;
+          rootHeight = typeof viewportHeight === "number" ? viewportHeight : 0;
         }
       }
       return { autoZoom, rootHeight, zoom };
@@ -11058,6 +11102,7 @@ init_get_class_name_factory();
 var import_react76 = require("react");
 init_store2();
 init_lucide_react();
+var import_react_virtual2 = require("@tanstack/react-virtual");
 var import_jsx_runtime71 = require("react/jsx-runtime");
 var getClassName28 = get_class_name_factory_default("ComponentList", styles_module_default19);
 var ComponentListItem = ({
@@ -11087,7 +11132,16 @@ var ComponentList = ({
   const config = useAppStore((s) => s.config);
   const setUi = useAppStore((s) => s.setUi);
   const componentList = useAppStore((s) => s.state.ui.componentList);
+  const parentRef = (0, import_react76.useRef)(null);
   const { expanded = true } = componentList[id] || {};
+  const components = Object.keys(config.components);
+  const virtualizer = (0, import_react_virtual2.useVirtualizer)({
+    count: components.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 40,
+    // Estimated height of each item
+    overscan: 5
+  });
   return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { className: getClassName28({ isExpanded: expanded }), children: [
     title && /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
       "button",
@@ -11103,7 +11157,6 @@ var ComponentList = ({
             }
           }
         }),
-        title: expanded ? `Collapse${title ? ` ${title}` : ""}` : `Expand${title ? ` ${title}` : ""}`,
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
             id.toLowerCase().includes("hero") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(LayoutTemplate, { size: 12, strokeWidth: 2.5 }),
@@ -11118,16 +11171,52 @@ var ComponentList = ({
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName28("content"), children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer, { children: children || Object.keys(config.components).map((componentKey) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
-        ComponentListItem,
-        {
-          label: config.components[componentKey]["label"] ?? componentKey,
-          name: componentKey
+    /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+      "div",
+      {
+        ref: parentRef,
+        className: getClassName28("content"),
+        style: {
+          maxHeight: expanded ? "500px" : "0px",
+          overflowY: "auto",
+          transition: "max-height 0.3s ease-in-out"
         },
-        componentKey
-      );
-    }) }) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+          "div",
+          {
+            style: {
+              height: `${virtualizer.getTotalSize()}px`,
+              width: "100%",
+              position: "relative"
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer, { children: children || virtualizer.getVirtualItems().map((virtualItem) => {
+              const componentKey = components[virtualItem.index];
+              return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+                "div",
+                {
+                  style: {
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: `${virtualItem.size}px`,
+                    transform: `translateY(${virtualItem.start}px)`
+                  },
+                  children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+                    ComponentListItem,
+                    {
+                      label: config.components[componentKey]["label"] ?? componentKey,
+                      name: componentKey
+                    }
+                  )
+                },
+                virtualItem.key
+              );
+            }) })
+          }
+        )
+      }
+    )
   ] });
 };
 ComponentList.Item = ComponentListItem;
@@ -11759,7 +11848,7 @@ init_root_droppable_id();
 var import_react82 = require("react");
 init_store2();
 init_use_context_store();
-var import_react_virtual2 = require("@tanstack/react-virtual");
+var import_react_virtual3 = require("@tanstack/react-virtual");
 var import_jsx_runtime77 = require("react/jsx-runtime");
 var getClassName30 = get_class_name_factory_default("LayerTree", styles_module_default21);
 var getClassNameLayer = get_class_name_factory_default("Layer", styles_module_default21);
@@ -12029,7 +12118,7 @@ var VirtualizedLayerTreeItems = ({
   tree
 }) => {
   const listRef = (0, import_react82.useRef)(null);
-  const virtualizer = (0, import_react_virtual2.useVirtualizer)({
+  const virtualizer = (0, import_react_virtual3.useVirtualizer)({
     count: tree.items.length,
     estimateSize: (index) => getEstimatedRowHeight(tree.items[index].itemId),
     getItemKey: (index) => tree.items[index].itemId,
@@ -12420,7 +12509,7 @@ var usePropsContext = () => (0, import_react86.useContext)(propsContext);
 
 // css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Layout/styles.module.css#css-module
 init_react_import();
-var styles_module_default22 = { "CredBuildLayout": "_CredBuildLayout_ildl0_1", "CredBuildLayout-inner": "_CredBuildLayout-inner_ildl0_8", "CredBuildLayout--leftSideBarVisible": "_CredBuildLayout--leftSideBarVisible_ildl0_29", "CredBuildLayout--rightSideBarVisible": "_CredBuildLayout--rightSideBarVisible_ildl0_33", "CredBuild--hidePlugins": "_CredBuild--hidePlugins_ildl0_37", "CredBuildLayout-item": "_CredBuildLayout-item_ildl0_43", "CredBuildLayout-header": "_CredBuildLayout-header_ildl0_49", "CredBuildLayout-left": "_CredBuildLayout-left_ildl0_54", "CredBuildLayout-editor": "_CredBuildLayout-editor_ildl0_67", "CredBuildLayout-right": "_CredBuildLayout-right_ildl0_76", "CredBuildLayout-sidebar": "_CredBuildLayout-sidebar_ildl0_93", "CredBuildPluginTab": "_CredBuildPluginTab_ildl0_108", "CredBuildPluginTab--visible": "_CredBuildPluginTab--visible_ildl0_115", "CredBuildPluginTab-body": "_CredBuildPluginTab-body_ildl0_119", "CredBuildLayout--mounted": "_CredBuildLayout--mounted_ildl0_135" };
+var styles_module_default22 = { "CredBuildLayout": "_CredBuildLayout_14aaz_1", "CredBuildLayout-inner": "_CredBuildLayout-inner_14aaz_8", "CredBuildLayout--leftSideBarVisible": "_CredBuildLayout--leftSideBarVisible_14aaz_29", "CredBuildLayout--rightSideBarVisible": "_CredBuildLayout--rightSideBarVisible_14aaz_33", "CredBuild--hidePlugins": "_CredBuild--hidePlugins_14aaz_37", "CredBuildLayout-item": "_CredBuildLayout-item_14aaz_43", "CredBuildLayout-header": "_CredBuildLayout-header_14aaz_49", "CredBuildLayout-left": "_CredBuildLayout-left_14aaz_54", "CredBuildLayout-editor": "_CredBuildLayout-editor_14aaz_67", "CredBuildLayout-right": "_CredBuildLayout-right_14aaz_75", "CredBuildLayout-sidebar": "_CredBuildLayout-sidebar_14aaz_92", "CredBuildPluginTab": "_CredBuildPluginTab_14aaz_107", "CredBuildPluginTab--visible": "_CredBuildPluginTab--visible_14aaz_114", "CredBuildPluginTab-body": "_CredBuildPluginTab-body_14aaz_118", "CredBuildLayout--mounted": "_CredBuildLayout--mounted_14aaz_134" };
 
 // lib/use-inject-css.ts
 init_react_import();
@@ -13391,18 +13480,18 @@ var ViewportControls = ({
   const defaultsContainAutoZoom = defaultZoomOptions.find(
     (option) => option.value === autoZoom
   );
-  const zoomOptions = (0, import_react91.useMemo)(
-    () => [
+  const zoomOptions = (0, import_react91.useMemo)(() => {
+    const options = [
       ...defaultZoomOptions,
-      ...defaultsContainAutoZoom ? [] : [
+      ...defaultsContainAutoZoom || isNaN(autoZoom) ? [] : [
         {
           value: autoZoom,
           label: `${(autoZoom * 100).toFixed(0)}% (Auto)`
         }
       ]
-    ].filter((a) => a.value <= autoZoom).sort((a, b) => a.value > b.value ? 1 : -1),
-    [autoZoom, defaultsContainAutoZoom]
-  );
+    ].filter((a) => a.value <= (autoZoom || 1)).sort((a, b) => a.value > b.value ? 1 : -1);
+    return options.length > 0 ? options : defaultZoomOptions;
+  }, [autoZoom, defaultsContainAutoZoom]);
   const [activeViewport, setActiveViewport] = (0, import_react91.useState)(
     uiViewports.current.width
   );
@@ -13435,15 +13524,15 @@ var ViewportControls = ({
             ActionButton,
             {
               title: "Zoom viewport out",
-              disabled: zoom <= zoomOptions[0]?.value,
+              disabled: zoom <= (zoomOptions[0]?.value || 0),
               onClick: (e) => {
                 e.stopPropagation();
-                onZoom(
-                  zoomOptions[Math.max(
-                    zoomOptions.findIndex((option) => option.value === zoom) - 1,
-                    0
-                  )].value
+                const currentIndex = zoomOptions.findIndex((option) => option.value === zoom);
+                const nextIndex = Math.max(
+                  (currentIndex === -1 ? zoomOptions.length : currentIndex) - 1,
+                  0
                 );
+                onZoom(zoomOptions[nextIndex]?.value || 1);
               },
               children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(ZoomOut, { size: 16 })
             }
@@ -13452,15 +13541,15 @@ var ViewportControls = ({
             ActionButton,
             {
               title: "Zoom viewport in",
-              disabled: zoom >= zoomOptions[zoomOptions.length - 1]?.value,
+              disabled: zoom >= (zoomOptions[zoomOptions.length - 1]?.value || 2),
               onClick: (e) => {
                 e.stopPropagation();
-                onZoom(
-                  zoomOptions[Math.min(
-                    zoomOptions.findIndex((option) => option.value === zoom) + 1,
-                    zoomOptions.length - 1
-                  )].value
+                const currentIndex = zoomOptions.findIndex((option) => option.value === zoom);
+                const nextIndex = Math.min(
+                  (currentIndex === -1 ? -1 : currentIndex) + 1,
+                  zoomOptions.length - 1
                 );
+                onZoom(zoomOptions[nextIndex]?.value || 1);
               },
               children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(ZoomIn, { size: 16 })
             }
@@ -13540,7 +13629,8 @@ var styles_module_default25 = { "CredBuildHeader": "_CredBuildHeader_qzv5u_1", "
 var import_jsx_runtime85 = require("react/jsx-runtime");
 var getClassName33 = get_class_name_factory_default("CredBuildHeader", styles_module_default25);
 var HeaderInner = ({
-  hidePlugins
+  hidePlugins,
+  theme
 }) => {
   const {
     onPublish,
@@ -13666,16 +13756,39 @@ var HeaderInner = ({
           }),
           children: /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("inner"), children: [
             /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("leftActions"), children: [
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { style: { marginRight: "16px" }, children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
-                Button,
-                {
-                  href: "/dashboard",
-                  variant: "secondary",
-                  size: "medium",
-                  icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(LayoutDashboard, { size: 14 }),
-                  children: "Dashboard"
-                }
-              ) }),
+              /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { style: { marginRight: "8px", display: "flex", gap: "8px", alignItems: "center" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                  Button,
+                  {
+                    href: "/dashboard",
+                    variant: "secondary",
+                    size: "medium",
+                    icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(LayoutDashboard, { size: 14 }),
+                    children: "Dashboard"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                  IconButton,
+                  {
+                    type: "button",
+                    onClick: () => {
+                      const editorEl = document.querySelector(".CredBuild");
+                      if (!editorEl) return;
+                      const isDark = editorEl.classList.contains("dark");
+                      const newTheme = isDark ? "light" : "dark";
+                      if (isDark) {
+                        editorEl.classList.remove("dark");
+                      } else {
+                        editorEl.classList.add("dark");
+                      }
+                      localStorage.setItem("credbuild-theme", newTheme);
+                      window.dispatchEvent(new CustomEvent("credbuild-theme-change", { detail: newTheme }));
+                    },
+                    title: "Toggle Theme",
+                    children: theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Sun, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Moon, { size: 16 })
+                  }
+                )
+              ] }),
               /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("toggle"), children: [
                 /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("leftSideBarToggle"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
                   IconButton,
@@ -14101,7 +14214,8 @@ var Canvas = () => {
             className: getClassName36("root"),
             style: {
               width: iframe.enabled ? viewports.current.width : "100%",
-              height: zoomConfig.rootHeight,
+              height: !zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight) ? "100%" : zoomConfig.rootHeight,
+              minHeight: "100%",
               transform: iframe.enabled ? `scale(${zoomConfig.zoom})` : void 0,
               transition: showTransition ? `width ${TRANSITION_DURATION}ms ease-out, height ${TRANSITION_DURATION}ms ease-out, transform ${TRANSITION_DURATION}ms ease-out` : "",
               overflow: iframe.enabled ? void 0 : "auto"
@@ -14588,8 +14702,23 @@ var Layout = ({ children }) => {
     [overrides]
   );
   const [mounted, setMounted] = (0, import_react99.useState)(false);
+  const [theme, setTheme] = (0, import_react99.useState)("dark");
   (0, import_react99.useEffect)(() => {
     setMounted(true);
+    const savedTheme = localStorage.getItem("credbuild-theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+    const handleThemeToggle = (e) => {
+      const newTheme = e.detail || localStorage.getItem("credbuild-theme");
+      if (newTheme) setTheme(newTheme);
+    };
+    window.addEventListener("credbuild-theme-change", handleThemeToggle);
+    window.addEventListener("storage", handleThemeToggle);
+    return () => {
+      window.removeEventListener("credbuild-theme-change", handleThemeToggle);
+      window.removeEventListener("storage", handleThemeToggle);
+    };
   }, []);
   const ready = useAppStore((s) => s.status === "READY");
   useMonitorHotkeys();
@@ -14676,11 +14805,12 @@ var Layout = ({ children }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
     "div",
     {
-      className: `CredBuild ${getClassName43({
+      className: `CredBuild ${theme === "dark" ? "dark" : ""} ${getClassName43({
         hidePlugins: hasLegacySideBarPlugin
       })}`,
+      "data-theme": theme,
       id: instanceId,
-      style: { height },
+      style: { height: typeof height === "number" && isNaN(height) ? void 0 : height },
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(DragDropContext, { disableAutoScroll: dnd?.disableAutoScroll, children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(CustomCredBuild, { children: children || /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(FrameProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
           "div",
@@ -14693,14 +14823,14 @@ var Layout = ({ children }) => {
               mobilePanelHeightToggle: mobilePanelHeightMode === "toggle",
               mobilePanelHeightMinContent: mobilePanelHeightMode === "min-content"
             }),
-            style: { height },
+            style: { height: typeof height === "number" && isNaN(height) ? void 0 : height },
             children: /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
               "div",
               {
                 className: getLayoutClassName("inner"),
                 style: layoutOptions,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getLayoutClassName("header"), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Header, { hidePlugins: hasLegacySideBarPlugin }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getLayoutClassName("header"), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Header, { theme, hidePlugins: hasLegacySideBarPlugin }) }),
                   /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
                     Sidebar,
                     {
@@ -15305,6 +15435,7 @@ lucide-react/dist/esm/icons/megaphone.js:
 lucide-react/dist/esm/icons/minimize-2.js:
 lucide-react/dist/esm/icons/minus.js:
 lucide-react/dist/esm/icons/monitor.js:
+lucide-react/dist/esm/icons/moon.js:
 lucide-react/dist/esm/icons/panel-left.js:
 lucide-react/dist/esm/icons/panel-right.js:
 lucide-react/dist/esm/icons/plus.js:
@@ -15318,6 +15449,7 @@ lucide-react/dist/esm/icons/sliders-horizontal.js:
 lucide-react/dist/esm/icons/smartphone.js:
 lucide-react/dist/esm/icons/square-code.js:
 lucide-react/dist/esm/icons/strikethrough.js:
+lucide-react/dist/esm/icons/sun.js:
 lucide-react/dist/esm/icons/tablet.js:
 lucide-react/dist/esm/icons/text-align-center.js:
 lucide-react/dist/esm/icons/text-align-end.js:

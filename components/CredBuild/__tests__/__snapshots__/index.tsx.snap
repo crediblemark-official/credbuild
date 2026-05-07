@@ -171,7 +171,7 @@ exports[`CredBuild should generate the correct state on mount 1`] = `
     "enabled": false,
     "waitForStyles": true,
   },
-  "instanceId": "_r_9_",
+  "instanceId": "_r_5_",
   "metadata": undefined,
   "nodes": {
     "registerNode": [Function],

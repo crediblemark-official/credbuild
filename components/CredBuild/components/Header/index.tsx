@@ -8,6 +8,8 @@ import {
   LayoutDashboard,
   PanelLeft,
   PanelRight,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { Heading } from "../../../Heading";
 import { IconButton } from "../../../IconButton/IconButton";
@@ -29,8 +31,10 @@ const HeaderInner = <
   G extends UserGenerics<UserConfig> = UserGenerics<UserConfig>
 >({
   hidePlugins,
+  theme,
 }: {
   hidePlugins: boolean;
+  theme: 'light' | 'dark';
 }) => {
   const {
     onPublish,
@@ -188,7 +192,7 @@ const HeaderInner = <
       >
         <div className={getClassName("inner")}>
           <div className={getClassName("leftActions")}>
-            <div style={{ marginRight: '16px' }}>
+            <div style={{ marginRight: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
               <Button 
                 href="/dashboard" 
                 variant="secondary" 
@@ -197,6 +201,33 @@ const HeaderInner = <
               >
                 Dashboard
               </Button>
+              
+              <IconButton
+                type="button"
+                onClick={() => {
+                  const editorEl = document.querySelector('.CredBuild');
+                  if (!editorEl) return;
+                  
+                  const isDark = editorEl.classList.contains('dark');
+                  const newTheme = isDark ? 'light' : 'dark';
+                  
+                  if (isDark) {
+                    editorEl.classList.remove('dark');
+                  } else {
+                    editorEl.classList.add('dark');
+                  }
+                  
+                  localStorage.setItem('credbuild-theme', newTheme);
+                  window.dispatchEvent(new CustomEvent('credbuild-theme-change', { detail: newTheme }));
+                }}
+                title="Toggle Theme"
+              >
+                {theme === 'dark' ? (
+                  <Sun size={16} />
+                ) : (
+                  <Moon size={16} />
+                )}
+              </IconButton>
             </div>
             <div className={getClassName("toggle")}>
               <div className={getClassName("leftSideBarToggle")}>

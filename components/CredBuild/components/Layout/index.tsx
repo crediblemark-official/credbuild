@@ -141,9 +141,26 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
   );
 
   const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
     setMounted(true);
+    const savedTheme = localStorage.getItem('credbuild-theme') as 'light' | 'dark';
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+
+    // Listen for custom toggle events
+    const handleThemeToggle = (e: any) => {
+      const newTheme = e.detail || localStorage.getItem('credbuild-theme');
+      if (newTheme) setTheme(newTheme as 'light' | 'dark');
+    };
+    window.addEventListener('credbuild-theme-change', handleThemeToggle);
+    window.addEventListener('storage', handleThemeToggle);
+    return () => {
+      window.removeEventListener('credbuild-theme-change', handleThemeToggle);
+      window.removeEventListener('storage', handleThemeToggle);
+    };
   }, []);
 
   const ready = useAppStore((s) => s.status === "READY");
@@ -262,11 +279,12 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
 
   return (
     <div
-      className={`CredBuild ${getClassName({
+      className={`CredBuild ${theme === 'dark' ? 'dark' : ''} ${getClassName({
         hidePlugins: hasLegacySideBarPlugin,
       })}`}
+      data-theme={theme}
       id={instanceId}
-      style={{ height }}
+      style={{ height: (typeof height === 'number' && isNaN(height)) ? undefined : height }}
     >
       <DragDropContext disableAutoScroll={dnd?.disableAutoScroll}>
         <CustomCredBuild>
@@ -283,14 +301,14 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
                   mobilePanelHeightMinContent:
                     mobilePanelHeightMode === "min-content",
                 })}
-                style={{ height }}
+                style={{ height: (typeof height === 'number' && isNaN(height)) ? undefined : height }}
               >
                 <div
                   className={getLayoutClassName("inner")}
                   style={layoutOptions}
                 >
                   <div className={getLayoutClassName("header")}>
-                    <Header hidePlugins={hasLegacySideBarPlugin} />
+                    <Header theme={theme} hidePlugins={hasLegacySideBarPlugin} />
                   </div>
                   <Sidebar
                     position="left"

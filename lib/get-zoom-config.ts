@@ -20,18 +20,24 @@ export const getZoomConfig = (
 
   if (
     typeof uiViewport.width === "number" &&
-    (uiViewport.width > frameWidth || viewportHeight > frameHeight)
+    uiViewport.width > 0 &&
+    (uiViewport.width > frameWidth ||
+      (typeof viewportHeight === "number" && viewportHeight > frameHeight))
   ) {
     const widthZoom = Math.min(frameWidth / uiViewport.width, 1);
-    const heightZoom = Math.min(frameHeight / viewportHeight, 1);
+    const heightZoom =
+      typeof viewportHeight === "number"
+        ? Math.min(frameHeight / viewportHeight, 1)
+        : 1;
 
-    zoom = widthZoom;
+    zoom = Math.max(widthZoom, 0.01);
 
     if (widthZoom < heightZoom) {
-      rootHeight = viewportHeight / zoom;
+      rootHeight =
+        typeof viewportHeight === "number" ? viewportHeight / zoom : frameHeight;
     } else {
-      rootHeight = viewportHeight;
-      zoom = heightZoom;
+      rootHeight = typeof viewportHeight === "number" ? viewportHeight : 0;
+      zoom = Math.max(heightZoom, 0.01);
     }
 
     autoZoom = zoom;
@@ -39,7 +45,7 @@ export const getZoomConfig = (
     if (RESET_ZOOM_SMALLER_THAN_FRAME) {
       autoZoom = 1;
       zoom = 1;
-      rootHeight = viewportHeight;
+      rootHeight = typeof viewportHeight === "number" ? viewportHeight : 0;
     }
   }
 

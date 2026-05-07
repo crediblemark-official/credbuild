@@ -1,24 +1,43 @@
 @import url("https://rsms.me/inter/inter.css");
 @import "./bundle/core.css";
 
-/* Luxury Dark Studio: Absolute Design Truth */
+/* CredBuild Core Theme Variables */
 .CredBuild {
-  --cb-bg-base: #020617;        /* Slate 950 */
-  --cb-bg-surface: #0f172a;     /* Slate 900 */
-  --cb-bg-panel: #1e293b;       /* Slate 800 */
-  --cb-gold: #fbbf24;           /* Vibrant Amber/Gold 400 */
-  --cb-gold-glow: rgba(251, 191, 36, 0.15);
-  --cb-gold-faint: rgba(251, 191, 36, 0.05);
-  --cb-silver: #f8fafc;         /* Slate 50 (Crystal White/Silver) */
-  --cb-silver-muted: #cbd5e1;   /* Slate 300 (Brighter for readability) */
-  --cb-border: rgba(248, 250, 252, 0.1);
   --credbuild-font-family: 'Inter', sans-serif;
+  --cb-radius-m: 5px;
+}
+
+/* --- LIGHT MODE (Explicitly set via data-theme="light") --- */
+.CredBuild[data-theme="light"] {
+  --cb-bg-base: #f8fafc;        /* Slate 50 */
+  --cb-bg-surface: #ffffff;     /* White */
+  --cb-bg-panel: #f1f5f9;       /* Slate 100 */
+  --cb-gold: #d97706;           /* Amber 600 (Darker for light mode) */
+  --cb-gold-glow: rgba(217, 119, 6, 0.1);
+  --cb-gold-faint: rgba(217, 119, 6, 0.05);
+  --cb-silver: #0f172a;         /* Slate 900 (Dark text) */
+  --cb-silver-muted: #64748b;   /* Slate 500 */
+  --cb-border: #e2e8f0;         /* Slate 200 */
+}
+
+/* --- DARK MODE (Explicitly set via data-theme="dark") --- */
+.CredBuild[data-theme="dark"] {
+  --cb-bg-base: #191919;        /* Neutral Black (NEXT_CMS match) */
+  --cb-bg-surface: #202020;     /* Neutral Dark (NEXT_CMS card) */
+  --cb-bg-panel: #262626;       /* Neutral Darker */
+  --cb-gold: #ffffff;           /* Pure White for icons in dark mode */
+  --cb-gold-glow: rgba(255, 255, 255, 0.1);
+  --cb-gold-faint: rgba(255, 255, 255, 0.05);
+  --cb-silver: #ffffff;         /* White text */
+  --cb-silver-muted: #a1a1aa;   /* Zinc 400 (NEXT_CMS muted) */
+  --cb-border: #2f2f2f;         /* Neutral Border (NEXT_CMS match) */
 }
 
 /* Forceful Overrides for Studio Shell */
 .CredBuild {
   background-color: var(--cb-bg-base) !important;
   color: var(--cb-silver) !important;
+  font-family: var(--credbuild-font-family) !important;
 }
 
 /* Header Overhaul */
@@ -28,10 +47,10 @@
   height: 48px !important;
 }
 
-/* Global Icon Enforcing */
+/* Global Icon Enforcing - dynamic color based on parent text */
 .CredBuild svg {
-  color: var(--cb-gold) !important;
-  stroke: var(--cb-gold) !important;
+  color: currentColor !important;
+  stroke: currentColor !important;
 }
 
 /* Clean Typography */
@@ -61,10 +80,6 @@
 /* Form inputs & interactive elements */
 .CredBuild button {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.CredBuild button:hover {
-  filter: brightness(1.2);
 }
 
 /* Forceful Overrides for Sidebars & Header */
@@ -97,7 +112,7 @@
   background-color: var(--cb-bg-base) !important;
 }
 
-/* Brute-force Dark Theme for Drawer & Items */
+/* Brute-force Theme for Drawer & Items */
 [class*="Drawer"] {
   background-color: var(--cb-bg-base) !important;
 }
@@ -109,11 +124,12 @@
   background-color: var(--cb-bg-surface) !important;
   color: var(--cb-silver) !important;
   border: 1px solid var(--cb-border) !important;
+  padding: 4px 8px !important;
 }
 
 [class*="DrawerItem-draggable"]:hover {
   border-color: var(--cb-gold) !important;
-  background-color: var(--cb-gold-glow) !important;
+  background-color: var(--cb-gold-faint) !important;
 }
 
 /* Fix for Typography in Drawer Items */
@@ -122,24 +138,32 @@
   font-weight: 500;
 }
 
-/* Ensure icons in drawer are Gold */
+/* Ensure icons in drawer are Muted by default, white on hover */
 [class*="DrawerItem-icon"] svg,
 [class*="DrawerItem-draggable"] svg {
-  color: var(--cb-gold) !important;
-  stroke: var(--cb-gold) !important;
+  color: var(--cb-silver-muted) !important;
+  stroke: var(--cb-silver-muted) !important;
+  opacity: 0.7 !important;
+}
+
+[class*="DrawerItem-draggable"]:hover svg {
+  color: var(--cb-silver) !important;
+  stroke: var(--cb-silver) !important;
   opacity: 1 !important;
 }
 
-/* Category Headers (e.g., HERO SECTIONS) */
+/* Category Headers (e.g., HERO SECTIONS) - Refined for NEXT_CMS taste */
 [class*="ComponentList-title"] {
-  background-color: var(--cb-bg-panel) !important;
-  color: var(--cb-gold) !important;
+  background-color: transparent !important;
+  color: var(--cb-silver-muted) !important;
   border-radius: 0 !important;
   margin-bottom: 2px !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
+  padding: 8px 10px !important;
+  border-bottom: 1px solid var(--cb-border) !important;
 }
 
 [class*="ComponentList-title"]:hover {
@@ -153,10 +177,11 @@
 [class*="ExternalInput-input"],
 [class*="Select-select"] {
   background-color: var(--cb-bg-base) !important;
+  background: var(--cb-bg-base) !important;
   border: 1px solid var(--cb-border) !important;
   border-radius: var(--cb-radius-m) !important;
   color: var(--cb-silver) !important;
-  padding: 8px 12px !important;
+  padding: 6px 10px !important;
   font-size: 12px !important;
   width: 100% !important;
   transition: all 0.2s ease !important;
@@ -177,8 +202,8 @@
   font-weight: 600 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
-  margin-top: 12px !important;
-  margin-bottom: 8px !important;
+  margin-top: 6px !important;
+  margin-bottom: 4px !important;
 }
 
 /* Sidebar Sections */
@@ -194,54 +219,26 @@
   color: var(--cb-silver) !important;
 }
 
-/* Extreme Sidebar Blackout for Fields & Arrays */
+/* Extreme Sidebar Overrides for Fields & Arrays */
 [class*="SidebarSection-content"],
 [class*="Field-array"],
 [class*="ArrayField"],
 [class*="Sidebar"] div[class*="Section-"],
 [class*="Sidebar"] div[class*="Field-"] {
-  background-color: transparent !important; /* Kill the container background */
+  background-color: transparent !important;
   background: transparent !important;
   border-color: var(--cb-border) !important;
 }
 
-/* Ensure the actual item boxes inside the array are dark */
+/* Ensure the actual item boxes inside the array are consistent */
 [class*="Array-item"], 
 [class*="Field-list"] > div {
   background-color: var(--cb-bg-surface) !important;
   border: 1px solid var(--cb-border) !important;
   border-radius: var(--cb-radius-m) !important;
   color: var(--cb-silver) !important;
-  padding: 8px !important;
-  margin-bottom: 4px !important;
-}
-
-/* Fix for any white box containers that might be hard-to-target */
-.CredBuild [class*="Layout-right"] div {
-  background-image: none !important;
-}
-
-/* Header Overhaul (Absolute Dark) */
-[class*="CredBuildHeader"] {
-  background-color: var(--cb-bg-base) !important;
-  background: var(--cb-bg-base) !important;
-  border-bottom: 1px solid var(--cb-border) !important;
-}
-
-/* Breadcrumbs / Path Visibility (HOME, etc.) */
-[class*="Header-path"], [class*="Header-title"], [class*="Header-inner"] * {
-  color: var(--cb-gold) !important;
-  font-weight: 600 !important;
-}
-
-/* Final Header Cleanup - Absolute Dark & Gold */
-[class*="Header"] div, 
-[class*="Header"] button,
-[class*="Header"] span {
-  background-color: transparent !important;
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
+  padding: 6px !important;
+  margin-bottom: 3px !important;
 }
 
 /* Luxury Secondary Buttons (Dashboard, View Web) */
@@ -278,80 +275,14 @@
   transform: translateY(-1px);
 }
 
-/* Ensure icons are Gold */
-[class*="Header"] svg, [class*="Header"] svg * {
-  color: var(--cb-gold) !important;
-  stroke: var(--cb-gold) !important;
-  fill: none !important;
-}
-
-/* Special fix for the white box wrapper in Chrome/Safari */
-[class*="Header-tools"] > div, [class*="Header-rightActions"] > div {
-  background: transparent !important;
-}
-
-/* Component Drawer & Search Overhaul */
-[class*="Drawer"] input, 
-[class*="ComponentList"] input,
-[class*="Search"] input {
-  background-color: var(--cb-bg-base) !important;
-  color: var(--cb-silver) !important;
-  border: 1px solid var(--cb-border) !important;
-  border-radius: var(--cb-radius-m) !important;
-  padding: 10px 12px !important;
-  font-size: 13px !important;
-  transition: all 0.2s ease !important;
-}
-
-[class*="Drawer"] input:focus {
-  border-color: var(--cb-gold) !important;
-  box-shadow: 0 0 10px var(--cb-gold-glow) !important;
-  outline: none !important;
-}
-
-/* Component Category Titles (Hero, Agencies, etc.) */
-[class*="ComponentList-title"] {
-  color: var(--cb-gold) !important;
-  text-transform: uppercase !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.07em !important;
-  opacity: 1 !important;
-  padding: 12px !important;
-}
-
-[class*="ComponentList-title"]:hover {
-  background-color: var(--cb-gold-glow) !important;
-  color: var(--cb-gold) !important;
-}
-
-/* Component List Icons */
-[class*="ComponentList-titleIcon"] svg {
-  color: var(--cb-gold) !important;
-}
-
-/* Component Item Refinement (Slim & Clean) */
-[class*="DrawerItem"] {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  border: none !important;
-  border-bottom: none !important;
-}
-
-[class*="DrawerItem-name"], 
-[class*="DrawerItem"] span,
-[class*="DrawerItem"] div {
-  background-color: transparent !important; /* Kill the black highlighter */
-  background: transparent !important;
-}
-
-/* System-wide Blue to Gold/Dark Override */
-:root {
+/* System-wide Variable Mapping Overrides */
+.CredBuild {
   --credbuild-color-azure-05: var(--cb-gold);
   --credbuild-color-azure-06: var(--cb-gold);
   --credbuild-color-azure-07: var(--cb-gold);
   --credbuild-color-azure-10: var(--cb-gold-glow);
   --credbuild-color-azure-11: var(--cb-gold-glow);
-  --credbuild-color-white: var(--cb-silver);
+  --credbuild-color-white: var(--cb-bg-surface);
   --credbuild-color-grey-11: var(--cb-bg-surface);
   --credbuild-color-grey-10: var(--cb-border);
   --credbuild-color-grey-09: var(--cb-bg-base);

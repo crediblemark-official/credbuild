@@ -271,7 +271,8 @@ export const Canvas = () => {
           className={getClassName("root")}
           style={{
             width: iframe.enabled ? viewports.current.width : "100%",
-            height: zoomConfig.rootHeight,
+            height: (!zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight)) ? '100%' : zoomConfig.rootHeight,
+            minHeight: "100%",
             transform: iframe.enabled ? `scale(${zoomConfig.zoom})` : undefined,
             transition: showTransition
               ? `width ${TRANSITION_DURATION}ms ease-out, height ${TRANSITION_DURATION}ms ease-out, transform ${TRANSITION_DURATION}ms ease-out`
