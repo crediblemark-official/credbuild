@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import { ReactNode, useEffect, useRef } from "react";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 import { ChevronDown, ChevronUp, LayoutTemplate, FileText, Megaphone, Box, Settings, Layers } from "lucide-react";
-import { Drawer } from "../Drawer";
+import { Drawer } from "@/components/Drawer";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
 const getClassName = getClassNameFactory("ComponentList", styles);

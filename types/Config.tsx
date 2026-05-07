@@ -6,7 +6,7 @@ import { AsFieldProps, WithChildren, WithId, WithCredBuildProps } from "./Utils"
 import { AppState } from "./AppState";
 import { DefaultComponentProps, DefaultRootFieldProps } from "./Props";
 import { Permissions } from "./API";
-import { DropZoneProps } from "../components/DropZone/types";
+import { DropZoneProps } from "@/components/DropZone/types";
 import {
   AssertHasValue,
   FieldsExtension,

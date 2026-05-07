@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import { Field, FieldProps } from "../Fields";
-import { ItemSelector } from "../../lib/data/get-item";
-import { ExtractField, UserGenerics } from "../Utils";
-import { Config } from "../Config";
-import { RenderFunc } from "../Internal";
+import { Field, FieldProps } from "@/types/Fields";
+import { ItemSelector } from "@/lib/data/get-item";
+import { ExtractField, UserGenerics } from "@/types/Utils";
+import { Config } from "@/types/Config";
+import { RenderFunc } from "@/types/Internal";
 
 // All direct render methods, excluding fields
 export const overrideKeys = [

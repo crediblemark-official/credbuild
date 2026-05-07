@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAppStoreApi } from "../../store";
+import { useAppStoreApi } from "@/store";
 
 export const useOnDragFinished = (
   cb: (finished: boolean) => void,

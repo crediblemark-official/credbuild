@@ -1,10 +1,10 @@
-import { p as Field, q as FieldProps, r as DropZoneProps, a as Config, U as UserGenerics, D as Data, l as UiState, O as OnAction, g as Permissions, j as Plugin, k as Overrides, n as FieldTransforms, C as CredBuildAction, V as Viewports, I as IframeConfig, s as InitialHistory, M as Metadata, i as ResolveDataTrigger, t as ItemSelector, c as ComponentData, u as PluginInternal } from './actions-CEH_5LMY.js';
-export { v as Adaptor, A as AppState, w as ArrayField, x as ArrayState, y as AsFieldProps, B as BaseData, z as BaseField, E as CacheOpts, m as ComponentConfig, G as ComponentConfigExtensions, J as ComponentConfigParams, K as ComponentDataMap, L as ComponentDataOptionalId, N as ComponentMetadata, Q as ConfigParams, b as Content, S as CredBuildComponent, T as CredBuildContext, X as CredBuildMetadata, Y as CustomField, Z as CustomFieldRender, e as DefaultComponentProps, d as DefaultComponents, f as DefaultRootFieldProps, _ as DefaultRootProps, $ as DefaultRootRenderProps, a0 as Direction, a1 as DragAxis, a2 as ExternalField, a3 as ExternalFieldWithAdaptor, a4 as ExtractConfigParams, a5 as ExtractField, a6 as FieldMetadata, a7 as FieldRenderFunctions, a8 as FieldTransformFn, a9 as FieldTransformFnParams, F as Fields, H as History, aa as ItemWithId, ab as MappedItem, ac as NumberField, ad as ObjectField, ae as OverrideKey, af as RadioField, ag as RichText, o as RichtextField, ah as RootConfig, R as RootData, h as RootDataWithProps, ai as RootDataWithoutProps, aj as SelectField, ak as Slot, al as SlotComponent, am as SlotField, an as TextField, ao as TextareaField, ap as Viewport, aq as WithChildren, ar as WithCredBuildProps, W as WithId, as as WithSlotProps, at as overrideKeys } from './actions-CEH_5LMY.js';
-export { m as migrate, r as resolveAllData, t as transformProps, w as walkTree } from './walk-tree-B4ZvMfxS.js';
+import { p as Field, q as FieldProps, r as ResponsiveValue, s as DropZoneProps, a as Config, U as UserGenerics, D as Data, l as UiState, O as OnAction, g as Permissions, j as Plugin, k as Overrides, n as FieldTransforms, C as CredBuildAction, V as Viewports, I as IframeConfig, t as InitialHistory, M as Metadata, i as ResolveDataTrigger, u as ItemSelector, c as ComponentData, v as PluginInternal } from './actions-LaZpJ1KE.js';
+export { w as Adaptor, A as AppState, x as ArrayField, y as ArrayState, z as AsFieldProps, B as BaseData, E as BaseField, G as CacheOpts, m as ComponentConfig, J as ComponentConfigExtensions, K as ComponentConfigParams, L as ComponentDataMap, N as ComponentDataOptionalId, Q as ComponentMetadata, S as ConfigParams, b as Content, T as CredBuildComponent, X as CredBuildContext, Y as CredBuildMetadata, Z as CustomField, _ as CustomFieldRender, e as DefaultComponentProps, d as DefaultComponents, f as DefaultRootFieldProps, $ as DefaultRootProps, a0 as DefaultRootRenderProps, a1 as Direction, a2 as DragAxis, a3 as ExternalField, a4 as ExternalFieldWithAdaptor, a5 as ExtractConfigParams, a6 as ExtractField, a7 as FieldMetadata, a8 as FieldRenderFunctions, a9 as FieldTransformFn, aa as FieldTransformFnParams, F as Fields, H as History, ab as ItemWithId, ac as MappedItem, ad as NumberField, ae as ObjectField, af as OverrideKey, ag as RadioField, ah as RichText, o as RichtextField, ai as RootConfig, R as RootData, h as RootDataWithProps, aj as RootDataWithoutProps, ak as SelectField, al as Slot, am as SlotComponent, an as SlotField, ao as TextField, ap as TextareaField, aq as Viewport, ar as WithChildren, as as WithCredBuildProps, W as WithId, at as WithSlotProps, au as overrideKeys } from './actions-LaZpJ1KE.js';
+export { m as migrate, r as resolveAllData, t as transformProps, w as walkTree } from './walk-tree-BEw6kTXm.js';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as react from 'react';
 import { ReactNode, SyntheticEvent, ReactElement, CSSProperties } from 'react';
-import { A as AppStore, G as GetPermissions, R as RefreshPermissions, H as HistorySlice } from './index-CkSfgrvw.js';
+import { A as AppStore, G as GetPermissions, R as RefreshPermissions, H as HistorySlice } from './index-Bj2x5pZ7.js';
 import '@tiptap/react';
 import '@tiptap/extension-blockquote';
 import '@tiptap/extension-bold';
@@ -84,11 +84,6 @@ type SliderFieldProps = {
 };
 declare const SliderField: ({ value, onChange, min, max, step, unit, defaultValue, useUnits }: SliderFieldProps) => react_jsx_runtime.JSX.Element;
 
-type ResponsiveValue = {
-    desktop?: number | string;
-    tablet?: number | string;
-    mobile?: number | string;
-};
 type ResponsiveSliderFieldProps = {
     value: ResponsiveValue;
     onChange: (value: ResponsiveValue) => void;
@@ -340,4 +335,4 @@ declare const outlinePlugin: () => Plugin;
 
 declare const legacySideBarPlugin: () => Plugin;
 
-export { Action, ActionBar, AutoField, Button, ColorPickerField, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, ResponsiveSliderField, RichTextMenu, Separator, SliderField, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, setDeep, useCredBuild, useGetCredBuild };
+export { Action, ActionBar, AutoField, Button, ColorPickerField, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, ResponsiveSliderField, ResponsiveValue, RichTextMenu, Separator, SliderField, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, setDeep, useCredBuild, useGetCredBuild };

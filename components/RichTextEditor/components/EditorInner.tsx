@@ -7,11 +7,11 @@ import {
   KeyboardEvent,
   FocusEventHandler,
 } from "react";
-import styles from "../styles.module.css";
-import getClassNameFactory from "../../../lib/get-class-name-factory";
-import { EditorProps } from "../types";
+import styles from "@/components/RichTextEditor/styles.module.css";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { EditorProps } from "@/components/RichTextEditor/types";
 import type { Editor } from "@tiptap/core";
-import { useAppStore, useAppStoreApi } from "../../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 
 const getClassName = getClassNameFactory("RichTextEditor", styles);
 

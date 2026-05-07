@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useState } from "react";
-import { useAppStore, useAppStoreApi } from "../../../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import {
   ChevronDown,
   ChevronUp,
@@ -12,17 +12,17 @@ import {
   Moon,
   Zap,
 } from "lucide-react";
-import { Heading } from "../../../Heading";
-import { IconButton } from "../../../IconButton/IconButton";
-import { MenuBar } from "../../../MenuBar";
-import { Button } from "../../../Button";
-import { Config, Overrides, UiState, UserGenerics } from "../../../../types";
-import { DefaultOverride } from "../../../DefaultOverride";
-import { usePropsContext } from "../../context";
-import { getClassNameFactory, useResetAutoZoom } from "../../../../lib";
-import { ViewportControls } from "../../../ViewportControls";
+import { Heading } from "@/components/Heading";
+import { IconButton } from "@/components/IconButton/IconButton";
+import { MenuBar } from "@/components/MenuBar";
+import { Button } from "@/components/Button";
+import { Config, Overrides, UiState, UserGenerics } from "@/types";
+import { DefaultOverride } from "@/components/DefaultOverride";
+import { usePropsContext } from "@/components/CredBuild/context";
+import { getClassNameFactory, useResetAutoZoom } from "@/lib";
+import { ViewportControls } from "@/components/ViewportControls";
 import { useShallow } from "zustand/react/shallow";
-import { useCanvasFrame } from "../../../../lib/frame-context";
+import { useCanvasFrame } from "@/lib/frame-context";
 import styles from "./styles.module.css";
 
 const getClassName = getClassNameFactory("CredBuildHeader", styles);

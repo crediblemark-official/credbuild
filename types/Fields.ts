@@ -4,8 +4,14 @@ import type { Editor, Extensions } from "@tiptap/react";
 import {
   EditorState,
   RichTextSelector,
-} from "../components/RichTextEditor/types";
-import { CredBuildRichTextOptions } from "../components/RichTextEditor/extension";
+} from "@/components/RichTextEditor/types";
+import { CredBuildRichTextOptions } from "@/components/RichTextEditor/extension";
+
+export interface ResponsiveValue {
+  desktop?: number | string;
+  tablet?: number | string;
+  mobile?: number | string;
+}
 
 type FieldOption = {
   label: string;

@@ -4,9 +4,9 @@ import {
   EditorState,
   RichTextEditor,
   RichTextSelector,
-} from "../RichTextEditor/types";
-import { defaultEditorState } from "../RichTextEditor/selector";
-import { RichtextField } from "../../types";
+} from "@/components/RichTextEditor/types";
+import { defaultEditorState } from "@/components/RichTextEditor/selector";
+import { RichtextField } from "@/types";
 import { LoadedRichTextMenuInner } from "./inner";
 
 export const LoadedRichTextMenuFull = ({

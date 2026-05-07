@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import { ChevronRight } from "lucide-react";
-import { useBreadcrumbs } from "../../lib/use-breadcrumbs";
-import { useAppStore } from "../../store";
+import { useBreadcrumbs } from "@/lib/use-breadcrumbs";
+import { useAppStore } from "@/store";
 import { ReactNode } from "react";
 
 const getClassName = getClassNameFactory("Breadcrumbs", styles);

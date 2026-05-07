@@ -1,17 +1,17 @@
 "use client";
 
-import { rootZone } from "../../lib/root-droppable-id";
-import { useSlots } from "../../lib/use-slots";
-import { Config, Data, Metadata, UserGenerics } from "../../types";
+import { rootZone } from "@/lib/root-droppable-id";
+import { useSlots } from "@/lib/use-slots";
+import { Config, Data, Metadata, UserGenerics } from "@/types";
 import {
   DropZonePure,
   DropZoneProvider,
   DropZoneRenderPure,
-} from "../DropZone";
+} from "@/components/DropZone";
 import React, { useMemo } from "react";
-import { SlotRender } from "../SlotRender";
-import { DropZoneContext } from "../DropZone/context";
-import { useRichtextProps } from "../RichTextEditor/lib/use-richtext-props";
+import { SlotRender } from "@/components/SlotRender";
+import { DropZoneContext } from "@/components/DropZone/context";
+import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
 
 import { renderContext } from "./context";
 

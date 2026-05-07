@@ -1,4 +1,4 @@
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 import { GripVertical } from "lucide-react";
 import styles from "./styles.module.css";
 

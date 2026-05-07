@@ -1,6 +1,6 @@
-import { useAppStoreApi } from "../../store";
-import { ComponentData, ResolveDataTrigger } from "../../types";
-import { getSelectorForId } from "../get-selector-for-id";
+import { useAppStoreApi } from "@/store";
+import { ComponentData, ResolveDataTrigger } from "@/types";
+import { getSelectorForId } from "@/lib/get-selector-for-id";
 import { toComponent } from "./to-component";
 
 export async function resolveAndReplaceData(

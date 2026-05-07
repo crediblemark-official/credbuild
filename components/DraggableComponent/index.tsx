@@ -14,27 +14,27 @@ import {
 } from "react";
 import styles from "./styles.module.css";
 import "./styles.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import { Copy, CornerLeftUp, Trash } from "lucide-react";
-import { useAppStore, useAppStoreApi } from "../../store";
-import { Loader } from "../Loader";
-import { ActionBar } from "../ActionBar";
+import { useAppStore, useAppStoreApi } from "@/store";
+import { Loader } from "@/components/Loader";
+import { ActionBar } from "@/components/ActionBar";
 
 import { createPortal } from "react-dom";
 
-import { dropZoneContext, DropZoneProvider, DropZoneContext, ZoneStoreContext } from "../DropZone/context";
-import { createDynamicCollisionDetector } from "../../lib/dnd/collision/dynamic";
-import { DragAxis } from "../../types";
+import { dropZoneContext, DropZoneProvider, DropZoneContext, ZoneStoreContext } from "@/components/DropZone/context";
+import { createDynamicCollisionDetector } from "@/lib/dnd/collision/dynamic";
+import { DragAxis } from "@/types";
 import { UniqueIdentifier } from "@dnd-kit/abstract";
-import { getDeepScrollPosition } from "../../lib/get-deep-scroll-position";
+import { getDeepScrollPosition } from "@/lib/get-deep-scroll-position";
 import { useShallow } from "zustand/react/shallow";
-import { getItem } from "../../lib/data/get-item";
+import { getItem } from "@/lib/data/get-item";
 import { useSortable } from "@dnd-kit/react/sortable";
-import { useContextStore } from "../../lib/use-context-store";
-import { useOnDragFinished } from "../../lib/dnd/use-on-drag-finished";
-import { LoadedRichTextMenu } from "../RichTextMenu";
-import type { NodeHandle } from "../../store/slices/nodes";
-import { assignRefs } from "../../lib/assign-refs";
+import { useContextStore } from "@/lib/use-context-store";
+import { useOnDragFinished } from "@/lib/dnd/use-on-drag-finished";
+import { LoadedRichTextMenu } from "@/components/RichTextMenu";
+import type { NodeHandle } from "@/store/slices/nodes";
+import { assignRefs } from "@/lib/assign-refs";
 
 const getClassName = getClassNameFactory("DraggableComponent", styles);
 

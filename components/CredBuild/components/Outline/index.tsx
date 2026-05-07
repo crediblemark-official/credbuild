@@ -1,7 +1,7 @@
-import { buildLayerTree, LayerTree } from "../../../LayerTree";
-import { useAppStore } from "../../../../store";
+import { buildLayerTree, LayerTree } from "@/components/LayerTree";
+import { useAppStore } from "@/store";
 import { useMemo } from "react";
-import { findZonesForArea } from "../../../../lib/data/find-zones-for-area";
+import { findZonesForArea } from "@/lib/data/find-zones-for-area";
 import { useShallow } from "zustand/react/shallow";
 
 export const Outline = () => {

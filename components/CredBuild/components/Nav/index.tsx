@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import { ReactNode } from "react";
-import { getClassNameFactory } from "../../../../lib";
+import { getClassNameFactory } from "@/lib";
 
 const getClassName = getClassNameFactory("Nav", styles);
 const getClassNameItem = getClassNameFactory("NavItem", styles);

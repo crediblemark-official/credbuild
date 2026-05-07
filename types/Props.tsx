@@ -1,4 +1,4 @@
-import { DropZoneProps } from "../components/DropZone/types";
+import { DropZoneProps } from "@/components/DropZone/types";
 import { Metadata } from "./Data";
 import { WithChildren, WithCredBuildProps } from "./Utils";
 

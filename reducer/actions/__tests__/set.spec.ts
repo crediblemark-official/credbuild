@@ -1,5 +1,5 @@
-import { SetDataAction } from "../..";
-import { defaultData, defaultState, testSetup } from "../__helpers__";
+import { SetDataAction } from "@/reducer";
+import { defaultData, defaultState, testSetup } from "@/reducer/actions/__helpers__";
 
 describe("Reducer", () => {
   const { reducer } = testSetup();

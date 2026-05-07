@@ -1,5 +1,5 @@
-import { SelectControl } from "../../components/SelectControl";
-import { useControlContext } from "../../lib/use-control-context";
+import { SelectControl } from "@/components/RichTextMenu/components/SelectControl";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 import { List } from "lucide-react";
 import { ListElement, useListOptions } from "./use-options";
 

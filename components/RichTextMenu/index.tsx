@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
-import { EditorState, RichTextEditor } from "../RichTextEditor/types";
-import { RichtextField } from "../../types";
+import { EditorState, RichTextEditor } from "@/components/RichTextEditor/types";
+import { RichtextField } from "@/types";
 import { LoadedRichTextMenuInner } from "./inner";
 
 const LoadedRichTextMenuFull = lazy(() =>

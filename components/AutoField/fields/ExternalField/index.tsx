@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { FieldPropsInternal } from "../../types";
+import { FieldPropsInternal } from "@/components/AutoField/types";
 import type {
   ExternalField as ExternalFieldType,
   ExternalFieldWithAdaptor,
-} from "../../../../types";
-import { ExternalInput } from "../../../ExternalInput";
+} from "@/types";
+import { ExternalInput } from "@/components/ExternalInput";
 import { Link } from "lucide-react";
-import { useDeepField } from "../../lib/use-deep-field";
+import { useDeepField } from "@/components/AutoField/lib/use-deep-field";
 
 export const ExternalField = ({
   field,

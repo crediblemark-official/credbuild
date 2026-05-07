@@ -1,6 +1,6 @@
-import { InsertAction } from "../reducer";
-import { insertAction } from "../reducer/actions/insert";
-import { useAppStoreApi } from "../store";
+import { InsertAction } from "@/reducer";
+import { insertAction } from "@/reducer/actions/insert";
+import { useAppStoreApi } from "@/store";
 import { generateId } from "./generate-id";
 import { getItem } from "./data/get-item";
 import { getSelectorForId } from "./get-selector-for-id";

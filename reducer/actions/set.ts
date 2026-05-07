@@ -1,8 +1,8 @@
-import { Data } from "../../types";
-import { SetAction } from "../actions";
-import { AppStore } from "../../store";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
+import { Data } from "@/types";
+import { SetAction } from "@/reducer/actions";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 export const setAction = <UserData extends Data>(
   state: PrivateAppState<UserData>,

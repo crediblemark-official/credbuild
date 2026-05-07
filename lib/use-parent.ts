@@ -1,4 +1,4 @@
-import { useAppStore, useAppStoreApi } from "../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 
 export const useParent = () => {
   const appStore = useAppStoreApi();

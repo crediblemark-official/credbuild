@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from "lucide-react";
-import { RichtextField } from "../../../../types";
+import { RichtextField } from "@/types";
 
 const optionNodes: Record<string, { label: string; icon?: React.FC }> = {
   left: { label: "Left", icon: AlignLeft },

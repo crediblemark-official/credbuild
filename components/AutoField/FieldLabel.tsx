@@ -1,10 +1,10 @@
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { Field, FieldProps } from "../../types";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { Field, FieldProps } from "@/types";
 
 import styles from "./styles.module.css";
 import { ReactNode, useMemo } from "react";
 import { Lock } from "lucide-react";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 
 const getClassName = getClassNameFactory("Input", styles);
 
@@ -28,7 +28,7 @@ export const FieldLabel = ({
     <El className={className}>
       <div className={`${getClassName("label")} ${!children ? styles["Input-label--noChildren"] : ""}`}>
         {icon ? <div className={getClassName("labelIcon")}>{icon}</div> : <></>}
-        {label}
+        <span className={getClassName("labelText")}>{label}</span>
 
         {readOnly && (
           <div className={getClassName("disabledIcon")} title="Read-only">

@@ -1,8 +1,8 @@
-import { Data } from "../../types";
-import { ReorderAction } from "../actions";
-import { PrivateAppState } from "../../types/Internal";
+import { Data } from "@/types";
+import { ReorderAction } from "@/reducer/actions";
+import { PrivateAppState } from "@/types/Internal";
 import { moveAction } from "./move";
-import { AppStore } from "../../store";
+import { AppStore } from "@/store";
 
 export const reorderAction = <UserData extends Data>(
   state: PrivateAppState<UserData>,

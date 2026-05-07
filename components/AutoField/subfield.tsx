@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { AutoFieldPrivate } from "./AutoFieldInternal";
 import { NestedFieldProvider, useNestedFieldContext } from "./context";
-import { Field } from "../../types";
+import { Field } from "@/types";
 
 const SubFieldInternal = ({
   field,

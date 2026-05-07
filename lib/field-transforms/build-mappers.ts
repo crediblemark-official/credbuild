@@ -4,12 +4,12 @@ import {
   ExtractField,
   Field,
   UserGenerics,
-} from "../../types";
-import { MapFnParams, Mappers } from "../data/map-fields";
+} from "@/types";
+import { MapFnParams, Mappers } from "@/lib/data/map-fields";
 import {
   FieldTransformFn,
   FieldTransforms,
-} from "../../types/API/FieldTransforms";
+} from "@/types/API/FieldTransforms";
 
 /**
  * Converts transformers to mappers

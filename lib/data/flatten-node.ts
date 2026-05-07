@@ -1,5 +1,5 @@
 import flat from "flat";
-import { ComponentData, Config, RootData, UserGenerics } from "../../types";
+import { ComponentData, Config, RootData, UserGenerics } from "@/types";
 import { stripSlots } from "./strip-slots";
 
 // Explicitly destructure to account for flat module issues: https://github.com/credbuild/credbuild/issues/1089

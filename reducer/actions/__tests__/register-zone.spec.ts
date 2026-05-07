@@ -1,6 +1,6 @@
-import { RegisterZoneAction, UnregisterZoneAction } from "../..";
-import { PrivateAppState } from "../../../types/Internal";
-import { defaultData, defaultState, testSetup } from "../__helpers__";
+import { RegisterZoneAction, UnregisterZoneAction } from "@/reducer";
+import { PrivateAppState } from "@/types/Internal";
+import { defaultData, defaultState, testSetup } from "@/reducer/actions/__helpers__";
 
 describe("Reducer", () => {
   const { reducer } = testSetup();

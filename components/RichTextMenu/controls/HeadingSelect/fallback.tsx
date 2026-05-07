@@ -1,6 +1,6 @@
 import { Heading } from "lucide-react";
-import { SelectControl } from "../../components/SelectControl";
-import { useControlContext } from "../../lib/use-control-context";
+import { SelectControl } from "@/components/RichTextMenu/components/SelectControl";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 import { HeadingElement, useHeadingOptions } from "./use-options";
 
 export function HeadingSelectFallback() {

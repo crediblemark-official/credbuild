@@ -1,11 +1,11 @@
-import { ComponentDataOptionalId, Data } from "../../types";
-import { ReplaceAction } from "../actions";
-import { AppStore } from "../../store";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
-import { getIdsForParent } from "../../lib/data/get-ids-for-parent";
-import { walkTree } from "../../lib/data/walk-tree";
-import { generateId } from "../../lib/generate-id";
+import { ComponentDataOptionalId, Data } from "@/types";
+import { ReplaceAction } from "@/reducer/actions";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { getIdsForParent } from "@/lib/data/get-ids-for-parent";
+import { walkTree } from "@/lib/data/walk-tree";
+import { generateId } from "@/lib/generate-id";
 
 export const replaceAction = <UserData extends Data>(
   state: PrivateAppState<UserData>,

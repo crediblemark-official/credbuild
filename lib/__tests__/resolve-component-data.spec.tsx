@@ -1,7 +1,7 @@
-import { resolveComponentData, cache } from "../resolve-component-data";
-import { createAppStore } from "../../store";
-import { Config, Fields, Slot } from "../../types";
-import { toComponent } from "../data/to-component";
+import { resolveComponentData, cache } from "@/lib/resolve-component-data";
+import { createAppStore } from "@/store";
+import { Config, Fields, Slot } from "@/types";
+import { toComponent } from "@/lib/data/to-component";
 
 // export the cache and manually reset it or dynamically import the file
 

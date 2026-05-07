@@ -1,1 +1,1 @@
-export { createReducer } from "../reducer";
+export { createReducer } from "@/reducer";

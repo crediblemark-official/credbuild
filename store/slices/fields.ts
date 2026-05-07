@@ -1,9 +1,9 @@
-import { ComponentData } from "../../types";
-import type { Fields } from "../../types";
-import { AppStore, useAppStoreApi } from "../";
+import { ComponentData } from "@/types";
+import type { Fields } from "@/types";
+import { AppStore, useAppStoreApi } from "@/store";
 import { useCallback, useEffect } from "react";
-import { getChanged } from "../../lib/get-changed";
-import { makeStatePublic } from "../../lib/data/make-state-public";
+import { getChanged } from "@/lib/get-changed";
+import { makeStatePublic } from "@/lib/data/make-state-public";
 
 type ComponentOrRootData = Omit<ComponentData<any>, "type">;
 

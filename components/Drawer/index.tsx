@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { DragIcon } from "../DragIcon";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { DragIcon } from "@/components/DragIcon";
 import { ReactElement, ReactNode, Ref, useMemo, useState } from "react";
-import { generateId } from "../../lib/generate-id";
-import { useDragListener } from "../DragDropContext/context";
-import { useSafeId } from "../../lib/use-safe-id";
+import { generateId } from "@/lib/generate-id";
+import { useDragListener } from "@/components/DragDropContext/context";
+import { useSafeId } from "@/lib/use-safe-id";
 import { useDraggable, useDroppable } from "@dnd-kit/react";
 
 const getClassName = getClassNameFactory("Drawer", styles);

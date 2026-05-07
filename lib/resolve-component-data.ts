@@ -5,7 +5,7 @@ import {
   Metadata,
   ResolveDataTrigger,
   RootDataWithProps,
-} from "../types";
+} from "@/types";
 import { mapFields } from "./data/map-fields";
 import { toComponent } from "./data/to-component";
 import { getChanged } from "./get-changed";

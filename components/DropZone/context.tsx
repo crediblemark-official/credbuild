@@ -6,7 +6,7 @@ import {
   useMemo,
 } from "react";
 import type { Draggable } from "@dnd-kit/dom";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 import { createStore, StoreApi } from "zustand";
 import { Virtualizer } from "@tanstack/react-virtual";
 

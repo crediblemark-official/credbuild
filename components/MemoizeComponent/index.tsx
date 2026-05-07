@@ -1,6 +1,6 @@
 import { deepEqual } from "fast-equals";
 import { ComponentType, memo } from "react";
-import { shallowEqual } from "../../lib/shallow-equal";
+import { shallowEqual } from "@/lib/shallow-equal";
 
 const RenderComponent = ({
   Component,

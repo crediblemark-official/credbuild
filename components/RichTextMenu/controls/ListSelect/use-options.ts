@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { List, ListOrdered } from "lucide-react";
-import { RichtextField } from "../../../../types";
+import { RichtextField } from "@/types";
 
 const optionNodes: Record<string, { label: string; icon?: React.FC }> = {
   ul: { label: "Bullet list", icon: List },

@@ -7,7 +7,7 @@ import {
   useMemo,
   useRef,
 } from "react";
-import { useAppStore, useAppStoreApi } from "../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import {
   defaultRangeExtractor,
   elementScroll,
@@ -19,8 +19,8 @@ import {
   windowScroll,
 } from "@tanstack/react-virtual";
 import { ZoneStoreContext } from "./context";
-import { useContextStore } from "../../lib/use-context-store";
-import { getFrame } from "../../lib/get-frame";
+import { useContextStore } from "@/lib/use-context-store";
+import { getFrame } from "@/lib/get-frame";
 
 const ROOT_ZONE_VIRTUALIZATION_OVERSCAN = 5;
 const DEFAULT_VIRTUALIZED_ITEM_HEIGHT = 320; // TODO add API to configure this on per component basis

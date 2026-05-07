@@ -20,8 +20,8 @@ import {
   UiState,
   UserGenerics,
   Viewports,
-} from "../../types";
-import { CredBuildAction } from "../../reducer";
+} from "@/types";
+import { CredBuildAction } from "@/reducer";
 
 export type CredBuildProps<
   UserConfig extends Config = Config,

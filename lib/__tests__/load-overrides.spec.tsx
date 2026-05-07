@@ -1,4 +1,4 @@
-import { loadOverrides } from "../load-overrides";
+import { loadOverrides } from "@/lib/load-overrides";
 
 describe("load-overrides", () => {
   it("should curry the overrides for any given override", () => {

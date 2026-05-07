@@ -2,9 +2,9 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./Button.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { Loader } from "../Loader";
-import { filterDataAttrs } from "../../lib/filter-data-attrs";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { Loader } from "@/components/Loader";
+import { filterDataAttrs } from "@/lib/filter-data-attrs";
 
 const getClassName = getClassNameFactory("Button", styles);
 

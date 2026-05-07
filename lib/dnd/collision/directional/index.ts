@@ -1,6 +1,6 @@
 import { CollisionType, DragOperation, Droppable } from "@dnd-kit/abstract";
 import { Point } from "@dnd-kit/geometry";
-import { collisionDebug } from "../collision-debug";
+import { collisionDebug } from "@/lib/dnd/collision/collision-debug";
 
 let distanceChange: "increasing" | "decreasing" = "increasing";
 

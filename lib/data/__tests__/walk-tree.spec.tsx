@@ -1,8 +1,8 @@
-import { Config, Data, Slot } from "../../../types";
+import { Config, Data, Slot } from "@/types";
 
-import { defaultAppState as _defaultAppState } from "../../../store";
+import { defaultAppState as _defaultAppState } from "@/store";
 
-import { walkTree } from "../walk-tree";
+import { walkTree } from "@/lib/data/walk-tree";
 
 type Props = {
   Comp: {

@@ -1,6 +1,6 @@
-import { useControlContext } from "../../lib/use-control-context";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 import { AlignLeft } from "lucide-react";
-import { SelectControl } from "../../components/SelectControl";
+import { SelectControl } from "@/components/RichTextMenu/components/SelectControl";
 import { useAlignOptions, AlignDirection } from "./use-options";
 
 export function AlignSelectFallback() {

@@ -7,13 +7,13 @@ import {
   ZoomIn,
   ZoomOut,
 } from "lucide-react";
-import { IconButton } from "../IconButton";
-import { useAppStore } from "../../store";
+import { IconButton } from "@/components/IconButton";
+import { useAppStore } from "@/store";
 import { ReactNode, SyntheticEvent, useEffect, useMemo, useState } from "react";
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 
 import styles from "./styles.module.css";
-import { Viewport } from "../../types";
+import { Viewport } from "@/types";
 
 const icons = {
   Smartphone: <Smartphone size={16} />,

@@ -1,4 +1,4 @@
-import { transformProps } from "../transform-props";
+import { transformProps } from "@/lib/transform-props";
 
 jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -124,7 +124,7 @@ describe("transformProps method", () => {
               ],
             },
           },
-        },
+        } as any,
         {
           HeadingBlock: (props) => ({
             heading: props.title,

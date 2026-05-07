@@ -1,5 +1,5 @@
 import { CSSProperties, ElementType, Ref } from "react";
-import { DragAxis } from "../../types";
+import { DragAxis } from "@/types";
 
 export type DropZoneProps = {
   zone: string;

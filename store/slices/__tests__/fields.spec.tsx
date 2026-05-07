@@ -1,10 +1,10 @@
 import { renderHook, act, waitFor } from "@testing-library/react";
-import { useRegisterFieldsSlice } from "../fields";
-import { createAppStore, defaultAppState } from "../..";
-import { Config, ComponentData } from "../../../types";
-import { PrivateAppState } from "../../../types/Internal";
-import { walkAppState } from "../../../lib/data/walk-app-state";
-import { makeStatePublic } from "../../../lib/data/make-state-public";
+import { useRegisterFieldsSlice } from "@/store/slices/fields";
+import { createAppStore, defaultAppState } from "@/store";
+import { Config, ComponentData } from "@/types";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { makeStatePublic } from "@/lib/data/make-state-public";
 
 const baseState: PrivateAppState = {
   ...defaultAppState,

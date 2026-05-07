@@ -1,6 +1,6 @@
 import { ReactNode, useContext } from "react";
 import { useShallow } from "zustand/react/shallow";
-import { createContextStore } from "../../lib/use-context-store";
+import { createContextStore } from "@/lib/use-context-store";
 import { ExtractState, StoreApi, useStore } from "zustand";
 
 type FieldStore = Record<string, any>;

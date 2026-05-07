@@ -1,18 +1,18 @@
 import { forRelatedZones } from "./for-related-zones";
-import { rootDroppableId } from "../root-droppable-id";
+import { rootDroppableId } from "@/lib/root-droppable-id";
 import {
   ComponentData,
   Config,
   Content,
   Data,
   RootDataWithProps,
-} from "../../types";
+} from "@/types";
 import {
   NodeIndex,
   PrivateAppState,
   ZoneIndex,
   ZoneType,
-} from "../../types/Internal";
+} from "@/types/Internal";
 import { mapFields } from "./map-fields";
 import { flattenNode } from "./flatten-node";
 import { toComponent } from "./to-component";

@@ -4,16 +4,16 @@ import { Plugin } from "@dnd-kit/abstract";
 import type { Droppable } from "@dnd-kit/dom";
 
 import { effects, untracked } from "@dnd-kit/state";
-import { throttle } from "../throttle";
-import { ComponentDndData } from "../../components/DraggableComponent";
-import { DropZoneDndData } from "../../components/DropZone";
-import { getFrame } from "../get-frame";
-import { GlobalPosition } from "../global-position";
+import { throttle } from "@/lib/throttle";
+import { ComponentDndData } from "@/components/DraggableComponent";
+import { DropZoneDndData } from "@/components/DropZone";
+import { getFrame } from "@/lib/get-frame";
+import { GlobalPosition } from "@/lib/global-position";
 import {
   BubbledPointerEvent,
   BubbledPointerEventType,
-} from "../bubble-pointer-event";
-import { rootAreaId, rootDroppableId } from "../root-droppable-id";
+} from "@/lib/bubble-pointer-event";
+import { rootAreaId, rootDroppableId } from "@/lib/root-droppable-id";
 
 type NestedDroppablePluginOptions = {
   onChange: (

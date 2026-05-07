@@ -1,6 +1,6 @@
-import { useComponentList } from "../../../../lib/use-component-list";
-import { useAppStore } from "../../../../store";
-import { ComponentList } from "../../../ComponentList";
+import { useComponentList } from "@/lib/use-component-list";
+import { useAppStore } from "@/store";
+import { ComponentList } from "@/components/ComponentList";
 import { useMemo } from "react";
 
 export const Components = () => {

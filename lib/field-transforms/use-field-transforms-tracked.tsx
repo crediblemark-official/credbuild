@@ -1,9 +1,9 @@
 "use client";
 
-import { ComponentData, Config } from "../../types";
+import { ComponentData, Config } from "@/types";
 import { useMemo, useRef } from "react";
-import { mapFields, Mappers } from "../data/map-fields";
-import { FieldTransforms } from "../../types/API/FieldTransforms";
+import { mapFields, Mappers } from "@/lib/data/map-fields";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
 import { buildMappers } from "./build-mappers";
 
 export function useFieldTransformsTracked<

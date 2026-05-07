@@ -1,5 +1,5 @@
-import { useAppStoreApi } from "../../store";
-import { ResolveDataTrigger } from "../../types";
+import { useAppStoreApi } from "@/store";
+import { ResolveDataTrigger } from "@/types";
 import { getItem, ItemSelector } from "./get-item";
 import { toComponent } from "./to-component";
 import { resolveAndReplaceData } from "./resolve-and-replace-data";

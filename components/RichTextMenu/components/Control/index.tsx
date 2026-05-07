@@ -1,9 +1,9 @@
 import { ReactNode, SyntheticEvent } from "react";
-import { IconButton } from "../../../IconButton";
-import { Action } from "../../../ActionBar";
-import { getClassNameFactory } from "../../../../lib";
+import { IconButton } from "@/components/IconButton";
+import { Action } from "@/components/ActionBar";
+import { getClassNameFactory } from "@/lib";
 import styles from "./styles.module.css";
-import { useControlContext } from "../../lib/use-control-context";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 
 const getClassName = getClassNameFactory("Control", styles);
 

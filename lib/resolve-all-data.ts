@@ -7,7 +7,7 @@ import {
   DefaultRootFieldProps,
   Metadata,
   RootData,
-} from "../types";
+} from "@/types";
 import { resolveComponentData } from "./resolve-component-data";
 import { groupZonesByComponent } from "./group-zones-by-component";
 import { defaultData } from "./data/default-data";

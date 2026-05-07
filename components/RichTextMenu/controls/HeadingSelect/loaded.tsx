@@ -1,7 +1,7 @@
 import { useEditorState } from "@tiptap/react";
-import { useControlContext } from "../../lib/use-control-context";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 import { Heading } from "lucide-react";
-import { SelectControl } from "../../components/SelectControl";
+import { SelectControl } from "@/components/RichTextMenu/components/SelectControl";
 import { HeadingElement, useHeadingOptions } from "./use-options";
 
 export function HeadingSelectLoaded() {

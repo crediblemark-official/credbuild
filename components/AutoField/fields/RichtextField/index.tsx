@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
 import { Type } from "lucide-react";
-import { FieldPropsInternal } from "../../types";
-import { RichtextField as RichtextFieldType } from "../../../../types";
-import { EditorFallback } from "../../../RichTextEditor/components/EditorFallback";
-import { useDeepField } from "../../lib/use-deep-field";
+import { FieldPropsInternal } from "@/components/AutoField/types";
+import { RichtextField as RichtextFieldType } from "@/types";
+import { EditorFallback } from "@/components/RichTextEditor/components/EditorFallback";
+import { useDeepField } from "@/components/AutoField/lib/use-deep-field";
 
 const Editor = lazy(() =>
-  import("../../../RichTextEditor/components/Editor").then((m) => ({
+  import("@/components/RichTextEditor/components/Editor").then((m) => ({
     default: m.Editor,
   }))
 );

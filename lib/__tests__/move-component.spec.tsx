@@ -1,10 +1,10 @@
 import { act } from "@testing-library/react";
-import { createAppStore, defaultAppState } from "../../store";
-import { Config } from "../../types";
-import { getItem, ItemSelector } from "../data/get-item";
-import { walkAppState } from "../data/walk-app-state";
-import { cache } from "../resolve-component-data";
-import { moveComponent } from "../move-component";
+import { createAppStore, defaultAppState } from "@/store";
+import { Config } from "@/types";
+import { getItem, ItemSelector } from "@/lib/data/get-item";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { cache } from "@/lib/resolve-component-data";
+import { moveComponent } from "@/lib/move-component";
 
 const appStore = createAppStore();
 

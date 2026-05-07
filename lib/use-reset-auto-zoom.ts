@@ -1,7 +1,7 @@
 import { useCallback, RefObject } from "react";
-import { useAppStoreApi } from "../store";
+import { useAppStoreApi } from "@/store";
 import { getZoomConfig } from "./get-zoom-config";
-import { UiState } from "../types";
+import { UiState } from "@/types";
 
 type ResetAutoZoomOptions = {
   viewports?: UiState["viewports"];

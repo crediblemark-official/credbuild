@@ -1,14 +1,14 @@
-import { Content } from "../../../types";
-import { rootDroppableId } from "../../../lib/root-droppable-id";
+import { Content } from "@/types";
+import { rootDroppableId } from "@/lib/root-droppable-id";
 import {
   defaultData,
   defaultState,
   dzZoneCompound,
   expectIndexed,
   testSetup,
-} from "../__helpers__";
-import { PrivateAppState } from "../../../types/Internal";
-import { walkAppState } from "../../../lib/data/walk-app-state";
+} from "@/reducer/actions/__helpers__";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 describe("Reducer", () => {
   const { executeSequence, config, reducer } = testSetup();

@@ -21,7 +21,8 @@
     "target": "ES2020",
     "baseUrl": ".",
     "paths": {
-      "@tiptap/*": ["../node_modules/@tiptap/*"]
+      "@/*": ["./*"],
+      "@tiptap/*": ["./node_modules/@tiptap/*"]
     }
   },
   "include": ["."],

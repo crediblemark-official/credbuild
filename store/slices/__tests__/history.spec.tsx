@@ -1,6 +1,6 @@
 import { renderHook, act, waitFor } from "@testing-library/react";
-import { useRegisterHistorySlice } from "../history";
-import { defaultAppState, createAppStore } from "../../";
+import { useRegisterHistorySlice } from "@/store/slices/history";
+import { defaultAppState, createAppStore } from "@/store";
 
 const appStore = createAppStore();
 

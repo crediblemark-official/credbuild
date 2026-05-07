@@ -1,10 +1,10 @@
 import { cleanup } from "@testing-library/react";
-import { ComponentData, Config, RootDataWithProps } from "../../types";
-import { CredBuildAction } from "../../reducer";
-import { insertComponent } from "../insert-component";
-import { rootDroppableId } from "../root-droppable-id";
+import { ComponentData, Config, RootDataWithProps } from "@/types";
+import { CredBuildAction } from "@/reducer";
+import { insertComponent } from "@/lib/insert-component";
+import { rootDroppableId } from "@/lib/root-droppable-id";
 
-import { createAppStore } from "../../store";
+import { createAppStore } from "@/store";
 
 const appStore = createAppStore();
 

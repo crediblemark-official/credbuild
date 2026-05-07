@@ -1,8 +1,8 @@
 import { act, render, screen } from "@testing-library/react";
-import { Config } from "../../../types";
+import { Config } from "@/types";
 import "@testing-library/jest-dom";
 
-jest.mock("../styles.module.css");
+jest.mock("@/components/CredBuild/styles.module.css");
 jest.mock("@dnd-kit/react");
 
 Object.defineProperty(window, "matchMedia", {
@@ -58,8 +58,8 @@ const getInternal = () => {
   return (window as any).__CREDBUILD_INTERNAL_DO_NOT_USE as CredBuildInternal;
 };
 
-import { CredBuild } from "../index";
-import { AppStoreApi } from "../../../store";
+import { CredBuild } from "@/components/CredBuild/index";
+import { AppStoreApi } from "@/store";
 
 describe("CredBuild", () => {
   const componentARender = jest.fn(() => null);
@@ -68,7 +68,7 @@ describe("CredBuild", () => {
 
   const config: Config = {
     root: {
-      render: ({ children }) => {
+      render: ({ children }: { children: React.ReactNode }) => {
         rootRender();
         return <div>Root{children}</div>;
       },

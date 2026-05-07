@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
 } from "@radix-ui/react-popover";
 import { ChevronDown } from "lucide-react";
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 
 const getClassName = getClassNameFactory("Select", styles);
 const getItemClassName = getClassNameFactory("SelectItem", styles);

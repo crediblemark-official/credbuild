@@ -1,10 +1,10 @@
 import { FormInput } from "lucide-react";
-import { useAppStore } from "../../store";
-import { PluginInternal } from "../../types/Internal";
-import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { Fields } from "../../components/CredBuild/components/Fields";
+import { useAppStore } from "@/store";
+import { PluginInternal } from "@/types/Internal";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Fields } from "@/components/CredBuild/components/Fields";
 import styles from "./styles.module.css";
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 
 const getClassName = getClassNameFactory("FieldsPlugin", styles);
 

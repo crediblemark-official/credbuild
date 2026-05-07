@@ -1,5 +1,5 @@
 import { act } from "@testing-library/react";
-import { createAppStore } from "../../";
+import { createAppStore } from "@/store";
 
 describe("nodes slice", () => {
   it("registerNode stores handles and syncNode invokes sync", () => {

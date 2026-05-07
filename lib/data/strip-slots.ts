@@ -1,4 +1,4 @@
-import { ComponentData, Config, RootData } from "../../types";
+import { ComponentData, Config, RootData } from "@/types";
 import { mapFields } from "./map-fields";
 
 export const stripSlots = (

@@ -1,13 +1,13 @@
-import { Loader } from "../../../Loader";
-import { rootDroppableId } from "../../../../lib/root-droppable-id";
-import { ItemSelector } from "../../../../lib/data/get-item";
-import { getSelectorForId } from "../../../../lib/get-selector-for-id";
-import { UiState } from "../../../../types";
-import { AutoFieldPrivate } from "../../../AutoField";
-import { fieldContextStore } from "../../../AutoField/store";
-import { AppStore, useAppStore, useAppStoreApi } from "../../../../store";
+import { Loader } from "@/components/Loader";
+import { rootDroppableId } from "@/lib/root-droppable-id";
+import { ItemSelector } from "@/lib/data/get-item";
+import { getSelectorForId } from "@/lib/get-selector-for-id";
+import { UiState } from "@/types";
+import { AutoFieldPrivate } from "@/components/AutoField";
+import { fieldContextStore } from "@/components/AutoField/store";
+import { AppStore, useAppStore, useAppStoreApi } from "@/store";
 import styles from "./styles.module.css";
-import { getClassNameFactory } from "../../../../lib";
+import { getClassNameFactory } from "@/lib";
 import {
   memo,
   ReactNode,
@@ -16,7 +16,7 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import { useRegisterFieldsSlice } from "../../../../store/slices/fields";
+import { useRegisterFieldsSlice } from "@/store/slices/fields";
 import { useShallow } from "zustand/react/shallow";
 import { StoreApi } from "zustand";
 

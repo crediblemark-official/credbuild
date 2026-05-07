@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAppStore, useAppStoreApi } from "../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import { ItemSelector } from "./data/get-item";
 
 export type Breadcrumb = {

@@ -1,14 +1,14 @@
 import { forwardRef } from "react";
-import { DropZoneProps } from "../DropZone/types";
+import { DropZoneProps } from "@/components/DropZone/types";
 import {
   ComponentData,
   Config,
   Content,
   Metadata,
   WithCredBuildProps,
-} from "../../types";
-import { useSlots } from "../../lib/use-slots";
-import { useRichtextProps } from "../RichTextEditor/lib/use-richtext-props";
+} from "@/types";
+import { useSlots } from "@/lib/use-slots";
+import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
 
 type SlotRenderProps = DropZoneProps & {
   content: Content;

@@ -6,15 +6,15 @@ import {
   isValidElement,
 } from "react";
 import styles from "./styles.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { ExternalField } from "../../types";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { ExternalField } from "@/types";
 import { Link, Search, SlidersHorizontal, Unlock } from "lucide-react";
-import { Modal } from "../Modal";
-import { Heading } from "../Heading";
-import { Loader } from "../Loader";
-import { Button } from "../Button";
-import { AutoField, AutoFieldPrivate, FieldLabel } from "../AutoField";
-import { IconButton } from "../IconButton";
+import { Modal } from "@/components/Modal";
+import { Heading } from "@/components/Heading";
+import { Loader } from "@/components/Loader";
+import { Button } from "@/components/Button";
+import { AutoField, AutoFieldPrivate, FieldLabel } from "@/components/AutoField";
+import { IconButton } from "@/components/IconButton";
 
 const getClassName = getClassNameFactory("ExternalInput", styles);
 const getClassNameModal = getClassNameFactory("ExternalInputModal", styles);

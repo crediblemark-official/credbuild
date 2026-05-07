@@ -1,12 +1,12 @@
 import { ReactElement, ReactNode } from "react";
-import { CredBuildAction } from "../../reducer";
-import { WithDeepSlots } from "../Internal";
-import { DefaultComponentProps } from "../Props";
-import { AppState } from "./../AppState";
-import { ComponentDataOptionalId, Content, Data } from "./../Data";
+import { CredBuildAction } from "@/reducer";
+import { WithDeepSlots } from "@/types/Internal";
+import { DefaultComponentProps } from "@/types/Props";
+import { AppState } from "@/types/API/AppState";
+import { ComponentDataOptionalId, Content, Data } from "@/types/Data";
 import { Overrides } from "./Overrides";
 import { FieldTransforms } from "./FieldTransforms";
-import { Config, DefaultComponents } from "../Config";
+import { Config, DefaultComponents } from "@/types/Config";
 
 export type Permissions = {
   drag: boolean;

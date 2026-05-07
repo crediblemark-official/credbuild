@@ -1,6 +1,6 @@
 import { Minus as MinusIcon } from "lucide-react";
-import { Control } from "../components/Control";
-import { useControlContext } from "../lib/use-control-context";
+import { Control } from "@/components/RichTextMenu/components/Control";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 
 export function HorizontalRule() {
   const { editor, editorState } = useControlContext();

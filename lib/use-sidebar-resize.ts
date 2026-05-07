@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useAppStore } from "../store";
-import { CredBuildAction } from "../reducer";
+import { useAppStore } from "@/store";
+import { CredBuildAction } from "@/reducer";
 
 /**
  * Custom hook for managing sidebar resize functionality

@@ -5,7 +5,7 @@ import {
   Field,
   Fields,
   RootData,
-} from "../../types";
+} from "@/types";
 import { defaultSlots } from "./default-slots";
 
 export type MapFnParams<ThisField = Field> = {

@@ -1,10 +1,10 @@
 import { memo, useMemo } from "react";
-import { useSyncedEditor } from "../lib/use-synced-editor";
-import { CredBuildRichText } from "../extension";
+import { useSyncedEditor } from "@/lib/use-synced-editor";
+import { CredBuildRichText } from "@/components/RichTextEditor/extension";
 import { EditorContent } from "@tiptap/react";
-import { EditorProps } from "../types";
-import { useAppStore, useAppStoreApi } from "../../../store";
-import { LoadedRichTextMenu } from "../../RichTextMenu";
+import { EditorProps } from "@/components/RichTextEditor/types";
+import { useAppStore, useAppStoreApi } from "@/store";
+import { LoadedRichTextMenu } from "@/components/RichTextMenu";
 import { EditorInner } from "./EditorInner";
 
 export const Editor = memo((props: EditorProps) => {

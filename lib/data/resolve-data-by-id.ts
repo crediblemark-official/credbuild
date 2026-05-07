@@ -1,6 +1,6 @@
-import { useAppStoreApi } from "../../store";
-import { ResolveDataTrigger } from "../../types";
-import { CredBuildNodeData } from "../../types/Internal";
+import { useAppStoreApi } from "@/store";
+import { ResolveDataTrigger } from "@/types";
+import { CredBuildNodeData } from "@/types/Internal";
 import { resolveAndReplaceData } from "./resolve-and-replace-data";
 
 export async function resolveDataById(

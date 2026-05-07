@@ -15,11 +15,11 @@ import {
   RootDataWithProps,
   ResolveDataTrigger,
   RichtextField,
-} from "../types";
-import { createReducer, CredBuildAction } from "../reducer";
-import { getItem } from "../lib/data/get-item";
-import { defaultViewports } from "../components/ViewportControls/default-viewports";
-import { Viewports } from "../types";
+} from "@/types";
+import { createReducer, CredBuildAction } from "@/reducer";
+import { getItem } from "@/lib/data/get-item";
+import { defaultViewports } from "@/components/ViewportControls/default-viewports";
+import { Viewports } from "@/types";
 import { create, StoreApi, useStore } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { createContext, useContext } from "react";
@@ -30,12 +30,12 @@ import {
   type PermissionsSlice,
 } from "./slices/permissions";
 import { createFieldsSlice, type FieldsSlice } from "./slices/fields";
-import { resolveComponentData } from "../lib/resolve-component-data";
-import { walkAppState } from "../lib/data/walk-app-state";
-import { toRoot } from "../lib/data/to-root";
-import { generateId } from "../lib/generate-id";
+import { resolveComponentData } from "@/lib/resolve-component-data";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { toRoot } from "@/lib/data/to-root";
+import { generateId } from "@/lib/generate-id";
 import { defaultAppState } from "./default-app-state";
-import { FieldTransforms } from "../types/API/FieldTransforms";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
 import type { Editor } from "@tiptap/react";
 
 export { defaultAppState };

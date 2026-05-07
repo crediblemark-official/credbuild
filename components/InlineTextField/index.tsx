@@ -1,12 +1,12 @@
 "use client";
 
 import { memo, useEffect, useRef, useState } from "react";
-import { registerOverlayPortal } from "../../lib/overlay-portal";
-import { useAppStoreApi } from "../../store";
+import { registerOverlayPortal } from "@/lib/overlay-portal";
+import { useAppStoreApi } from "@/store";
 import styles from "./styles.module.css";
-import { getClassNameFactory } from "../../lib";
-import { setDeep } from "../../lib/data/set-deep";
-import { getSelectorForId } from "../../lib/get-selector-for-id";
+import { getClassNameFactory } from "@/lib";
+import { setDeep } from "@/lib/data/set-deep";
+import { getSelectorForId } from "@/lib/get-selector-for-id";
 
 const getClassName = getClassNameFactory("InlineTextField", styles);
 

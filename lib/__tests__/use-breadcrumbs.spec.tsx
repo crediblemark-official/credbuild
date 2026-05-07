@@ -1,9 +1,9 @@
 import { renderHook, render } from "@testing-library/react";
-import { useBreadcrumbs } from "../use-breadcrumbs";
-import { createAppStore, appStoreContext } from "../../store";
-import { ComponentData, Config } from "../../types";
+import { useBreadcrumbs } from "@/lib/use-breadcrumbs";
+import { createAppStore, appStoreContext } from "@/store";
+import { ComponentData, Config } from "@/types";
 import { PropsWithChildren } from "react";
-import { walkAppState } from "../data/walk-app-state";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 const appStore = createAppStore();
 

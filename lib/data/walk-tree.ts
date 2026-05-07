@@ -4,7 +4,7 @@ import {
   Content,
   RootData,
   UserGenerics,
-} from "../../types";
+} from "@/types";
 import { mapFields } from "./map-fields";
 
 type WalkTreeOptions = {

@@ -159,7 +159,7 @@ var init_styles_module2 = __esm({
     "use strict";
     init_react_import();
     init_css_module_data2();
-    styles_module_default2 = { "InputWrapper": "_InputWrapper_1xuyz_1", "InputWrapper--object": "_InputWrapper--object_1xuyz_1", "InputWrapper--array": "_InputWrapper--array_1xuyz_1", "Input-label": "_Input-label_1xuyz_18", "Input-label--noChildren": "_Input-label--noChildren_1xuyz_29", "Input-labelIcon": "_Input-labelIcon_1xuyz_33", "Input-disabledIcon": "_Input-disabledIcon_1xuyz_40", "Input-input": "_Input-input_1xuyz_45", "Input": "_Input_1xuyz_1", "Input--readOnly": "_Input--readOnly_1xuyz_101", "Input-radioGroupItems": "_Input-radioGroupItems_1xuyz_112", "Input-radio": "_Input-radio_1xuyz_112", "Input-radioInner": "_Input-radioInner_1xuyz_129", "Input-radioInput": "_Input-radioInput_1xuyz_174" };
+    styles_module_default2 = { "InputWrapper": "_InputWrapper_rcfsp_1", "InputWrapper--object": "_InputWrapper--object_rcfsp_1", "InputWrapper--array": "_InputWrapper--array_rcfsp_1", "Input-label": "_Input-label_rcfsp_18", "Input-label--noChildren": "_Input-label--noChildren_rcfsp_30", "Input-labelIcon": "_Input-labelIcon_rcfsp_34", "Input-disabledIcon": "_Input-disabledIcon_rcfsp_41", "Input-input": "_Input-input_rcfsp_46", "Input": "_Input_rcfsp_1", "Input--readOnly": "_Input--readOnly_rcfsp_102", "Input-radioGroupItems": "_Input-radioGroupItems_rcfsp_113", "Input-radio": "_Input-radio_rcfsp_113", "Input-radioInner": "_Input-radioInner_rcfsp_130", "Input-radioInput": "_Input-radioInput_rcfsp_175" };
   }
 });
 
@@ -3849,7 +3849,7 @@ var init_FieldLabel = __esm({
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(El, { className, children: [
         /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: `${getClassName2("label")} ${!children ? styles_module_default2["Input-label--noChildren"] : ""}`, children: [
           icon ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: getClassName2("labelIcon"), children: icon }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, {}),
-          label,
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: getClassName2("labelText"), children: label }),
           readOnly && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: getClassName2("disabledIcon"), title: "Read-only", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Lock, { size: "12" }) })
         ] }),
         children
@@ -5124,7 +5124,7 @@ var init_DefaultField = __esm({
               id,
               min: field.type === "number" ? field.min : void 0,
               max: field.type === "number" ? field.max : void 0,
-              placeholder: field.type === "text" || field.type === "number" ? field.placeholder : void 0,
+              placeholder: field.type === "text" || field.type === "number" ? field.placeholder || label || name : void 0,
               step: field.type === "number" ? field.step : void 0
             }
           )
@@ -6979,7 +6979,7 @@ var init_styles_module11 = __esm({
     "use strict";
     init_react_import();
     init_css_module_data13();
-    styles_module_default11 = { "ArrayField": "_ArrayField_19wby_5", "ArrayField--isDraggingFrom": "_ArrayField--isDraggingFrom_19wby_13", "ArrayField-addButton": "_ArrayField-addButton_19wby_18", "ArrayField--hasItems": "_ArrayField--hasItems_19wby_33", "ArrayField-inner": "_ArrayField-inner_19wby_59", "ArrayFieldItem": "_ArrayFieldItem_19wby_67", "ArrayFieldItem--isDragging": "_ArrayFieldItem--isDragging_19wby_78", "ArrayFieldItem--isExpanded": "_ArrayFieldItem--isExpanded_19wby_82", "ArrayFieldItem-summary": "_ArrayFieldItem-summary_19wby_97", "ArrayFieldItem--noFields": "_ArrayFieldItem--noFields_19wby_122", "ArrayField--addDisabled": "_ArrayField--addDisabled_19wby_131", "ArrayFieldItem-body": "_ArrayFieldItem-body_19wby_170", "ArrayFieldItem-fieldset": "_ArrayFieldItem-fieldset_19wby_179", "ArrayFieldItem-rhs": "_ArrayFieldItem-rhs_19wby_187", "ArrayFieldItem-actions": "_ArrayFieldItem-actions_19wby_193" };
+    styles_module_default11 = { "ArrayField": "_ArrayField_rvhj3_5", "ArrayField--isDraggingFrom": "_ArrayField--isDraggingFrom_rvhj3_13", "ArrayField-addButton": "_ArrayField-addButton_rvhj3_18", "ArrayField--hasItems": "_ArrayField--hasItems_rvhj3_33", "ArrayField-inner": "_ArrayField-inner_rvhj3_59", "ArrayFieldItem": "_ArrayFieldItem_rvhj3_67", "ArrayFieldItem--isDragging": "_ArrayFieldItem--isDragging_rvhj3_78", "ArrayFieldItem--isExpanded": "_ArrayFieldItem--isExpanded_rvhj3_82", "ArrayFieldItem-summary": "_ArrayFieldItem-summary_rvhj3_97", "ArrayFieldItem--noFields": "_ArrayFieldItem--noFields_rvhj3_122", "ArrayField--addDisabled": "_ArrayField--addDisabled_rvhj3_131", "ArrayFieldItem-body": "_ArrayFieldItem-body_rvhj3_170", "ArrayFieldItem-fieldset": "_ArrayFieldItem-fieldset_rvhj3_179", "ArrayFieldItem-rhs": "_ArrayFieldItem-rhs_rvhj3_187", "ArrayFieldItem-actions": "_ArrayFieldItem-actions_rvhj3_193" };
   }
 });
 

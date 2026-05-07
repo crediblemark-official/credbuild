@@ -1,5 +1,5 @@
-import { InlineTextField } from "../../../components/InlineTextField";
-import { FieldTransforms } from "../../../types/API/FieldTransforms";
+import { InlineTextField } from "@/components/InlineTextField";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
 
 export const getInlineTextTransform = (): FieldTransforms => ({
   text: ({ value, componentId, field, propPath, isReadOnly }) => {

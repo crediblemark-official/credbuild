@@ -1,5 +1,5 @@
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { Field, FieldProps } from "../../types";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { Field, FieldProps } from "@/types";
 
 import styles from "./styles.module.css";
 import {
@@ -18,11 +18,11 @@ import { DefaultField } from "./fields/DefaultField";
 import { TextareaField } from "./fields/TextareaField";
 import { RichtextField } from "./fields/RichtextField";
 import { ObjectField } from "./fields/ObjectField";
-import { useAppStore } from "../../store";
-import { useSafeId } from "../../lib/use-safe-id";
+import { useAppStore } from "@/store";
+import { useSafeId } from "@/lib/use-safe-id";
 import { NestedFieldContext } from "./context";
 import { useShallow } from "zustand/react/shallow";
-import { getDeep } from "../../lib/data/get-deep";
+import { getDeep } from "@/lib/data/get-deep";
 import {
   FieldLabelPropsInternal,
   FieldPropsInternalOptional,

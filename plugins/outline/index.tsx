@@ -1,8 +1,8 @@
 import { List } from "lucide-react";
-import { Outline } from "../../components/CredBuild/components/Outline";
-import { Plugin } from "../../types";
+import { Outline } from "@/components/CredBuild/components/Outline";
+import { Plugin } from "@/types";
 import styles from "./styles.module.css";
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 
 const getClassName = getClassNameFactory("OutlinePlugin", styles);
 

@@ -1,13 +1,13 @@
-import { RemoveAction } from "../..";
-import { rootDroppableId } from "../../../lib/root-droppable-id";
-import { walkAppState } from "../../../lib/data/walk-app-state";
-import { PrivateAppState } from "../../../types/Internal";
+import { RemoveAction } from "@/reducer";
+import { rootDroppableId } from "@/lib/root-droppable-id";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { PrivateAppState } from "@/types/Internal";
 import {
   defaultData,
   defaultState,
   dzZoneCompound,
   testSetup,
-} from "../__helpers__";
+} from "@/reducer/actions/__helpers__";
 
 describe("Reducer", () => {
   const { executeSequence, config, reducer } = testSetup();

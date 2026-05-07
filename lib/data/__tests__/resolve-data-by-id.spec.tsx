@@ -1,9 +1,9 @@
 import { act } from "@testing-library/react";
-import { createAppStore, defaultAppState } from "../../../store";
-import { Config } from "../../../types";
-import { cache } from "../../resolve-component-data";
-import { resolveDataById } from "../resolve-data-by-id";
-import { walkAppState } from "../walk-app-state";
+import { createAppStore, defaultAppState } from "@/store";
+import { Config } from "@/types";
+import { cache } from "@/lib/resolve-component-data";
+import { resolveDataById } from "@/lib/data/resolve-data-by-id";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 const appStore = createAppStore();
 

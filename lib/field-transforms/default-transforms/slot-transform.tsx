@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { DropZoneProps } from "../../../components/DropZone/types";
-import { Content } from "../../../types";
-import { FieldTransforms } from "../../../types/API/FieldTransforms";
+import { DropZoneProps } from "@/components/DropZone/types";
+import { Content } from "@/types";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
 
 export const getSlotTransform = (
   renderSlotEdit: (dzProps: DropZoneProps & { content: Content }) => ReactNode,

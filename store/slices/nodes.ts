@@ -1,4 +1,4 @@
-import { AppStore } from "../";
+import { AppStore } from "@/store";
 
 export type NodeHandle = {
   sync: () => void;

@@ -4,9 +4,9 @@ import {
   Fields,
   RichtextField,
   WithCredBuildProps,
-} from "../../../types";
-import { RichTextRenderFallback } from "../components/RenderFallback";
-import { generateId } from "../../../lib/generate-id";
+} from "@/types";
+import { RichTextRenderFallback } from "@/components/RichTextEditor/components/RenderFallback";
+import { generateId } from "@/lib/generate-id";
 import { mapDeep } from "./mapDeep";
 
 type RichtextPath = {
@@ -63,7 +63,7 @@ export function useRichtextProps(
     if (!richtextKeys?.length) return {};
 
     const RichTextRender = lazy(() =>
-      import("../components/Render").then((m) => ({
+      import("@/components/RichTextEditor/components/Render").then((m) => ({
         default: m.RichTextRender,
       }))
     );

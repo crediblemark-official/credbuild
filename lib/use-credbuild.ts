@@ -3,14 +3,14 @@ import {
   UserGenerics,
   ResolveDataTrigger,
   ComponentData,
-} from "../types";
+} from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
-import { AppStore, useAppStoreApi } from "../store";
+import { AppStore, useAppStoreApi } from "@/store";
 import {
   GetPermissions,
   RefreshPermissions,
-} from "../store/slices/permissions";
-import { HistorySlice } from "../store/slices/history";
+} from "@/store/slices/permissions";
+import { HistorySlice } from "@/store/slices/history";
 import { createStore, StoreApi, useStore } from "zustand";
 import { makeStatePublic } from "./data/make-state-public";
 import { getItem, ItemSelector } from "./data/get-item";

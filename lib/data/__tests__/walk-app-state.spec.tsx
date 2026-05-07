@@ -1,13 +1,13 @@
-import { ComponentData, Config, Data, Slot, UiState } from "../../../types";
+import { ComponentData, Config, Data, Slot, UiState } from "@/types";
 
 import {
   createAppStore,
   defaultAppState as _defaultAppState,
-} from "../../../store";
-import { PrivateAppState } from "../../../types/Internal";
-import { walkAppState } from "../walk-app-state";
-import { rootDroppableId } from "../../root-droppable-id";
-import { flattenNode } from "../flatten-node";
+} from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { rootDroppableId } from "@/lib/root-droppable-id";
+import { flattenNode } from "@/lib/data/flatten-node";
 
 type Props = {
   Comp: {

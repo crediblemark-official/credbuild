@@ -1,12 +1,12 @@
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
 import { ChevronDown, ChevronUp, LayoutTemplate } from "lucide-react";
-import { FieldPropsInternal } from "../..";
-import { useNestedFieldContext } from "../../context";
-import { useAppStore } from "../../../../store";
-import { getDeep } from "../../../../lib/data/get-deep";
-import { SubField } from "../../subfield";
-import { useFieldStoreApi } from "../../store";
+import { FieldPropsInternal } from "@/components/AutoField/index";
+import { useNestedFieldContext } from "@/components/AutoField/context";
+import { useAppStore } from "@/store";
+import { getDeep } from "@/lib/data/get-deep";
+import { SubField } from "@/components/AutoField/subfield";
+import { useFieldStoreApi } from "@/components/AutoField/store";
 import { useState } from "react";
 
 const getClassName = getClassNameFactory("ObjectField", styles);

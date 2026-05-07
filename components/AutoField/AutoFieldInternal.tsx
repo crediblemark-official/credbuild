@@ -6,9 +6,9 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";
-import { getDeep } from "../../lib/data/get-deep";
+import { getDeep } from "@/lib/data/get-deep";
 import {
   FieldLabelPropsInternal,
   FieldPropsInternalOptional,
@@ -29,10 +29,10 @@ import { RichtextField } from "./fields/RichtextField";
 
 const ArrayField = lazy(() => import("./fields/ArrayField").then(m => ({ default: m.ArrayField })));
 const ObjectField = lazy(() => import("./fields/ObjectField/index").then(m => ({ default: m.ObjectField })));
-import { useSafeId } from "../../lib/use-safe-id";
-import getClassNameFactory from "../../lib/get-class-name-factory";
+import { useSafeId } from "@/lib/use-safe-id";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
-import { Field, FieldProps } from "../../types";
+import { Field, FieldProps } from "@/types";
 
 const getClassNameWrapper = getClassNameFactory("InputWrapper", styles);
 

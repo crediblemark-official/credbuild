@@ -1,4 +1,4 @@
-import { useAppStoreApi } from "../store";
+import { useAppStoreApi } from "@/store";
 import { ItemSelector } from "./data/get-item";
 import { getSelectorForId } from "./get-selector-for-id";
 import { rootDroppableId } from "./root-droppable-id";

@@ -1,5 +1,5 @@
-import { Config, Data, Slot } from "../../types";
-import { migrate } from "../migrate";
+import { Config, Data, Slot } from "@/types";
+import { migrate } from "@/lib/migrate";
 
 jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -285,14 +285,14 @@ describe("migrate method", () => {
           fields: {
             title: { type: "text" },
           },
-          render: ({ title }) => <h1>{title}</h1>,
+          render: ({ title }: any) => <h1>{title}</h1>,
         },
       },
       root: {
         fields: {
           footer: { type: "slot" },
         },
-        render: ({ children, footer }) => {
+        render: ({ children, footer }: any) => {
           return (
             <>
               {children}

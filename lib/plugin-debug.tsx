@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { createUseCredBuild } from "./use-credbuild";
-import { Plugin } from "../types";
-import { ActionBar } from "../components/ActionBar";
-import { IconButton } from "../components/IconButton";
+import { Plugin } from "@/types";
+import { ActionBar } from "@/components/ActionBar";
+import { IconButton } from "@/components/IconButton";
 import { LogsIcon } from "lucide-react";
-import { useAppStoreApi } from "../store";
+import { useAppStoreApi } from "@/store";
 
 const useCredBuild = createUseCredBuild();
 

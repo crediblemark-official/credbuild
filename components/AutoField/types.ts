@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Field, FieldProps } from "../../types";
+import { Field, FieldProps } from "@/types";
 
 export type FieldLabelPropsInternal = {
   children?: ReactNode;

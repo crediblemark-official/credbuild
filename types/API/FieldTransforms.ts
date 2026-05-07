@@ -1,5 +1,5 @@
-import { MapFnParams } from "../../lib/data/map-fields";
-import { Config, ExtractField, Field, UserGenerics } from "../../types";
+import { MapFnParams } from "@/lib/data/map-fields";
+import { Config, ExtractField, Field, UserGenerics } from "@/types";
 
 export type FieldTransformFnParams<T> = Omit<MapFnParams<T>, "parentId"> & {
   isReadOnly: boolean;

@@ -5,13 +5,13 @@ import {
   CollisionType,
   UniqueIdentifier,
 } from "@dnd-kit/abstract";
-import { directionalCollision } from "../directional";
+import { directionalCollision } from "@/lib/dnd/collision/directional";
 import { getDirection } from "./get-direction";
 import { getMidpointImpact } from "./get-midpoint-impact";
 import { trackMovementInterval } from "./track-movement-interval";
-import { collisionDebug } from "../collision-debug";
+import { collisionDebug } from "@/lib/dnd/collision/collision-debug";
 import { closestCorners } from "@dnd-kit/collision";
-import { DragAxis, Direction } from "../../../../types";
+import { DragAxis, Direction } from "@/types";
 import { collisionStore } from "./store";
 
 let flushNext: UniqueIdentifier = "";

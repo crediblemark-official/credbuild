@@ -3,12 +3,12 @@ import {
   rootAreaId,
   rootDroppableId,
   rootZone,
-} from "../../lib/root-droppable-id";
-import { setupZone } from "../../lib/data/setup-zone";
-import { Config, Data, Metadata, UserGenerics } from "../../types";
-import { useSlots } from "../../lib/use-slots";
-import { SlotRenderPure } from "../SlotRender/server";
-import { useRichtextProps } from "../RichTextEditor/lib/use-richtext-props";
+} from "@/lib/root-droppable-id";
+import { setupZone } from "@/lib/data/setup-zone";
+import { Config, Data, Metadata, UserGenerics } from "@/types";
+import { useSlots } from "@/lib/use-slots";
+import { SlotRenderPure } from "@/components/SlotRender/server";
+import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
 
 type DropZoneRenderProps = {
   zone: string;

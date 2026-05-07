@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { flattenData } from "../../lib/data/flatten-data";
-import { ComponentData, Config, Permissions, UserGenerics } from "../../types";
-import { getChanged } from "../../lib/get-changed";
-import { AppStore, useAppStoreApi } from "../";
-import { makeStatePublic } from "../../lib/data/make-state-public";
+import { flattenData } from "@/lib/data/flatten-data";
+import { ComponentData, Config, Permissions, UserGenerics } from "@/types";
+import { getChanged } from "@/lib/get-changed";
+import { AppStore, useAppStoreApi } from "@/store";
+import { makeStatePublic } from "@/lib/data/make-state-public";
 
 type PermissionsArgs<
   UserConfig extends Config = Config,

@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef } from "react";
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
 import "./styles.css";
-import { useCanvasFrame } from "../../../../lib/frame-context";
-import { useResetAutoZoom } from "../../../../lib";
+import { useCanvasFrame } from "@/lib/frame-context";
+import { useResetAutoZoom } from "@/lib";
 
 const getClassName = getClassNameFactory("ResizeHandle", styles);
 

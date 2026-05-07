@@ -1,5 +1,5 @@
 import { getZoneId } from "./get-zone-id";
-import { Data, Content } from "../types";
+import { Data, Content } from "@/types";
 
 export const groupZonesByComponent = (data: Data) => {
   const zoneEntries = Object.entries(data.zones ?? {});

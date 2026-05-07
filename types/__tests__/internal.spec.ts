@@ -1,4 +1,4 @@
-import { WithDeepSlots } from "../Internal";
+import { WithDeepSlots } from "@/types/Internal";
 
 describe("WithDeepSlots", () => {
   it("should preserve types", () => {

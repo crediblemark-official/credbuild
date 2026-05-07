@@ -1,9 +1,9 @@
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
-import styles from "../../styles.module.css";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import styles from "@/components/AutoField/styles.module.css";
 import { Hash, Type } from "lucide-react";
-import { FieldPropsInternal } from "../../types";
+import { FieldPropsInternal } from "@/components/AutoField/types";
 
-import { useLocalValue } from "../../lib/use-local-value";
+import { useLocalValue } from "@/components/AutoField/lib/use-local-value";
 
 const getClassName = getClassNameFactory("Input", styles);
 
@@ -63,7 +63,7 @@ export const DefaultField = ({
         max={field.type === "number" ? field.max : undefined}
         placeholder={
           field.type === "text" || field.type === "number"
-            ? field.placeholder
+            ? field.placeholder || label || name
             : undefined
         }
         step={field.type === "number" ? field.step : undefined}

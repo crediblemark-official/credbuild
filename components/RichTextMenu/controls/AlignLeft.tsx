@@ -1,6 +1,6 @@
 import { AlignLeft as AlignLeftIcon } from "lucide-react";
-import { Control } from "../components/Control";
-import { useControlContext } from "../lib/use-control-context";
+import { Control } from "@/components/RichTextMenu/components/Control/index";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 
 export function AlignLeft() {
   const { editor, editorState } = useControlContext();

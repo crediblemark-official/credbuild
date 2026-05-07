@@ -1,10 +1,10 @@
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
 import { Copy, List, Plus, Trash } from "lucide-react";
-import { FieldPropsInternal } from "../../types";
-import { useFieldStore, useFieldStoreApi } from "../../store";
-import { IconButton } from "../../../IconButton";
-import { reorder, replace } from "../../../../lib";
+import { FieldPropsInternal } from "@/components/AutoField/types";
+import { useFieldStore, useFieldStoreApi } from "@/components/AutoField/store";
+import { IconButton } from "@/components/IconButton";
+import { reorder, replace } from "@/lib";
 import {
   memo,
   ReactNode,
@@ -14,22 +14,22 @@ import {
   useRef,
   useState,
 } from "react";
-import { DragIcon } from "../../../DragIcon";
+import { DragIcon } from "@/components/DragIcon";
 import {
   ArrayField as ArrayFieldType,
   ArrayState,
   Content,
   ItemWithId,
-} from "../../../../types";
-import { useAppStore, useAppStoreApi } from "../../../../store";
-import { Sortable, SortableProvider } from "../../../Sortable";
-import { useNestedFieldContext } from "../../context";
-import { walkField } from "../../../../lib/data/map-fields";
-import { populateIds } from "../../../../lib/data/populate-ids";
-import { defaultSlots } from "../../../../lib/data/default-slots";
-import { getDeep } from "../../../../lib/data/get-deep";
-import { SubField } from "../../subfield";
-import { setDeep } from "../../../../lib/data/set-deep";
+} from "@/types";
+import { useAppStore, useAppStoreApi } from "@/store";
+import { Sortable, SortableProvider } from "@/components/Sortable";
+import { useNestedFieldContext } from "@/components/AutoField/context";
+import { walkField } from "@/lib/data/map-fields";
+import { populateIds } from "@/lib/data/populate-ids";
+import { defaultSlots } from "@/lib/data/default-slots";
+import { getDeep } from "@/lib/data/get-deep";
+import { SubField } from "@/components/AutoField/subfield";
+import { setDeep } from "@/lib/data/set-deep";
 
 const getClassName = getClassNameFactory("ArrayField", styles);
 const getClassNameItem = getClassNameFactory("ArrayFieldItem", styles);

@@ -1,9 +1,9 @@
 import { act } from "@testing-library/react";
-import { createAppStore, defaultAppState } from "../../../store";
-import { Config, ResolveDataTrigger } from "../../../types";
-import { cache } from "../../resolve-component-data";
-import { resolveAndReplaceData } from "../resolve-and-replace-data";
-import { walkAppState } from "../walk-app-state";
+import { createAppStore, defaultAppState } from "@/store";
+import { Config, ResolveDataTrigger } from "@/types";
+import { cache } from "@/lib/resolve-component-data";
+import { resolveAndReplaceData } from "@/lib/data/resolve-and-replace-data";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 const appStore = createAppStore();
 

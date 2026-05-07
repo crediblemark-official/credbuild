@@ -1,6 +1,6 @@
 import { renderToString } from "react-dom/server.node";
-import { Config, Data } from "../../../types";
-import { Render } from "../index";
+import { Config, Data } from "@/types";
+import { Render } from "@/components/ServerRender/index";
 
 describe("ServerRender", () => {
   it("renders richtext content in dropzones as HTML in RSC mode", () => {

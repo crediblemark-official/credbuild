@@ -1,5 +1,5 @@
 import { DragDropProvider } from "@dnd-kit/react";
-import { useAppStore, useAppStoreApi } from "../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import {
   createContext,
   Dispatch,
@@ -15,31 +15,31 @@ import {
 } from "react";
 import { AutoScroller, defaultPreset, DragDropManager } from "@dnd-kit/dom";
 import { DragDropEvents } from "@dnd-kit/abstract";
-import { DropZoneProvider } from "../DropZone";
+import { DropZoneProvider } from "@/components/DropZone";
 import type { Draggable, Droppable } from "@dnd-kit/dom";
-import { getItem } from "../../lib/data/get-item";
+import { getItem } from "@/lib/data/get-item";
 import {
   DropZoneContext,
   Preview,
   RootVirtualizerHandle,
   ZoneStore,
   ZoneStoreProvider,
-} from "../DropZone/context";
-import { createNestedDroppablePlugin } from "../../lib/dnd/NestedDroppablePlugin";
-import { insertComponent } from "../../lib/insert-component";
-import { moveComponent } from "../../lib/move-component";
+} from "@/components/DropZone/context";
+import { createNestedDroppablePlugin } from "@/lib/dnd/NestedDroppablePlugin";
+import { insertComponent } from "@/lib/insert-component";
+import { moveComponent } from "@/lib/move-component";
 import { useDebouncedCallback } from "use-debounce";
-import { ComponentDndData } from "../DraggableComponent";
+import { ComponentDndData } from "@/components/DraggableComponent";
 
-import { collisionStore } from "../../lib/dnd/collision/dynamic/store";
-import { generateId } from "../../lib/generate-id";
+import { collisionStore } from "@/lib/dnd/collision/dynamic/store";
+import { generateId } from "@/lib/generate-id";
 import { createStore } from "zustand";
-import { getDeepDir } from "../../lib/get-deep-dir";
-import { useSensors } from "../../lib/dnd/use-sensors";
-import { useSafeId } from "../../lib/use-safe-id";
-import { getFrame } from "../../lib/get-frame";
+import { getDeepDir } from "@/lib/get-deep-dir";
+import { useSensors } from "@/lib/dnd/use-sensors";
+import { useSafeId } from "@/lib/use-safe-id";
+import { getFrame } from "@/lib/get-frame";
 import { effect } from "@dnd-kit/state";
-import { scrollIntoView } from "../../lib/scroll-into-view";
+import { scrollIntoView } from "@/lib/scroll-into-view";
 
 const DEBUG = false;
 

@@ -1,10 +1,10 @@
-import { Data } from "../../types";
-import { remove } from "../../lib/data/remove";
-import { getItem } from "../../lib/data/get-item";
-import { RemoveAction } from "../actions";
-import { AppStore } from "../../store";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
+import { Data } from "@/types";
+import { remove } from "@/lib/data/remove";
+import { getItem } from "@/lib/data/get-item";
+import { RemoveAction } from "@/reducer/actions";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 export const removeAction = <UserData extends Data>(
   state: PrivateAppState<UserData>,

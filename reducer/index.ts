@@ -1,9 +1,9 @@
 import { Reducer } from "react";
-import { AppState, Data } from "../types";
+import { AppState, Data } from "@/types";
 import { CredBuildAction } from "./actions";
-import type { OnAction } from "../types";
-import { AppStore } from "../store";
-import { PrivateAppState } from "../types/Internal";
+import type { OnAction } from "@/types";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
 import { setAction } from "./actions/set";
 import { insertAction } from "./actions/insert";
 import { replaceAction } from "./actions/replace";
@@ -18,7 +18,7 @@ import {
 } from "./actions/register-zone";
 import { setDataAction } from "./actions/set-data";
 import { setUiAction } from "./actions/set-ui";
-import { makeStatePublic } from "../lib/data/make-state-public";
+import { makeStatePublic } from "@/lib/data/make-state-public";
 
 export * from "./actions";
 

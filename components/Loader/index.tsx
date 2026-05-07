@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { getClassNameFactory } from "../../lib";
+import { getClassNameFactory } from "@/lib";
 import styles from "./styles.module.css";
 
 const getClassName = getClassNameFactory("Loader", styles);

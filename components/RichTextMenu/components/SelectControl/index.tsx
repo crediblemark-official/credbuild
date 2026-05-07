@@ -1,6 +1,6 @@
-import { useControlContext } from "../../lib/use-control-context";
+import { useControlContext } from "@/components/RichTextMenu/lib/use-control-context";
 import { JSXElementConstructor, useMemo } from "react";
-import { Select } from "../../../Select";
+import { Select } from "@/components/Select";
 
 export type Option<T = string> = { label: string; value: T; icon?: React.FC };
 export type Options<T = string> = Option<T>[];

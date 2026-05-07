@@ -7,7 +7,7 @@ import {
   Heading5,
   Heading6,
 } from "lucide-react";
-import { RichtextField } from "../../../../types";
+import { RichtextField } from "@/types";
 
 const optionNodes: Record<string, { label: string; icon?: React.FC }> = {
   h1: { label: "Heading 1", icon: Heading1 },

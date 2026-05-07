@@ -1,10 +1,11 @@
 import { renderHook, act, waitFor } from "@testing-library/react";
-import { useRegisterPermissionsSlice } from "../permissions";
-import { defaultAppState, createAppStore } from "../../";
-import { rootDroppableId } from "../../../lib/root-droppable-id";
-import { walkAppState } from "../../../lib/data/walk-app-state";
-import { makeStatePublic } from "../../../lib/data/make-state-public";
-import { Config } from "../../../types";
+import { renderHook, act, waitFor } from "@testing-library/react";
+import { useRegisterPermissionsSlice } from "@/store/slices/permissions";
+import { defaultAppState, createAppStore } from "@/store";
+import { rootDroppableId } from "@/lib/root-droppable-id";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { makeStatePublic } from "@/lib/data/make-state-public";
+import { Config } from "@/types";
 
 const appStore = createAppStore();
 

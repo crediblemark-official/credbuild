@@ -1,5 +1,5 @@
-import { ComponentData, ComponentDataOptionalId, Config } from "../../types";
-import { generateId } from "../generate-id";
+import { ComponentData, ComponentDataOptionalId, Config } from "@/types";
+import { generateId } from "@/lib/generate-id";
 import { walkTree } from "./walk-tree";
 
 export const populateIds = (

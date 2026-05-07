@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useHotkey } from "./use-hotkey";
-import { useAppStoreApi } from "../store";
+import { useAppStoreApi } from "@/store";
 
 export const usePreviewModeHotkeys = () => {
   const appStore = useAppStoreApi();

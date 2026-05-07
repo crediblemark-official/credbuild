@@ -1,12 +1,12 @@
-import { Data } from "../../types";
-import { insert } from "../../lib/data/insert";
-import { generateId } from "../../lib/generate-id";
-import { InsertAction } from "../actions";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
-import { getIdsForParent } from "../../lib/data/get-ids-for-parent";
-import { AppStore } from "../../store";
-import { populateIds } from "../../lib/data/populate-ids";
+import { Data } from "@/types";
+import { insert } from "@/lib/data/insert";
+import { generateId } from "@/lib/generate-id";
+import { InsertAction } from "@/reducer/actions";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { getIdsForParent } from "@/lib/data/get-ids-for-parent";
+import { AppStore } from "@/store";
+import { populateIds } from "@/lib/data/populate-ids";
 
 export function insertAction<UserData extends Data>(
   state: PrivateAppState<UserData>,

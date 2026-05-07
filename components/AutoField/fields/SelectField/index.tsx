@@ -1,8 +1,8 @@
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
-import styles from "../../styles.module.css";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import styles from "@/components/AutoField/styles.module.css";
 import { ChevronDown } from "lucide-react";
-import { FieldPropsInternal } from "../../types";
-import { useDeepField } from "../../lib/use-deep-field";
+import { FieldPropsInternal } from "@/components/AutoField/types";
+import { useDeepField } from "@/components/AutoField/lib/use-deep-field";
 
 const getClassName = getClassNameFactory("Input", styles);
 

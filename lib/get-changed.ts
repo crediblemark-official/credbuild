@@ -1,4 +1,4 @@
-import { ComponentData } from "../types";
+import { ComponentData } from "@/types";
 import { deepEqual } from "fast-equals";
 
 export const getChanged = (

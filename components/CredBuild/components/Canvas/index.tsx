@@ -7,16 +7,16 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAppStore, useAppStoreApi } from "../../../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import styles from "./styles.module.css";
-import { getClassNameFactory, useResetAutoZoom } from "../../../../lib";
-import { Preview } from "../Preview";
-import { UiState } from "../../../../types";
-import { Loader } from "../../../Loader";
+import { getClassNameFactory, useResetAutoZoom } from "@/lib";
+import { Preview } from "@/components/CredBuild/components/Preview";
+import { UiState } from "@/types";
+import { Loader } from "@/components/Loader";
 import { useShallow } from "zustand/react/shallow";
-import { useCanvasFrame } from "../../../../lib/frame-context";
-import { usePropsContext } from "../../context";
-import { defaultViewports } from "../../../ViewportControls/default-viewports";
+import { useCanvasFrame } from "@/lib/frame-context";
+import { usePropsContext } from "@/components/CredBuild/context";
+import { defaultViewports } from "@/components/ViewportControls/default-viewports";
 
 const getClassName = getClassNameFactory("CredBuildCanvas", styles);
 

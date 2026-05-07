@@ -1,15 +1,15 @@
-import { DropZoneEditPure, DropZonePure } from "../../../DropZone";
-import { rootDroppableId } from "../../../../lib/root-droppable-id";
+import { DropZoneEditPure, DropZonePure } from "@/components/DropZone";
+import { rootDroppableId } from "@/lib/root-droppable-id";
 import { RefObject, useCallback, useEffect, useRef, useMemo } from "react";
-import { useAppStore } from "../../../../store";
-import AutoFrame, { autoFrameContext } from "../../../AutoFrame";
+import { useAppStore } from "@/store";
+import AutoFrame, { autoFrameContext } from "@/components/AutoFrame";
 import styles from "./styles.module.css";
-import { getClassNameFactory } from "../../../../lib";
-import { DefaultRootRenderProps } from "../../../../types";
-import { Render } from "../../../Render";
-import { BubbledPointerEvent } from "../../../../lib/bubble-pointer-event";
-import { useSlots } from "../../../../lib/use-slots";
-import { useRichtextProps } from "../../../RichTextEditor/lib/use-richtext-props";
+import { getClassNameFactory } from "@/lib";
+import { DefaultRootRenderProps } from "@/types";
+import { Render } from "@/components/Render";
+import { BubbledPointerEvent } from "@/lib/bubble-pointer-event";
+import { useSlots } from "@/lib/use-slots";
+import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
 
 const getClassName = getClassNameFactory("CredBuildPreview", styles);
 

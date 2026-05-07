@@ -1,5 +1,5 @@
-import { ComponentData, Config, Data } from "../../types";
-import { resolveAllData } from "../resolve-all-data";
+import { ComponentData, Config, Data } from "@/types";
+import { resolveAllData } from "@/lib/resolve-all-data";
 
 const item4 = {
   type: "ComponentWithResolveProps",

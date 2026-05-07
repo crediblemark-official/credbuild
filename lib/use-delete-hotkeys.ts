@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useHotkey } from "./use-hotkey";
-import { useAppStoreApi } from "../store";
+import { useAppStoreApi } from "@/store";
 
 const isElementVisible = (element: HTMLElement): boolean => {
   let current: HTMLElement | null = element;

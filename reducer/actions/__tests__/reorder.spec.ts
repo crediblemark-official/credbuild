@@ -1,10 +1,10 @@
-import { rootDroppableId } from "../../../lib/root-droppable-id";
+import { rootDroppableId } from "@/lib/root-droppable-id";
 import {
   defaultState,
   dzZoneCompound,
   expectIndexed,
   testSetup,
-} from "../__helpers__";
+} from "@/reducer/actions/__helpers__";
 
 describe("Reducer", () => {
   const { executeSequence } = testSetup();

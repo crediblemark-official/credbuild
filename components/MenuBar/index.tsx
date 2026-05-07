@@ -1,13 +1,13 @@
 import { Dispatch, ReactElement, SetStateAction } from "react";
 import { Undo2Icon, Redo2Icon } from "lucide-react";
 
-import { IconButton } from "../IconButton/IconButton";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { CredBuildAction } from "../../reducer";
-import type { Data } from "../../types";
+import { IconButton } from "@/components/IconButton/IconButton";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { CredBuildAction } from "@/reducer";
+import type { Data } from "@/types";
 
 import styles from "./styles.module.css";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 
 const getClassName = getClassNameFactory("MenuBar", styles);
 

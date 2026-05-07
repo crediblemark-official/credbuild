@@ -1,8 +1,8 @@
-import { Data } from "../../types";
-import { ReplaceRootAction } from "../actions";
-import { AppStore } from "../../store";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
+import { Data } from "@/types";
+import { ReplaceRootAction } from "@/reducer/actions";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
 
 export const replaceRootAction = <UserData extends Data>(
   state: PrivateAppState<UserData>,

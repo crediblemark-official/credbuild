@@ -9,10 +9,10 @@ import {
   useMemo,
   useRef,
 } from "react";
-import { DraggableComponent } from "../DraggableComponent";
-import { setupZone } from "../../lib/data/setup-zone";
-import { rootAreaId, rootDroppableId } from "../../lib/root-droppable-id";
-import { getClassNameFactory } from "../../lib";
+import { DraggableComponent } from "@/components/DraggableComponent";
+import { setupZone } from "@/lib/data/setup-zone";
+import { rootAreaId, rootDroppableId } from "@/lib/root-droppable-id";
+import { getClassNameFactory } from "@/lib";
 import styles from "./styles.module.css";
 import {
   DropZoneContext,
@@ -20,7 +20,7 @@ import {
   ZoneStoreContext,
   dropZoneContext,
 } from "./context";
-import { useAppStore, useAppStoreApi } from "../../store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import { DropZoneProps } from "./types";
 import {
   ComponentData,
@@ -30,29 +30,29 @@ import {
   Overrides,
   CredBuildContext,
   WithCredBuildProps,
-} from "../../types";
+} from "@/types";
 
 import { useDroppable, UseDroppableInput } from "@dnd-kit/react";
-import { DrawerItemInner } from "../Drawer";
+import { DrawerItemInner } from "@/components/Drawer";
 import { pointerIntersection } from "@dnd-kit/collision";
 import { UniqueIdentifier } from "@dnd-kit/abstract";
 import { useMinEmptyHeight } from "./lib/use-min-empty-height";
-import { assignRefs } from "../../lib/assign-refs";
+import { assignRefs } from "@/lib/assign-refs";
 import { useContentIdsWithPreview } from "./lib/use-content-with-preview";
 import { useDragAxis } from "./lib/use-drag-axis";
-import { useContextStore } from "../../lib/use-context-store";
+import { useContextStore } from "@/lib/use-context-store";
 import { useShallow } from "zustand/react/shallow";
-import { renderContext } from "../Render/context";
-import { useSlots } from "../../lib/use-slots";
-import { ContextSlotRender, SlotRenderPure } from "../SlotRender";
-import { expandNode } from "../../lib/data/flatten-node";
-import { useFieldTransformsTracked } from "../../lib/field-transforms/use-field-transforms-tracked";
-import { getInlineTextTransform } from "../../lib/field-transforms/default-transforms/inline-text-transform";
-import { getSlotTransform } from "../../lib/field-transforms/default-transforms/slot-transform";
-import { getRichTextTransform } from "../../lib/field-transforms/default-transforms/rich-text-transform";
-import { FieldTransforms } from "../../types/API/FieldTransforms";
-import { useRichtextProps } from "../RichTextEditor/lib/use-richtext-props";
-import { MemoizeComponent } from "../MemoizeComponent";
+import { renderContext } from "@/components/Render/context";
+import { useSlots } from "@/lib/use-slots";
+import { ContextSlotRender, SlotRenderPure } from "@/components/SlotRender";
+import { expandNode } from "@/lib/data/flatten-node";
+import { useFieldTransformsTracked } from "@/lib/field-transforms/use-field-transforms-tracked";
+import { getInlineTextTransform } from "@/lib/field-transforms/default-transforms/inline-text-transform";
+import { getSlotTransform } from "@/lib/field-transforms/default-transforms/slot-transform";
+import { getRichTextTransform } from "@/lib/field-transforms/default-transforms/rich-text-transform";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
+import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
+import { MemoizeComponent } from "@/components/MemoizeComponent";
 import { VirtualizedDropZone } from "./VirtualizedDropZone";
 
 const getClassName = getClassNameFactory("DropZone", styles);

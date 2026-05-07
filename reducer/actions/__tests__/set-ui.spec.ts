@@ -1,5 +1,5 @@
-import { SetUiAction } from "../..";
-import { defaultState, testSetup } from "../__helpers__";
+import { SetUiAction } from "@/reducer";
+import { defaultState, testSetup } from "@/reducer/actions/__helpers__";
 
 describe("Reducer", () => {
   const { reducer } = testSetup();

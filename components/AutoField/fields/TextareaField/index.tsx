@@ -1,8 +1,8 @@
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
-import styles from "../../styles.module.css";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import styles from "@/components/AutoField/styles.module.css";
 import { Type } from "lucide-react";
-import { FieldPropsInternal } from "../../types";
-import { useLocalValue } from "../../lib/use-local-value";
+import { FieldPropsInternal } from "@/components/AutoField/types";
+import { useLocalValue } from "@/components/AutoField/lib/use-local-value";
 
 const getClassName = getClassNameFactory("Input", styles);
 

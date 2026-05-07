@@ -1,12 +1,12 @@
-import { Data } from "../../types";
-import { generateId } from "../../lib/generate-id";
-import { DuplicateAction } from "../actions";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
-import { getIdsForParent } from "../../lib/data/get-ids-for-parent";
-import { getItem } from "../../lib/data/get-item";
-import { AppStore } from "../../store";
-import { insert } from "../../lib/data/insert";
+import { Data } from "@/types";
+import { generateId } from "@/lib/generate-id";
+import { DuplicateAction } from "@/reducer/actions";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { getIdsForParent } from "@/lib/data/get-ids-for-parent";
+import { getItem } from "@/lib/data/get-item";
+import { AppStore } from "@/store";
+import { insert } from "@/lib/data/insert";
 
 export function duplicateAction<UserData extends Data>(
   state: PrivateAppState<UserData>,

@@ -1,16 +1,16 @@
-import { CredBuildAction, createReducer } from "../../../reducer";
-import { ComponentData, Config, Data, Slot, UiState } from "../../../types";
-import { generateId } from "../../../lib/generate-id";
+import { CredBuildAction, createReducer } from "@/reducer";
+import { ComponentData, Config, Data, Slot, UiState } from "@/types";
+import { generateId } from "@/lib/generate-id";
 import {
   createAppStore,
   defaultAppState as _defaultAppState,
-} from "../../../store";
-import { PrivateAppState } from "../../../types/Internal";
-import { stripSlots } from "../../../lib/data/strip-slots";
+} from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { stripSlots } from "@/lib/data/strip-slots";
 import { Reducer } from "react";
-import { flattenNode } from "../../../lib/data/flatten-node";
+import { flattenNode } from "@/lib/data/flatten-node";
 
-jest.mock("../../../lib/generate-id");
+jest.mock("@/lib/generate-id");
 
 const mockedGenerateId = generateId as jest.MockedFunction<typeof generateId>;
 

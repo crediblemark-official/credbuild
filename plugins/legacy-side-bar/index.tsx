@@ -1,7 +1,7 @@
-import { Plugin } from "../../types";
-import { Components } from "../../components/CredBuild/components/Components";
-import { Outline } from "../../components/CredBuild/components/Outline";
-import { SidebarSection } from "../../components/SidebarSection";
+import { Plugin } from "@/types";
+import { Components } from "@/components/CredBuild/components/Components";
+import { Outline } from "@/components/CredBuild/components/Outline";
+import { SidebarSection } from "@/components/SidebarSection";
 
 export const legacySideBarPlugin: () => Plugin = () => ({
   name: "legacy-side-bar",

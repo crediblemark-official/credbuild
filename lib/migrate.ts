@@ -1,4 +1,4 @@
-import { defaultAppState } from "../store/default-app-state";
+import { defaultAppState } from "@/store/default-app-state";
 import type {
   ComponentData,
   Config,
@@ -6,7 +6,7 @@ import type {
   Data,
   UserGenerics,
   WithId,
-} from "../types";
+} from "@/types";
 import { walkAppState } from "./data/walk-app-state";
 import { walkTree } from "./data/walk-tree";
 

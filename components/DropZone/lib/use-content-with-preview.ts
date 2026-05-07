@@ -1,10 +1,10 @@
-import { Preview } from "./../context";
+import { Preview } from "@/components/DropZone/context";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { useRenderedCallback } from "../../../lib/dnd/use-rendered-callback";
-import { insert } from "../../../lib/data/insert";
-import { ZoneStoreContext } from "../context";
-import { useContextStore } from "../../../lib/use-context-store";
-import { useAppStore } from "../../../store";
+import { useRenderedCallback } from "@/lib/dnd/use-rendered-callback";
+import { insert } from "@/lib/data/insert";
+import { ZoneStoreContext } from "@/components/DropZone/context";
+import { useContextStore } from "@/lib/use-context-store";
+import { useAppStore } from "@/store";
 
 export const useContentIdsWithPreview = (
   contentIds: string[],

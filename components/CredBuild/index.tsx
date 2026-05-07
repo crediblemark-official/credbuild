@@ -28,31 +28,31 @@ import type {
   Metadata,
   AsFieldProps,
   DefaultComponentProps,
-} from "../../types";
+} from "@/types";
 
-import { CredBuildAction } from "../../reducer";
-import { createAppStore, defaultAppState, appStoreContext } from "../../store";
+import { CredBuildAction } from "@/reducer";
+import { createAppStore, defaultAppState, appStoreContext } from "@/store";
 import { Fields } from "./components/Fields";
 import { Components } from "./components/Components";
 import { Preview } from "./components/Preview";
 import { Outline } from "./components/Outline";
-import { defaultViewports } from "../ViewportControls/default-viewports";
-import { Viewports } from "../../types";
-import { useLoadedOverrides } from "../../lib/use-loaded-overrides";
-import { useRegisterHistorySlice } from "../../store/slices/history";
-import { useRegisterPermissionsSlice } from "../../store/slices/permissions";
+import { defaultViewports } from "@/components/ViewportControls/default-viewports";
+import { Viewports } from "@/types";
+import { useLoadedOverrides } from "@/lib/use-loaded-overrides";
+import { useRegisterHistorySlice } from "@/store/slices/history";
+import { useRegisterPermissionsSlice } from "@/store/slices/permissions";
 import {
   UseCredBuildStoreContext,
   useRegisterUseCredBuildStore,
-} from "../../lib/use-credbuild";
-import { walkAppState } from "../../lib/data/walk-app-state";
-import { PrivateAppState } from "../../types/Internal";
+} from "@/lib/use-credbuild";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { PrivateAppState } from "@/types/Internal";
 import { deepEqual } from "fast-equals";
-import { FieldTransforms } from "../../types/API/FieldTransforms";
-import { populateIds } from "../../lib/data/populate-ids";
-import { toComponent } from "../../lib/data/to-component";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
+import { populateIds } from "@/lib/data/populate-ids";
+import { toComponent } from "@/lib/data/to-component";
 import { Layout } from "./components/Layout";
-import { useSafeId } from "../../lib/use-safe-id";
+import { useSafeId } from "@/lib/use-safe-id";
 
 import { CredBuildProps, PropsProvider, usePropsContext } from "./context";
 

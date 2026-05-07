@@ -1,12 +1,12 @@
-import { Content, Data } from "../../types";
-import { insert } from "../../lib/data/insert";
-import { remove } from "../../lib/data/remove";
-import { getItem } from "../../lib/data/get-item";
-import { MoveAction } from "../actions";
-import { AppStore } from "../../store";
-import { PrivateAppState } from "../../types/Internal";
-import { walkAppState } from "../../lib/data/walk-app-state";
-import { getIdsForParent } from "../../lib/data/get-ids-for-parent";
+import { Content, Data } from "@/types";
+import { insert } from "@/lib/data/insert";
+import { remove } from "@/lib/data/remove";
+import { getItem } from "@/lib/data/get-item";
+import { MoveAction } from "@/reducer/actions";
+import { AppStore } from "@/store";
+import { PrivateAppState } from "@/types/Internal";
+import { walkAppState } from "@/lib/data/walk-app-state";
+import { getIdsForParent } from "@/lib/data/get-ids-for-parent";
 
 // Restore unregistered zones when re-registering in same session
 export const zoneCache: Record<string, Content> = {};

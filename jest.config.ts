@@ -3,6 +3,7 @@ import type { Config } from "jest";
 const config: Config = {
   preset: "ts-jest/presets/js-with-ts-esm", // TS + ESM
   testEnvironment: "jsdom",
+  modulePaths: ["<rootDir>"],
 
   // Treat these files as ESM so `import`/`export` keep working
   extensionsToTreatAsEsm: [".ts", ".tsx"],
@@ -20,6 +21,7 @@ const config: Config = {
   moduleNameMapper: {
     // stub out style & asset imports
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/$1",
   },
 };
 

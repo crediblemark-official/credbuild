@@ -1,8 +1,8 @@
-import getClassNameFactory from "../../lib/get-class-name-factory";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
 import { ReactNode, useMemo } from "react";
-import { EditorState, RichTextEditor } from "../RichTextEditor/types";
-import { RichtextField } from "../../types";
+import { EditorState, RichTextEditor } from "@/components/RichTextEditor/types";
+import { RichtextField } from "@/types";
 
 import {
   AlignCenter,

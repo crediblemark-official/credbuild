@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { Config } from "../../types";
-import { ItemSelector } from "../../lib/data/get-item";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { Config } from "@/types";
+import { ItemSelector } from "@/lib/data/get-item";
 import { ChevronDown, LayoutGrid, Layers, Type, LayoutTemplate, Megaphone, FileText, CreditCard, Box, Quote, Info, BarChart3, Image as ImageIcon } from "lucide-react";
-import { rootAreaId } from "../../lib/root-droppable-id";
+import { rootAreaId } from "@/lib/root-droppable-id";
 import {
   ForwardedRef,
   forwardRef,
@@ -11,10 +11,10 @@ import {
   useContext,
   useRef,
 } from "react";
-import { ZoneStoreContext } from "../DropZone/context";
-import { useAppStore } from "../../store";
-import { useContextStore } from "../../lib/use-context-store";
-import { NodeIndex, ZoneIndex } from "../../types/Internal";
+import { ZoneStoreContext } from "@/components/DropZone/context";
+import { useAppStore } from "@/store";
+import { useContextStore } from "@/lib/use-context-store";
+import { NodeIndex, ZoneIndex } from "@/types/Internal";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
 const getClassName = getClassNameFactory("LayerTree", styles);

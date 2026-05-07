@@ -1,6 +1,6 @@
 import React from "react";
-import { ResizeHandle } from "../ResizeHandle";
-import getClassNameFactory from "../../../../lib/get-class-name-factory";
+import { ResizeHandle } from "@/components/CredBuild/components/ResizeHandle";
+import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "./styles.module.css";
 
 const getClassName = getClassNameFactory("Sidebar", styles);

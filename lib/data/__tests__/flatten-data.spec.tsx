@@ -1,10 +1,10 @@
-import { Config, Data, Slot, UiState } from "../../../types";
-import { flattenData } from "../flatten-data";
-import { PrivateAppState } from "../../../types/Internal";
+import { Config, Data, Slot, UiState } from "@/types";
+import { flattenData } from "@/lib/data/flatten-data";
+import { PrivateAppState } from "@/types/Internal";
 import {
   createAppStore,
   defaultAppState as _defaultAppState,
-} from "../../../store";
+} from "@/store";
 
 type Props = {
   Heading: {

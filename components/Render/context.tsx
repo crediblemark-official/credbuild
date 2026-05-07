@@ -1,5 +1,5 @@
 import React from "react";
-import { Config, Data, Metadata } from "../../types";
+import { Config, Data, Metadata } from "@/types";
 
 export const renderContext = React.createContext<{
   config: Config;

@@ -5,7 +5,7 @@ import {
   DefaultComponentProps,
   DefaultComponents,
   DefaultRootFieldProps,
-} from "../types";
+} from "@/types";
 import { defaultData } from "./data/default-data";
 
 type PropTransform<

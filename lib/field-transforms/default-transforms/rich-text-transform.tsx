@@ -1,10 +1,10 @@
 "use client";
-import { EditorFallback } from "../../../components/RichTextEditor/components/EditorFallback";
-import { RichTextRenderFallback } from "../../../components/RichTextEditor/components/RenderFallback";
-import { FieldTransforms } from "../../../types/API/FieldTransforms";
-import { useAppStoreApi } from "../../../store";
-import { setDeep } from "../../../lib/data/set-deep";
-import { registerOverlayPortal } from "../../../lib/overlay-portal";
+import { EditorFallback } from "@/components/RichTextEditor/components/EditorFallback";
+import { RichTextRenderFallback } from "@/components/RichTextEditor/components/RenderFallback";
+import { FieldTransforms } from "@/types/API/FieldTransforms";
+import { useAppStoreApi } from "@/store";
+import { setDeep } from "@/lib/data/set-deep";
+import { registerOverlayPortal } from "@/lib/overlay-portal";
 import {
   useEffect,
   useRef,
@@ -15,17 +15,17 @@ import {
   Suspense,
 } from "react";
 import type { Editor as TipTapEditor, JSONContent } from "@tiptap/react";
-import { getSelectorForId } from "../../get-selector-for-id";
-import { RichtextField, UiState } from "../../../types";
+import { getSelectorForId } from "@/lib/get-selector-for-id";
+import { RichtextField, UiState } from "@/types";
 
 const Editor = lazy(() =>
-  import("../../../components/RichTextEditor/components/Editor").then((m) => ({
+  import("@/components/RichTextEditor/components/Editor").then((m) => ({
     default: m.Editor,
   }))
 );
 
 const RichTextRender = lazy(() =>
-  import("../../../components/RichTextEditor/components/Render").then((m) => ({
+  import("@/components/RichTextEditor/components/Render").then((m) => ({
     default: m.RichTextRender,
   }))
 );

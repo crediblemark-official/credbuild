@@ -1,7 +1,7 @@
 import { ReactNode, SyntheticEvent, useState } from "react";
 import styles from "./IconButton.module.css";
-import getClassNameFactory from "../../lib/get-class-name-factory";
-import { Loader } from "../Loader";
+import getClassNameFactory from "@/lib/get-class-name-factory";
+import { Loader } from "@/components/Loader";
 
 const getClassName = getClassNameFactory("IconButton", styles);
 
