@@ -1,6 +1,6 @@
 import getClassNameFactory from "../../../../lib/get-class-name-factory";
 import styles from "./styles.module.css";
-import { ChevronDown, ChevronRight, MoreVertical } from "lucide-react";
+import { ChevronDown, ChevronUp, LayoutTemplate } from "lucide-react";
 import { FieldPropsInternal } from "../..";
 import { useNestedFieldContext } from "../../context";
 import { useAppStore } from "../../../../store";
@@ -38,22 +38,23 @@ export const ObjectField = ({
 
   return (
     <div className={getClassName({ isOpen })}>
-      <div 
-        onClick={() => setIsOpen(!isOpen)} 
-        style={{ cursor: 'pointer' }}
+      <button
+        type="button"
+        className={getClassName("header")}
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <Label
-          label={label || name}
-          icon={
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-              {labelIcon || <MoreVertical size={16} />}
-            </div>
-          }
-          el="div"
-          readOnly={readOnly}
-        />
-      </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {labelIcon || <LayoutTemplate size={12} strokeWidth={2.5} />}
+          <div style={{ fontWeight: 600 }}>{label || name}</div>
+        </div>
+        <div className={getClassName("headerIcon")}>
+          {isOpen ? (
+            <ChevronUp size={12} strokeWidth={2.5} />
+          ) : (
+            <ChevronDown size={12} strokeWidth={2.5} />
+          )}
+        </div>
+      </button>
       {isOpen && (
         <div className={getClassName("content")}>
           <fieldset className={getClassName("fieldset")}>

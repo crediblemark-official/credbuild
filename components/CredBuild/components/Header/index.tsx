@@ -10,6 +10,7 @@ import {
   PanelRight,
   Sun,
   Moon,
+  Zap,
 } from "lucide-react";
 import { Heading } from "../../../Heading";
 import { IconButton } from "../../../IconButton/IconButton";
@@ -170,15 +171,17 @@ const HeaderInner = <
             >
               View Web
             </Button>
-            <Button
-              onClick={() => {
-                const data = appStore.getState().state.data;
-                onPublish && onPublish(data as G["UserData"]);
-              }}
-              icon={<Globe size={14} />}
-            >
-              Publish
-            </Button>
+            <span className="PublishButton">
+              <Button
+                onClick={() => {
+                  const data = appStore.getState().state.data;
+                  onPublish && onPublish(data as G["UserData"]);
+                }}
+                icon={<Zap size={14} fill="currentColor" />}
+              >
+                Publish
+              </Button>
+            </span>
           </CustomHeaderActions>
         </>
       }
@@ -327,16 +330,18 @@ const HeaderInner = <
                   >
                     View Web
                   </Button>
-                  <Button
-                    onClick={() => {
-                      const data = appStore.getState().state
-                        .data as G["UserData"];
-                      onPublish && onPublish(data);
-                    }}
-                    icon={<Globe size={14} />}
-                  >
-                    Publish
-                  </Button>
+                  <span className="PublishButton">
+                    <Button
+                      onClick={() => {
+                        const data = appStore.getState().state
+                          .data as G["UserData"];
+                        onPublish && onPublish(data);
+                      }}
+                      icon={<Zap size={14} fill="currentColor" />}
+                    >
+                      Publish
+                    </Button>
+                  </span>
                 </CustomHeaderActions>
               )}
               setMenuOpen={setMenuOpen}

@@ -183,7 +183,7 @@ export function AutoFieldInternal<
       }}
     >
       <div
-        className={getClassNameWrapper()}
+        className={getClassNameWrapper({ [field.type]: true })}
         onFocus={onFocus}
         onBlur={onBlur}
         onClick={(e) => {

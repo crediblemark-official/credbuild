@@ -2,29 +2,57 @@
   display: flex;
   flex-direction: column;
   background-color: transparent;
-  border: 1px solid var(--credbuild-color-grey-09);
-  border-radius: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   overflow: hidden;
   transition: all 0.2s ease;
 }
 
 .ObjectField--isOpen {
-  border-color: var(--credbuild-color-azure-09);
-  background-color: var(--credbuild-color-grey-11);
+  background-color: transparent;
 }
 
 .ObjectField-content {
-  border-top: 1px solid var(--credbuild-color-grey-09);
-  background-color: var(--credbuild-color-white);
+  background-color: transparent;
 }
 
 .ObjectField-fieldset {
   border: none;
   margin: 0;
   min-width: 0;
-  padding: 12px 12px;
+  padding: 0 0 8px 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
+  border-left: 1px solid var(--credbuild-color-grey-10);
+  margin-left: 8px;
+}
+
+.ObjectField-header {
+  background-color: transparent;
+  border: 0;
+  color: var(--credbuild-color-grey-05);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: var(--credbuild-font-size-xxxs);
+  list-style: none;
+  margin-bottom: 2px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  transition: background-color 50ms ease-in, color 50ms ease-in;
+  gap: 4px;
+  border-radius: 4px;
+  width: 100%;
+  align-items: center;
+}
+
+.ObjectField-header:hover {
+  background-color: var(--credbuild-color-azure-11);
+  color: var(--credbuild-color-azure-04);
+}
+
+.ObjectField-headerIcon {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
 }

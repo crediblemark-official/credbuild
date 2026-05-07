@@ -60,7 +60,7 @@ const ComponentList = ({
   const virtualizer = useVirtualizer({
     count: components.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 40, // Estimated height of each item
+    estimateSize: () => 32, // Estimated height of each item
     overscan: 5,
   });
 

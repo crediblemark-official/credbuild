@@ -11,7 +11,7 @@
 
 .SidebarSection-title {
   background: var(--credbuild-color-grey-11);
-  padding: 8px 16px;
+  padding: 4px 10px;
   border-bottom: 1px solid var(--credbuild-color-grey-10);
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 {
   "name": "@crediblemark/build",
-  "version": "0.24.6",
+  "version": "0.25.0",
   "description": "The open-source visual editor for React",
   "author": "Rasyiqi Crediblemark",
   "repository": {
@@ -96,6 +96,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.3.0",
+    "happy-dom": "^20.9.0",
     "lucide-react": "^0.556.0",
     "madge": "^8.0.0",
     "postcss": "^8.5.14",
@@ -139,7 +140,6 @@
     "deep-diff": "^1.0.2",
     "fast-equals": "5.2.2",
     "flat": "^5.0.2",
-    "happy-dom": "^20.9.0",
     "object-hash": "^3.0.0",
     "react-hotkeys-hook": "^4.6.2",
     "use-debounce": "^9.0.4",

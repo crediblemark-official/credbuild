@@ -120,11 +120,19 @@
 [class*="DrawerItem-default"], 
 [class*="DrawerItem-draggable"], 
 [class*="DrawerItem-draggableWrapper"],
-[class*="Drawer-draggableBg"] {
+[class*="Drawer-draggableBg"],
+[class*="InputWrapper"]:not([class*="--object"]):not([class*="--array"]) {
   background-color: var(--cb-bg-surface) !important;
   color: var(--cb-silver) !important;
   border: 1px solid var(--cb-border) !important;
-  padding: 4px 8px !important;
+  padding: 4px 5px !important;
+  border-radius: var(--cb-radius-m) !important;
+  margin-bottom: 3px !important;
+}
+
+/* Global Container Padding Reduction */
+[class*="BlocksPlugin"], [class*="CredBuildFields"] {
+  padding: 5px !important;
 }
 
 [class*="DrawerItem-draggable"]:hover {
@@ -153,20 +161,23 @@
 }
 
 /* Category Headers (e.g., HERO SECTIONS) - Refined for NEXT_CMS taste */
-[class*="ComponentList-title"] {
+[class*="ComponentList-title"],
+[class*="ObjectField-header"] {
   background-color: transparent !important;
   color: var(--cb-silver-muted) !important;
   border-radius: 0 !important;
-  margin-bottom: 2px !important;
+  margin-bottom: 0 !important;
   font-weight: 600 !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
   opacity: 1 !important;
-  padding: 8px 10px !important;
-  border-bottom: 1px solid var(--cb-border) !important;
+  padding: 5px !important;
+  border-bottom: none !important;
+  transition: background-color 0.2s ease !important;
 }
 
-[class*="ComponentList-title"]:hover {
+[class*="ComponentList-title"]:hover,
+[class*="ObjectField-header"]:hover {
   background-color: var(--cb-gold-faint) !important;
 }
 
@@ -254,25 +265,36 @@
   color: var(--cb-gold) !important;
 }
 
-/* Force the Publish/Primary Button to be GOLD */
+/* Force the Publish/Primary Button to be GOLD with PREMIUM Style */
 .CredBuild button[class*="primary"], 
 .CredBuild button[class*="Publish"],
-.CredBuild button[class*="Button--primary"] {
-  background-color: var(--cb-gold) !important;
+.CredBuild button[class*="Button--primary"],
+[class*="PublishButton"] button {
   background: var(--cb-gold) !important;
   color: var(--cb-bg-base) !important;
   border: none !important;
-  opacity: 1 !important;
-  padding: 6px 18px !important;
-  border-radius: var(--cb-radius-m) !important;
+  padding: 6px 16px !important;
+  border-radius: 6px !important;
   font-weight: 700 !important;
-  transition: all 0.2s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 11px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-.CredBuild button[class*="primary"]:hover {
-  background-color: #fcd34d !important; /* Lighter gold */
-  box-shadow: 0 0 15px var(--cb-gold-glow) !important;
-  transform: translateY(-1px);
+[class*="PublishButton"]:hover button {
+  filter: brightness(1.1);
+  box-shadow: 0 0 20px var(--cb-gold-glow), 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+[class*="PublishButton"] button svg {
+  color: var(--cb-bg-base) !important;
+  stroke: var(--cb-bg-base) !important;
 }
 
 /* System-wide Variable Mapping Overrides */

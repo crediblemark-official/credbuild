@@ -1,14 +1,29 @@
+.InputWrapper:not(.InputWrapper--object):not(.InputWrapper--array) {
+  border: 1px solid var(--credbuild-color-grey-10);
+  border-radius: 5px;
+  padding: 6px 8px;
+  background-color: var(--credbuild-color-white);
+  transition: all 0.2s ease;
+}
+
 .InputWrapper + .InputWrapper {
-  margin-top: 12px;
+  margin-top: 2px;
+}
+
+.InputWrapper:not(.InputWrapper--object):not(.InputWrapper--array):hover {
+  border-color: var(--credbuild-color-grey-08);
+  background-color: var(--credbuild-color-grey-11);
 }
 
 .Input-label {
   align-items: center;
-  color: var(--credbuild-color-grey-04);
+  color: var(--credbuild-color-grey-05);
   display: flex;
-  padding-bottom: 12px;
-  font-size: var(--credbuild-font-size-xxs);
-  font-weight: 600;
+  padding-bottom: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .Input-label--noChildren {
@@ -28,18 +43,18 @@
 }
 
 .Input-input {
-  background: var(--credbuild-color-white);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--credbuild-color-grey-09);
-  border-radius: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   box-sizing: border-box;
   font-family: inherit;
-  font-size: 16px;
-  padding: 12px 15px;
-  transition: border-color 50ms ease-in;
+  font-size: 12px;
+  padding: 0;
+  transition: all 0.1s ease;
   width: 100%;
   max-width: 100%;
+  color: var(--credbuild-color-grey-02);
+  outline: none;
 }
 
 @media (min-width: 458px) {
