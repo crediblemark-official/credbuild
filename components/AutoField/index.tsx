@@ -29,6 +29,13 @@ import {
   FieldPropsInternal,
   FieldNoLabel,
 } from "./types";
+
+export type {
+  FieldLabelPropsInternal,
+  FieldPropsInternalOptional,
+  FieldPropsInternal,
+  FieldNoLabel,
+};
 import { FieldLabelInternal } from "./FieldLabel";
 import { useFieldStore, useFieldStoreApi, fieldContextStore } from "./store";
 

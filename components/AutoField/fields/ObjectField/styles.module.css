@@ -1,18 +1,30 @@
-/**
- * ObjectField
- */
-
 .ObjectField {
   display: flex;
   flex-direction: column;
-  background-color: var(--credbuild-color-white);
+  background-color: transparent;
   border: 1px solid var(--credbuild-color-grey-09);
-  border-radius: 4px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.ObjectField--isOpen {
+  border-color: var(--credbuild-color-azure-09);
+  background-color: var(--credbuild-color-grey-11);
+}
+
+.ObjectField-content {
+  border-top: 1px solid var(--credbuild-color-grey-09);
+  background-color: var(--credbuild-color-white);
 }
 
 .ObjectField-fieldset {
   border: none;
   margin: 0;
-  min-width: 0; /* Needed to ensure External input doesn't overflow, see https://stackoverflow.com/a/53784508 */
-  padding: 16px 15px;
+  min-width: 0;
+  padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }

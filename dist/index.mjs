@@ -1,8 +1,11 @@
 import {
+  ColorPickerField,
   CredBuild,
   Drawer,
   DropZone,
   Render,
+  ResponsiveSliderField,
+  SliderField,
   blocksPlugin,
   createUseCredBuild,
   fieldsPlugin,
@@ -12,17 +15,18 @@ import {
   registerOverlayPortal,
   useCredBuild,
   useGetCredBuild
-} from "./chunk-5VWWS4RS.mjs";
-import "./chunk-6RPYD5IO.mjs";
+} from "./chunk-AMHAYK37.mjs";
+import "./chunk-YE4FXNJW.mjs";
 import {
   setDeep
-} from "./chunk-BQW2NTNG.mjs";
+} from "./chunk-QBCQ7LDT.mjs";
+import "./chunk-TE6MUUVZ.mjs";
 import {
   AutoField,
   Button,
   FieldLabel
-} from "./chunk-H2LU4EW3.mjs";
-import "./chunk-2VS2BST6.mjs";
+} from "./chunk-WDTSUNWU.mjs";
+import "./chunk-WH3A7FAR.mjs";
 import {
   migrate,
   resolveAllData,
@@ -37,11 +41,11 @@ import {
   Label,
   RichTextMenu,
   Separator
-} from "./chunk-VBNE6GK2.mjs";
-import "./chunk-LBMMY5IM.mjs";
-import "./chunk-WKMRHPOM.mjs";
-import "./chunk-5OK3IPVN.mjs";
-import "./chunk-GIUKL443.mjs";
+} from "./chunk-5JSNFZKX.mjs";
+import "./chunk-MFTVX2ME.mjs";
+import "./chunk-KUWVOWUV.mjs";
+import "./chunk-VE6BIQKS.mjs";
+import "./chunk-XLNVCM4Q.mjs";
 import "./chunk-64A37UUC.mjs";
 import "./chunk-SMAWAXVX.mjs";
 import "./chunk-BFHV72KK.mjs";
@@ -54,6 +58,7 @@ export {
   ActionBar,
   AutoField,
   Button,
+  ColorPickerField,
   CredBuild,
   Drawer,
   DropZone,
@@ -62,8 +67,10 @@ export {
   IconButton,
   Label,
   Render,
+  ResponsiveSliderField,
   RichTextMenu,
   Separator,
+  SliderField,
   blocksPlugin,
   createUseCredBuild,
   fieldsPlugin,

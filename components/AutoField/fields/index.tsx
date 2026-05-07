@@ -5,3 +5,7 @@ export * from "./RadioField";
 export * from "./SelectField";
 export * from "./TextareaField";
 export * from "./RichtextField";
+export * from "./SliderField";
+export * from "./ResponsiveSliderField";
+export * from "./ColorPickerField";
+export * from "./ObjectField";

@@ -8,6 +8,11 @@ export * from "../types/Fields";
 
 export * from "../components/ActionBar";
 export { AutoField, FieldLabel } from "../components/AutoField";
+export { 
+  SliderField, 
+  ResponsiveSliderField, 
+  ColorPickerField 
+} from "../components/AutoField/fields";
 
 export * from "../components/Button";
 export { Drawer } from "../components/Drawer";

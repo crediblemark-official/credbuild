@@ -11,6 +11,10 @@
   font-weight: 600;
 }
 
+.Input-label--noChildren {
+  padding-bottom: 0;
+}
+
 .Input-labelIcon {
   color: var(--credbuild-color-grey-07);
   display: flex;

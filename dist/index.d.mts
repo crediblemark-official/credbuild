@@ -71,6 +71,42 @@ declare function AutoField<ValueType = any, FieldType extends FieldNoLabel<Value
     value: any;
 }): react_jsx_runtime.JSX.Element | null;
 
+type SliderFieldProps = {
+    value: string | number;
+    onChange: (value: string | number) => void;
+    label?: string;
+    min?: number;
+    max?: number;
+    step?: number;
+    unit?: string;
+    defaultValue?: string | number;
+    useUnits?: boolean;
+};
+declare const SliderField: ({ value, onChange, min, max, step, unit, defaultValue, useUnits }: SliderFieldProps) => react_jsx_runtime.JSX.Element;
+
+type ResponsiveValue = {
+    desktop?: number | string;
+    tablet?: number | string;
+    mobile?: number | string;
+};
+type ResponsiveSliderFieldProps = {
+    value: ResponsiveValue;
+    onChange: (value: ResponsiveValue) => void;
+    label?: string;
+    unit?: string;
+    max?: number;
+    min?: number;
+    step?: number;
+    defaultValue?: number | ResponsiveValue;
+};
+declare const ResponsiveSliderField: ({ value, onChange, label, unit, max, min, step, defaultValue }: ResponsiveSliderFieldProps) => react_jsx_runtime.JSX.Element;
+
+type ColorPickerFieldProps = {
+    value: string;
+    onChange: (value: string) => void;
+};
+declare const ColorPickerField: ({ value, onChange }: ColorPickerFieldProps) => react_jsx_runtime.JSX.Element;
+
 declare const Button: ({ children, href, onClick, variant, type, disabled, tabIndex, newTab, fullWidth, icon, size, loading: loadingProp, ...props }: {
     children: ReactNode;
     href?: string;
@@ -304,4 +340,4 @@ declare const outlinePlugin: () => Plugin;
 
 declare const legacySideBarPlugin: () => Plugin;
 
-export { Action, ActionBar, AutoField, Button, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, RichTextMenu, Separator, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, setDeep, useCredBuild, useGetCredBuild };
+export { Action, ActionBar, AutoField, Button, ColorPickerField, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, ResponsiveSliderField, RichTextMenu, Separator, SliderField, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, setDeep, useCredBuild, useGetCredBuild };

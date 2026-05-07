@@ -159,7 +159,7 @@ var init_styles_module2 = __esm({
     "use strict";
     init_react_import();
     init_css_module_data2();
-    styles_module_default2 = { "InputWrapper": "_InputWrapper_1q7gk_1", "Input-label": "_Input-label_1q7gk_5", "Input-labelIcon": "_Input-labelIcon_1q7gk_14", "Input-disabledIcon": "_Input-disabledIcon_1q7gk_21", "Input-input": "_Input-input_1q7gk_26", "Input": "_Input_1q7gk_1", "Input--readOnly": "_Input--readOnly_1q7gk_82", "Input-radioGroupItems": "_Input-radioGroupItems_1q7gk_93", "Input-radio": "_Input-radio_1q7gk_93", "Input-radioInner": "_Input-radioInner_1q7gk_110", "Input-radioInput": "_Input-radioInput_1q7gk_155" };
+    styles_module_default2 = { "InputWrapper": "_InputWrapper_1mz7o_1", "Input-label": "_Input-label_1mz7o_5", "Input-label--noChildren": "_Input-label--noChildren_1mz7o_14", "Input-labelIcon": "_Input-labelIcon_1mz7o_18", "Input-disabledIcon": "_Input-disabledIcon_1mz7o_25", "Input-input": "_Input-input_1mz7o_30", "Input": "_Input_1mz7o_1", "Input--readOnly": "_Input--readOnly_1mz7o_86", "Input-radioGroupItems": "_Input-radioGroupItems_1mz7o_97", "Input-radio": "_Input-radio_1mz7o_97", "Input-radioInner": "_Input-radioInner_1mz7o_114", "Input-radioInput": "_Input-radioInput_1mz7o_159" };
   }
 });
 
@@ -3860,7 +3860,7 @@ var init_FieldLabel = __esm({
     }) => {
       const El = el;
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(El, { className, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: getClassName2("label"), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: `${getClassName2("label")} ${!children ? styles_module_default2["Input-label--noChildren"] : ""}`, children: [
           icon ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: getClassName2("labelIcon"), children: icon }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, {}),
           label,
           readOnly && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: getClassName2("disabledIcon"), title: "Read-only", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Lock, { size: "12" }) })
@@ -7999,7 +7999,7 @@ var init_styles_module13 = __esm({
     "use strict";
     init_react_import();
     init_css_module_data15();
-    styles_module_default13 = { "ObjectField": "_ObjectField_b2xjm_5", "ObjectField-fieldset": "_ObjectField-fieldset_b2xjm_13" };
+    styles_module_default13 = { "ObjectField": "_ObjectField_1vrf5_1", "ObjectField--isOpen": "_ObjectField--isOpen_1vrf5_12", "ObjectField-content": "_ObjectField-content_1vrf5_17", "ObjectField-fieldset": "_ObjectField-fieldset_1vrf5_22" };
   }
 });
 
@@ -8008,7 +8008,7 @@ var ObjectField_exports = {};
 __export(ObjectField_exports, {
   ObjectField: () => ObjectField
 });
-var import_jsx_runtime53, getClassName19, ObjectField;
+var import_react49, import_jsx_runtime53, getClassName19, ObjectField;
 var init_ObjectField = __esm({
   "components/AutoField/fields/ObjectField/index.tsx"() {
     "use strict";
@@ -8021,6 +8021,7 @@ var init_ObjectField = __esm({
     init_get_deep();
     init_subfield();
     init_store();
+    import_react49 = require("react");
     import_jsx_runtime53 = require("react/jsx-runtime");
     getClassName19 = get_class_name_factory_default("ObjectField", styles_module_default13);
     ObjectField = ({
@@ -8034,6 +8035,7 @@ var init_ObjectField = __esm({
       readOnly
     }) => {
       const { localName = name } = useNestedFieldContext();
+      const [isOpen, setIsOpen] = (0, import_react49.useState)(false);
       const fieldStore = useFieldStoreApi();
       const canEdit = useAppStore(
         (s) => s.permissions.getPermissions({ item: s.selectedItem }).edit
@@ -8042,38 +8044,50 @@ var init_ObjectField = __esm({
       if (field.type !== "object" || !field.objectFields) {
         return null;
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-        Label2,
-        {
-          label: label || name,
-          icon: labelIcon || /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EllipsisVertical, { size: 16 }),
-          el: "div",
-          readOnly,
-          children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: getClassName19(), children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("fieldset", { className: getClassName19("fieldset"), children: Object.keys(field.objectFields).map((subName) => {
-            const subField = field.objectFields[subName];
-            const subPath = `${localName}.${subName}`;
-            return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-              SubField,
+      return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: getClassName19({ isOpen }), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+          "div",
+          {
+            onClick: () => setIsOpen(!isOpen),
+            style: { cursor: "pointer" },
+            children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              Label2,
               {
-                id: `${id}_${subName}`,
-                name,
-                subName,
-                localName,
-                field: subField,
-                forceReadOnly: !canEdit,
-                onChange: (subValue, ui, subName2) => {
-                  const value = getValue();
-                  if (value[subName2] === subValue) {
-                    return;
-                  }
-                  onChange({ ...value, [subName2]: subValue }, ui);
+                label: label || name,
+                icon: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "4px" }, children: [
+                  isOpen ? /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(ChevronDown, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(ChevronRight, { size: 14 }),
+                  labelIcon || /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EllipsisVertical, { size: 16 })
+                ] }),
+                el: "div",
+                readOnly
+              }
+            )
+          }
+        ),
+        isOpen && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: getClassName19("content"), children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("fieldset", { className: getClassName19("fieldset"), children: Object.keys(field.objectFields).map((subName) => {
+          const subField = field.objectFields[subName];
+          const subPath = `${localName}.${subName}`;
+          return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            SubField,
+            {
+              id: `${id}_${subName}`,
+              name,
+              subName,
+              localName,
+              field: subField,
+              forceReadOnly: !canEdit,
+              onChange: (subValue, ui, subName2) => {
+                const value = getValue();
+                if (value[subName2] === subValue) {
+                  return;
                 }
-              },
-              subPath
-            );
-          }) }) })
-        }
-      );
+                onChange({ ...value, [subName2]: subValue }, ui);
+              }
+            },
+            subPath
+          );
+        }) }) })
+      ] });
     };
   }
 });
@@ -8083,14 +8097,14 @@ function AutoFieldInternal(props) {
   const dispatch = useAppStore((s) => s.dispatch);
   const overrides = useAppStore((s) => s.overrides);
   const readOnly = useAppStore((0, import_shallow3.useShallow)((s) => s.selectedItem?.readOnly));
-  const nestedFieldContext = (0, import_react49.useContext)(NestedFieldContext);
+  const nestedFieldContext = (0, import_react50.useContext)(NestedFieldContext);
   const { id, Label: Label2 = FieldLabelInternal } = props;
   const field = props.field;
   const label = field.label;
   const labelIcon = field.labelIcon;
   const defaultId = useSafeId();
   const resolvedId = id || defaultId;
-  const render = (0, import_react49.useMemo)(
+  const render = (0, import_react50.useMemo)(
     () => ({
       ...overrides.fieldTypes,
       custom: overrides.fieldTypes?.custom,
@@ -8111,7 +8125,7 @@ function AutoFieldInternal(props) {
       return getDeep(s, props.name ?? resolvedId);
     }
   });
-  const mergedProps = (0, import_react49.useMemo)(
+  const mergedProps = (0, import_react50.useMemo)(
     () => ({
       ...props,
       field,
@@ -8123,7 +8137,7 @@ function AutoFieldInternal(props) {
     }),
     [props, field, label, labelIcon, Label2, resolvedId, fieldValue]
   );
-  const onFocus = (0, import_react49.useCallback)(
+  const onFocus = (0, import_react50.useCallback)(
     (e) => {
       if (mergedProps.name && (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA")) {
         e.stopPropagation();
@@ -8137,7 +8151,7 @@ function AutoFieldInternal(props) {
     },
     [dispatch, mergedProps.name]
   );
-  const onBlur = (0, import_react49.useCallback)((e) => {
+  const onBlur = (0, import_react50.useCallback)((e) => {
     if ("name" in e.target) {
       dispatch({
         type: "setUi",
@@ -8147,7 +8161,7 @@ function AutoFieldInternal(props) {
       });
     }
   }, [dispatch]);
-  let Children = (0, import_react49.useMemo)(() => {
+  let Children = (0, import_react50.useMemo)(() => {
     if (field.type !== "custom" && field.type !== "slot") {
       return defaultFields[field.type];
     }
@@ -8155,7 +8169,7 @@ function AutoFieldInternal(props) {
   }, [field.type]);
   const fieldKey = field.type === "custom" ? field.key : void 0;
   const fieldRender = field.render;
-  let FieldComponent = (0, import_react49.useMemo)(() => {
+  let FieldComponent = (0, import_react50.useMemo)(() => {
     if (field.type === "custom" && !render[field.type]) {
       if (!fieldRender) {
         return null;
@@ -8191,7 +8205,7 @@ function AutoFieldInternal(props) {
           onClick: (e) => {
             e.stopPropagation();
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(import_react49.Suspense, { fallback: null, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(FieldComponent, { ...mergedProps, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Children, { ...mergedProps }) }) })
+          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(import_react50.Suspense, { fallback: null, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(FieldComponent, { ...mergedProps, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Children, { ...mergedProps }) }) })
         }
       )
     }
@@ -8200,19 +8214,19 @@ function AutoFieldInternal(props) {
 function AutoFieldPrivate2(props) {
   return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(AutoFieldInternal, { ...props });
 }
-var import_react49, import_shallow3, import_react50, import_jsx_runtime54, ArrayField2, ObjectField2, getClassNameWrapper, defaultFields;
+var import_react50, import_shallow3, import_react51, import_jsx_runtime54, ArrayField2, ObjectField2, getClassNameWrapper, defaultFields;
 var init_AutoFieldInternal = __esm({
   "components/AutoField/AutoFieldInternal.tsx"() {
     "use strict";
     init_react_import();
-    import_react49 = require("react");
+    import_react50 = require("react");
     init_store2();
     import_shallow3 = require("zustand/react/shallow");
     init_get_deep();
     init_FieldLabel();
     init_store();
     init_context();
-    import_react50 = require("react");
+    import_react51 = require("react");
     init_RadioField();
     init_SelectField();
     init_ExternalField();
@@ -8223,8 +8237,8 @@ var init_AutoFieldInternal = __esm({
     init_get_class_name_factory();
     init_styles_module2();
     import_jsx_runtime54 = require("react/jsx-runtime");
-    ArrayField2 = (0, import_react50.lazy)(() => Promise.resolve().then(() => (init_ArrayField(), ArrayField_exports)).then((m) => ({ default: m.ArrayField })));
-    ObjectField2 = (0, import_react50.lazy)(() => Promise.resolve().then(() => (init_ObjectField(), ObjectField_exports)).then((m) => ({ default: m.ObjectField })));
+    ArrayField2 = (0, import_react51.lazy)(() => Promise.resolve().then(() => (init_ArrayField(), ArrayField_exports)).then((m) => ({ default: m.ArrayField })));
+    ObjectField2 = (0, import_react51.lazy)(() => Promise.resolve().then(() => (init_ObjectField(), ObjectField_exports)).then((m) => ({ default: m.ObjectField })));
     getClassNameWrapper = get_class_name_factory_default("InputWrapper", styles_module_default2);
     defaultFields = {
       array: ArrayField2,
@@ -8242,7 +8256,7 @@ var init_AutoFieldInternal = __esm({
 
 // components/AutoField/index.tsx
 function AutoFieldPublicInternal({ value, ...props }) {
-  const DefaultLabel = (0, import_react51.useMemo)(() => {
+  const DefaultLabel = (0, import_react52.useMemo)(() => {
     const DefaultLabel2 = (labelProps) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "div",
       {
@@ -8254,7 +8268,7 @@ function AutoFieldPublicInternal({ value, ...props }) {
   }, [props.readOnly]);
   const fieldStore = useFieldStoreApi();
   const { id: propsId, onChange: propsOnChange } = props;
-  const onChange = (0, import_react51.useCallback)(
+  const onChange = (0, import_react52.useCallback)(
     (value2) => {
       if (!propsId) return;
       fieldStore.setState({ [propsId]: value2 });
@@ -8262,7 +8276,7 @@ function AutoFieldPublicInternal({ value, ...props }) {
     },
     [fieldStore, propsOnChange, propsId]
   );
-  (0, import_react51.useEffect)(() => {
+  (0, import_react52.useEffect)(() => {
     if (!props.id) return;
     fieldStore.setState({ [props.id]: value });
   }, [props.id, value, fieldStore]);
@@ -8280,17 +8294,17 @@ function AutoField(props) {
   if (props.field.type === "slot") {
     return null;
   }
-  const providerValue = (0, import_react51.useMemo)(() => ({ [id]: props.value }), [id, props.value]);
+  const providerValue = (0, import_react52.useMemo)(() => ({ [id]: props.value }), [id, props.value]);
   return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(fieldContextStore.Provider, { value: providerValue, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(AutoFieldPublicInternal, { ...props, id }) });
 }
-var import_react51, import_jsx_runtime55, getClassName20, getClassNameWrapper2;
+var import_react52, import_jsx_runtime55, getClassName20, getClassNameWrapper2;
 var init_AutoField = __esm({
   "components/AutoField/index.tsx"() {
     "use strict";
     init_react_import();
     init_get_class_name_factory();
     init_styles_module2();
-    import_react51 = require("react");
+    import_react52 = require("react");
     init_use_safe_id();
     init_store();
     init_FieldLabel();
@@ -8312,11 +8326,11 @@ function RichTextRender({
 }) {
   const { tiptap = {}, options } = field;
   const { extensions = [] } = tiptap;
-  const loadedExtensions = (0, import_react65.useMemo)(
+  const loadedExtensions = (0, import_react67.useMemo)(
     () => [CredBuildRichText.configure(options), ...extensions],
     [extensions, options]
   );
-  const normalized = (0, import_react65.useMemo)(() => {
+  const normalized = (0, import_react67.useMemo)(() => {
     if (typeof content === "object" && content?.type === "doc") {
       return content;
     }
@@ -8334,22 +8348,22 @@ function RichTextRender({
     }
     return { type: "doc", content: [] };
   }, [content, loadedExtensions]);
-  const html = (0, import_react65.useMemo)(() => {
+  const html = (0, import_react67.useMemo)(() => {
     return (0, import_html.generateHTML)(normalized, loadedExtensions);
   }, [normalized, loadedExtensions]);
-  return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: getClassName24(), children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "rich-text", dangerouslySetInnerHTML: { __html: html } }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: getClassName24(), children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "rich-text", dangerouslySetInnerHTML: { __html: html } }) });
 }
-var import_html, import_react65, import_jsx_runtime60, getClassName24;
+var import_html, import_react67, import_jsx_runtime63, getClassName24;
 var init_Render = __esm({
   "components/RichTextEditor/components/Render.tsx"() {
     "use strict";
     init_react_import();
     import_html = require("@tiptap/html");
-    import_react65 = require("react");
+    import_react67 = require("react");
     init_get_class_name_factory();
     init_styles_module10();
     init_extension();
-    import_jsx_runtime60 = require("react/jsx-runtime");
+    import_jsx_runtime63 = require("react/jsx-runtime");
     getClassName24 = get_class_name_factory_default("RichTextEditor", styles_module_default10);
   }
 });
@@ -8361,6 +8375,7 @@ __export(no_external_exports, {
   ActionBar: () => ActionBar,
   AutoField: () => AutoField,
   Button: () => Button,
+  ColorPickerField: () => ColorPickerField,
   CredBuild: () => CredBuild,
   Drawer: () => Drawer,
   DropZone: () => DropZone,
@@ -8369,8 +8384,10 @@ __export(no_external_exports, {
   IconButton: () => IconButton,
   Label: () => Label,
   Render: () => Render,
+  ResponsiveSliderField: () => ResponsiveSliderField,
   RichTextMenu: () => RichTextMenu,
   Separator: () => Separator,
+  SliderField: () => SliderField,
   blocksPlugin: () => blocksPlugin,
   createUseCredBuild: () => createUseCredBuild,
   fieldsPlugin: () => fieldsPlugin,
@@ -8443,6 +8460,385 @@ init_react_import();
 // bundle/core.ts
 init_ActionBar();
 init_AutoField();
+
+// components/AutoField/fields/index.tsx
+init_react_import();
+init_ArrayField();
+init_DefaultField();
+init_ExternalField();
+init_RadioField();
+init_SelectField();
+init_TextareaField();
+init_RichtextField();
+
+// components/AutoField/fields/SliderField/index.tsx
+init_react_import();
+var import_jsx_runtime56 = require("react/jsx-runtime");
+var SliderField = ({
+  value,
+  onChange,
+  min = 0,
+  max = 100,
+  step = 1,
+  unit = "px",
+  defaultValue = 0,
+  useUnits = true
+}) => {
+  const parseValue = (val) => {
+    if (typeof val === "number") return val;
+    if (typeof val === "string") return parseFloat(val);
+    return 0;
+  };
+  const inputValue = value !== void 0 && value !== null ? value : defaultValue;
+  const numericValue = parseValue(inputValue);
+  const extractUnit = (val) => {
+    if (!useUnits) return "";
+    if (typeof val === "string") {
+      const match = val.replace(/[0-9.-]/g, "");
+      return match || unit;
+    }
+    return unit;
+  };
+  const currentUnit = extractUnit(inputValue);
+  const handleChange = (e) => {
+    const newVal = parseFloat(e.target.value);
+    if (isNaN(newVal)) return;
+    if (useUnits) {
+      onChange(`${newVal}${currentUnit}`);
+    } else {
+      onChange(newVal);
+    }
+  };
+  const handleUnitChange = (e) => {
+    const newUnit = e.target.value;
+    onChange(`${numericValue}${newUnit}`);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { padding: "8px 0" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("style", { dangerouslySetInnerHTML: { __html: `
+                .cb-slider-input {
+                    -webkit-appearance: none;
+                    width: 100%;
+                    height: 3px;
+                    background: var(--cb-border, #e2e8f0);
+                    border-radius: 2px;
+                    outline: none;
+                    margin: 8px 0;
+                }
+                .cb-slider-input::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 12px;
+                    height: 12px;
+                    background: var(--cb-gold, #d97706);
+                    cursor: pointer;
+                    border-radius: 50%;
+                    border: 2px solid var(--cb-bg-surface, #fff);
+                    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+                    transition: all 0.2s ease;
+                }
+                .cb-slider-input::-webkit-slider-thumb:hover {
+                    transform: scale(1.15);
+                }
+                .cb-number-input:focus, .cb-select-input:focus {
+                    border-color: var(--cb-gold) !important;
+                    outline: none !important;
+                }
+            ` } }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        "input",
+        {
+          type: "range",
+          min,
+          max,
+          step,
+          value: numericValue,
+          onChange: handleChange,
+          className: "cb-slider-input",
+          style: { flex: 1, cursor: "pointer" }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { display: "flex", gap: "2px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+          "input",
+          {
+            type: "number",
+            min,
+            max,
+            step,
+            value: numericValue,
+            onChange: handleChange,
+            className: "cb-number-input",
+            style: {
+              width: "48px",
+              padding: "3px 4px",
+              borderRadius: "3px",
+              border: "1px solid var(--cb-border, #e2e8f0)",
+              background: "var(--cb-bg-base, #f8fafc)",
+              color: "var(--cb-silver, #0f172a)",
+              fontSize: "10px",
+              fontWeight: "500",
+              textAlign: "center",
+              transition: "all 0.2s ease"
+            }
+          }
+        ),
+        useUnits && /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+          "select",
+          {
+            value: currentUnit,
+            onChange: handleUnitChange,
+            className: "cb-select-input",
+            style: {
+              width: "42px",
+              padding: "2px",
+              borderRadius: "3px",
+              border: "1px solid var(--cb-border, #e2e8f0)",
+              background: "var(--cb-bg-base, #f8fafc)",
+              color: "var(--cb-silver, #0f172a)",
+              fontSize: "9px",
+              fontWeight: "500",
+              cursor: "pointer",
+              transition: "all 0.2s ease"
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "px", children: "px" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "%", children: "%" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "vh", children: "vh" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "vw", children: "vw" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "em", children: "em" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("option", { value: "rem", children: "rem" })
+            ]
+          }
+        )
+      ] })
+    ] })
+  ] });
+};
+
+// components/AutoField/fields/ResponsiveSliderField/index.tsx
+init_react_import();
+var import_react53 = require("react");
+var import_jsx_runtime57 = require("react/jsx-runtime");
+var DesktopIcon = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "2", y: "3", width: "20", height: "14", rx: "2", ry: "2" }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("line", { x1: "8", y1: "21", x2: "16", y2: "21" }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("line", { x1: "12", y1: "17", x2: "12", y2: "21" })
+] });
+var TabletIcon = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "4", y: "2", width: "16", height: "20", rx: "2", ry: "2" }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("line", { x1: "12", y1: "18", x2: "12.01", y2: "18" })
+] });
+var MobileIcon = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "5", y: "2", width: "14", height: "20", rx: "2", ry: "2" }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("line", { x1: "12", y1: "18", x2: "12.01", y2: "18" })
+] });
+var ResponsiveSliderField = ({
+  value = {},
+  onChange,
+  label,
+  unit = "px",
+  max = 100,
+  min = 0,
+  step = 1,
+  defaultValue = 0
+}) => {
+  const [mode, setMode] = (0, import_react53.useState)("desktop");
+  const getCurrentValue = () => {
+    const val = value?.[mode];
+    if (val !== void 0 && val !== null) {
+      return val;
+    }
+    if (mode === "tablet" && value?.desktop !== void 0) return value.desktop;
+    if (mode === "mobile") {
+      if (value?.tablet !== void 0) return value.tablet;
+      if (value?.desktop !== void 0) return value.desktop;
+    }
+    if (typeof defaultValue === "number") return defaultValue;
+    const def = defaultValue;
+    const defVal = def?.[mode];
+    if (defVal !== void 0) return defVal;
+    if (mode === "tablet" && def?.desktop !== void 0) return def.desktop;
+    if (mode === "mobile") {
+      if (def?.tablet !== void 0) return def.tablet;
+      if (def?.desktop !== void 0) return def.desktop;
+    }
+    return 0;
+  };
+  const handleChange = (newVal) => {
+    onChange({
+      ...value,
+      [mode]: newVal
+    });
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "2px" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0px" }, children: [
+      label && /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("label", { style: {
+        fontSize: "10px",
+        fontWeight: 500,
+        color: "var(--cb-silver-muted, #71717a)",
+        display: "flex",
+        alignItems: "center",
+        gap: "4px"
+      }, children: [
+        label,
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("span", { style: { fontSize: "9px", opacity: 0.5, fontWeight: "400" }, children: [
+          "(",
+          mode,
+          ")"
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: {
+        display: "flex",
+        backgroundColor: "var(--cb-bg-panel, #f1f5f9)",
+        borderRadius: "4px",
+        padding: "1px",
+        border: "1px solid var(--cb-border, #e2e8f0)"
+      }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "button",
+          {
+            onClick: () => setMode("desktop"),
+            style: {
+              padding: "2px 5px",
+              border: "none",
+              background: mode === "desktop" ? "var(--cb-bg-surface, #fff)" : "transparent",
+              boxShadow: mode === "desktop" ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
+              borderRadius: "3px",
+              cursor: "pointer",
+              color: mode === "desktop" ? "var(--cb-gold, #d97706)" : "var(--cb-silver-muted, #a1a1aa)",
+              display: "flex",
+              alignItems: "center",
+              transition: "all 0.1s ease"
+            },
+            title: "Desktop",
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(DesktopIcon, {})
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "button",
+          {
+            onClick: () => setMode("tablet"),
+            style: {
+              padding: "2px 5px",
+              border: "none",
+              background: mode === "tablet" ? "var(--cb-bg-surface, #fff)" : "transparent",
+              boxShadow: mode === "tablet" ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
+              borderRadius: "3px",
+              cursor: "pointer",
+              color: mode === "tablet" ? "var(--cb-gold, #d97706)" : "var(--cb-silver-muted, #a1a1aa)",
+              display: "flex",
+              alignItems: "center",
+              transition: "all 0.1s ease"
+            },
+            title: "Tablet",
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TabletIcon, {})
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "button",
+          {
+            onClick: () => setMode("mobile"),
+            style: {
+              padding: "2px 5px",
+              border: "none",
+              background: mode === "mobile" ? "var(--cb-bg-surface, #fff)" : "transparent",
+              boxShadow: mode === "mobile" ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
+              borderRadius: "3px",
+              cursor: "pointer",
+              color: mode === "mobile" ? "var(--cb-gold, #d97706)" : "var(--cb-silver-muted, #a1a1aa)",
+              display: "flex",
+              alignItems: "center",
+              transition: "all 0.1s ease"
+            },
+            title: "Mobile",
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(MobileIcon, {})
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      SliderField,
+      {
+        value: getCurrentValue(),
+        onChange: handleChange,
+        unit,
+        max,
+        min,
+        step,
+        useUnits: false
+      }
+    )
+  ] });
+};
+
+// components/AutoField/fields/ColorPickerField/index.tsx
+init_react_import();
+var import_jsx_runtime58 = require("react/jsx-runtime");
+var ColorPickerField = ({ value, onChange }) => {
+  const safeValue = value || "#ffffff";
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { style: { padding: "4px 0", display: "flex", gap: "6px", alignItems: "center" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { style: {
+      position: "relative",
+      width: "28px",
+      height: "28px",
+      borderRadius: "3px",
+      border: "1px solid var(--cb-border, #e2e8f0)",
+      overflow: "hidden",
+      flexShrink: 0,
+      background: "var(--cb-bg-base, #f8fafc)"
+    }, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "input",
+      {
+        type: "color",
+        value: safeValue.startsWith("#") ? safeValue : "#000000",
+        onChange: (e) => {
+          if (e.target.value !== value) {
+            onChange(e.target.value);
+          }
+        },
+        style: {
+          position: "absolute",
+          top: "-50%",
+          left: "-50%",
+          width: "200%",
+          height: "200%",
+          cursor: "pointer",
+          border: "none",
+          padding: 0,
+          margin: 0
+        }
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "input",
+      {
+        type: "text",
+        value: value || "",
+        placeholder: "#RRGGBB",
+        onChange: (e) => onChange(e.target.value),
+        style: {
+          flex: 1,
+          padding: "4px 8px",
+          borderRadius: "3px",
+          border: "1px solid var(--cb-border, #e2e8f0)",
+          background: "var(--cb-bg-base, #f8fafc)",
+          color: "var(--cb-silver, #0f172a)",
+          fontSize: "11px",
+          fontFamily: "var(--cb-font-mono, 'JetBrains Mono', monospace)",
+          fontWeight: "500",
+          height: "28px",
+          transition: "all 0.1s ease"
+        }
+      }
+    )
+  ] });
+};
+
+// components/AutoField/fields/index.tsx
+init_ObjectField();
+
+// bundle/core.ts
 init_Button2();
 
 // components/Drawer/index.tsx
@@ -8455,23 +8851,23 @@ var styles_module_default14 = { "Drawer": "_Drawer_e1509_1", "Drawer-draggable":
 // components/Drawer/index.tsx
 init_get_class_name_factory();
 init_DragIcon();
-var import_react53 = require("react");
+var import_react55 = require("react");
 init_generate_id();
 
 // components/DragDropContext/context.tsx
 init_react_import();
-var import_react52 = require("react");
-var dragListenerContext = (0, import_react52.createContext)({
+var import_react54 = require("react");
+var dragListenerContext = (0, import_react54.createContext)({
   dragListeners: {}
 });
 function useDragListener(type, fn, deps = []) {
-  const { setDragListeners } = (0, import_react52.useContext)(dragListenerContext);
-  const id = (0, import_react52.useId)();
-  const fnRef = (0, import_react52.useRef)(fn);
-  (0, import_react52.useEffect)(() => {
+  const { setDragListeners } = (0, import_react54.useContext)(dragListenerContext);
+  const id = (0, import_react54.useId)();
+  const fnRef = (0, import_react54.useRef)(fn);
+  (0, import_react54.useEffect)(() => {
     fnRef.current = fn;
   }, [fn]);
-  (0, import_react52.useEffect)(() => {
+  (0, import_react54.useEffect)(() => {
     if (setDragListeners) {
       const wrappedFn = ((...args) => {
         return fnRef.current(...args);
@@ -8492,8 +8888,8 @@ function useDragListener(type, fn, deps = []) {
 
 // components/Drawer/index.tsx
 init_use_safe_id();
-var import_react54 = require("@dnd-kit/react");
-var import_jsx_runtime56 = require("react/jsx-runtime");
+var import_react56 = require("@dnd-kit/react");
+var import_jsx_runtime59 = require("react/jsx-runtime");
 var getClassName21 = get_class_name_factory_default("Drawer", styles_module_default14);
 var getClassNameItem2 = get_class_name_factory_default("DrawerItem", styles_module_default14);
 var DrawerItemInner = ({
@@ -8503,11 +8899,11 @@ var DrawerItemInner = ({
   dragRef,
   isDragDisabled
 }) => {
-  const CustomInner = (0, import_react53.useMemo)(
-    () => children || (({ children: children2 }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassNameItem2("default"), children: children2 })),
+  const CustomInner = (0, import_react55.useMemo)(
+    () => children || (({ children: children2 }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassNameItem2("default"), children: children2 })),
     [children]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
     "div",
     {
       className: getClassNameItem2({ disabled: isDragDisabled }),
@@ -8515,9 +8911,9 @@ var DrawerItemInner = ({
       onMouseDown: (e) => e.preventDefault(),
       "data-testid": dragRef ? `drawer-item:${name}` : "",
       "data-credbuild-drawer-item": true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(CustomInner, { name, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassNameItem2("draggableWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: getClassNameItem2("draggable"), children: [
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassNameItem2("name"), children: label ?? name }),
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassNameItem2("icon"), children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(DragIcon, {}) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(CustomInner, { name, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassNameItem2("draggableWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: getClassNameItem2("draggable"), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassNameItem2("name"), children: label ?? name }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassNameItem2("icon"), children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DragIcon, {}) })
       ] }) }) })
     }
   );
@@ -8529,15 +8925,15 @@ var DrawerItemDraggable = ({
   id,
   isDragDisabled
 }) => {
-  const { ref } = (0, import_react54.useDraggable)({
+  const { ref } = (0, import_react56.useDraggable)({
     id,
     data: { componentType: name },
     disabled: isDragDisabled,
     type: "drawer"
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: getClassName21("draggable"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassName21("draggableBg"), children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(DrawerItemInner, { name, label, children }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: getClassName21("draggableFg"), children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: getClassName21("draggable"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassName21("draggableBg"), children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DrawerItemInner, { name, label, children }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassName21("draggableFg"), children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       DrawerItemInner,
       {
         name,
@@ -8558,7 +8954,7 @@ var DrawerItem = ({
   isDragDisabled
 }) => {
   const resolvedId = id || name;
-  const [dynamicId, setDynamicId] = (0, import_react53.useState)(generateId(resolvedId));
+  const [dynamicId, setDynamicId] = (0, import_react55.useState)(generateId(resolvedId));
   if (typeof index !== "undefined") {
     console.error(
       "Warning: The `index` prop on Drawer.Item is deprecated and no longer required."
@@ -8571,7 +8967,7 @@ var DrawerItem = ({
     },
     [resolvedId]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
     DrawerItemDraggable,
     {
       name,
@@ -8598,13 +8994,13 @@ var Drawer = ({
     );
   }
   const id = useSafeId();
-  const { ref } = (0, import_react54.useDroppable)({
+  const { ref } = (0, import_react56.useDroppable)({
     id,
     type: "void",
     collisionPriority: 0
     // Never collide with this, but we use it so NestedDroppablePlugin respects the Drawer
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
     "div",
     {
       className: getClassName21(),
@@ -8620,11 +9016,11 @@ Drawer.Item = DrawerItem;
 
 // components/DropZone/index.tsx
 init_react_import();
-var import_react73 = require("react");
+var import_react75 = require("react");
 
 // components/DraggableComponent/index.tsx
 init_react_import();
-var import_react57 = require("react");
+var import_react59 = require("react");
 
 // css-module:/home/crediblemark/Project/Credibuild/components/DraggableComponent/styles.module.css#css-module
 init_react_import();
@@ -8640,12 +9036,12 @@ var import_react_dom2 = require("react-dom");
 
 // components/DropZone/context.tsx
 init_react_import();
-var import_react55 = require("react");
+var import_react57 = require("react");
 init_store2();
 var import_zustand5 = require("zustand");
-var import_jsx_runtime57 = require("react/jsx-runtime");
-var dropZoneContext = (0, import_react55.createContext)(null);
-var ZoneStoreContext = (0, import_react55.createContext)(
+var import_jsx_runtime60 = require("react/jsx-runtime");
+var dropZoneContext = (0, import_react57.createContext)(null);
+var ZoneStoreContext = (0, import_react57.createContext)(
   (0, import_zustand5.createStore)(() => ({
     zoneDepthIndex: {},
     nextZoneDepthIndex: {},
@@ -8666,14 +9062,14 @@ var ZoneStoreProvider = ({
   children,
   store
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ZoneStoreContext.Provider, { value: store, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(ZoneStoreContext.Provider, { value: store, children });
 };
 var DropZoneProvider = ({
   children,
   value
 }) => {
   const dispatch = useAppStore((s) => s.dispatch);
-  const registerZone = (0, import_react55.useCallback)(
+  const registerZone = (0, import_react57.useCallback)(
     (zoneCompound) => {
       dispatch({
         type: "registerZone",
@@ -8682,14 +9078,14 @@ var DropZoneProvider = ({
     },
     [dispatch]
   );
-  const memoValue = (0, import_react55.useMemo)(
+  const memoValue = (0, import_react57.useMemo)(
     () => ({
       registerZone,
       ...value
     }),
     [value, registerZone]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_jsx_runtime57.Fragment, { children: memoValue && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(dropZoneContext.Provider, { value: memoValue, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(import_jsx_runtime60.Fragment, { children: memoValue && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(dropZoneContext.Provider, { value: memoValue, children }) });
 };
 
 // components/DraggableComponent/index.tsx
@@ -8722,11 +9118,11 @@ init_use_context_store();
 
 // lib/dnd/use-on-drag-finished.ts
 init_react_import();
-var import_react56 = require("react");
+var import_react58 = require("react");
 init_store2();
 var useOnDragFinished = (cb, _deps = []) => {
   const appStore = useAppStoreApi();
-  return (0, import_react56.useCallback)(() => {
+  return (0, import_react58.useCallback)(() => {
     let dispose = () => {
     };
     const processDragging = (isDragging2) => {
@@ -8772,7 +9168,7 @@ function assignRefs(refs, node) {
 }
 
 // components/DraggableComponent/index.tsx
-var import_jsx_runtime58 = require("react/jsx-runtime");
+var import_jsx_runtime61 = require("react/jsx-runtime");
 var getClassName22 = get_class_name_factory_default("DraggableComponent", styles_module_default15);
 var DEBUG2 = false;
 var MEASURE_EVERY_MS = 100;
@@ -8784,16 +9180,16 @@ var DefaultActionBar = ({
   label,
   children,
   parentAction
-}) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(ActionBar, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(ActionBar.Group, { children: [
+}) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(ActionBar, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(ActionBar.Group, { children: [
     parentAction,
-    label && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Label, { label })
+    label && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Label, { label })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Group, { children })
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Group, { children })
 ] });
 var DefaultOverlay = ({
   children
-}) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_jsx_runtime58.Fragment, { children });
+}) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_jsx_runtime61.Fragment, { children });
 var DraggableComponent = ({
   children,
   depth,
@@ -8819,10 +9215,10 @@ var DraggableComponent = ({
   const overrides = useAppStore((s) => s.overrides);
   const dispatch = useAppStore((s) => s.dispatch);
   const iframe = useAppStore((s) => s.iframe);
-  const lastMeasureRef = (0, import_react57.useRef)(0);
-  const ctx = (0, import_react57.useContext)(dropZoneContext);
-  const [localZones, setLocalZones] = (0, import_react57.useState)({});
-  const registerLocalZone = (0, import_react57.useCallback)(
+  const lastMeasureRef = (0, import_react59.useRef)(0);
+  const ctx = (0, import_react59.useContext)(dropZoneContext);
+  const [localZones, setLocalZones] = (0, import_react59.useState)({});
+  const registerLocalZone = (0, import_react59.useCallback)(
     (zoneCompound2, active) => {
       ctx?.registerLocalZone?.(zoneCompound2, active);
       setLocalZones((obj) => ({
@@ -8832,7 +9228,7 @@ var DraggableComponent = ({
     },
     [setLocalZones, ctx]
   );
-  const unregisterLocalZone = (0, import_react57.useCallback)(
+  const unregisterLocalZone = (0, import_react59.useCallback)(
     (zoneCompound2) => {
       ctx?.unregisterLocalZone?.(zoneCompound2);
       setLocalZones((obj) => {
@@ -8853,9 +9249,9 @@ var DraggableComponent = ({
       return s.permissions.getPermissions({ item });
     })
   );
-  const zoneStore = (0, import_react57.useContext)(ZoneStoreContext);
-  const [dragAxis, setDragAxis] = (0, import_react57.useState)(userDragAxis || autoDragAxis);
-  const dynamicCollisionDetector = (0, import_react57.useMemo)(
+  const zoneStore = (0, import_react59.useContext)(ZoneStoreContext);
+  const [dragAxis, setDragAxis] = (0, import_react59.useState)(userDragAxis || autoDragAxis);
+  const dynamicCollisionDetector = (0, import_react59.useMemo)(
     () => createDynamicCollisionDetector(dragAxis),
     [dragAxis]
   );
@@ -8887,7 +9283,7 @@ var DraggableComponent = ({
     },
     feedback: "clone"
   });
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     const isEnabled = zoneStore.getState().enabledIndex[zoneCompound];
     sortable.droppable.disabled = !isEnabled;
     sortable.draggable.disabled = !permissions.drag;
@@ -8903,9 +9299,9 @@ var DraggableComponent = ({
     }
     return cleanup;
   }, [permissions.drag, zoneCompound, sortable.draggable, sortable.droppable, zoneStore]);
-  const [, setRerender] = (0, import_react57.useState)(0);
-  const ref = (0, import_react57.useRef)(null);
-  const refSetter = (0, import_react57.useCallback)(
+  const [, setRerender] = (0, import_react59.useState)(0);
+  const ref = (0, import_react59.useRef)(null);
+  const refSetter = (0, import_react59.useCallback)(
     (el) => {
       sortableRef(el);
       if (ref.current !== el) {
@@ -8918,13 +9314,13 @@ var DraggableComponent = ({
     },
     [itemRef, sortableRef]
   );
-  const [portalEl, setPortalEl] = (0, import_react57.useState)();
-  (0, import_react57.useEffect)(() => {
+  const [portalEl, setPortalEl] = (0, import_react59.useState)();
+  (0, import_react59.useEffect)(() => {
     setPortalEl(
       iframe.enabled ? ref.current?.ownerDocument.body : ref.current?.closest("[data-credbuild-preview]") ?? document.body
     );
   }, [iframe.enabled]);
-  const getStyle = (0, import_react57.useCallback)(() => {
+  const getStyle = (0, import_react59.useCallback)(() => {
     if (!ref.current) return;
     const el = ref.current;
     const rect = el.getBoundingClientRect();
@@ -8955,23 +9351,23 @@ var DraggableComponent = ({
     };
     return style2;
   }, [iframe.enabled]);
-  const [style, setStyle] = (0, import_react57.useState)();
-  const lastRectRef = (0, import_react57.useRef)(null);
-  const syncRafRef = (0, import_react57.useRef)(null);
-  const sync = (0, import_react57.useCallback)(() => {
+  const [style, setStyle] = (0, import_react59.useState)();
+  const lastRectRef = (0, import_react59.useRef)(null);
+  const syncRafRef = (0, import_react59.useRef)(null);
+  const sync = (0, import_react59.useCallback)(() => {
     setStyle(getStyle());
     if (itemRef) {
       assignRefs([itemRef], ref.current);
     }
   }, [getStyle, itemRef]);
-  const scheduleSync = (0, import_react57.useCallback)(() => {
+  const scheduleSync = (0, import_react59.useCallback)(() => {
     if (syncRafRef.current != null) return;
     syncRafRef.current = requestAnimationFrame(() => {
       syncRafRef.current = null;
       sync();
     });
   }, [sync]);
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     return () => {
       if (syncRafRef.current != null) {
         cancelAnimationFrame(syncRafRef.current);
@@ -8979,7 +9375,7 @@ var DraggableComponent = ({
       }
     };
   }, []);
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (ref.current) {
       const observer = new ResizeObserver(() => {
         scheduleSync();
@@ -8992,37 +9388,37 @@ var DraggableComponent = ({
   }, [scheduleSync, itemRef]);
   const registerNode = useAppStore((s) => s.nodes.registerNode);
   const unregisterNode = useAppStore((s) => s.nodes.unregisterNode);
-  const hideOverlay = (0, import_react57.useCallback)(() => {
+  const hideOverlay = (0, import_react59.useCallback)(() => {
     setIsVisible(false);
   }, []);
-  const showOverlay = (0, import_react57.useCallback)(() => {
+  const showOverlay = (0, import_react59.useCallback)(() => {
     setIsVisible(true);
   }, []);
-  const nodeHandleRef = (0, import_react57.useRef)({
+  const nodeHandleRef = (0, import_react59.useRef)({
     sync: () => null,
     hideOverlay: () => null,
     showOverlay: () => null
   });
-  (0, import_react57.useLayoutEffect)(() => {
+  (0, import_react59.useLayoutEffect)(() => {
     nodeHandleRef.current.sync = sync;
     nodeHandleRef.current.hideOverlay = hideOverlay;
     nodeHandleRef.current.showOverlay = showOverlay;
   }, [hideOverlay, showOverlay, sync]);
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     registerNode(id, nodeHandleRef.current);
     return () => {
       unregisterNode(id);
     };
   }, [id, registerNode, unregisterNode]);
-  const CustomActionBar = (0, import_react57.useMemo)(
+  const CustomActionBar = (0, import_react59.useMemo)(
     () => overrides.actionBar || DefaultActionBar,
     [overrides.actionBar]
   );
-  const CustomOverlay = (0, import_react57.useMemo)(
+  const CustomOverlay = (0, import_react59.useMemo)(
     () => overrides.componentOverlay || DefaultOverlay,
     [overrides.componentOverlay]
   );
-  const onClick = (0, import_react57.useCallback)(
+  const onClick = (0, import_react59.useCallback)(
     (e) => {
       const userIsDragging = !!zoneStore.getState().draggedItem;
       if (userIsDragging) {
@@ -9051,7 +9447,7 @@ var DraggableComponent = ({
     [index, zoneCompound, isSelected, _experimentalFullScreenCanvas, dispatch, zoneStore]
   );
   const appStore = useAppStoreApi();
-  const onSelectParent = (0, import_react57.useCallback)(() => {
+  const onSelectParent = (0, import_react59.useCallback)(() => {
     const { nodes, zones } = appStore.getState().state.indexes;
     const node = nodes[id];
     const parentNode = node?.parentId ? nodes[node?.parentId] : null;
@@ -9072,26 +9468,26 @@ var DraggableComponent = ({
       }
     });
   }, [appStore, dispatch, id]);
-  const onDuplicate = (0, import_react57.useCallback)(() => {
+  const onDuplicate = (0, import_react59.useCallback)(() => {
     dispatch({
       type: "duplicate",
       sourceIndex: index,
       sourceZone: zoneCompound
     });
   }, [index, zoneCompound, dispatch]);
-  const onDelete = (0, import_react57.useCallback)(() => {
+  const onDelete = (0, import_react59.useCallback)(() => {
     dispatch({
       type: "remove",
       index,
       zone: zoneCompound
     });
   }, [index, zoneCompound, dispatch]);
-  const [hover, setHover] = (0, import_react57.useState)(false);
+  const [hover, setHover] = (0, import_react59.useState)(false);
   const indicativeHover = useContextStore(
     ZoneStoreContext,
     (s) => s.hoveringComponent === id
   );
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (!ref.current) {
       return;
     }
@@ -9138,10 +9534,10 @@ var DraggableComponent = ({
     zoneStore,
     id
   ]);
-  const [isVisible, setIsVisible] = (0, import_react57.useState)(false);
-  const [dragFinished, setDragFinished] = (0, import_react57.useState)(true);
-  const [_, startTransition] = (0, import_react57.useTransition)();
-  (0, import_react57.useEffect)(() => {
+  const [isVisible, setIsVisible] = (0, import_react59.useState)(false);
+  const [dragFinished, setDragFinished] = (0, import_react59.useState)(true);
+  const [_, startTransition] = (0, import_react59.useTransition)();
+  (0, import_react59.useEffect)(() => {
     startTransition(() => {
       if (hover || indicativeHover || isSelected) {
         scheduleSync();
@@ -9152,9 +9548,9 @@ var DraggableComponent = ({
       }
     });
   }, [hover, indicativeHover, isSelected, iframe, scheduleSync]);
-  const [thisWasDragging, setThisWasDragging] = (0, import_react57.useState)(false);
+  const [thisWasDragging, setThisWasDragging] = (0, import_react59.useState)(false);
   const onDragFinished = useOnDragFinished(
-    (0, import_react57.useCallback)(
+    (0, import_react59.useCallback)(
       (finished) => {
         if (finished) {
           startTransition(() => {
@@ -9168,15 +9564,15 @@ var DraggableComponent = ({
       [sync, startTransition]
     )
   );
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (thisIsDragging) {
       setThisWasDragging(true);
     }
   }, [thisIsDragging]);
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (thisWasDragging) return onDragFinished();
   }, [thisWasDragging, onDragFinished]);
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (!dragFinished || !(isSelected || thisIsDragging)) return;
     const el = ref.current;
     if (!el) return;
@@ -9213,7 +9609,7 @@ var DraggableComponent = ({
       cancelAnimationFrame(frame);
     };
   }, [dragFinished, isSelected, thisIsDragging, scheduleSync]);
-  const syncActionsPosition = (0, import_react57.useCallback)(
+  const syncActionsPosition = (0, import_react59.useCallback)(
     (el) => {
       if (el) {
         const view = el.ownerDocument.defaultView;
@@ -9238,7 +9634,7 @@ var DraggableComponent = ({
     },
     []
   );
-  (0, import_react57.useEffect)(() => {
+  (0, import_react59.useEffect)(() => {
     if (userDragAxis) {
       setDragAxis(userDragAxis);
       return;
@@ -9252,11 +9648,11 @@ var DraggableComponent = ({
     }
     setDragAxis(autoDragAxis);
   }, [ref, userDragAxis, autoDragAxis]);
-  const parentAction = (0, import_react57.useMemo)(
-    () => ctx?.areaId && ctx?.areaId !== "root" && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Action, { onClick: onSelectParent, label: "Select parent", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(CornerLeftUp, { size: 16 }) }),
+  const parentAction = (0, import_react59.useMemo)(
+    () => ctx?.areaId && ctx?.areaId !== "root" && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Action, { onClick: onSelectParent, label: "Select parent", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(CornerLeftUp, { size: 16 }) }),
     [ctx?.areaId, onSelectParent]
   );
-  const nextContextValue = (0, import_react57.useMemo)(
+  const nextContextValue = (0, import_react59.useMemo)(
     () => ({
       ...ctx,
       areaId: id,
@@ -9280,9 +9676,9 @@ var DraggableComponent = ({
     (s) => s.currentRichText?.inlineComponentId === id ? s.currentRichText : null
   );
   const hasNormalActions = permissions.duplicate || permissions.delete;
-  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(DropZoneProvider, { value: nextContextValue, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(DropZoneProvider, { value: nextContextValue, children: [
     dragFinished && isVisible && (0, import_react_dom2.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
         "div",
         {
           className: getClassName22({
@@ -9294,15 +9690,15 @@ var DraggableComponent = ({
           "data-credbuild-overlay": true,
           children: [
             debug,
-            isLoading && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: getClassName22("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Loader, {}) }),
-            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            isLoading && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: getClassName22("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Loader, {}) }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 className: getClassName22("actionsOverlay"),
                 style: {
                   top: actionsOverlayTop / zoom
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "div",
                   {
                     className: getClassName22("actions"),
@@ -9314,14 +9710,14 @@ var DraggableComponent = ({
                       paddingRight: actionsSide
                     },
                     ref: syncActionsPosition,
-                    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                       CustomActionBar,
                       {
                         parentAction,
                         label: DEBUG2 ? id : label,
                         children: [
-                          richText && /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(import_jsx_runtime58.Fragment, { children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                          richText && /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_jsx_runtime61.Fragment, { children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                               LoadedRichTextMenu,
                               {
                                 editor: richText.editor,
@@ -9330,10 +9726,10 @@ var DraggableComponent = ({
                                 readOnly: false
                               }
                             ),
-                            hasNormalActions && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Separator, {})
+                            hasNormalActions && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Separator, {})
                           ] }),
-                          permissions.duplicate && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Action, { onClick: onDuplicate, label: "Duplicate", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Copy, { size: 16 }) }),
-                          permissions.delete && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ActionBar.Action, { onClick: onDelete, label: "Delete", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Trash, { size: 16 }) })
+                          permissions.duplicate && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Action, { onClick: onDuplicate, label: "Duplicate", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Copy, { size: 16 }) }),
+                          permissions.delete && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ActionBar.Action, { onClick: onDelete, label: "Delete", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Trash, { size: 16 }) })
                         ]
                       }
                     )
@@ -9341,14 +9737,14 @@ var DraggableComponent = ({
                 )
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: getClassName22("overlayWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: getClassName22("overlayWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               CustomOverlay,
               {
                 componentId: id,
                 componentType,
                 hover,
                 isSelected,
-                children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: getClassName22("overlay") })
+                children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: getClassName22("overlay") })
               }
             ) })
           ]
@@ -9371,12 +9767,12 @@ var styles_module_default16 = { "DropZone": "_DropZone_1vmgt_1", "DropZone--hasC
 
 // components/DropZone/index.tsx
 init_store2();
-var import_react74 = require("@dnd-kit/react");
+var import_react76 = require("@dnd-kit/react");
 var import_collision2 = require("@dnd-kit/collision");
 
 // components/DropZone/lib/use-min-empty-height.ts
 init_react_import();
-var import_react58 = require("react");
+var import_react60 = require("react");
 init_use_context_store();
 init_store2();
 var getNumItems = (appStore, zoneCompound) => appStore.getState().state.indexes.zones[zoneCompound].contentIds.length;
@@ -9386,17 +9782,17 @@ var useMinEmptyHeight = ({
   ref
 }) => {
   const appStore = useAppStoreApi();
-  const [prevHeight, setPrevHeight] = (0, import_react58.useState)(0);
-  const [isAnimating, setIsAnimating] = (0, import_react58.useState)(false);
+  const [prevHeight, setPrevHeight] = (0, import_react60.useState)(0);
+  const [isAnimating, setIsAnimating] = (0, import_react60.useState)(false);
   const { draggedItem, isZone } = useContextStore(ZoneStoreContext, (s) => {
     return {
       draggedItem: s.draggedItem?.data.zone === zoneCompound ? s.draggedItem : null,
       isZone: s.draggedItem?.data.zone === zoneCompound
     };
   });
-  const numItems = (0, import_react58.useRef)(0);
+  const numItems = (0, import_react60.useRef)(0);
   const onDragFinished = useOnDragFinished(
-    (0, import_react58.useCallback)(
+    (0, import_react60.useCallback)(
       (finished) => {
         if (finished) {
           const newNumItems = getNumItems(appStore, zoneCompound);
@@ -9425,7 +9821,7 @@ var useMinEmptyHeight = ({
       [appStore, zoneCompound]
     )
   );
-  (0, import_react58.useEffect)(() => {
+  (0, import_react60.useEffect)(() => {
     if (draggedItem && ref.current) {
       if (isZone) {
         const rect = ref.current.getBoundingClientRect();
@@ -9442,15 +9838,15 @@ var useMinEmptyHeight = ({
 
 // components/DropZone/lib/use-content-with-preview.ts
 init_react_import();
-var import_react61 = require("react");
+var import_react63 = require("react");
 
 // lib/dnd/use-rendered-callback.ts
 init_react_import();
-var import_react59 = require("@dnd-kit/react");
-var import_react60 = require("react");
+var import_react61 = require("@dnd-kit/react");
+var import_react62 = require("react");
 function useRenderedCallback(callback, _deps = []) {
-  const manager = (0, import_react59.useDragDropManager)();
-  return (0, import_react60.useCallback)(
+  const manager = (0, import_react61.useDragDropManager)();
+  return (0, import_react62.useCallback)(
     async (...args) => {
       await manager?.renderer.rendering;
       return callback(...args);
@@ -9464,18 +9860,18 @@ init_insert();
 init_use_context_store();
 init_store2();
 var useContentIdsWithPreview = (contentIds, zoneCompound) => {
-  const zoneStore = (0, import_react61.useContext)(ZoneStoreContext);
+  const zoneStore = (0, import_react63.useContext)(ZoneStoreContext);
   const preview = useContextStore(
     ZoneStoreContext,
     (s) => s.previewIndex[zoneCompound]
   );
   const isDragging = useAppStore((s) => s.state.ui.isDragging);
-  const [contentIdsWithPreview, setContentIdsWithPreview] = (0, import_react61.useState)(contentIds);
-  const [localPreview, setLocalPreview] = (0, import_react61.useState)(
+  const [contentIdsWithPreview, setContentIdsWithPreview] = (0, import_react63.useState)(contentIds);
+  const [localPreview, setLocalPreview] = (0, import_react63.useState)(
     preview
   );
   const updateContent = useRenderedCallback(
-    (0, import_react61.useCallback)(
+    (0, import_react63.useCallback)(
       (contentIds2, preview2, isDragging2, draggedItemId, previewExists) => {
         if (isDragging2 && !previewExists) {
           return;
@@ -9508,7 +9904,7 @@ var useContentIdsWithPreview = (contentIds, zoneCompound) => {
       []
     )
   );
-  (0, import_react61.useEffect)(() => {
+  (0, import_react63.useEffect)(() => {
     const s = zoneStore.getState();
     const draggedItemId = s.draggedItem?.id;
     const previewExists = Object.keys(s.previewIndex || {}).length > 0;
@@ -9525,17 +9921,17 @@ var useContentIdsWithPreview = (contentIds, zoneCompound) => {
 
 // components/DropZone/lib/use-drag-axis.ts
 init_react_import();
-var import_react62 = require("react");
+var import_react64 = require("react");
 init_store2();
 var GRID_DRAG_AXIS = "dynamic";
 var FLEX_ROW_DRAG_AXIS = "x";
 var DEFAULT_DRAG_AXIS = "y";
 var useDragAxis = (ref, collisionAxis) => {
   const status = useAppStore((s) => s.status);
-  const [dragAxis, setDragAxis] = (0, import_react62.useState)(
+  const [dragAxis, setDragAxis] = (0, import_react64.useState)(
     collisionAxis || DEFAULT_DRAG_AXIS
   );
-  const calculateDragAxis = (0, import_react62.useCallback)(() => {
+  const calculateDragAxis = (0, import_react64.useCallback)(() => {
     if (ref.current) {
       const computedStyle = window.getComputedStyle(ref.current);
       if (computedStyle.display === "grid") {
@@ -9547,7 +9943,7 @@ var useDragAxis = (ref, collisionAxis) => {
       }
     }
   }, [ref]);
-  (0, import_react62.useEffect)(() => {
+  (0, import_react64.useEffect)(() => {
     const onViewportChange = () => {
       calculateDragAxis();
     };
@@ -9556,7 +9952,7 @@ var useDragAxis = (ref, collisionAxis) => {
       window.removeEventListener("viewportchange", onViewportChange);
     };
   }, [calculateDragAxis]);
-  (0, import_react62.useEffect)(calculateDragAxis, [status, collisionAxis, calculateDragAxis]);
+  (0, import_react64.useEffect)(calculateDragAxis, [status, collisionAxis, calculateDragAxis]);
   return [dragAxis, calculateDragAxis];
 };
 
@@ -9566,8 +9962,8 @@ var import_shallow6 = require("zustand/react/shallow");
 
 // components/Render/context.tsx
 init_react_import();
-var import_react63 = __toESM(require("react"));
-var renderContext = import_react63.default.createContext({
+var import_react65 = __toESM(require("react"));
+var renderContext = import_react65.default.createContext({
   config: { components: {} },
   data: { root: {}, content: [] },
   metadata: {}
@@ -9578,7 +9974,7 @@ init_react_import();
 
 // lib/field-transforms/use-field-transforms.tsx
 init_react_import();
-var import_react64 = require("react");
+var import_react66 = require("react");
 init_map_fields();
 
 // lib/field-transforms/build-mappers.ts
@@ -9607,14 +10003,14 @@ function buildMappers(transforms, readOnly, forceReadOnly) {
 
 // lib/field-transforms/use-field-transforms.tsx
 function useFieldTransforms(config, item, transforms, readOnly, forceReadOnly) {
-  const mappers = (0, import_react64.useMemo)(
+  const mappers = (0, import_react66.useMemo)(
     () => buildMappers(transforms, readOnly, forceReadOnly),
     [transforms, readOnly, forceReadOnly]
   );
-  const transformedProps = (0, import_react64.useMemo)(() => {
+  const transformedProps = (0, import_react66.useMemo)(() => {
     return mapFields(item, mappers, config).props;
   }, [config, item, mappers]);
-  const mergedProps = (0, import_react64.useMemo)(
+  const mergedProps = (0, import_react66.useMemo)(
     () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
@@ -9655,20 +10051,20 @@ init_store2();
 
 // components/SlotRender/server.tsx
 init_react_import();
-var import_react67 = require("react");
+var import_react69 = require("react");
 
 // components/RichTextEditor/lib/use-richtext-props.tsx
 init_react_import();
-var import_react66 = require("react");
+var import_react68 = require("react");
 
 // components/RichTextEditor/components/RenderFallback.tsx
 init_react_import();
 init_get_class_name_factory();
 init_styles_module10();
-var import_jsx_runtime59 = require("react/jsx-runtime");
+var import_jsx_runtime62 = require("react/jsx-runtime");
 var getClassName23 = get_class_name_factory_default("RichTextEditor", styles_module_default10);
 function RichTextRenderFallback({ content }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: getClassName23(), children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: getClassName23(), children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
     "div",
     {
       className: "rich-text",
@@ -9700,7 +10096,7 @@ var mapDeep = (source, path, render) => {
 };
 
 // components/RichTextEditor/lib/use-richtext-props.tsx
-var import_jsx_runtime61 = require("react/jsx-runtime");
+var import_jsx_runtime64 = require("react/jsx-runtime");
 var findAllRichtextKeys = (fields, path = []) => {
   if (!fields) return [];
   const result = [];
@@ -9722,21 +10118,21 @@ var findAllRichtextKeys = (fields, path = []) => {
   return result;
 };
 function useRichtextProps(fields, props) {
-  const richtextKeys = (0, import_react66.useMemo)(() => findAllRichtextKeys(fields), [fields]);
-  const richtextProps = (0, import_react66.useMemo)(() => {
+  const richtextKeys = (0, import_react68.useMemo)(() => findAllRichtextKeys(fields), [fields]);
+  const richtextProps = (0, import_react68.useMemo)(() => {
     if (!richtextKeys?.length) return {};
-    const RichTextRender3 = (0, import_react66.lazy)(
+    const RichTextRender3 = (0, import_react68.lazy)(
       () => Promise.resolve().then(() => (init_Render(), Render_exports)).then((m) => ({
         default: m.RichTextRender
       }))
     );
     let result = { ...props };
     for (const { path, field } of richtextKeys) {
-      result = mapDeep(result, path, (content) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
-        import_react66.Suspense,
+      result = mapDeep(result, path, (content) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+        import_react68.Suspense,
         {
-          fallback: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(RichTextRenderFallback, { content }),
-          children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(RichTextRender3, { content, field })
+          fallback: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RichTextRenderFallback, { content }),
+          children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RichTextRender3, { content, field })
         },
         generateId()
       ));
@@ -9747,17 +10143,17 @@ function useRichtextProps(fields, props) {
 }
 
 // components/SlotRender/server.tsx
-var import_jsx_runtime62 = require("react/jsx-runtime");
-var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SlotRender, { ...props });
+var import_jsx_runtime65 = require("react/jsx-runtime");
+var SlotRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SlotRender, { ...props });
 var Item2 = ({
   config,
   item,
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
   const richtextProps = useRichtextProps(Component.fields, props);
-  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
     Component.render,
     {
       ...props,
@@ -9769,14 +10165,14 @@ var Item2 = ({
     }
   );
 };
-var SlotRender = (0, import_react67.forwardRef)(
+var SlotRender = (0, import_react69.forwardRef)(
   function SlotRenderInternal({ className, style, content, config, metadata, as }, ref) {
     const El = as ?? "div";
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(El, { className, style, ref, children: content.map((item) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(El, { className, style, ref, children: content.map((item) => {
       if (!config.components[item.type]) {
         return null;
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         Item2,
         {
           config,
@@ -9790,7 +10186,7 @@ var SlotRender = (0, import_react67.forwardRef)(
 );
 
 // components/SlotRender/index.tsx
-var import_jsx_runtime63 = require("react/jsx-runtime");
+var import_jsx_runtime66 = require("react/jsx-runtime");
 var ContextSlotRender = ({
   componentId,
   zone
@@ -9804,7 +10200,7 @@ var ContextSlotRender = ({
       return contentIds.map((contentId) => indexes.nodes[contentId].flatData);
     })
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
     SlotRenderPure,
     {
       content: slotContent,
@@ -9820,16 +10216,16 @@ init_flatten_node();
 
 // lib/field-transforms/use-field-transforms-tracked.tsx
 init_react_import();
-var import_react68 = require("react");
+var import_react70 = require("react");
 init_map_fields();
 function useFieldTransformsTracked(config, item, transforms, readOnly, forceReadOnly) {
-  const prevProps = (0, import_react68.useRef)(null);
-  const prevResult = (0, import_react68.useRef)(item.props);
-  const mappers = (0, import_react68.useMemo)(
+  const prevProps = (0, import_react70.useRef)(null);
+  const prevResult = (0, import_react70.useRef)(item.props);
+  const mappers = (0, import_react70.useMemo)(
     () => buildMappers(transforms, readOnly, forceReadOnly),
     [transforms, readOnly, forceReadOnly]
   );
-  const transformedProps = (0, import_react68.useMemo)(() => {
+  const transformedProps = (0, import_react70.useMemo)(() => {
     const changedProps = {};
     const componentConfig = item.type === "root" ? config.root : config.components?.[item.type];
     let changeIncludesSlot = false;
@@ -9854,7 +10250,7 @@ function useFieldTransformsTracked(config, item, transforms, readOnly, forceRead
     prevResult.current = { ...prevResult.current, ...mapped };
     return prevResult.current;
   }, [config, item, mappers]);
-  const mergedProps = (0, import_react68.useMemo)(
+  const mergedProps = (0, import_react70.useMemo)(
     () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
@@ -9866,7 +10262,7 @@ init_react_import();
 
 // components/InlineTextField/index.tsx
 init_react_import();
-var import_react69 = require("react");
+var import_react71 = require("react");
 
 // lib/overlay-portal/index.tsx
 init_react_import();
@@ -9938,7 +10334,7 @@ var getSelectorForId = (state, id) => {
 };
 
 // components/InlineTextField/index.tsx
-var import_jsx_runtime64 = require("react/jsx-runtime");
+var import_jsx_runtime67 = require("react/jsx-runtime");
 var getClassName25 = get_class_name_factory_default("InlineTextField", styles_module_default17);
 var InlineTextFieldInternal = ({
   propPath,
@@ -9947,10 +10343,10 @@ var InlineTextFieldInternal = ({
   isReadOnly,
   opts = {}
 }) => {
-  const ref = (0, import_react69.useRef)(null);
+  const ref = (0, import_react71.useRef)(null);
   const appStoreApi = useAppStoreApi();
   const disableLineBreaks = opts.disableLineBreaks ?? false;
-  (0, import_react69.useEffect)(() => {
+  (0, import_react71.useEffect)(() => {
     const appStore = appStoreApi.getState();
     const data = appStore.state.indexes.nodes[componentId].data;
     const componentConfig = appStore.getComponentConfig(data.type);
@@ -9995,9 +10391,9 @@ var InlineTextFieldInternal = ({
       };
     }
   }, [appStoreApi, ref, value, disableLineBreaks, componentId, propPath]);
-  const [isHovering, setIsHovering] = (0, import_react69.useState)(false);
-  const [isFocused, setIsFocused] = (0, import_react69.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+  const [isHovering, setIsHovering] = (0, import_react71.useState)(false);
+  const [isFocused, setIsFocused] = (0, import_react71.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
     "span",
     {
       className: getClassName25(),
@@ -10033,14 +10429,14 @@ var InlineTextFieldInternal = ({
     }
   );
 };
-var InlineTextField = (0, import_react69.memo)(InlineTextFieldInternal);
+var InlineTextField = (0, import_react71.memo)(InlineTextFieldInternal);
 
 // lib/field-transforms/default-transforms/inline-text-transform.tsx
-var import_jsx_runtime65 = require("react/jsx-runtime");
+var import_jsx_runtime68 = require("react/jsx-runtime");
 var getInlineTextTransform = () => ({
   text: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         InlineTextField,
         {
           propPath,
@@ -10055,7 +10451,7 @@ var getInlineTextTransform = () => ({
   },
   textarea: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         InlineTextField,
         {
           propPath,
@@ -10069,7 +10465,7 @@ var getInlineTextTransform = () => ({
   },
   custom: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable && typeof value === "string") {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         InlineTextField,
         {
           propPath,
@@ -10088,19 +10484,19 @@ init_react_import();
 init_EditorFallback();
 init_store2();
 init_set_deep();
-var import_react70 = require("react");
-var import_jsx_runtime66 = require("react/jsx-runtime");
-var Editor3 = (0, import_react70.lazy)(
+var import_react72 = require("react");
+var import_jsx_runtime69 = require("react/jsx-runtime");
+var Editor3 = (0, import_react72.lazy)(
   () => Promise.resolve().then(() => (init_Editor(), Editor_exports)).then((m) => ({
     default: m.Editor
   }))
 );
-var RichTextRender2 = (0, import_react70.lazy)(
+var RichTextRender2 = (0, import_react72.lazy)(
   () => Promise.resolve().then(() => (init_Render(), Render_exports)).then((m) => ({
     default: m.RichTextRender
   }))
 );
-var InlineEditorWrapper = (0, import_react70.memo)(
+var InlineEditorWrapper = (0, import_react72.memo)(
   ({
     value,
     componentId,
@@ -10108,7 +10504,7 @@ var InlineEditorWrapper = (0, import_react70.memo)(
     field,
     id
   }) => {
-    const portalRef = (0, import_react70.useRef)(null);
+    const portalRef = (0, import_react72.useRef)(null);
     const appStoreApi = useAppStoreApi();
     const onClickHandler = (e) => {
       e.preventDefault();
@@ -10123,14 +10519,14 @@ var InlineEditorWrapper = (0, import_react70.memo)(
       );
       appStoreApi.getState().setUi({ itemSelector });
     };
-    (0, import_react70.useEffect)(() => {
+    (0, import_react72.useEffect)(() => {
       if (!portalRef.current) return;
       const cleanup = registerOverlayPortal(portalRef.current, {
         disableDragOnFocus: true
       });
       return () => cleanup?.();
     }, []);
-    const handleChange = (0, import_react70.useCallback)(
+    const handleChange = (0, import_react72.useCallback)(
       async (content, ui) => {
         const appStore = appStoreApi.getState();
         const node = appStore.state.indexes.nodes[componentId];
@@ -10153,7 +10549,7 @@ var InlineEditorWrapper = (0, import_react70.memo)(
       },
       [appStoreApi, componentId, propPath]
     );
-    const handleFocus = (0, import_react70.useCallback)(
+    const handleFocus = (0, import_react72.useCallback)(
       (editor) => {
         appStoreApi.setState({
           currentRichText: {
@@ -10168,7 +10564,7 @@ var InlineEditorWrapper = (0, import_react70.memo)(
       [field, componentId, appStoreApi, id]
     );
     if (!field.contentEditable)
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_react70.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(RichTextRenderFallback, { content: value }), children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(RichTextRender2, { content: value, field }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_react72.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(RichTextRenderFallback, { content: value }), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(RichTextRender2, { content: value, field }) });
     const editorProps = {
       content: value,
       onChange: handleChange,
@@ -10178,13 +10574,13 @@ var InlineEditorWrapper = (0, import_react70.memo)(
       id,
       name: propPath
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "div",
       {
         ref: portalRef,
         onClick: onClickHandler,
         onClickCapture: onClickCaptureHandler,
-        children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_react70.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Editor3, { ...editorProps }) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_react72.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Editor3, { ...editorProps }) })
       }
     );
   }
@@ -10194,10 +10590,10 @@ var getRichTextTransform = () => ({
   richtext: ({ value, componentId, field, propPath, isReadOnly }) => {
     const { contentEditable = true, tiptap } = field;
     if (contentEditable === false || isReadOnly) {
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(RichTextRender2, { content: value, field });
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(RichTextRender2, { content: value, field });
     }
     const id = `${componentId}_${field.type}_${propPath}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       InlineEditorWrapper,
       {
         value,
@@ -10214,7 +10610,7 @@ var getRichTextTransform = () => ({
 // components/MemoizeComponent/index.tsx
 init_react_import();
 var import_fast_equals3 = require("fast-equals");
-var import_react71 = require("react");
+var import_react73 = require("react");
 
 // lib/shallow-equal.ts
 init_react_import();
@@ -10241,14 +10637,14 @@ function shallowEqual(obj1, obj2, keysToIgnore = []) {
 }
 
 // components/MemoizeComponent/index.tsx
-var import_jsx_runtime67 = require("react/jsx-runtime");
+var import_jsx_runtime70 = require("react/jsx-runtime");
 var RenderComponent = ({
   Component,
   componentProps: renderProps
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Component, { ...renderProps });
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Component, { ...renderProps });
 };
-var MemoizeComponent = (0, import_react71.memo)(RenderComponent, (prev, next) => {
+var MemoizeComponent = (0, import_react73.memo)(RenderComponent, (prev, next) => {
   let credbuildEquals = true;
   if ("credbuild" in prev.componentProps && "credbuild" in next.componentProps) {
     credbuildEquals = (0, import_fast_equals3.deepEqual)(prev.componentProps.credbuild, next.componentProps.credbuild);
@@ -10258,7 +10654,7 @@ var MemoizeComponent = (0, import_react71.memo)(RenderComponent, (prev, next) =>
 
 // components/DropZone/VirtualizedDropZone.tsx
 init_react_import();
-var import_react72 = require("react");
+var import_react74 = require("react");
 init_store2();
 var import_react_virtual = require("@tanstack/react-virtual");
 init_use_context_store();
@@ -10275,7 +10671,7 @@ var getFrame = () => {
 };
 
 // components/DropZone/VirtualizedDropZone.tsx
-var import_jsx_runtime68 = require("react/jsx-runtime");
+var import_jsx_runtime71 = require("react/jsx-runtime");
 var ROOT_ZONE_VIRTUALIZATION_OVERSCAN = 5;
 var DEFAULT_VIRTUALIZED_ITEM_HEIGHT = 320;
 var measuredItemHeights = /* @__PURE__ */ new Map();
@@ -10293,7 +10689,7 @@ var VirtualizedDropZone = ({
 }) => {
   const selectedId = useAppStore((s) => s.selectedItem?.props.id ?? null);
   const frame = getFrame();
-  const zoneStore = (0, import_react72.useContext)(ZoneStoreContext);
+  const zoneStore = (0, import_react74.useContext)(ZoneStoreContext);
   const draggedItemId = useContextStore(ZoneStoreContext, (s) => {
     const draggedId = s.draggedItem?.id;
     return draggedId ? String(draggedId) : null;
@@ -10306,9 +10702,9 @@ var VirtualizedDropZone = ({
     return null;
   });
   const iframeWindow = frame?.defaultView;
-  const measureRefsRef = (0, import_react72.useRef)(/* @__PURE__ */ new Map());
+  const measureRefsRef = (0, import_react74.useRef)(/* @__PURE__ */ new Map());
   const appStoreApi = useAppStoreApi();
-  const resolveIndex = (0, import_react72.useCallback)(
+  const resolveIndex = (0, import_react74.useCallback)(
     (targetId) => {
       if (!targetId || targetId === "root") {
         return -1;
@@ -10332,7 +10728,7 @@ var VirtualizedDropZone = ({
     },
     [appStoreApi, contentIds]
   );
-  const pinnedIndexes = (0, import_react72.useMemo)(() => {
+  const pinnedIndexes = (0, import_react74.useMemo)(() => {
     const nextPinnedIndexes = /* @__PURE__ */ new Set();
     [selectedId, draggedItemId, dragTargetParentId].forEach((targetId) => {
       const currentIndex = resolveIndex(targetId);
@@ -10342,7 +10738,7 @@ var VirtualizedDropZone = ({
     });
     return Array.from(nextPinnedIndexes).sort((a, b) => a - b);
   }, [dragTargetParentId, draggedItemId, resolveIndex, selectedId]);
-  const rangeExtractor = (0, import_react72.useCallback)(
+  const rangeExtractor = (0, import_react74.useCallback)(
     (range) => {
       const indexes = (0, import_react_virtual.defaultRangeExtractor)(range);
       pinnedIndexes.forEach((index) => {
@@ -10367,7 +10763,7 @@ var VirtualizedDropZone = ({
     rangeExtractor,
     initialOffset: () => iframeWindow ? iframeWindow.scrollY : 0
   });
-  (0, import_react72.useEffect)(() => {
+  (0, import_react74.useEffect)(() => {
     zoneStore.getState().registerRootVirtualizer(zoneCompound, {
       resolveIndex: (targetId) => resolveIndex(targetId),
       virtualizer
@@ -10376,7 +10772,7 @@ var VirtualizedDropZone = ({
       zoneStore.getState().unregisterRootVirtualizer(zoneCompound);
     };
   }, [resolveIndex, virtualizer, zoneCompound, zoneStore]);
-  const getMeasureRef = (0, import_react72.useCallback)((componentId) => {
+  const getMeasureRef = (0, import_react74.useCallback)((componentId) => {
     const cachedRef = measureRefsRef.current.get(componentId);
     if (cachedRef) {
       return cachedRef;
@@ -10393,7 +10789,7 @@ var VirtualizedDropZone = ({
     measureRefsRef.current.set(componentId, measureRef);
     return measureRef;
   }, []);
-  (0, import_react72.useEffect)(() => {
+  (0, import_react74.useEffect)(() => {
     const validIds = new Set(contentIds);
     Array.from(measureRefsRef.current.keys()).forEach((componentId) => {
       if (!validIds.has(componentId)) {
@@ -10403,7 +10799,7 @@ var VirtualizedDropZone = ({
   }, [contentIds]);
   const virtualItems = virtualizer.getVirtualItems();
   const totalSize = virtualizer.getTotalSize();
-  const renderedItems = (0, import_react72.useMemo)(() => {
+  const renderedItems = (0, import_react74.useMemo)(() => {
     const items = [];
     let previousEnd = 0;
     let previousIndex = -1;
@@ -10413,7 +10809,7 @@ var VirtualizedDropZone = ({
       const gapSize = Math.max(virtualItem.start - previousEnd, 0);
       if (gapSize > 0) {
         items.push(
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
             "div",
             {
               style: { height: `${gapSize}px` }
@@ -10435,7 +10831,7 @@ var VirtualizedDropZone = ({
     const trailingGap = Math.max(totalSize - previousEnd, 0);
     if (trailingGap > 0) {
       items.push(
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
           "div",
           {
             style: { height: `${trailingGap}px` }
@@ -10446,11 +10842,11 @@ var VirtualizedDropZone = ({
     }
     return items;
   }, [totalSize, virtualItems, getMeasureRef, contentIds, renderItem]);
-  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: renderedItems });
+  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_jsx_runtime71.Fragment, { children: renderedItems });
 };
 
 // components/DropZone/index.tsx
-var import_jsx_runtime69 = (
+var import_jsx_runtime72 = (
   // Safe to use this since the HTML is set by the user
   require("react/jsx-runtime")
 );
@@ -10463,11 +10859,11 @@ var InsertPreview = ({
   override
 }) => {
   if (element) {
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { dangerouslySetInnerHTML: { __html: element.outerHTML } });
+    return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { dangerouslySetInnerHTML: { __html: element.outerHTML } });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DrawerItemInner, { name: label, children: override });
+  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DrawerItemInner, { name: label, children: override });
 };
-var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneEdit, { ...props });
+var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZoneEdit, { ...props });
 var DropZoneChild = ({
   zoneCompound,
   componentId,
@@ -10478,9 +10874,9 @@ var DropZoneChild = ({
   itemRef
 }) => {
   const metadata = useAppStore((s) => s.metadata);
-  const ctx = (0, import_react73.useContext)(dropZoneContext);
+  const ctx = (0, import_react75.useContext)(dropZoneContext);
   const { depth = 1 } = ctx ?? {};
-  const zoneStore = (0, import_react73.useContext)(ZoneStoreContext);
+  const zoneStore = (0, import_react75.useContext)(ZoneStoreContext);
   const nodeProps = useAppStore(
     (0, import_shallow6.useShallow)((s) => {
       return s.state.indexes.nodes[componentId]?.flatData.props;
@@ -10493,7 +10889,7 @@ var DropZoneChild = ({
     (0, import_shallow6.useShallow)((s) => s.state.indexes.nodes[componentId]?.data.readOnly)
   );
   const appStore = useAppStoreApi();
-  const item = (0, import_react73.useMemo)(() => {
+  const item = (0, import_react75.useMemo)(() => {
     if (nodeProps) {
       const expanded = expandNode({
         type: nodeType,
@@ -10515,7 +10911,7 @@ var DropZoneChild = ({
   const componentConfig = useAppStore(
     (s) => item?.type ? s.config.components[item.type] : null
   );
-  const credbuildProps = (0, import_react73.useMemo)(
+  const credbuildProps = (0, import_react75.useMemo)(
     () => ({
       renderDropZone: DropZoneEditPure,
       isEditing: true,
@@ -10532,7 +10928,7 @@ var DropZoneChild = ({
     (s) => s.selectedItem?.props.id === componentId || false
   );
   let label = componentConfig?.label ?? item?.type.toString() ?? "Component";
-  const defaultsProps = (0, import_react73.useMemo)(
+  const defaultsProps = (0, import_react75.useMemo)(
     () => ({
       ...componentConfig?.defaultProps,
       ...item?.props,
@@ -10542,16 +10938,16 @@ var DropZoneChild = ({
     }),
     [componentConfig?.defaultProps, item?.props, credbuildProps]
   );
-  const defaultedNode = (0, import_react73.useMemo)(
+  const defaultedNode = (0, import_react75.useMemo)(
     () => ({ type: item?.type ?? nodeType, props: defaultsProps }),
     [item?.type, nodeType, defaultsProps]
   );
   const config = useAppStore((s) => s.config);
   const plugins = useAppStore((s) => s.plugins);
   const userFieldTransforms = useAppStore((s) => s.fieldTransforms);
-  const combinedFieldTransforms = (0, import_react73.useMemo)(
+  const combinedFieldTransforms = (0, import_react75.useMemo)(
     () => ({
-      ...getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone })),
+      ...getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone })),
       ...getInlineTextTransform(),
       ...getRichTextTransform(),
       ...plugins.reduce(
@@ -10570,13 +10966,13 @@ var DropZoneChild = ({
     isLoading
   );
   if (!item) return;
-  const Render2 = componentConfig ? componentConfig.render : () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { padding: 48, textAlign: "center" }, children: [
+  const Render2 = componentConfig ? componentConfig.render : () => /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)("div", { style: { padding: 48, textAlign: "center" }, children: [
     "No configuration for ",
     item.type
   ] });
   let componentType = item.type;
   const isInserting = "previewType" in item ? item.previewType === "insert" : false;
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
     DraggableComponent,
     {
       id: componentId,
@@ -10593,7 +10989,7 @@ var DropZoneChild = ({
       itemRef,
       children: (dragRef) => {
         if (componentConfig?.inline && !isInserting) {
-          return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             MemoizeComponent,
             {
               Component: Render2,
@@ -10604,14 +11000,14 @@ var DropZoneChild = ({
             }
           );
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { ref: dragRef, children: isInserting ? /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { ref: dragRef, children: isInserting ? /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
           InsertPreview,
           {
             label,
             override: overrides.componentItem ?? overrides.drawerItem,
             element: "element" in item && item.element ? item.element : void 0
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        ) : /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
           MemoizeComponent,
           {
             Component: Render2,
@@ -10622,8 +11018,8 @@ var DropZoneChild = ({
     }
   );
 };
-var DropZoneChildMemo = (0, import_react73.memo)(DropZoneChild);
-var DropZoneEdit = (0, import_react73.forwardRef)(
+var DropZoneChildMemo = (0, import_react75.memo)(DropZoneChild);
+var DropZoneEdit = (0, import_react75.forwardRef)(
   function DropZoneEditInternal({
     zone,
     allow,
@@ -10634,7 +11030,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
     collisionAxis,
     as
   }, userRef) {
-    const ctx = (0, import_react73.useContext)(dropZoneContext);
+    const ctx = (0, import_react75.useContext)(dropZoneContext);
     const appStoreApi = useAppStoreApi();
     const {
       // These all need setting via context
@@ -10667,14 +11063,14 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
         return s.state.indexes.zones[zoneCompound]?.type;
       })
     );
-    (0, import_react73.useEffect)(() => {
+    (0, import_react75.useEffect)(() => {
       if (!zoneType || zoneType === "dropzone") {
         if (ctx?.registerZone) {
           ctx?.registerZone(zoneCompound);
         }
       }
     }, [zoneType, appStoreApi, ctx, zoneCompound]);
-    (0, import_react73.useEffect)(() => {
+    (0, import_react75.useEffect)(() => {
       if (zoneType === "dropzone") {
         if (zoneCompound !== rootDroppableId) {
           console.warn(
@@ -10683,11 +11079,11 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
         }
       }
     }, [zoneType, zoneCompound]);
-    const contentIds = (0, import_react73.useMemo)(() => {
+    const contentIds = (0, import_react75.useMemo)(() => {
       return zoneContentIds || [];
     }, [zoneContentIds]);
-    const ref = (0, import_react73.useRef)(null);
-    const acceptsTarget = (0, import_react73.useCallback)(
+    const ref = (0, import_react75.useRef)(null);
+    const acceptsTarget = (0, import_react75.useCallback)(
       (componentType) => {
         if (!componentType) {
           return true;
@@ -10723,7 +11119,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
       }
       return _isEnabled;
     });
-    (0, import_react73.useEffect)(() => {
+    (0, import_react75.useEffect)(() => {
       if (registerLocalZone) {
         registerLocalZone(zoneCompound, targetAccepted || isEnabled);
       }
@@ -10738,8 +11134,8 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
       zoneCompound
     );
     const isDropEnabled = isEnabled && (preview ? contentIdsWithPreview.length === 1 : contentIdsWithPreview.length === 0);
-    const zoneStore = (0, import_react73.useContext)(ZoneStoreContext);
-    (0, import_react73.useEffect)(() => {
+    const zoneStore = (0, import_react75.useContext)(ZoneStoreContext);
+    (0, import_react75.useEffect)(() => {
       const { enabledIndex } = zoneStore.getState();
       zoneStore.setState({
         enabledIndex: { ...enabledIndex, [zoneCompound]: isEnabled }
@@ -10758,7 +11154,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
         path: path || []
       }
     };
-    const { ref: dropRef } = (0, import_react74.useDroppable)(droppableConfig);
+    const { ref: dropRef } = (0, import_react76.useDroppable)(droppableConfig);
     const isAreaSelected = useAppStore(
       (s) => s?.selectedItem && areaId === s?.selectedItem.props.id
     );
@@ -10768,7 +11164,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
       userMinEmptyHeight,
       ref
     });
-    const setRefs = (0, import_react73.useCallback)(
+    const setRefs = (0, import_react75.useCallback)(
       (node) => {
         assignRefs([ref, dropRef, userRef], node);
       },
@@ -10780,7 +11176,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
     const El = as ?? "div";
     const isRootAreaZone = (areaId ?? rootAreaId) === rootAreaId && depth === 0;
     const shouldVirtualizeItems = _experimentalVirtualization && isRootAreaZone;
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
       El,
       {
         className: `${getClassName26({
@@ -10799,12 +11195,12 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
           "--min-empty-height": minEmptyHeight,
           backgroundColor: RENDER_DEBUG ? getRandomColor() : style?.backgroundColor
         },
-        children: shouldVirtualizeItems ? /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        children: shouldVirtualizeItems ? /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
           VirtualizedDropZone,
           {
             contentIds: contentIdsWithPreview,
             zoneCompound,
-            renderItem: (props) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+            renderItem: (props) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
               DropZoneChildMemo,
               {
                 zoneCompound,
@@ -10818,7 +11214,7 @@ var DropZoneEdit = (0, import_react73.forwardRef)(
               props.componentId
             )
           }
-        ) : contentIdsWithPreview.map((componentId, i) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        ) : contentIdsWithPreview.map((componentId, i) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
           DropZoneChildMemo,
           {
             zoneCompound,
@@ -10840,8 +11236,8 @@ var DropZoneRenderItem = ({
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
-  const nextContextValue = (0, import_react73.useMemo)(
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
+  const nextContextValue = (0, import_react75.useMemo)(
     () => ({
       areaId: props.id,
       depth: 1
@@ -10849,7 +11245,7 @@ var DropZoneRenderItem = ({
     [props]
   );
   const richtextProps = useRichtextProps(Component.fields, props);
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
     Component.render,
     {
       ...props,
@@ -10862,20 +11258,20 @@ var DropZoneRenderItem = ({
     }
   ) }, props.id);
 };
-var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneRender, { ...props });
-var DropZoneRender = (0, import_react73.forwardRef)(
+var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZoneRender, { ...props });
+var DropZoneRender = (0, import_react75.forwardRef)(
   function DropZoneRenderInternal({ className, style, zone, as }, ref) {
-    const ctx = (0, import_react73.useContext)(dropZoneContext);
+    const ctx = (0, import_react75.useContext)(dropZoneContext);
     const { areaId = "root" } = ctx || {};
-    const { config, data, metadata } = (0, import_react73.useContext)(renderContext);
+    const { config, data, metadata } = (0, import_react75.useContext)(renderContext);
     let zoneCompound = `${areaId}:${zone}`;
-    const content = (0, import_react73.useMemo)(() => {
+    const content = (0, import_react75.useMemo)(() => {
       if (zoneCompound !== rootDroppableId) {
         return setupZone(data, zoneCompound).zones[zoneCompound];
       }
       return data?.content || [];
     }, [data, zoneCompound]);
-    (0, import_react73.useEffect)(() => {
+    (0, import_react75.useEffect)(() => {
       if (!content) {
         if (ctx?.registerZone) {
           ctx?.registerZone(zoneCompound);
@@ -10886,10 +11282,10 @@ var DropZoneRender = (0, import_react73.forwardRef)(
     if (!data || !config) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(El, { className, style, ref, children: content.map((item) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(El, { className, style, ref, children: content.map((item) => {
       const Component = config.components[item.type];
       if (Component) {
-        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
           DropZoneRenderItem,
           {
             config,
@@ -10903,14 +11299,14 @@ var DropZoneRender = (0, import_react73.forwardRef)(
     }) });
   }
 );
-var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZone, { ...props });
-var DropZone = (0, import_react73.forwardRef)(
+var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZone, { ...props });
+var DropZone = (0, import_react75.forwardRef)(
   function DropZone2(props, ref) {
-    const ctx = (0, import_react73.useContext)(dropZoneContext);
+    const ctx = (0, import_react75.useContext)(dropZoneContext);
     if (ctx?.mode === "edit") {
-      return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_jsx_runtime69.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneEdit, { ...props, ref }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_jsx_runtime72.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZoneEdit, { ...props, ref }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_jsx_runtime69.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneRender, { ...props, ref }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_jsx_runtime72.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(DropZoneRender, { ...props, ref }) });
   }
 );
 
@@ -10919,7 +11315,7 @@ init_IconButton2();
 
 // components/CredBuild/index.tsx
 init_react_import();
-var import_react100 = require("react");
+var import_react102 = require("react");
 init_store2();
 
 // components/CredBuild/components/Fields/index.tsx
@@ -10936,15 +11332,15 @@ var styles_module_default18 = { "CredBuildFields": "_CredBuildFields_slc6y_1", "
 
 // components/CredBuild/components/Fields/index.tsx
 init_lib();
-var import_react75 = require("react");
+var import_react77 = require("react");
 init_fields();
 var import_shallow7 = require("zustand/react/shallow");
-var import_jsx_runtime70 = require("react/jsx-runtime");
+var import_jsx_runtime73 = require("react/jsx-runtime");
 var getClassName27 = get_class_name_factory_default("CredBuildFields", styles_module_default18);
 var DefaultFields = ({
   children
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_jsx_runtime70.Fragment, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_jsx_runtime73.Fragment, { children });
 };
 var createOnChange = (fieldName, appStore) => async (value, updatedUi) => {
   const { dispatch, state, selectedItem, resolveComponentData: resolveComponentData2 } = appStore.getState();
@@ -11005,15 +11401,15 @@ var FieldsChildInner = ({ fieldName }) => {
     })
   );
   const appStore = useAppStoreApi();
-  const onChange = (0, import_react75.useCallback)(
+  const onChange = (0, import_react77.useCallback)(
     async (value, updatedUi) => {
       createOnChange(fieldName, appStore)(value, updatedUi);
     },
     [fieldName, appStore]
   );
   const { visible = true } = field ?? {};
-  const fieldStore = (0, import_react75.useContext)(fieldContextStore.ctx);
-  (0, import_react75.useEffect)(() => {
+  const fieldStore = (0, import_react77.useContext)(fieldContextStore.ctx);
+  (0, import_react77.useEffect)(() => {
     return appStore.subscribe(
       (s) => {
         const data = s.getCurrentData();
@@ -11026,7 +11422,7 @@ var FieldsChildInner = ({ fieldName }) => {
   }, [appStore, fieldStore, fieldName]);
   if (!field || !id || !visible) return null;
   if (field.type === "slot") return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("field"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("div", { className: getClassName27("field"), children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
     AutoFieldPrivate2,
     {
       field,
@@ -11039,13 +11435,13 @@ var FieldsChildInner = ({ fieldName }) => {
 };
 var FieldsChild = ({ fieldName }) => {
   const appStore = useAppStoreApi();
-  const initialValue = (0, import_react75.useMemo)(() => {
+  const initialValue = (0, import_react77.useMemo)(() => {
     const value = appStore.getState().getCurrentData().props?.[fieldName];
     return { [fieldName]: value };
   }, [appStore, fieldName]);
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(fieldContextStore.Provider, { value: initialValue, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(FieldsChildInner, { fieldName }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(fieldContextStore.Provider, { value: initialValue, children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(FieldsChildInner, { fieldName }) });
 };
-var FieldsChildMemo = (0, import_react75.memo)(FieldsChild);
+var FieldsChildMemo = (0, import_react77.memo)(FieldsChild);
 var FieldsInternal = ({ wrapFields = true }) => {
   const overrides = useAppStore((s) => s.overrides);
   const componentResolving = useAppStore((s) => {
@@ -11066,8 +11462,8 @@ var FieldsInternal = ({ wrapFields = true }) => {
     })
   );
   const isLoading = fieldsLoading || componentResolving;
-  const Wrapper = (0, import_react75.useMemo)(() => overrides.fields || DefaultFields, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(
+  const Wrapper = (0, import_react77.useMemo)(() => overrides.fields || DefaultFields, [overrides]);
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(
     "form",
     {
       className: getClassName27({ wrapFields }),
@@ -11075,20 +11471,20 @@ var FieldsInternal = ({ wrapFields = true }) => {
         e.preventDefault();
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Wrapper, { isLoading, itemSelector, children: fieldNames.map((fieldName) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(FieldsChildMemo, { fieldName }, fieldName)) }),
-        isLoading && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("loadingOverlayInner"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Loader, { size: 16 }) }) })
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Wrapper, { isLoading, itemSelector, children: fieldNames.map((fieldName) => /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(FieldsChildMemo, { fieldName }, fieldName)) }),
+        isLoading && /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("div", { className: getClassName27("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("div", { className: getClassName27("loadingOverlayInner"), children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Loader, { size: 16 }) }) })
       ]
     }
   );
 };
-var Fields = (0, import_react75.memo)(FieldsInternal);
+var Fields = (0, import_react77.memo)(FieldsInternal);
 
 // components/CredBuild/components/Components/index.tsx
 init_react_import();
 
 // lib/use-component-list.tsx
 init_react_import();
-var import_react77 = require("react");
+var import_react79 = require("react");
 
 // components/ComponentList/index.tsx
 init_react_import();
@@ -11099,11 +11495,11 @@ var styles_module_default19 = { "ComponentList": "_ComponentList_1jl8i_1", "Comp
 
 // components/ComponentList/index.tsx
 init_get_class_name_factory();
-var import_react76 = require("react");
+var import_react78 = require("react");
 init_store2();
 init_lucide_react();
 var import_react_virtual2 = require("@tanstack/react-virtual");
-var import_jsx_runtime71 = require("react/jsx-runtime");
+var import_jsx_runtime74 = require("react/jsx-runtime");
 var getClassName28 = get_class_name_factory_default("ComponentList", styles_module_default19);
 var ComponentListItem = ({
   name,
@@ -11115,14 +11511,14 @@ var ComponentListItem = ({
       type: name
     }).insert
   );
-  (0, import_react76.useEffect)(() => {
+  (0, import_react78.useEffect)(() => {
     if (overrides.componentItem) {
       console.warn(
         "The `componentItem` override has been deprecated and renamed to `drawerItem`"
       );
     }
   }, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: overrides.componentItem ?? overrides.drawerItem });
+  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: overrides.componentItem ?? overrides.drawerItem });
 };
 var ComponentList = ({
   children,
@@ -11132,7 +11528,7 @@ var ComponentList = ({
   const config = useAppStore((s) => s.config);
   const setUi = useAppStore((s) => s.setUi);
   const componentList = useAppStore((s) => s.state.ui.componentList);
-  const parentRef = (0, import_react76.useRef)(null);
+  const parentRef = (0, import_react78.useRef)(null);
   const { expanded = true } = componentList[id] || {};
   const components = Object.keys(config.components);
   const virtualizer = (0, import_react_virtual2.useVirtualizer)({
@@ -11142,8 +11538,8 @@ var ComponentList = ({
     // Estimated height of each item
     overscan: 5
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { className: getClassName28({ isExpanded: expanded }), children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)("div", { className: getClassName28({ isExpanded: expanded }), children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(
       "button",
       {
         type: "button",
@@ -11158,20 +11554,20 @@ var ComponentList = ({
           }
         }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-            id.toLowerCase().includes("hero") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(LayoutTemplate, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("content") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(FileText, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("marketing") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Megaphone, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("layout") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Box, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("basic") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Settings, { size: 12, strokeWidth: 2.5 }),
-            id === "other" && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Layers, { size: 12, strokeWidth: 2.5 }),
-            /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { children: title?.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
+          /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+            id.toLowerCase().includes("hero") && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(LayoutTemplate, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("content") && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(FileText, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("marketing") && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Megaphone, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("layout") && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Box, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("basic") && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Settings, { size: 12, strokeWidth: 2.5 }),
+            id === "other" && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Layers, { size: 12, strokeWidth: 2.5 }),
+            /* @__PURE__ */ (0, import_jsx_runtime74.jsx)("div", { children: title?.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName28("titleIcon"), children: expanded ? /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChevronUp, { size: 12 }) : /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChevronDown, { size: 12 }) })
+          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)("div", { className: getClassName28("titleIcon"), children: expanded ? /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(ChevronUp, { size: 12 }) : /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(ChevronDown, { size: 12 }) })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
       "div",
       {
         ref: parentRef,
@@ -11181,7 +11577,7 @@ var ComponentList = ({
           overflowY: "auto",
           transition: "max-height 0.3s ease-in-out"
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
           "div",
           {
             style: {
@@ -11189,9 +11585,9 @@ var ComponentList = ({
               width: "100%",
               position: "relative"
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer, { children: children || virtualizer.getVirtualItems().map((virtualItem) => {
+            children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Drawer, { children: children || virtualizer.getVirtualItems().map((virtualItem) => {
               const componentKey = components[virtualItem.index];
-              return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+              return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
                 "div",
                 {
                   style: {
@@ -11202,7 +11598,7 @@ var ComponentList = ({
                     height: `${virtualItem.size}px`,
                     transform: `translateY(${virtualItem.start}px)`
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
                     ComponentListItem,
                     {
                       label: config.components[componentKey]["label"] ?? componentKey,
@@ -11223,12 +11619,12 @@ ComponentList.Item = ComponentListItem;
 
 // lib/use-component-list.tsx
 init_store2();
-var import_jsx_runtime72 = require("react/jsx-runtime");
+var import_jsx_runtime75 = require("react/jsx-runtime");
 var useComponentList = () => {
-  const [componentList, setComponentList] = (0, import_react77.useState)();
+  const [componentList, setComponentList] = (0, import_react79.useState)();
   const config = useAppStore((s) => s.config);
   const uiComponentList = useAppStore((s) => s.state.ui.componentList);
-  (0, import_react77.useEffect)(() => {
+  (0, import_react79.useEffect)(() => {
     if (Object.keys(uiComponentList).length > 0) {
       const matchedComponents = [];
       let _componentList;
@@ -11243,14 +11639,14 @@ var useComponentList = () => {
           if (category.visible === false) {
             return null;
           }
-          return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
             ComponentList,
             {
               id: categoryKey,
               title: category.title || categoryKey,
               children: category.components.map((componentName, i) => {
                 const componentConf = config.components[componentName] || {};
-                return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
+                return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
                   ComponentList.Item,
                   {
                     label: componentConf["label"] ?? componentName,
@@ -11270,14 +11666,14 @@ var useComponentList = () => {
       );
       if (remainingComponents.length > 0 && !uiComponentList.other?.components && uiComponentList.other?.visible !== false) {
         _componentList.push(
-          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
             ComponentList,
             {
               id: "other",
               title: uiComponentList.other?.title || "Other",
               children: remainingComponents.map((componentName, i) => {
                 const componentConf = config.components[componentName] || {};
-                return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
+                return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
                   ComponentList.Item,
                   {
                     name: componentName,
@@ -11300,12 +11696,12 @@ var useComponentList = () => {
 
 // components/CredBuild/components/Components/index.tsx
 init_store2();
-var import_react78 = require("react");
-var import_jsx_runtime73 = require("react/jsx-runtime");
+var import_react80 = require("react");
+var import_jsx_runtime76 = require("react/jsx-runtime");
 var Components = () => {
   const overrides = useAppStore((s) => s.overrides);
   const componentList = useComponentList();
-  const Wrapper = (0, import_react78.useMemo)(() => {
+  const Wrapper = (0, import_react80.useMemo)(() => {
     if (overrides.components) {
       console.warn(
         "The `components` override has been deprecated and renamed to `drawer`"
@@ -11313,21 +11709,21 @@ var Components = () => {
     }
     return overrides.components || overrides.drawer || "div";
   }, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Wrapper, { children: componentList ? componentList : /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(ComponentList, { id: "all" }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Wrapper, { children: componentList ? componentList : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ComponentList, { id: "all" }) });
 };
 
 // components/CredBuild/components/Preview/index.tsx
 init_react_import();
 init_root_droppable_id();
-var import_react81 = require("react");
+var import_react83 = require("react");
 init_store2();
 
 // components/AutoFrame/index.tsx
 init_react_import();
-var import_react79 = require("react");
+var import_react81 = require("react");
 var import_object_hash = __toESM(require("object-hash"));
 var import_react_dom3 = require("react-dom");
-var import_jsx_runtime74 = require("react/jsx-runtime");
+var import_jsx_runtime77 = require("react/jsx-runtime");
 var styleSelector = 'style, link[rel="stylesheet"]';
 var collectStyles = (doc) => {
   const collected = [];
@@ -11377,7 +11773,7 @@ var CopyHostStyles = ({
   onStylesLoaded = () => null
 }) => {
   const { document: doc, window: win } = useFrame();
-  (0, import_react79.useEffect)(() => {
+  (0, import_react81.useEffect)(() => {
     if (!win || !doc) {
       return () => {
       };
@@ -11541,10 +11937,10 @@ var CopyHostStyles = ({
       observer.disconnect();
     };
   }, [debug, doc, onStylesLoaded, win]);
-  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_jsx_runtime74.Fragment, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_jsx_runtime77.Fragment, { children });
 };
-var autoFrameContext = (0, import_react79.createContext)({});
-var useFrame = () => (0, import_react79.useContext)(autoFrameContext);
+var autoFrameContext = (0, import_react81.createContext)({});
+var useFrame = () => (0, import_react81.useContext)(autoFrameContext);
 function AutoFrame({
   children,
   className,
@@ -11557,20 +11953,20 @@ function AutoFrame({
   frameRef,
   ...props
 }) {
-  const [loaded, setLoaded] = (0, import_react79.useState)(false);
-  const [ctx, setCtx] = (0, import_react79.useState)({});
-  const [mountTarget, setMountTarget] = (0, import_react79.useState)();
-  const [stylesLoaded, setStylesLoaded] = (0, import_react79.useState)(false);
-  const handleStylesLoaded = (0, import_react79.useCallback)(() => {
+  const [loaded, setLoaded] = (0, import_react81.useState)(false);
+  const [ctx, setCtx] = (0, import_react81.useState)({});
+  const [mountTarget, setMountTarget] = (0, import_react81.useState)();
+  const [stylesLoaded, setStylesLoaded] = (0, import_react81.useState)(false);
+  const handleStylesLoaded = (0, import_react81.useCallback)(() => {
     setStylesLoaded(true);
   }, []);
-  const onReadyRef = (0, import_react79.useRef)(onReady);
-  const onNotReadyRef = (0, import_react79.useRef)(onNotReady);
-  (0, import_react79.useEffect)(() => {
+  const onReadyRef = (0, import_react81.useRef)(onReady);
+  const onNotReadyRef = (0, import_react81.useRef)(onNotReady);
+  (0, import_react81.useEffect)(() => {
     onReadyRef.current = onReady;
     onNotReadyRef.current = onNotReady;
   }, [onReady, onNotReady]);
-  (0, import_react79.useEffect)(() => {
+  (0, import_react81.useEffect)(() => {
     if (frameRef.current) {
       const doc = frameRef.current.contentDocument;
       const win = frameRef.current.contentWindow;
@@ -11591,7 +11987,7 @@ function AutoFrame({
       }
     }
   }, [frameRef, loaded, stylesLoaded]);
-  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
     "iframe",
     {
       ...props,
@@ -11602,7 +11998,7 @@ function AutoFrame({
       onLoad: () => {
         setLoaded(true);
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(autoFrameContext.Provider, { value: ctx, children: loaded && mountTarget && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(autoFrameContext.Provider, { value: ctx, children: loaded && mountTarget && /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
         CopyHostStyles,
         {
           debug,
@@ -11626,8 +12022,8 @@ init_lib();
 // components/Render/index.tsx
 init_react_import();
 init_root_droppable_id();
-var import_react80 = require("react");
-var import_jsx_runtime75 = require("react/jsx-runtime");
+var import_react82 = require("react");
+var import_jsx_runtime78 = require("react/jsx-runtime");
 function Render({
   config,
   data,
@@ -11655,10 +12051,10 @@ function Render({
   const propsWithSlots = useSlots(
     config,
     { type: "root", props: pageProps },
-    (props) => /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(SlotRender, { ...props, config, metadata })
+    (props) => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(SlotRender, { ...props, config, metadata })
   );
   const richtextProps = useRichtextProps(config.root?.fields, pageProps);
-  const nextContextValue = (0, import_react80.useMemo)(
+  const nextContextValue = (0, import_react82.useMemo)(
     () => ({
       mode: "render",
       depth: 0
@@ -11666,9 +12062,9 @@ function Render({
     []
   );
   if (config.root?.render) {
-    return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneRenderPure, { zone: rootZone }) }) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(DropZoneRenderPure, { zone: rootZone }) }) }) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneRenderPure, { zone: rootZone }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(DropZoneRenderPure, { zone: rootZone }) }) });
 }
 
 // lib/bubble-pointer-event.ts
@@ -11691,11 +12087,11 @@ var BubbledPointerEvent = class extends BaseEvent {
 };
 
 // components/CredBuild/components/Preview/index.tsx
-var import_jsx_runtime76 = require("react/jsx-runtime");
+var import_jsx_runtime79 = require("react/jsx-runtime");
 var getClassName29 = get_class_name_factory_default("CredBuildPreview", styles_module_default20);
 var useBubbleIframeEvents = (ref) => {
   const status = useAppStore((s) => s.status);
-  (0, import_react81.useEffect)(() => {
+  (0, import_react83.useEffect)(() => {
     if (ref.current && status === "READY") {
       const iframe = ref.current;
       const handlePointerMove = (event) => {
@@ -11743,7 +12139,7 @@ var Preview = ({ id = "credbuild-preview" }) => {
   const renderData = useAppStore(
     (s) => s.state.ui.previewMode === "edit" ? null : s.state.data
   );
-  const Page = (0, import_react81.useCallback)(
+  const Page = (0, import_react83.useCallback)(
     (pageProps) => {
       const propsWithSlots = useSlots(
         config,
@@ -11758,15 +12154,15 @@ var Preview = ({ id = "credbuild-preview" }) => {
         id: "credbuild-root",
         ...propsWithSlots,
         ...richtextProps
-      }) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_jsx_runtime76.Fragment, { children: propsWithSlots.children });
+      }) : /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_jsx_runtime79.Fragment, { children: propsWithSlots.children });
     },
     [config]
   );
-  const Frame = (0, import_react81.useMemo)(() => overrides.iframe, [overrides]);
+  const Frame = (0, import_react83.useMemo)(() => overrides.iframe, [overrides]);
   const rootProps = root.props || root;
-  const ref = (0, import_react81.useRef)(null);
+  const ref = (0, import_react83.useRef)(null);
   useBubbleIframeEvents(ref);
-  const inner = !renderData ? /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+  const inner = !renderData ? /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
     Page,
     {
       ...rootProps,
@@ -11777,15 +12173,15 @@ var Preview = ({ id = "credbuild-preview" }) => {
         metadata
       },
       editMode: true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(DropZonePure, { zone: rootDroppableId })
+      children: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(DropZonePure, { zone: rootDroppableId })
     }
-  ) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Render, { data: renderData, config, metadata });
-  (0, import_react81.useEffect)(() => {
+  ) : /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Render, { data: renderData, config, metadata });
+  (0, import_react83.useEffect)(() => {
     if (!iframe.enabled) {
       setStatus("READY");
     }
   }, [iframe.enabled, setStatus]);
-  return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
     "div",
     {
       className: getClassName29(),
@@ -11797,7 +12193,7 @@ var Preview = ({ id = "credbuild-preview" }) => {
           dispatch({ type: "setUi", ui: { itemSelector: null } });
         }
       },
-      children: iframe.enabled ? /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+      children: iframe.enabled ? /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
         AutoFrame_default,
         {
           id: "preview-frame",
@@ -11810,14 +12206,14 @@ var Preview = ({ id = "credbuild-preview" }) => {
             setStatus("MOUNTED");
           },
           frameRef: ref,
-          children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(autoFrameContext.Consumer, { children: ({ document: document2 }) => {
+          children: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(autoFrameContext.Consumer, { children: ({ document: document2 }) => {
             if (Frame) {
-              return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Frame, { document: document2, children: inner });
+              return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Frame, { document: document2, children: inner });
             }
             return inner;
           } })
         }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+      ) : /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
         "div",
         {
           id: "preview-frame",
@@ -11845,11 +12241,11 @@ var styles_module_default21 = { "LayerTree": "_LayerTree_nus40_1", "LayerTree-zo
 init_get_class_name_factory();
 init_lucide_react();
 init_root_droppable_id();
-var import_react82 = require("react");
+var import_react84 = require("react");
 init_store2();
 init_use_context_store();
 var import_react_virtual3 = require("@tanstack/react-virtual");
-var import_jsx_runtime77 = require("react/jsx-runtime");
+var import_jsx_runtime80 = require("react/jsx-runtime");
 var getClassName30 = get_class_name_factory_default("LayerTree", styles_module_default21);
 var getClassNameLayer = get_class_name_factory_default("Layer", styles_module_default21);
 var DEFAULT_LAYER_ROW_HEIGHT = 32;
@@ -11948,7 +12344,7 @@ var getScrollParent = (el) => {
   }
   return null;
 };
-var Layer = (0, import_react82.forwardRef)(function Layer2({
+var Layer = (0, import_react84.forwardRef)(function Layer2({
   childIsSelected,
   dataIndex,
   depth,
@@ -11958,13 +12354,13 @@ var Layer = (0, import_react82.forwardRef)(function Layer2({
   selectedPathIds
 }, ref) {
   const dispatch = useAppStore((s) => s.dispatch);
-  const zoneStore = (0, import_react82.useContext)(ZoneStoreContext);
+  const zoneStore = (0, import_react84.useContext)(ZoneStoreContext);
   const isHovering = useContextStore(
     ZoneStoreContext,
     (s) => s.hoveringComponent === node.itemId
   );
   const containsZone = node.childZones.length > 0;
-  const setItemSelector = (0, import_react82.useCallback)(
+  const setItemSelector = (0, import_react84.useCallback)(
     (itemSelector) => {
       dispatch({ type: "setUi", ui: { itemSelector } });
     },
@@ -11973,19 +12369,19 @@ var Layer = (0, import_react82.forwardRef)(function Layer2({
   const shouldRenderChildren = isSelected || childIsSelected;
   const getLayerIcon = (type) => {
     const t = type.toLowerCase();
-    if (t === "text" || t === "heading" || t.includes("heading")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Type, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("hero")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(LayoutTemplate, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("pricing")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(CreditCard, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("stats")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(ChartColumn, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("testimonials")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Quote, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("about") || t.includes("info")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Info, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("gallery") || t.includes("image")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Image, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("marketing") || t.includes("cta")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Megaphone, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("content") || t.includes("blog")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(FileText, { size: "14", strokeWidth: 2.5 });
-    if (t.includes("container") || t.includes("layout") || t.includes("flex")) return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Box, { size: "14", strokeWidth: 2.5 });
-    return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(LayoutGrid, { size: "14", strokeWidth: 2.5 });
+    if (t === "text" || t === "heading" || t.includes("heading")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Type, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("hero")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(LayoutTemplate, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("pricing")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(CreditCard, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("stats")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(ChartColumn, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("testimonials")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Quote, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("about") || t.includes("info")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Info, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("gallery") || t.includes("image")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Image, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("marketing") || t.includes("cta")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Megaphone, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("content") || t.includes("blog")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(FileText, { size: "14", strokeWidth: 2.5 });
+    if (t.includes("container") || t.includes("layout") || t.includes("flex")) return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Box, { size: "14", strokeWidth: 2.5 });
+    return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(LayoutGrid, { size: "14", strokeWidth: 2.5 });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(
     "li",
     {
       ref,
@@ -11998,7 +12394,7 @@ var Layer = (0, import_react82.forwardRef)(function Layer2({
       "data-index": dataIndex,
       "data-credbuild-layer-tree-id": node.itemId,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassNameLayer("inner"), children: /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassNameLayer("inner"), children: /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(
           "button",
           {
             type: "button",
@@ -12023,26 +12419,26 @@ var Layer = (0, import_react82.forwardRef)(function Layer2({
               zoneStore.setState({ hoveringComponent: null });
             },
             children: [
-              containsZone && /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+              containsZone && /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
                 "div",
                 {
                   className: getClassNameLayer("chevron"),
                   title: isSelected ? "Collapse" : "Expand",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(ChevronDown, { size: "12" })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(ChevronDown, { size: "12" })
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)("div", { className: getClassNameLayer("title"), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassNameLayer("icon"), children: getLayerIcon(node.componentType) }),
-                /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassNameLayer("name"), children: node.label })
+              /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)("div", { className: getClassNameLayer("title"), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassNameLayer("icon"), children: getLayerIcon(node.componentType) }),
+                /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassNameLayer("name"), children: node.label })
               ] })
             ]
           }
         ) }),
-        containsZone && shouldRenderChildren && node.childZones.map((childZone) => /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+        containsZone && shouldRenderChildren && node.childZones.map((childZone) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
           "div",
           {
             className: getClassNameLayer("zones"),
-            children: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
               LayerTreeZone,
               {
                 depth: depth + 1,
@@ -12065,12 +12461,12 @@ var LayerTreeZone = ({
   tree
 }) => {
   const shouldVirtualize = depth === 0 && tree.items.length >= MIN_VIRTUALIZED_LAYER_COUNT;
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_jsx_runtime77.Fragment, { children: [
-    tree.label && /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)("div", { className: getClassName30("zoneTitle"), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassName30("zoneIcon"), children: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Layers, { size: "16" }) }),
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_jsx_runtime80.Fragment, { children: [
+    tree.label && /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)("div", { className: getClassName30("zoneTitle"), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassName30("zoneIcon"), children: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Layers, { size: "16" }) }),
       tree.label
     ] }),
-    shouldVirtualize ? /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+    shouldVirtualize ? /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
       VirtualizedLayerTreeItems,
       {
         depth,
@@ -12078,7 +12474,7 @@ var LayerTreeZone = ({
         selectedPathIds,
         tree
       }
-    ) : /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+    ) : /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
       StaticLayerTreeItems,
       {
         depth,
@@ -12095,9 +12491,9 @@ var StaticLayerTreeItems = ({
   selectedPathIds,
   tree
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)("ul", { className: getClassName30(), children: [
-    tree.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassName30("helper"), children: "No items" }),
-    tree.items.map((node) => /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)("ul", { className: getClassName30(), children: [
+    tree.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassName30("helper"), children: "No items" }),
+    tree.items.map((node) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
       Layer,
       {
         childIsSelected: selectedPathIds.has(node.itemId),
@@ -12117,7 +12513,7 @@ var VirtualizedLayerTreeItems = ({
   selectedPathIds,
   tree
 }) => {
-  const listRef = (0, import_react82.useRef)(null);
+  const listRef = (0, import_react84.useRef)(null);
   const virtualizer = (0, import_react_virtual3.useVirtualizer)({
     count: tree.items.length,
     estimateSize: (index) => getEstimatedRowHeight(tree.items[index].itemId),
@@ -12143,7 +12539,7 @@ var VirtualizedLayerTreeItems = ({
     const gapSize = Math.max(virtualItem.start - previousEnd, 0);
     if (gapSize > 0) {
       renderedItems.push(
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
           "li",
           {
             "aria-hidden": "true",
@@ -12154,7 +12550,7 @@ var VirtualizedLayerTreeItems = ({
       );
     }
     renderedItems.push(
-      /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
         Layer,
         {
           childIsSelected: selectedPathIds.has(node.itemId),
@@ -12175,7 +12571,7 @@ var VirtualizedLayerTreeItems = ({
   const trailingGap = Math.max(totalSize - previousEnd, 0);
   if (trailingGap > 0) {
     renderedItems.push(
-      /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
         "li",
         {
           "aria-hidden": "true",
@@ -12185,8 +12581,8 @@ var VirtualizedLayerTreeItems = ({
       )
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)("ul", { className: getClassName30(), ref: listRef, children: [
-    tree.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime77.jsx)("div", { className: getClassName30("helper"), children: "No items" }),
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)("ul", { className: getClassName30(), ref: listRef, children: [
+    tree.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime80.jsx)("div", { className: getClassName30("helper"), children: "No items" }),
     renderedItems
   ] });
 };
@@ -12195,7 +12591,7 @@ var LayerTree = ({
   selectedPathIds,
   trees
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_jsx_runtime77.Fragment, { children: trees.map((tree) => /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_jsx_runtime80.Fragment, { children: trees.map((tree) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
     LayerTreeZone,
     {
       depth: 0,
@@ -12209,7 +12605,7 @@ var LayerTree = ({
 
 // components/CredBuild/components/Outline/index.tsx
 init_store2();
-var import_react83 = require("react");
+var import_react85 = require("react");
 
 // lib/data/find-zones-for-area.ts
 init_react_import();
@@ -12221,7 +12617,7 @@ var findZonesForArea = (state, area) => {
 
 // components/CredBuild/components/Outline/index.tsx
 var import_shallow8 = require("zustand/react/shallow");
-var import_jsx_runtime78 = require("react/jsx-runtime");
+var import_jsx_runtime81 = require("react/jsx-runtime");
 var Outline = () => {
   const outlineOverride = useAppStore((s) => s.overrides.outline);
   const config = useAppStore((s) => s.config);
@@ -12231,13 +12627,13 @@ var Outline = () => {
   const rootZones = useAppStore(
     (0, import_shallow8.useShallow)((s) => findZonesForArea(s.state, "root"))
   );
-  const selectedPathIds = (0, import_react83.useMemo)(() => {
+  const selectedPathIds = (0, import_react85.useMemo)(() => {
     const selectedPath = selectedId ? nodes[selectedId]?.path : null;
     return new Set(
       selectedPath?.map((candidate) => candidate.split(":")[0]).filter(Boolean) || []
     );
   }, [nodes, selectedId]);
-  const trees = (0, import_react83.useMemo)(
+  const trees = (0, import_react85.useMemo)(
     () => rootZones.map(
       (zoneCompound) => buildLayerTree({
         config,
@@ -12249,8 +12645,8 @@ var Outline = () => {
     ),
     [config, nodes, rootZones, zones]
   );
-  const Wrapper = (0, import_react83.useMemo)(() => outlineOverride || "div", [outlineOverride]);
-  return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Wrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
+  const Wrapper = (0, import_react85.useMemo)(() => outlineOverride || "div", [outlineOverride]);
+  return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(Wrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
     LayerTree,
     {
       selectedId,
@@ -12265,7 +12661,7 @@ init_default_viewports();
 
 // lib/use-loaded-overrides.ts
 init_react_import();
-var import_react84 = require("react");
+var import_react86 = require("react");
 
 // lib/load-overrides.ts
 init_react_import();
@@ -12308,7 +12704,7 @@ var useLoadedOverrides = ({
   overrides,
   plugins
 }) => {
-  return (0, import_react84.useMemo)(() => {
+  return (0, import_react86.useMemo)(() => {
     return loadOverrides({ overrides, plugins });
   }, [plugins, overrides]);
 };
@@ -12319,7 +12715,7 @@ init_permissions();
 
 // lib/use-credbuild.ts
 init_react_import();
-var import_react85 = require("react");
+var import_react87 = require("react");
 var import_zustand6 = require("zustand");
 init_make_state_public();
 init_get_item();
@@ -12423,7 +12819,7 @@ var generateUseCredBuild = (store, getState) => {
   };
   return storeData;
 };
-var UseCredBuildStoreContext = (0, import_react85.createContext)(
+var UseCredBuildStoreContext = (0, import_react87.createContext)(
   null
 );
 var convertToPickedStore = (store) => {
@@ -12437,7 +12833,7 @@ var convertToPickedStore = (store) => {
   };
 };
 var useRegisterUseCredBuildStore = (appStore) => {
-  const [useCredBuildStore] = (0, import_react85.useState)(
+  const [useCredBuildStore] = (0, import_react87.useState)(
     () => (0, import_zustand6.createStore)(
       () => generateUseCredBuild(
         convertToPickedStore(appStore.getState()),
@@ -12445,7 +12841,7 @@ var useRegisterUseCredBuildStore = (appStore) => {
       )
     )
   );
-  (0, import_react85.useEffect)(() => {
+  (0, import_react87.useEffect)(() => {
     return appStore.subscribe(
       (store) => convertToPickedStore(store),
       (pickedStore) => {
@@ -12459,7 +12855,7 @@ var useRegisterUseCredBuildStore = (appStore) => {
 };
 function createUseCredBuild() {
   return function useCredBuild2(selector) {
-    const useCredBuildApi = (0, import_react85.useContext)(UseCredBuildStoreContext);
+    const useCredBuildApi = (0, import_react87.useContext)(UseCredBuildStoreContext);
     if (!useCredBuildApi) {
       throw new Error("useCredBuild must be used inside <CredBuild>.");
     }
@@ -12471,7 +12867,7 @@ function createUseCredBuild() {
   };
 }
 function useCredBuild() {
-  (0, import_react85.useEffect)(() => {
+  (0, import_react87.useEffect)(() => {
     console.warn(
       "You're using the `useCredBuild` method without a selector, which may cause unnecessary re-renders. Replace with `createUseCredBuild` and provide a selector for improved performance."
     );
@@ -12479,7 +12875,7 @@ function useCredBuild() {
   return createUseCredBuild()((s) => s);
 }
 function useGetCredBuild() {
-  const useCredBuildApi = (0, import_react85.useContext)(UseCredBuildStoreContext);
+  const useCredBuildApi = (0, import_react87.useContext)(UseCredBuildStoreContext);
   if (!useCredBuildApi) {
     throw new Error("useCredBuildGet must be used inside <CredBuild>.");
   }
@@ -12494,18 +12890,18 @@ init_to_component();
 
 // components/CredBuild/components/Layout/index.tsx
 init_react_import();
-var import_react99 = require("react");
+var import_react101 = require("react");
 init_lib();
 
 // components/CredBuild/context.tsx
 init_react_import();
-var import_react86 = require("react");
-var import_jsx_runtime79 = require("react/jsx-runtime");
-var propsContext = (0, import_react86.createContext)({});
+var import_react88 = require("react");
+var import_jsx_runtime82 = require("react/jsx-runtime");
+var propsContext = (0, import_react88.createContext)({});
 function PropsProvider(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(propsContext.Provider, { value: props, children: props.children });
+  return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(propsContext.Provider, { value: props, children: props.children });
 }
-var usePropsContext = () => (0, import_react86.useContext)(propsContext);
+var usePropsContext = () => (0, import_react88.useContext)(propsContext);
 
 // css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Layout/styles.module.css#css-module
 init_react_import();
@@ -12513,14 +12909,14 @@ var styles_module_default22 = { "CredBuildLayout": "_CredBuildLayout_14aaz_1", "
 
 // lib/use-inject-css.ts
 init_react_import();
-var import_react87 = require("react");
+var import_react89 = require("react");
 var styles = ``;
 var useInjectStyleSheet = (initialStyles, iframeEnabled) => {
-  const [el, setEl] = (0, import_react87.useState)();
-  (0, import_react87.useEffect)(() => {
+  const [el, setEl] = (0, import_react89.useState)();
+  (0, import_react89.useEffect)(() => {
     setEl(document.createElement("style"));
   }, []);
-  (0, import_react87.useEffect)(() => {
+  (0, import_react89.useEffect)(() => {
     if (!el || typeof window === "undefined") {
       return;
     }
@@ -12542,20 +12938,20 @@ init_store2();
 
 // components/DefaultOverride/index.tsx
 init_react_import();
-var import_jsx_runtime80 = require("react/jsx-runtime");
-var DefaultOverride = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_jsx_runtime80.Fragment, { children });
+var import_jsx_runtime83 = require("react/jsx-runtime");
+var DefaultOverride = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_jsx_runtime83.Fragment, { children });
 
 // components/CredBuild/components/Layout/index.tsx
 init_use_hotkey();
 
 // lib/use-preview-mode-hotkeys.ts
 init_react_import();
-var import_react88 = require("react");
+var import_react90 = require("react");
 init_use_hotkey();
 init_store2();
 var usePreviewModeHotkeys = () => {
   const appStore = useAppStoreApi();
-  const toggleInteractive = (0, import_react88.useCallback)(() => {
+  const toggleInteractive = (0, import_react90.useCallback)(() => {
     const dispatch = appStore.getState().dispatch;
     dispatch({
       type: "setUi",
@@ -12570,9 +12966,9 @@ var usePreviewModeHotkeys = () => {
 
 // components/DragDropContext/index.tsx
 init_react_import();
-var import_react89 = require("@dnd-kit/react");
+var import_react91 = require("@dnd-kit/react");
 init_store2();
-var import_react90 = require("react");
+var import_react92 = require("react");
 var import_dom = require("@dnd-kit/dom");
 init_get_item();
 
@@ -12915,12 +13311,12 @@ function getDeepDir(el) {
 // components/DragDropContext/index.tsx
 init_use_sensors();
 var import_state = require("@dnd-kit/state");
-var import_jsx_runtime81 = require("react/jsx-runtime");
+var import_jsx_runtime84 = require("react/jsx-runtime");
 var DEBUG3 = false;
 var AREA_CHANGE_DEBOUNCE_MS = 100;
 var useTempDisableFallback = (timeout3) => {
-  const lastFallbackDisable = (0, import_react90.useRef)(null);
-  return (0, import_react90.useCallback)((manager) => {
+  const lastFallbackDisable = (0, import_react92.useRef)(null);
+  return (0, import_react92.useCallback)((manager) => {
     collisionStore.setState({ fallbackEnabled: false });
     const fallbackId = generateId();
     lastFallbackDisable.current = fallbackId;
@@ -12939,9 +13335,9 @@ var DragDropContextClient = ({
   const dispatch = useAppStore((s) => s.dispatch);
   const instanceId = useAppStore((s) => s.instanceId);
   const appStore = useAppStoreApi();
-  const debouncedParamsRef = (0, import_react90.useRef)(null);
+  const debouncedParamsRef = (0, import_react92.useRef)(null);
   const tempDisableFallback = useTempDisableFallback(100);
-  const [zoneStore] = (0, import_react90.useState)(() => {
+  const [zoneStore] = (0, import_react92.useState)(() => {
     const rootVirtualizers = /* @__PURE__ */ new Map();
     return (0, import_zustand7.createStore)(() => ({
       zoneDepthIndex: {},
@@ -12980,7 +13376,7 @@ var DragDropContextClient = ({
       }
     }));
   });
-  const getChanged2 = (0, import_react90.useCallback)(
+  const getChanged2 = (0, import_react92.useCallback)(
     (params) => {
       const { zoneDepthIndex = {}, areaDepthIndex = {} } = zoneStore.getState() || {};
       const stateHasZone = Object.keys(zoneDepthIndex).length > 0;
@@ -13001,7 +13397,7 @@ var DragDropContextClient = ({
     },
     [zoneStore]
   );
-  const setDeepestAndCollide = (0, import_react90.useCallback)(
+  const setDeepestAndCollide = (0, import_react92.useCallback)(
     (params, manager) => {
       const { zoneChanged, areaChanged } = getChanged2(params);
       if (!zoneChanged && !areaChanged) return;
@@ -13025,7 +13421,7 @@ var DragDropContextClient = ({
     setDeepestDb.cancel();
     debouncedParamsRef.current = null;
   };
-  (0, import_react90.useEffect)(() => {
+  (0, import_react92.useEffect)(() => {
     if (DEBUG3) {
       return zoneStore.subscribe(
         (s) => console.log(
@@ -13036,7 +13432,7 @@ var DragDropContextClient = ({
       );
     }
   }, [zoneStore]);
-  const [plugins] = (0, import_react90.useState)(() => [
+  const [plugins] = (0, import_react92.useState)(() => [
     ...disableAutoScroll ? import_dom.defaultPreset.plugins.filter((plugin) => plugin !== import_dom.AutoScroller) : import_dom.defaultPreset.plugins,
     createNestedDroppablePlugin(
       {
@@ -13084,10 +13480,10 @@ var DragDropContextClient = ({
     )
   ]);
   const sensors = useSensors();
-  const [dragListeners, setDragListeners] = (0, import_react90.useState)({});
-  const dragMode = (0, import_react90.useRef)(null);
-  const initialSelector = (0, import_react90.useRef)(void 0);
-  const nextContextValue = (0, import_react90.useMemo)(
+  const [dragListeners, setDragListeners] = (0, import_react92.useState)({});
+  const dragMode = (0, import_react92.useRef)(null);
+  const initialSelector = (0, import_react92.useRef)(void 0);
+  const nextContextValue = (0, import_react92.useMemo)(
     () => ({
       mode: "edit",
       areaId: "root",
@@ -13095,15 +13491,15 @@ var DragDropContextClient = ({
     }),
     []
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
     dragListenerContext.Provider,
     {
       value: {
         dragListeners,
         setDragListeners
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
-        import_react89.DragDropProvider,
+      children: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
+        import_react91.DragDropProvider,
         {
           plugins,
           sensors,
@@ -13324,7 +13720,7 @@ var DragDropContextClient = ({
             const entryEl = getFrame()?.querySelector("[data-credbuild-entry]");
             entryEl?.setAttribute("data-credbuild-dragging", "true");
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(ZoneStoreProvider, { store: zoneStore, children: /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(DropZoneProvider, { value: nextContextValue, children }) })
+          children: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(ZoneStoreProvider, { store: zoneStore, children: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(DropZoneProvider, { value: nextContextValue, children }) })
         }
       )
     }
@@ -13338,12 +13734,12 @@ var DragDropContext = ({
   if (status === "LOADING") {
     return children;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(DragDropContextClient, { disableAutoScroll, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(DragDropContextClient, { disableAutoScroll, children });
 };
 
 // components/CredBuild/components/Header/index.tsx
 init_react_import();
-var import_react93 = require("react");
+var import_react95 = require("react");
 init_store2();
 init_lucide_react();
 init_Heading();
@@ -13361,7 +13757,7 @@ var styles_module_default23 = { "MenuBar": "_MenuBar_1m2ld_1", "MenuBar--menuOpe
 
 // components/MenuBar/index.tsx
 init_store2();
-var import_jsx_runtime82 = require("react/jsx-runtime");
+var import_jsx_runtime85 = require("react/jsx-runtime");
 var getClassName31 = get_class_name_factory_default("MenuBar", styles_module_default23);
 function MenuBar({
   menuOpen = false,
@@ -13372,7 +13768,7 @@ function MenuBar({
   const forward = useAppStore((s) => s.history.forward);
   const hasFuture = useAppStore((s) => s.history.hasFuture());
   const hasPast = useAppStore((s) => s.history.hasPast());
-  return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
     "div",
     {
       className: getClassName31({ menuOpen }),
@@ -13385,30 +13781,30 @@ function MenuBar({
           setMenuOpen(false);
         }
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)("div", { className: getClassName31("inner"), children: [
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)("div", { className: getClassName31("history"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName31("inner"), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName31("history"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
             IconButton,
             {
               type: "button",
               title: "undo",
               disabled: !hasPast,
               onClick: back,
-              children: /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(Undo2, { size: 21 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Undo2, { size: 21 })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
             IconButton,
             {
               type: "button",
               title: "redo",
               disabled: !hasFuture,
               onClick: forward,
-              children: /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(Redo2, { size: 21 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Redo2, { size: 21 })
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_jsx_runtime82.Fragment, { children: renderHeaderActions && renderHeaderActions() })
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_jsx_runtime85.Fragment, { children: renderHeaderActions && renderHeaderActions() })
       ] })
     }
   );
@@ -13423,7 +13819,7 @@ init_react_import();
 init_lucide_react();
 init_IconButton2();
 init_store2();
-var import_react91 = require("react");
+var import_react93 = require("react");
 init_lib();
 
 // css-module:/home/crediblemark/Project/Credibuild/components/ViewportControls/styles.module.css#css-module
@@ -13431,12 +13827,12 @@ init_react_import();
 var styles_module_default24 = { "ViewportControls": "_ViewportControls_1e0ai_1", "ViewportControls--fullScreen": "_ViewportControls--fullScreen_1e0ai_5", "ViewportControls-toggleButton": "_ViewportControls-toggleButton_1e0ai_14", "ViewportControls--isExpanded": "_ViewportControls--isExpanded_1e0ai_38", "ViewportControls-actions": "_ViewportControls-actions_1e0ai_42", "ViewportControls-actionsInner": "_ViewportControls-actionsInner_1e0ai_46", "ViewportControls-divider": "_ViewportControls-divider_1e0ai_75", "ViewportControls-zoomSelect": "_ViewportControls-zoomSelect_1e0ai_81", "ViewportControls-zoom": "_ViewportControls-zoom_1e0ai_81", "ViewportButton-inner": "_ViewportButton-inner_1e0ai_111", "ViewportButton--isActive": "_ViewportButton--isActive_1e0ai_119" };
 
 // components/ViewportControls/index.tsx
-var import_jsx_runtime83 = require("react/jsx-runtime");
+var import_jsx_runtime86 = require("react/jsx-runtime");
 var icons = {
-  Smartphone: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Smartphone, { size: 16 }),
-  Tablet: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Tablet, { size: 16 }),
-  Monitor: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Monitor, { size: 16 }),
-  FullWidth: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Expand, { size: 16 })
+  Smartphone: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Smartphone, { size: 16 }),
+  Tablet: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Tablet, { size: 16 }),
+  Monitor: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Monitor, { size: 16 }),
+  FullWidth: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Expand, { size: 16 })
 };
 var getClassName32 = get_class_name_factory_default("ViewportControls", styles_module_default24);
 var getClassNameButton = get_class_name_factory_default("ViewportButton", styles_module_default24);
@@ -13447,7 +13843,7 @@ var ActionButton = ({
   isActive,
   disabled
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)("span", { className: getClassNameButton({ isActive }), suppressHydrationWarning: true, children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime86.jsx)("span", { className: getClassNameButton({ isActive }), suppressHydrationWarning: true, children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
     IconButton,
     {
       type: "button",
@@ -13455,7 +13851,7 @@ var ActionButton = ({
       disabled: disabled || isActive,
       onClick,
       suppressHydrationWarning: true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)("span", { className: getClassNameButton("inner"), children })
+      children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)("span", { className: getClassNameButton("inner"), children })
     }
   ) });
 };
@@ -13480,7 +13876,7 @@ var ViewportControls = ({
   const defaultsContainAutoZoom = defaultZoomOptions.find(
     (option) => option.value === autoZoom
   );
-  const zoomOptions = (0, import_react91.useMemo)(() => {
+  const zoomOptions = (0, import_react93.useMemo)(() => {
     const options = [
       ...defaultZoomOptions,
       ...defaultsContainAutoZoom || isNaN(autoZoom) ? [] : [
@@ -13492,21 +13888,21 @@ var ViewportControls = ({
     ].filter((a) => a.value <= (autoZoom || 1)).sort((a, b) => a.value > b.value ? 1 : -1);
     return options.length > 0 ? options : defaultZoomOptions;
   }, [autoZoom, defaultsContainAutoZoom]);
-  const [activeViewport, setActiveViewport] = (0, import_react91.useState)(
+  const [activeViewport, setActiveViewport] = (0, import_react93.useState)(
     uiViewports.current.width
   );
-  (0, import_react91.useEffect)(() => {
+  (0, import_react93.useEffect)(() => {
     setActiveViewport(uiViewports.current.width);
   }, [uiViewports.current.width, uiViewports]);
-  const [isExpanded, setIsExpanded] = (0, import_react91.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(
+  const [isExpanded, setIsExpanded] = (0, import_react93.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(
     "div",
     {
       className: getClassName32({ isExpanded, fullScreen }),
       suppressHydrationWarning: true,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)("div", { className: getClassName32("actions"), children: /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)("div", { className: getClassName32("actionsInner"), children: [
-          viewports.map((viewport, i) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime86.jsx)("div", { className: getClassName32("actions"), children: /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)("div", { className: getClassName32("actionsInner"), children: [
+          viewports.map((viewport, i) => /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
             ActionButton,
             {
               title: viewport.label ? `Switch to ${viewport.label} viewport` : "Switch viewport",
@@ -13519,8 +13915,8 @@ var ViewportControls = ({
             },
             i
           )),
-          /* @__PURE__ */ (0, import_jsx_runtime83.jsx)("div", { className: getClassName32("divider") }),
-          /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime86.jsx)("div", { className: getClassName32("divider") }),
+          /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
             ActionButton,
             {
               title: "Zoom viewport out",
@@ -13534,10 +13930,10 @@ var ViewportControls = ({
                 );
                 onZoom(zoomOptions[nextIndex]?.value || 1);
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(ZoomOut, { size: 16 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ZoomOut, { size: 16 })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
             ActionButton,
             {
               title: "Zoom viewport in",
@@ -13551,12 +13947,12 @@ var ViewportControls = ({
                 );
                 onZoom(zoomOptions[nextIndex]?.value || 1);
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(ZoomIn, { size: 16 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ZoomIn, { size: 16 })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)("div", { className: getClassName32("zoom"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime83.jsx)("div", { className: getClassName32("divider") }),
-            /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)("div", { className: getClassName32("zoom"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)("div", { className: getClassName32("divider") }),
+            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
               "select",
               {
                 className: getClassName32("zoomSelect"),
@@ -13567,7 +13963,7 @@ var ViewportControls = ({
                 onChange: (e) => {
                   onZoom(parseFloat(e.currentTarget.value));
                 },
-                children: zoomOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+                children: zoomOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
                   "option",
                   {
                     value: option.value,
@@ -13579,13 +13975,13 @@ var ViewportControls = ({
             )
           ] })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
           "button",
           {
             className: getClassName32("toggleButton"),
             title: "Toggle viewport menu",
             onClick: () => setIsExpanded((s) => !s),
-            children: isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(X, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Monitor, { size: 16 })
+            children: isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(X, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Monitor, { size: 16 })
           }
         )
       ]
@@ -13598,23 +13994,23 @@ var import_shallow9 = require("zustand/react/shallow");
 
 // lib/frame-context.tsx
 init_react_import();
-var import_react92 = require("react");
-var import_jsx_runtime84 = require("react/jsx-runtime");
-var FrameContext = (0, import_react92.createContext)(null);
+var import_react94 = require("react");
+var import_jsx_runtime87 = require("react/jsx-runtime");
+var FrameContext = (0, import_react94.createContext)(null);
 var FrameProvider = ({
   children
 }) => {
-  const frameRef = (0, import_react92.useRef)(null);
-  const value = (0, import_react92.useMemo)(
+  const frameRef = (0, import_react94.useRef)(null);
+  const value = (0, import_react94.useMemo)(
     () => ({
       frameRef
     }),
     []
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(FrameContext.Provider, { value, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(FrameContext.Provider, { value, children });
 };
 var useCanvasFrame = () => {
-  const context = (0, import_react92.useContext)(FrameContext);
+  const context = (0, import_react94.useContext)(FrameContext);
   if (context === null) {
     throw new Error("useCanvasFrame must be used within a FrameProvider");
   }
@@ -13626,7 +14022,7 @@ init_react_import();
 var styles_module_default25 = { "CredBuildHeader": "_CredBuildHeader_qzv5u_1", "CredBuildHeader-inner": "_CredBuildHeader-inner_qzv5u_20", "CredBuildHeader-viewportTools": "_CredBuildHeader-viewportTools_qzv5u_28", "CredBuildHeader-leftActions": "_CredBuildHeader-leftActions_qzv5u_35", "CredBuildHeader-toggle": "_CredBuildHeader-toggle_qzv5u_41", "CredBuildHeader-leftSideBarToggle": "_CredBuildHeader-leftSideBarToggle_qzv5u_47", "CredBuildHeader-rightSideBarToggle": "_CredBuildHeader-rightSideBarToggle_qzv5u_48", "CredBuildHeader-title": "_CredBuildHeader-title_qzv5u_52", "CredBuildHeader-path": "_CredBuildHeader-path_qzv5u_57", "CredBuildHeader-tools": "_CredBuildHeader-tools_qzv5u_68", "CredBuildHeader-menuButton": "_CredBuildHeader-menuButton_qzv5u_75" };
 
 // components/CredBuild/components/Header/index.tsx
-var import_jsx_runtime85 = require("react/jsx-runtime");
+var import_jsx_runtime88 = require("react/jsx-runtime");
 var getClassName33 = get_class_name_factory_default("CredBuildHeader", styles_module_default25);
 var HeaderInner = ({
   hidePlugins,
@@ -13642,7 +14038,7 @@ var HeaderInner = ({
   } = usePropsContext();
   const dispatch = useAppStore((s) => s.dispatch);
   const appStore = useAppStoreApi();
-  const defaultHeaderRender = (0, import_react93.useMemo)(() => {
+  const defaultHeaderRender = (0, import_react95.useMemo)(() => {
     if (renderHeader) {
       console.warn(
         "`renderHeader` is deprecated. Please use `overrides.header` and the `useCredBuild` hook instead"
@@ -13650,13 +14046,13 @@ var HeaderInner = ({
       const RenderHeader = ({ actions, ...props }) => {
         const Comp = renderHeader;
         const appState = useAppStore((s) => s.state);
-        return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Comp, { ...props, dispatch, state: appState, children: actions });
+        return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Comp, { ...props, dispatch, state: appState, children: actions });
       };
       return RenderHeader;
     }
     return DefaultOverride;
   }, [renderHeader, dispatch]);
-  const defaultHeaderActionsRender = (0, import_react93.useMemo)(() => {
+  const defaultHeaderActionsRender = (0, import_react95.useMemo)(() => {
     if (renderHeaderActions) {
       console.warn(
         "`renderHeaderActions` is deprecated. Please use `overrides.headerActions` and the `useCredBuild` hook instead."
@@ -13664,7 +14060,7 @@ var HeaderInner = ({
       const RenderHeader = (props) => {
         const Comp = renderHeaderActions;
         const appState = useAppStore((s) => s.state);
-        return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Comp, { ...props, dispatch, state: appState });
+        return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Comp, { ...props, dispatch, state: appState });
       };
       return RenderHeader;
     }
@@ -13676,7 +14072,7 @@ var HeaderInner = ({
   const CustomHeaderActions = useAppStore(
     (s) => s.overrides.headerActions || defaultHeaderActionsRender
   );
-  const [menuOpen, setMenuOpen] = (0, import_react93.useState)(false);
+  const [menuOpen, setMenuOpen] = (0, import_react95.useState)(false);
   const rootTitle = useAppStore((s) => {
     const rootData = s.state.indexes.nodes["root"]?.data;
     return rootData.props.title ?? "";
@@ -13705,7 +14101,7 @@ var HeaderInner = ({
   );
   const { frameRef } = useCanvasFrame();
   const resetAutoZoom = useResetAutoZoom(frameRef);
-  const toggleSidebars = (0, import_react93.useCallback)(
+  const toggleSidebars = (0, import_react95.useCallback)(
     (sidebar) => {
       const widerViewport = window.matchMedia("(min-width: 638px)").matches;
       const sideBarVisible = sidebar === "left" ? leftSideBarVisible : rightSideBarVisible;
@@ -13720,33 +14116,33 @@ var HeaderInner = ({
     },
     [dispatch, leftSideBarVisible, rightSideBarVisible]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
     CustomHeader,
     {
-      actions: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_jsx_runtime85.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(CustomHeaderActions, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+      actions: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_jsx_runtime88.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(CustomHeaderActions, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
           Button,
           {
             href: headerPath || "/",
             newTab: true,
             variant: "secondary",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ExternalLink, { size: 14 }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(ExternalLink, { size: 14 }),
             children: "View Web"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
           Button,
           {
             onClick: () => {
               const data = appStore.getState().state.data;
               onPublish && onPublish(data);
             },
-            icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Globe, { size: 14 }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Globe, { size: 14 }),
             children: "Publish"
           }
         )
       ] }) }),
-      children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
         "header",
         {
           className: getClassName33({
@@ -13754,20 +14150,20 @@ var HeaderInner = ({
             rightSideBarVisible,
             hidePlugins
           }),
-          children: /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("inner"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("leftActions"), children: [
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { style: { marginRight: "8px", display: "flex", gap: "8px", alignItems: "center" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { className: getClassName33("inner"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { className: getClassName33("leftActions"), children: [
+              /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { style: { marginRight: "8px", display: "flex", gap: "8px", alignItems: "center" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                   Button,
                   {
                     href: "/dashboard",
                     variant: "secondary",
                     size: "medium",
-                    icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(LayoutDashboard, { size: 14 }),
+                    icon: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(LayoutDashboard, { size: 14 }),
                     children: "Dashboard"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                   IconButton,
                   {
                     type: "button",
@@ -13785,12 +14181,12 @@ var HeaderInner = ({
                       window.dispatchEvent(new CustomEvent("credbuild-theme-change", { detail: newTheme }));
                     },
                     title: "Toggle Theme",
-                    children: theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Sun, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Moon, { size: 16 })
+                    children: theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Sun, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Moon, { size: 16 })
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("toggle"), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("leftSideBarToggle"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { className: getClassName33("toggle"), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName33("leftSideBarToggle"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                   IconButton,
                   {
                     type: "button",
@@ -13798,10 +14194,10 @@ var HeaderInner = ({
                       toggleSidebars("left");
                     },
                     title: "Toggle left sidebar",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(PanelLeft, { size: 16, focusable: "false" })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(PanelLeft, { size: 16, focusable: "false" })
                   }
                 ) }),
-                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("rightSideBarToggle"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName33("rightSideBarToggle"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                   IconButton,
                   {
                     type: "button",
@@ -13809,16 +14205,16 @@ var HeaderInner = ({
                       toggleSidebars("right");
                     },
                     title: "Toggle right sidebar",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(PanelRight, { size: 16, focusable: "false" })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(PanelRight, { size: 16, focusable: "false" })
                   }
                 ) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("title"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Heading7, { rank: "2", size: "xs", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("span", { style: { fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }, children: headerTitle || rootTitle || "Page" }),
-                headerPath && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_jsx_runtime85.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("code", { className: getClassName33("path"), style: { fontSize: "10px", opacity: 0.6, marginLeft: "8px" }, children: headerPath }) })
+              /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName33("title"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(Heading7, { rank: "2", size: "xs", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("span", { style: { fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }, children: headerTitle || rootTitle || "Page" }),
+                headerPath && /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_jsx_runtime88.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("code", { className: getClassName33("path"), style: { fontSize: "10px", opacity: 0.6, marginLeft: "8px" }, children: headerPath }) })
               ] }) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("viewportTools"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName33("viewportTools"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
               ViewportControls,
               {
                 fullScreen: _experimentalFullScreenCanvas,
@@ -13844,8 +14240,8 @@ var HeaderInner = ({
                 }
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: getClassName33("tools"), children: [
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: getClassName33("menuButton"), children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { className: getClassName33("tools"), children: [
+              /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName33("menuButton"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                 IconButton,
                 {
                   type: "button",
@@ -13853,34 +14249,34 @@ var HeaderInner = ({
                     return setMenuOpen(!menuOpen);
                   },
                   title: "Toggle menu bar",
-                  children: menuOpen ? /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ChevronUp, { size: 16, focusable: "false" }) : /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ChevronDown, { size: 16, focusable: "false" })
+                  children: menuOpen ? /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(ChevronUp, { size: 16, focusable: "false" }) : /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(ChevronDown, { size: 16, focusable: "false" })
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                 MenuBar,
                 {
                   dispatch,
                   onPublish,
                   menuOpen,
-                  renderHeaderActions: () => /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(CustomHeaderActions, { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                  renderHeaderActions: () => /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(CustomHeaderActions, { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                       Button,
                       {
                         href: headerPath || "/",
                         newTab: true,
                         variant: "secondary",
-                        icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ExternalLink, { size: 14 }),
+                        icon: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(ExternalLink, { size: 14 }),
                         children: "View Web"
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
                       Button,
                       {
                         onClick: () => {
                           const data = appStore.getState().state.data;
                           onPublish && onPublish(data);
                         },
-                        icon: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Globe, { size: 14 }),
+                        icon: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Globe, { size: 14 }),
                         children: "Publish"
                       }
                     )
@@ -13895,7 +14291,7 @@ var HeaderInner = ({
     }
   );
 };
-var Header = (0, import_react93.memo)(HeaderInner);
+var Header = (0, import_react95.memo)(HeaderInner);
 
 // components/SidebarSection/index.tsx
 init_react_import();
@@ -13922,14 +14318,14 @@ init_lucide_react();
 
 // lib/use-breadcrumbs.ts
 init_react_import();
-var import_react94 = require("react");
+var import_react96 = require("react");
 init_store2();
 var useBreadcrumbs = (renderCount) => {
   const selectedId = useAppStore((s) => s.selectedItem?.props.id);
   const config = useAppStore((s) => s.config);
   const path = useAppStore((s) => s.state.indexes.nodes[selectedId]?.path);
   const appStore = useAppStoreApi();
-  return (0, import_react94.useMemo)(() => {
+  return (0, import_react96.useMemo)(() => {
     const breadcrumbs = path?.map((zoneCompound) => {
       const [componentId] = zoneCompound.split(":");
       if (componentId === "root") {
@@ -13960,7 +14356,7 @@ var useBreadcrumbs = (renderCount) => {
 
 // components/Breadcrumbs/index.tsx
 init_store2();
-var import_jsx_runtime86 = require("react/jsx-runtime");
+var import_jsx_runtime89 = require("react/jsx-runtime");
 var getClassName34 = get_class_name_factory_default("Breadcrumbs", styles_module_default27);
 var Breadcrumbs = ({
   children,
@@ -13968,9 +14364,9 @@ var Breadcrumbs = ({
 }) => {
   const setUi = useAppStore((s) => s.setUi);
   const breadcrumbs = useBreadcrumbs(numParents);
-  return /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)("div", { className: getClassName34(), children: [
-    breadcrumbs.map((breadcrumb, i) => /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)("div", { className: getClassName34("breadcrumb"), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)("div", { className: getClassName34(), children: [
+    breadcrumbs.map((breadcrumb, i) => /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)("div", { className: getClassName34("breadcrumb"), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(
         "button",
         {
           type: "button",
@@ -13979,14 +14375,14 @@ var Breadcrumbs = ({
           children: breadcrumb.label
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChevronRight, { size: 16 })
+      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(ChevronRight, { size: 16 })
     ] }, i)),
     children
   ] });
 };
 
 // components/SidebarSection/index.tsx
-var import_jsx_runtime87 = require("react/jsx-runtime");
+var import_jsx_runtime90 = require("react/jsx-runtime");
 var getClassName35 = get_class_name_factory_default("SidebarSection", styles_module_default26);
 var SidebarSection = ({
   children,
@@ -13996,20 +14392,20 @@ var SidebarSection = ({
   noBorderTop,
   isLoading
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)("div", { className: getClassName35({ noBorderTop }), style: { background }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime87.jsx)("div", { className: getClassName35("title"), children: /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)("div", { className: getClassName35("breadcrumbs"), children: [
-      showBreadcrumbs && /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Breadcrumbs, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime87.jsx)("div", { className: getClassName35("heading"), children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Heading7, { rank: "2", size: "xs", children: title }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)("div", { className: getClassName35({ noBorderTop }), style: { background }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime90.jsx)("div", { className: getClassName35("title"), children: /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)("div", { className: getClassName35("breadcrumbs"), children: [
+      showBreadcrumbs && /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Breadcrumbs, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)("div", { className: getClassName35("heading"), children: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Heading7, { rank: "2", size: "xs", children: title }) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime87.jsx)("div", { className: getClassName35("content"), children }),
-    isLoading && /* @__PURE__ */ (0, import_jsx_runtime87.jsx)("div", { className: getClassName35("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Loader, { size: 32 }) })
+    /* @__PURE__ */ (0, import_jsx_runtime90.jsx)("div", { className: getClassName35("content"), children }),
+    isLoading && /* @__PURE__ */ (0, import_jsx_runtime90.jsx)("div", { className: getClassName35("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Loader, { size: 32 }) })
   ] });
 };
 
 // components/CredBuild/components/Canvas/index.tsx
 init_react_import();
 init_css_box_model_esm();
-var import_react95 = require("react");
+var import_react97 = require("react");
 init_store2();
 
 // css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Canvas/styles.module.css#css-module
@@ -14021,7 +14417,7 @@ init_lib();
 init_Loader();
 var import_shallow10 = require("zustand/react/shallow");
 init_default_viewports();
-var import_jsx_runtime88 = require("react/jsx-runtime");
+var import_jsx_runtime91 = require("react/jsx-runtime");
 var getClassName36 = get_class_name_factory_default("CredBuildCanvas", styles_module_default28);
 var ZOOM_ON_CHANGE = true;
 var TRANSITION_DURATION = 150;
@@ -14065,17 +14461,17 @@ var Canvas = () => {
       viewports: s.state.ui.viewports
     }))
   );
-  const [showTransition, setShowTransition] = (0, import_react95.useState)(false);
-  const isResizingRef = (0, import_react95.useRef)(false);
-  const defaultRender = (0, import_react95.useMemo)(() => {
-    const CredBuildDefault = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_jsx_runtime88.Fragment, { children });
+  const [showTransition, setShowTransition] = (0, import_react97.useState)(false);
+  const isResizingRef = (0, import_react97.useRef)(false);
+  const defaultRender = (0, import_react97.useMemo)(() => {
+    const CredBuildDefault = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(import_jsx_runtime91.Fragment, { children });
     return CredBuildDefault;
   }, []);
-  const CustomPreview = (0, import_react95.useMemo)(
+  const CustomPreview = (0, import_react97.useMemo)(
     () => overrides.preview || defaultRender,
     [overrides, defaultRender]
   );
-  const getFrameDimensions = (0, import_react95.useCallback)(() => {
+  const getFrameDimensions = (0, import_react97.useCallback)(() => {
     if (frameRef.current) {
       const frame = frameRef.current;
       const box = getBox(frame);
@@ -14083,7 +14479,7 @@ var Canvas = () => {
     }
     return { width: 0, height: 0 };
   }, [frameRef]);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react97.useEffect)(() => {
     resetAutoZoom();
   }, [
     frameRef,
@@ -14093,7 +14489,7 @@ var Canvas = () => {
     viewports,
     resetAutoZoom
   ]);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react97.useEffect)(() => {
     const { height: frameHeight } = getFrameDimensions();
     if (viewports.current.height === "auto") {
       const newRootHeight = frameHeight / zoomConfig.zoom;
@@ -14111,12 +14507,12 @@ var Canvas = () => {
     viewports,
     zoomConfig.rootHeight
   ]);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react97.useEffect)(() => {
     if (ZOOM_ON_CHANGE) {
       resetAutoZoom();
     }
   }, [viewports.current.width, viewports, resetAutoZoom]);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react97.useEffect)(() => {
     if (!frameRef.current) return;
     const resizeObserver = new ResizeObserver(() => {
       if (!isResizingRef.current) {
@@ -14128,14 +14524,14 @@ var Canvas = () => {
       resizeObserver.disconnect();
     };
   }, [frameRef, resetAutoZoom]);
-  const [showLoader, setShowLoader] = (0, import_react95.useState)(false);
-  (0, import_react95.useEffect)(() => {
+  const [showLoader, setShowLoader] = (0, import_react97.useState)(false);
+  (0, import_react97.useEffect)(() => {
     setTimeout(() => {
       setShowLoader(true);
     }, 500);
   }, []);
   const appStoreApi = useAppStoreApi();
-  (0, import_react95.useEffect)(() => {
+  (0, import_react97.useEffect)(() => {
     if (typeof window === "undefined") return;
     if (uiProp?.viewports?.current) return;
     const viewportWidth = window.innerWidth;
@@ -14189,7 +14585,7 @@ var Canvas = () => {
     uiProp?.viewports,
     frameRef
   ]);
-  return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
     "div",
     {
       className: getClassName36({
@@ -14207,8 +14603,8 @@ var Canvas = () => {
           });
         }
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)("div", { className: getClassName36("inner"), ref: frameRef, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)("div", { className: getClassName36("inner"), ref: frameRef, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
           "div",
           {
             className: getClassName36("root"),
@@ -14226,10 +14622,10 @@ var Canvas = () => {
               setShowTransition(false);
               isResizingRef.current = false;
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(CustomPreview, { children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Preview, {}) })
+            children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(CustomPreview, { children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Preview, {}) })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime88.jsx)("div", { className: getClassName36("loader"), children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(Loader, { size: 24 }) })
+        /* @__PURE__ */ (0, import_jsx_runtime91.jsx)("div", { className: getClassName36("loader"), children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Loader, { size: 24 }) })
       ] })
     }
   );
@@ -14237,15 +14633,15 @@ var Canvas = () => {
 
 // lib/use-sidebar-resize.ts
 init_react_import();
-var import_react96 = require("react");
+var import_react98 = require("react");
 init_store2();
 function useSidebarResize(position, dispatch) {
-  const [width, setWidth] = (0, import_react96.useState)(null);
-  const sidebarRef = (0, import_react96.useRef)(null);
+  const [width, setWidth] = (0, import_react98.useState)(null);
+  const sidebarRef = (0, import_react98.useRef)(null);
   const storeWidth = useAppStore(
     (s) => position === "left" ? s.state.ui.leftSideBarWidth : s.state.ui.rightSideBarWidth
   );
-  (0, import_react96.useEffect)(() => {
+  (0, import_react98.useEffect)(() => {
     if (typeof window !== "undefined" && !storeWidth) {
       try {
         const savedWidths = localStorage.getItem("credbuild-sidebar-widths");
@@ -14270,12 +14666,12 @@ function useSidebarResize(position, dispatch) {
       }
     }
   }, [dispatch, position, storeWidth]);
-  (0, import_react96.useEffect)(() => {
+  (0, import_react98.useEffect)(() => {
     if (storeWidth !== void 0) {
       setWidth(storeWidth);
     }
   }, [storeWidth]);
-  const handleResizeEnd = (0, import_react96.useCallback)(
+  const handleResizeEnd = (0, import_react98.useCallback)(
     (width2) => {
       dispatch({
         type: "setUi",
@@ -14323,7 +14719,7 @@ init_react_import();
 
 // components/CredBuild/components/ResizeHandle/index.tsx
 init_react_import();
-var import_react97 = require("react");
+var import_react99 = require("react");
 init_get_class_name_factory();
 
 // css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/ResizeHandle/styles.module.css#css-module
@@ -14332,7 +14728,7 @@ var styles_module_default29 = { "ResizeHandle": "_ResizeHandle_144bf_2", "Resize
 
 // components/CredBuild/components/ResizeHandle/index.tsx
 init_lib();
-var import_jsx_runtime89 = require("react/jsx-runtime");
+var import_jsx_runtime92 = require("react/jsx-runtime");
 var getClassName37 = get_class_name_factory_default("ResizeHandle", styles_module_default29);
 var ResizeHandle = ({
   position,
@@ -14342,11 +14738,11 @@ var ResizeHandle = ({
 }) => {
   const { frameRef } = useCanvasFrame();
   const resetAutoZoom = useResetAutoZoom(frameRef);
-  const handleRef = (0, import_react97.useRef)(null);
-  const isDragging = (0, import_react97.useRef)(false);
-  const startX = (0, import_react97.useRef)(0);
-  const startWidth = (0, import_react97.useRef)(0);
-  const handleMouseMove = (0, import_react97.useCallback)(
+  const handleRef = (0, import_react99.useRef)(null);
+  const isDragging = (0, import_react99.useRef)(false);
+  const startX = (0, import_react99.useRef)(0);
+  const startWidth = (0, import_react99.useRef)(0);
+  const handleMouseMove = (0, import_react99.useCallback)(
     (e) => {
       if (!isDragging.current) return;
       const delta = e.clientX - startX.current;
@@ -14357,7 +14753,7 @@ var ResizeHandle = ({
     },
     [onResize, position]
   );
-  const handleMouseUp = (0, import_react97.useCallback)(() => {
+  const handleMouseUp = (0, import_react99.useCallback)(() => {
     if (!isDragging.current) return;
     isDragging.current = false;
     document.body.style.cursor = "";
@@ -14372,7 +14768,7 @@ var ResizeHandle = ({
     onResizeEnd(finalWidth);
     resetAutoZoom();
   }, [onResizeEnd, handleMouseMove, resetAutoZoom, sidebarRef]);
-  const handleMouseDown = (0, import_react97.useCallback)(
+  const handleMouseDown = (0, import_react99.useCallback)(
     (e) => {
       isDragging.current = true;
       startX.current = e.clientX;
@@ -14389,7 +14785,7 @@ var ResizeHandle = ({
     },
     [handleMouseMove, handleMouseUp, sidebarRef]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(
     "div",
     {
       ref: handleRef,
@@ -14407,7 +14803,7 @@ init_react_import();
 var styles_module_default30 = { "Sidebar": "_Sidebar_1kcif_1", "Sidebar--isVisible": "_Sidebar--isVisible_1kcif_13", "Sidebar--left": "_Sidebar--left_1kcif_17", "Sidebar--right": "_Sidebar--right_1kcif_29", "Sidebar-resizeHandle": "_Sidebar-resizeHandle_1kcif_42" };
 
 // components/CredBuild/components/Sidebar/index.tsx
-var import_jsx_runtime90 = require("react/jsx-runtime");
+var import_jsx_runtime93 = require("react/jsx-runtime");
 var getClassName38 = get_class_name_factory_default("Sidebar", styles_module_default30);
 var Sidebar = ({
   position,
@@ -14417,8 +14813,8 @@ var Sidebar = ({
   onResizeEnd,
   children
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(import_jsx_runtime90.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(import_jsx_runtime93.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
       "div",
       {
         ref: sidebarRef,
@@ -14426,7 +14822,7 @@ var Sidebar = ({
         children
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime90.jsx)("div", { className: `${getClassName38("resizeHandle")}`, children: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime93.jsx)("div", { className: `${getClassName38("resizeHandle")}`, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
       ResizeHandle,
       {
         position,
@@ -14440,7 +14836,7 @@ var Sidebar = ({
 
 // lib/use-delete-hotkeys.ts
 init_react_import();
-var import_react98 = require("react");
+var import_react100 = require("react");
 init_use_hotkey();
 init_store2();
 var isElementVisible = (element) => {
@@ -14476,7 +14872,7 @@ var shouldBlockDeleteHotkey = (e) => {
 };
 var useDeleteHotkeys = () => {
   const appStore = useAppStoreApi();
-  const deleteSelectedComponent = (0, import_react98.useCallback)(
+  const deleteSelectedComponent = (0, import_react100.useCallback)(
     (e) => {
       if (shouldBlockDeleteHotkey(e)) {
         return false;
@@ -14508,7 +14904,7 @@ var styles_module_default31 = { "Nav": "_Nav_wbh7e_1", "Nav-list": "_Nav-list_wb
 
 // components/CredBuild/components/Nav/index.tsx
 init_lib();
-var import_jsx_runtime91 = require("react/jsx-runtime");
+var import_jsx_runtime94 = require("react/jsx-runtime");
 var getClassName39 = get_class_name_factory_default("Nav", styles_module_default31);
 var getClassNameItem3 = get_class_name_factory_default("NavItem", styles_module_default31);
 var MenuItem = ({
@@ -14519,7 +14915,7 @@ var MenuItem = ({
   mobileOnly,
   desktopOnly
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
     "li",
     {
       className: getClassNameItem3({
@@ -14527,9 +14923,9 @@ var MenuItem = ({
         mobileOnly,
         desktopOnly
       }),
-      children: onClick && /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)("div", { className: getClassNameItem3("link"), onClick, children: [
-        icon && /* @__PURE__ */ (0, import_jsx_runtime91.jsx)("span", { className: getClassNameItem3("linkIcon"), children: icon }),
-        /* @__PURE__ */ (0, import_jsx_runtime91.jsx)("span", { className: getClassNameItem3("linkLabel"), children: label })
+      children: onClick && /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)("div", { className: getClassNameItem3("link"), onClick, children: [
+        icon && /* @__PURE__ */ (0, import_jsx_runtime94.jsx)("span", { className: getClassNameItem3("linkIcon"), children: icon }),
+        /* @__PURE__ */ (0, import_jsx_runtime94.jsx)("span", { className: getClassNameItem3("linkLabel"), children: label })
       ] })
     }
   );
@@ -14538,9 +14934,9 @@ var Nav = ({
   items,
   mobileActions
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)("nav", { className: getClassName39(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)("ul", { className: getClassName39("list"), children: Object.entries(items).map(([key, item]) => /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(MenuItem, { ...item }, key)) }),
-    mobileActions && /* @__PURE__ */ (0, import_jsx_runtime91.jsx)("div", { className: getClassName39("mobileActions"), children: mobileActions })
+  return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)("nav", { className: getClassName39(), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime94.jsx)("ul", { className: getClassName39("list"), children: Object.entries(items).map(([key, item]) => /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(MenuItem, { ...item }, key)) }),
+    mobileActions && /* @__PURE__ */ (0, import_jsx_runtime94.jsx)("div", { className: getClassName39("mobileActions"), children: mobileActions })
   ] });
 };
 
@@ -14558,13 +14954,13 @@ var styles_module_default32 = { "BlocksPlugin": "_BlocksPlugin_1ey1i_1" };
 
 // plugins/blocks/index.tsx
 init_lib();
-var import_jsx_runtime92 = require("react/jsx-runtime");
+var import_jsx_runtime95 = require("react/jsx-runtime");
 var getClassName40 = get_class_name_factory_default("BlocksPlugin", styles_module_default32);
 var blocksPlugin = () => ({
   name: "blocks",
   label: "Blocks",
-  render: () => /* @__PURE__ */ (0, import_jsx_runtime92.jsx)("div", { className: getClassName40(), children: /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Components, {}) }),
-  icon: /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Shapes, {})
+  render: () => /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getClassName40(), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Components, {}) }),
+  icon: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Shapes, {})
 });
 
 // plugins/outline/index.tsx
@@ -14577,13 +14973,13 @@ var styles_module_default33 = { "OutlinePlugin": "_OutlinePlugin_q92j6_1" };
 
 // plugins/outline/index.tsx
 init_lib();
-var import_jsx_runtime93 = require("react/jsx-runtime");
+var import_jsx_runtime96 = require("react/jsx-runtime");
 var getClassName41 = get_class_name_factory_default("OutlinePlugin", styles_module_default33);
 var outlinePlugin = () => ({
   name: "outline",
   label: "Outline",
-  render: () => /* @__PURE__ */ (0, import_jsx_runtime93.jsx)("div", { className: getClassName41(), children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Outline, {}) }),
-  icon: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(List, {})
+  render: () => /* @__PURE__ */ (0, import_jsx_runtime96.jsx)("div", { className: getClassName41(), children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(Outline, {}) }),
+  icon: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(List, {})
 });
 
 // plugins/fields/index.tsx
@@ -14597,7 +14993,7 @@ var styles_module_default34 = { "FieldsPlugin": "_FieldsPlugin_6as57_1", "Fields
 
 // plugins/fields/index.tsx
 init_lib();
-var import_jsx_runtime94 = require("react/jsx-runtime");
+var import_jsx_runtime97 = require("react/jsx-runtime");
 var getClassName42 = get_class_name_factory_default("FieldsPlugin", styles_module_default34);
 var CurrentTitle = () => {
   const label = useAppStore((s) => {
@@ -14609,16 +15005,16 @@ var CurrentTitle = () => {
 var fieldsPlugin = ({ desktopSideBar = "right" } = {}) => ({
   name: "fields",
   label: "Fields",
-  render: () => /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)("div", { className: getClassName42(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime94.jsx)("div", { className: getClassName42("header"), children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Breadcrumbs, { numParents: 2, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(CurrentTitle, {}) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Fields, {})
+  render: () => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("div", { className: getClassName42(), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("div", { className: getClassName42("header"), children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Breadcrumbs, { numParents: 2, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(CurrentTitle, {}) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Fields, {})
   ] }),
-  icon: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(RectangleEllipsis, {}),
+  icon: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(RectangleEllipsis, {}),
   mobileOnly: desktopSideBar === "right"
 });
 
 // components/CredBuild/components/Layout/index.tsx
-var import_jsx_runtime95 = require("react/jsx-runtime");
+var import_jsx_runtime98 = require("react/jsx-runtime");
 var getClassName43 = get_class_name_factory_default("CredBuild", styles_module_default22);
 var getLayoutClassName = get_class_name_factory_default("CredBuildLayout", styles_module_default22);
 var getPluginTabClassName = get_class_name_factory_default("CredBuildPluginTab", styles_module_default22);
@@ -14626,14 +15022,14 @@ var FieldSideBar = () => {
   const title = useAppStore(
     (s) => s.selectedItem ? s.config.components[s.selectedItem.type]?.["label"] ?? s.selectedItem.type.toString() : s.config.root?.label || "Page"
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(SidebarSection, { noBorderTop: true, showBreadcrumbs: true, title, children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Fields, {}) });
+  return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(SidebarSection, { noBorderTop: true, showBreadcrumbs: true, title, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Fields, {}) });
 };
 var PluginTab = ({
   children,
   visible,
   mobileOnly
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getPluginTabClassName({ visible, mobileOnly }), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getPluginTabClassName("body"), children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)("div", { className: getPluginTabClassName({ visible, mobileOnly }), children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)("div", { className: getPluginTabClassName("body"), children }) });
 };
 var Layout = ({ children }) => {
   const {
@@ -14643,7 +15039,7 @@ var Layout = ({ children }) => {
     plugins,
     height
   } = usePropsContext();
-  const iframe = (0, import_react99.useMemo)(
+  const iframe = (0, import_react101.useMemo)(
     () => ({
       enabled: true,
       waitForStyles: true,
@@ -14670,7 +15066,7 @@ var Layout = ({ children }) => {
     sidebarRef: rightSidebarRef,
     handleResizeEnd: handleRightSidebarResizeEnd
   } = useSidebarResize("right", dispatch);
-  (0, import_react99.useEffect)(() => {
+  (0, import_react101.useEffect)(() => {
     if (!window.matchMedia("(min-width: 638px)").matches) {
       dispatch({
         type: "setUi",
@@ -14697,13 +15093,13 @@ var Layout = ({ children }) => {
     };
   }, [dispatch]);
   const overrides = useAppStore((s) => s.overrides);
-  const CustomCredBuild = (0, import_react99.useMemo)(
+  const CustomCredBuild = (0, import_react101.useMemo)(
     () => overrides.credbuild || DefaultOverride,
     [overrides]
   );
-  const [mounted, setMounted] = (0, import_react99.useState)(false);
-  const [theme, setTheme] = (0, import_react99.useState)("dark");
-  (0, import_react99.useEffect)(() => {
+  const [mounted, setMounted] = (0, import_react101.useState)(false);
+  const [theme, setTheme] = (0, import_react101.useState)("dark");
+  (0, import_react101.useEffect)(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem("credbuild-theme");
     if (savedTheme) {
@@ -14722,7 +15118,7 @@ var Layout = ({ children }) => {
   }, []);
   const ready = useAppStore((s) => s.status === "READY");
   useMonitorHotkeys();
-  (0, import_react99.useEffect)(() => {
+  (0, import_react101.useEffect)(() => {
     if (ready && iframe.enabled) {
       const frameDoc = getFrame();
       if (frameDoc) {
@@ -14742,12 +15138,12 @@ var Layout = ({ children }) => {
   const setUi = useAppStore((s) => s.setUi);
   const currentPlugin = useAppStore((s) => s.state.ui.plugin?.current);
   const appStoreApi = useAppStoreApi();
-  const [mobilePanelHeightMode, setMobilePanelHeightMode] = (0, import_react99.useState)("toggle");
-  const hasLegacySideBarPlugin = (0, import_react99.useMemo)(
+  const [mobilePanelHeightMode, setMobilePanelHeightMode] = (0, import_react101.useState)("toggle");
+  const hasLegacySideBarPlugin = (0, import_react101.useMemo)(
     () => !!plugins?.find((p) => p.name === "legacy-side-bar"),
     [plugins]
   );
-  const pluginItems = (0, import_react99.useMemo)(() => {
+  const pluginItems = (0, import_react101.useMemo)(() => {
     const details = {};
     const defaultPlugins = [blocksPlugin(), outlinePlugin()];
     const isLegacy = (plugin) => plugin.name === "legacy-side-bar" ? -1 : 0;
@@ -14765,7 +15161,7 @@ var Layout = ({ children }) => {
         }
         details[plugin.name] = {
           label: plugin.label ?? plugin.name,
-          icon: plugin.icon ?? /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(ToyBrick, {}),
+          icon: plugin.icon ?? /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(ToyBrick, {}),
           onClick: () => {
             setMobilePanelHeightMode(plugin.mobilePanelHeight ?? "toggle");
             if (plugin.name === currentPlugin) {
@@ -14792,7 +15188,7 @@ var Layout = ({ children }) => {
     });
     return details;
   }, [plugins, currentPlugin, leftSideBarVisible, hasLegacySideBarPlugin, setUi]);
-  (0, import_react99.useEffect)(() => {
+  (0, import_react101.useEffect)(() => {
     if (!currentPlugin) {
       const names = Object.keys(pluginItems);
       setUi({ plugin: { current: names[0] } });
@@ -14802,7 +15198,7 @@ var Layout = ({ children }) => {
   const mobilePanelExpanded = useAppStore(
     (s) => s.state.ui.mobilePanelExpanded ?? false
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(
     "div",
     {
       className: `CredBuild ${theme === "dark" ? "dark" : ""} ${getClassName43({
@@ -14812,7 +15208,7 @@ var Layout = ({ children }) => {
       id: instanceId,
       style: { height: typeof height === "number" && isNaN(height) ? void 0 : height },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(DragDropContext, { disableAutoScroll: dnd?.disableAutoScroll, children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(CustomCredBuild, { children: children || /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(FrameProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(DragDropContext, { disableAutoScroll: dnd?.disableAutoScroll, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(CustomCredBuild, { children: children || /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(FrameProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
           "div",
           {
             className: getLayoutClassName({
@@ -14824,14 +15220,14 @@ var Layout = ({ children }) => {
               mobilePanelHeightMinContent: mobilePanelHeightMode === "min-content"
             }),
             style: { height: typeof height === "number" && isNaN(height) ? void 0 : height },
-            children: /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(
               "div",
               {
                 className: getLayoutClassName("inner"),
                 style: layoutOptions,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getLayoutClassName("header"), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Header, { theme, hidePlugins: hasLegacySideBarPlugin }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
+                  /* @__PURE__ */ (0, import_jsx_runtime98.jsx)("div", { className: getLayoutClassName("header"), children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Header, { theme, hidePlugins: hasLegacySideBarPlugin }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(
                     Sidebar,
                     {
                       position: "left",
@@ -14840,11 +15236,11 @@ var Layout = ({ children }) => {
                       onResize: setLeftWidth,
                       onResizeEnd: handleLeftSidebarResizeEnd,
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { className: getLayoutClassName("nav"), children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)("div", { className: getLayoutClassName("nav"), children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
                           Nav,
                           {
                             items: pluginItems,
-                            mobileActions: typeof window !== "undefined" && !window.matchMedia("(min-width: 638px)").matches && leftSideBarVisible && mobilePanelHeightMode === "toggle" && /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+                            mobileActions: typeof window !== "undefined" && !window.matchMedia("(min-width: 638px)").matches && leftSideBarVisible && mobilePanelHeightMode === "toggle" && /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
                               IconButton,
                               {
                                 type: "button",
@@ -14854,18 +15250,18 @@ var Layout = ({ children }) => {
                                     mobilePanelExpanded: !mobilePanelExpanded
                                   });
                                 },
-                                children: mobilePanelExpanded ? /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Minimize2, { size: 21 }) : /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Maximize2, { size: 21 })
+                                children: mobilePanelExpanded ? /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Minimize2, { size: 21 }) : /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Maximize2, { size: 21 })
                               }
                             )
                           }
                         ) }),
                         Object.entries(pluginItems).map(
-                          ([id, { mobileOnly, render: Render2, label }]) => /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+                          ([id, { mobileOnly, render: Render2, label }]) => /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
                             PluginTab,
                             {
                               visible: currentPlugin === id,
                               mobileOnly,
-                              children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Render2, {})
+                              children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Render2, {})
                             },
                             id
                           )
@@ -14873,8 +15269,8 @@ var Layout = ({ children }) => {
                       ]
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Canvas, {}),
-                  !hasDesktopFieldsPlugin && /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Canvas, {}),
+                  !hasDesktopFieldsPlugin && /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
                     Sidebar,
                     {
                       position: "right",
@@ -14882,7 +15278,7 @@ var Layout = ({ children }) => {
                       isVisible: rightSideBarVisible,
                       onResize: setRightWidth,
                       onResizeEnd: handleRightSidebarResizeEnd,
-                      children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(FieldSideBar, {})
+                      children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(FieldSideBar, {})
                     }
                   )
                 ]
@@ -14890,7 +15286,7 @@ var Layout = ({ children }) => {
             )
           }
         ) }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("div", { id: "credbuild-portal-root", className: getClassName43("portal") })
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)("div", { id: "credbuild-portal-root", className: getClassName43("portal") })
       ]
     }
   );
@@ -14898,7 +15294,7 @@ var Layout = ({ children }) => {
 
 // components/CredBuild/index.tsx
 init_use_safe_id();
-var import_jsx_runtime96 = require("react/jsx-runtime");
+var import_jsx_runtime99 = require("react/jsx-runtime");
 function CredBuildProvider({ children }) {
   const {
     config,
@@ -14917,7 +15313,7 @@ function CredBuildProvider({ children }) {
     _experimentalFullScreenCanvas,
     _experimentalVirtualization
   } = usePropsContext();
-  const iframe = (0, import_react100.useMemo)(
+  const iframe = (0, import_react102.useMemo)(
     () => ({
       enabled: true,
       waitForStyles: true,
@@ -14925,7 +15321,7 @@ function CredBuildProvider({ children }) {
     }),
     [_iframe]
   );
-  const [generatedAppState] = (0, import_react100.useState)(() => {
+  const [generatedAppState] = (0, import_react102.useState)(() => {
     const initial = { ...defaultAppState.ui, ...initialUi };
     let clientUiState = {};
     if (Object.keys(initialData?.root || {}).length > 0 && !initialData?.root?.props) {
@@ -14972,7 +15368,7 @@ function CredBuildProvider({ children }) {
     return walkAppState(newAppState, config);
   });
   const { appendData = true } = _initialHistory || {};
-  const [blendedHistories] = (0, import_react100.useState)(
+  const [blendedHistories] = (0, import_react102.useState)(
     [
       ..._initialHistory?.histories || [],
       ...appendData ? [{ state: generatedAppState }] : []
@@ -14987,7 +15383,7 @@ function CredBuildProvider({ children }) {
       };
     })
   );
-  const initialHistoryIndex = (0, import_react100.useMemo)(() => {
+  const initialHistoryIndex = (0, import_react102.useMemo)(() => {
     if (_initialHistory?.index !== void 0 && _initialHistory?.index >= 0 && _initialHistory?.index < blendedHistories.length) {
       return _initialHistory?.index;
     }
@@ -14998,7 +15394,7 @@ function CredBuildProvider({ children }) {
     overrides,
     plugins
   });
-  const loadedFieldTransforms = (0, import_react100.useMemo)(() => {
+  const loadedFieldTransforms = (0, import_react102.useMemo)(() => {
     const _plugins = plugins || [];
     const pluginFieldTransforms = _plugins.reduce(
       (acc, plugin) => ({ ...acc, ...plugin.fieldTransforms }),
@@ -15010,7 +15406,7 @@ function CredBuildProvider({ children }) {
     };
   }, [fieldTransforms, plugins]);
   const instanceId = useSafeId();
-  const generateAppStore = (0, import_react100.useCallback)(
+  const generateAppStore = (0, import_react102.useCallback)(
     (state) => {
       return {
         instanceId,
@@ -15041,15 +15437,15 @@ function CredBuildProvider({ children }) {
       loadedFieldTransforms
     ]
   );
-  const [appStore] = (0, import_react100.useState)(
+  const [appStore] = (0, import_react102.useState)(
     () => createAppStore(generateAppStore(initialAppState))
   );
-  (0, import_react100.useEffect)(() => {
+  (0, import_react102.useEffect)(() => {
     if (process.env.NODE_ENV !== "production") {
       window.__CREDBUILD_INTERNAL_DO_NOT_USE = { appStore };
     }
   }, [appStore]);
-  (0, import_react100.useEffect)(() => {
+  (0, import_react102.useEffect)(() => {
     const state = appStore.getState().state;
     appStore.setState({
       ...generateAppStore(state)
@@ -15060,8 +15456,8 @@ function CredBuildProvider({ children }) {
     index: initialHistoryIndex,
     initialAppState
   });
-  const previousData = (0, import_react100.useRef)(null);
-  (0, import_react100.useEffect)(() => {
+  const previousData = (0, import_react102.useRef)(null);
+  (0, import_react102.useEffect)(() => {
     return appStore.subscribe(
       (s) => s.state.data,
       (data) => {
@@ -15075,16 +15471,16 @@ function CredBuildProvider({ children }) {
   }, [onChange, appStore]);
   useRegisterPermissionsSlice(appStore, permissions);
   const uCredBuildStore = useRegisterUseCredBuildStore(appStore);
-  (0, import_react100.useEffect)(() => {
+  (0, import_react102.useEffect)(() => {
     const { resolveAndCommitData } = appStore.getState();
     setTimeout(() => {
       resolveAndCommitData();
     }, 0);
   }, [appStore]);
-  return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(appStoreContext.Provider, { value: appStore, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(UseCredBuildStoreContext.Provider, { value: uCredBuildStore, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(appStoreContext.Provider, { value: appStore, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(UseCredBuildStoreContext.Provider, { value: uCredBuildStore, children }) });
 }
 function CredBuild(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(PropsProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(CredBuildProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(Layout, { children: props.children }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(PropsProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(CredBuildProvider, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(Layout, { children: props.children }) }) });
 }
 CredBuild.Components = Components;
 CredBuild.Fields = Fields;
@@ -15348,12 +15744,12 @@ init_walk_tree();
 
 // plugins/legacy-side-bar/index.tsx
 init_react_import();
-var import_jsx_runtime97 = require("react/jsx-runtime");
+var import_jsx_runtime100 = require("react/jsx-runtime");
 var legacySideBarPlugin = () => ({
   name: "legacy-side-bar",
-  render: () => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("div", { style: { overflowY: "auto" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(SidebarSection, { title: "Components", noBorderTop: true, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Components, {}) }),
-    /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(SidebarSection, { title: "Outline", children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Outline, {}) })
+  render: () => /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)("div", { style: { overflowY: "auto" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(SidebarSection, { title: "Components", noBorderTop: true, children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Components, {}) }),
+    /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(SidebarSection, { title: "Outline", children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Outline, {}) })
   ] })
 });
 // Annotate the CommonJS export names for ESM import in node:
@@ -15362,6 +15758,7 @@ var legacySideBarPlugin = () => ({
   ActionBar,
   AutoField,
   Button,
+  ColorPickerField,
   CredBuild,
   Drawer,
   DropZone,
@@ -15370,8 +15767,10 @@ var legacySideBarPlugin = () => ({
   IconButton,
   Label,
   Render,
+  ResponsiveSliderField,
   RichTextMenu,
   Separator,
+  SliderField,
   blocksPlugin,
   createUseCredBuild,
   fieldsPlugin,

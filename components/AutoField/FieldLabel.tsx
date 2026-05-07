@@ -26,7 +26,7 @@ export const FieldLabel = ({
   const El = el;
   return (
     <El className={className}>
-      <div className={getClassName("label")}>
+      <div className={`${getClassName("label")} ${!children ? styles["Input-label--noChildren"] : ""}`}>
         {icon ? <div className={getClassName("labelIcon")}>{icon}</div> : <></>}
         {label}
 
