@@ -1,7 +1,7 @@
 import getClassNameFactory from "../../../../lib/get-class-name-factory";
 import styles from "./styles.module.css";
 import { Copy, List, Plus, Trash } from "lucide-react";
-import type { FieldPropsInternal } from "../..";
+import { FieldPropsInternal } from "../../types";
 import { useFieldStore, useFieldStoreApi } from "../../store";
 import { IconButton } from "../../../IconButton";
 import { reorder, replace } from "../../../../lib";

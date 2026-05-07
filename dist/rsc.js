@@ -8,9 +8,6 @@ var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
-var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -42,75 +39,13 @@ var init_react_import = __esm({
   }
 });
 
-// ../node_modules/classnames/index.js
-var require_classnames = __commonJS({
-  "../node_modules/classnames/index.js"(exports2, module2) {
-    "use strict";
-    init_react_import();
-    (function() {
-      "use strict";
-      var hasOwn = {}.hasOwnProperty;
-      function classNames() {
-        var classes = "";
-        for (var i = 0; i < arguments.length; i++) {
-          var arg = arguments[i];
-          if (arg) {
-            classes = appendClass(classes, parseValue(arg));
-          }
-        }
-        return classes;
-      }
-      function parseValue(arg) {
-        if (typeof arg === "string" || typeof arg === "number") {
-          return arg;
-        }
-        if (typeof arg !== "object") {
-          return "";
-        }
-        if (Array.isArray(arg)) {
-          return classNames.apply(null, arg);
-        }
-        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
-          return arg.toString();
-        }
-        var classes = "";
-        for (var key in arg) {
-          if (hasOwn.call(arg, key) && arg[key]) {
-            classes = appendClass(classes, key);
-          }
-        }
-        return classes;
-      }
-      function appendClass(value, newClass) {
-        if (!newClass) {
-          return value;
-        }
-        if (value) {
-          return value + " " + newClass;
-        }
-        return value + newClass;
-      }
-      if (typeof module2 !== "undefined" && module2.exports) {
-        classNames.default = classNames;
-        module2.exports = classNames;
-      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
-        define("classnames", [], function() {
-          return classNames;
-        });
-      } else {
-        window.classNames = classNames;
-      }
-    })();
-  }
-});
-
 // lib/get-class-name-factory.ts
 var import_classnames, getClassNameFactory, get_class_name_factory_default;
 var init_get_class_name_factory = __esm({
   "lib/get-class-name-factory.ts"() {
     "use strict";
     init_react_import();
-    import_classnames = __toESM(require_classnames());
+    import_classnames = __toESM(require("classnames"));
     getClassNameFactory = (rootClass, styles, config = { baseClass: "" }) => (options = {}) => {
       if (typeof options === "string") {
         const descendant = options;
@@ -139,16 +74,16 @@ var init_get_class_name_factory = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css/#css-module-data
 var init_css_module_data = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css#css-module
 var styles_module_default;
 var init_styles_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data();
@@ -1455,12 +1390,3 @@ function migrate(data, config, migrationOptions) {
   transformProps,
   walkTree
 });
-/*! Bundled license information:
-
-classnames/index.js:
-  (*!
-  	Copyright (c) 2018 Jed Watson.
-  	Licensed under the MIT License (MIT), see
-  	http://jedwatson.github.io/classnames
-  *)
-*/

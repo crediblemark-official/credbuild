@@ -42,7 +42,7 @@ import { useContentIdsWithPreview } from "./lib/use-content-with-preview";
 import { useDragAxis } from "./lib/use-drag-axis";
 import { useContextStore } from "../../lib/use-context-store";
 import { useShallow } from "zustand/react/shallow";
-import { renderContext } from "../Render";
+import { renderContext } from "../Render/context";
 import { useSlots } from "../../lib/use-slots";
 import { ContextSlotRender, SlotRenderPure } from "../SlotRender";
 import { expandNode } from "../../lib/data/flatten-node";

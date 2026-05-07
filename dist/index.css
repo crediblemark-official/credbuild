@@ -1,6 +1,6 @@
 @import "https://rsms.me/inter/inter.css";
 
-/* bundle/index.css */
+/* styles/color.css */
 :root {
   --credbuild-color-rose-01: #4a001c;
   --credbuild-color-rose-02: #670833;
@@ -77,6 +77,8 @@
   --credbuild-color-black: #000000;
   --credbuild-color-white: #ffffff;
 }
+
+/* styles/typography.css */
 :root {
   --credbuild-font-size-scale-base-unitless: 12;
   --credbuild-font-size-xxxs-unitless: 12;
@@ -131,6 +133,8 @@
     --credbuild-font-family: InterVariable, var(--fallback-font-stack);
   }
 }
+
+/* bundle/core.css */
 #frame-root {
   height: 1px;
   min-height: 100vh;
@@ -140,7 +144,9 @@
   z-index: 0;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css/#css-module-data */
+/* bundle/index.css */
+
+/* css-module:/home/crediblemark/Project/Credibuild/components/ActionBar/styles.module.css/#css-module-data */
 ._ActionBar_ze0ci_1 {
   align-items: center;
   cursor: default;
@@ -235,7 +241,7 @@
   height: 100%;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/styles.module.css/#css-module-data */
 ._InputWrapper_1q7gk_1 + ._InputWrapper_1q7gk_1 {
   margin-top: 12px;
 }
@@ -390,7 +396,7 @@ textarea._Input-input_1q7gk_26 {
   margin-bottom: -4px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ArrayField/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ArrayField/styles.module.css/#css-module-data */
 ._ArrayField_1q029_5 {
   display: flex;
   flex-direction: column;
@@ -552,7 +558,7 @@ textarea._Input-input_1q7gk_26 {
   opacity: 1;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css/#css-module-data */
 ._IconButton_1a0fz_1 {
   align-items: center;
   background: transparent;
@@ -597,7 +603,7 @@ textarea._Input-input_1q7gk_26 {
   color: var(--credbuild-color-grey-07);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css/#css-module-data */
 @keyframes _loader-animation_nacdm_1 {
   0% {
     transform: rotate(0deg) scale(1);
@@ -619,7 +625,7 @@ textarea._Input-input_1q7gk_26 {
   animation-fill-mode: both;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DragIcon/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/DragIcon/styles.module.css/#css-module-data */
 ._DragIcon_ei1r9_1 {
   color: var(--credbuild-color-grey-05);
   cursor: grab;
@@ -649,7 +655,7 @@ textarea._Input-input_1q7gk_26 {
   transition: none !important;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ExternalInput/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/ExternalInput/styles.module.css/#css-module-data */
 ._ExternalInput-actions_1gpb4_1 {
   display: flex;
 }
@@ -941,7 +947,7 @@ textarea._Input-input_1q7gk_26 {
   display: block;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Modal/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Modal/styles.module.css/#css-module-data */
 ._Modal_b422s_1 {
   background: color-mix(in srgb, var(--credbuild-color-black) 75%, transparent);
   display: none;
@@ -969,7 +975,7 @@ textarea._Input-input_1q7gk_26 {
   max-height: 90dvh;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Heading/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Heading/styles.module.css/#css-module-data */
 ._Heading_1tpsl_1 {
   display: block;
   color: var(--credbuild-color-black);
@@ -1006,7 +1012,7 @@ textarea._Input-input_1q7gk_26 {
   font-size: var(--credbuild-font-size-xs);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Button/Button.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Button/Button.module.css/#css-module-data */
 ._Button_164uz_1 {
   appearance: none;
   background: none;
@@ -1099,7 +1105,7 @@ textarea._Input-input_1q7gk_26 {
   padding-inline-start: 8px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css/#css-module-data */
 ._RichTextMenu_193iw_1 {
   display: flex;
   flex-direction: row;
@@ -1141,7 +1147,7 @@ textarea._Input-input_1q7gk_26 {
   border-left: 0.5px solid var(--credbuild-color-grey-05);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/components/Control/styles.module.css/#css-module-data */
 ._Control_1aveu_1 .lucide {
   height: 18px;
   width: 18px;
@@ -1151,7 +1157,7 @@ textarea._Input-input_1q7gk_26 {
   width: 16px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Select/styles.module.css/#css-module-data */
 ._Select_16son_1 {
   position: relative;
   z-index: 1;
@@ -1239,7 +1245,7 @@ textarea._Input-input_1q7gk_26 {
   color: var(--credbuild-color-azure-04);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css/#css-module-data */
 ._RichTextEditor_hp4qf_1 .ProseMirror {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -1342,7 +1348,7 @@ textarea._Input-input_1q7gk_26 {
   border-bottom: 1px solid var(--credbuild-color-grey-09);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ObjectField/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ObjectField/styles.module.css/#css-module-data */
 ._ObjectField_b2xjm_5 {
   display: flex;
   flex-direction: column;
@@ -1357,7 +1363,7 @@ textarea._Input-input_1q7gk_26 {
   padding: 16px 15px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Drawer/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Drawer/styles.module.css/#css-module-data */
 ._Drawer_e1509_1 {
   display: flex;
   flex-direction: column;
@@ -1417,7 +1423,7 @@ textarea._Input-input_1q7gk_26 {
   letter-spacing: 0.02em;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DraggableComponent/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/DraggableComponent/styles.module.css/#css-module-data */
 ._DraggableComponent_yrtpz_1 {
   position: absolute;
   pointer-events: none;
@@ -1524,7 +1530,7 @@ textarea._Input-input_1q7gk_26 {
   outline-offset: -2px !important;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DropZone/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/DropZone/styles.module.css/#css-module-data */
 ._DropZone_1vmgt_1 {
   --resize-animation-ms: 150ms;
   position: relative;
@@ -1591,7 +1597,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   outline-offset: 2px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/InlineTextField/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/InlineTextField/styles.module.css/#css-module-data */
 ._InlineTextField_104qp_1 {
   cursor: text;
   display: inline-block;
@@ -1606,7 +1612,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   display: none;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Fields/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Fields/styles.module.css/#css-module-data */
 ._CredBuildFields_slc6y_1 {
   position: relative;
   font-family: var(--credbuild-font-family);
@@ -1648,7 +1654,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   margin-top: 8px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ComponentList/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/ComponentList/styles.module.css/#css-module-data */
 ._ComponentList_1jl8i_1 {
   max-width: 100%;
 }
@@ -1697,7 +1703,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   margin-inline-start: auto;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Preview/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Preview/styles.module.css/#css-module-data */
 ._CredBuildPreview_1z08a_1 {
   position: relative;
   height: 100%;
@@ -1708,7 +1714,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   width: 100%;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/LayerTree/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/LayerTree/styles.module.css/#css-module-data */
 ._LayerTree_nus40_1 {
   color: var(--credbuild-color-grey-03);
   font-family: var(--credbuild-font-family);
@@ -1812,7 +1818,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   margin-top: 2px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Layout/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Layout/styles.module.css/#css-module-data */
 ._CredBuildLayout_ildl0_1 {
   display: flex;
   flex: 1;
@@ -1930,7 +1936,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   opacity: 1;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/MenuBar/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/MenuBar/styles.module.css/#css-module-data */
 ._MenuBar_1m2ld_1 {
   background-color: var(--credbuild-color-white);
   border-bottom: 1px solid var(--credbuild-color-grey-09);
@@ -1974,7 +1980,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   display: flex;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ViewportControls/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/ViewportControls/styles.module.css/#css-module-data */
 ._ViewportControls_1e0ai_1 {
   position: relative;
 }
@@ -2078,7 +2084,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   color: var(--credbuild-color-azure-04);
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Header/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Header/styles.module.css/#css-module-data */
 ._CredBuildHeader_qzv5u_1 {
   background: var(--credbuild-color-white);
   border-bottom: 1px solid var(--credbuild-color-grey-10);
@@ -2152,7 +2158,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   }
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/SidebarSection/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/SidebarSection/styles.module.css/#css-module-data */
 ._SidebarSection_1oj6d_1 {
   display: flex;
   position: relative;
@@ -2248,7 +2254,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   opacity: 0.8;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Breadcrumbs/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/Breadcrumbs/styles.module.css/#css-module-data */
 ._Breadcrumbs_1e0gb_1 {
   align-items: center;
   display: flex;
@@ -2285,7 +2291,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   gap: 4px;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Canvas/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Canvas/styles.module.css/#css-module-data */
 ._CredBuildCanvas_1ivia_1 {
   background-color: var(--credbuild-color-grey-09);
   background-image: radial-gradient(var(--cb-grid-color) var(--cb-grid-dot), transparent 0);
@@ -2363,7 +2369,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   transition: none;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/ResizeHandle/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/ResizeHandle/styles.module.css/#css-module-data */
 @media (min-width: 766px) {
   ._ResizeHandle_144bf_2 {
     position: absolute;
@@ -2396,7 +2402,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   cursor: col-resize;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Sidebar/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Sidebar/styles.module.css/#css-module-data */
 ._Sidebar_1kcif_1 {
   position: relative;
   display: none;
@@ -2445,7 +2451,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   justify-self: start;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Nav/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Nav/styles.module.css/#css-module-data */
 ._Nav_wbh7e_1 {
   display: flex;
   width: 100%;
@@ -2538,7 +2544,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   }
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/blocks/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/plugins/blocks/styles.module.css/#css-module-data */
 ._BlocksPlugin_1ey1i_1 {
   padding: 16px;
   height: 100%;
@@ -2546,7 +2552,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   box-sizing: border-box;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/outline/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/plugins/outline/styles.module.css/#css-module-data */
 ._OutlinePlugin_q92j6_1 {
   padding: 16px;
   height: 100%;
@@ -2554,7 +2560,7 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
   box-sizing: border-box;
 }
 
-/* css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/fields/styles.module.css/#css-module-data */
+/* css-module:/home/crediblemark/Project/Credibuild/plugins/fields/styles.module.css/#css-module-data */
 ._FieldsPlugin_6as57_1 {
   background: white;
   height: 100%;
@@ -2573,4 +2579,3 @@ body:has(._DropZone--isAnimating_1vmgt_68:empty) [data-credbuild-overlay] {
     padding: 16px;
   }
 }
-/*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */

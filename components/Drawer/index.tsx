@@ -3,7 +3,7 @@ import getClassNameFactory from "../../lib/get-class-name-factory";
 import { DragIcon } from "../DragIcon";
 import { ReactElement, ReactNode, Ref, useMemo, useState } from "react";
 import { generateId } from "../../lib/generate-id";
-import { useDragListener } from "../DragDropContext";
+import { useDragListener } from "../DragDropContext/context";
 import { useSafeId } from "../../lib/use-safe-id";
 import { useDraggable, useDroppable } from "@dnd-kit/react";
 

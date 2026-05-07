@@ -41,13 +41,7 @@ export const FieldLabel = ({
   );
 };
 
-export type FieldLabelPropsInternal = {
-  children?: ReactNode;
-  icon?: ReactNode;
-  label?: string;
-  el?: "label" | "div";
-  readOnly?: boolean;
-};
+import { FieldLabelPropsInternal } from "./types";
 
 export const FieldLabelInternal = ({
   children,
@@ -78,25 +72,4 @@ export const FieldLabelInternal = ({
       {children}
     </Wrapper>
   );
-};
-
-export type FieldPropsInternalOptional<ValueType = any, F = Field<any>> = Omit<
-  FieldProps<F, ValueType>,
-  "value"
-> & {
-  Label?: React.FC<FieldLabelPropsInternal>;
-  label?: string;
-  labelIcon?: ReactNode;
-  name?: string;
-};
-
-export type FieldPropsInternal<ValueType = any, F = Field<any>> = FieldProps<
-  F,
-  ValueType
-> & {
-  Label: React.FC<FieldLabelPropsInternal>;
-  label?: string;
-  labelIcon?: ReactNode;
-  id: string;
-  name?: string;
 };

@@ -13,15 +13,7 @@ import { SlotRender } from "../SlotRender";
 import { DropZoneContext } from "../DropZone/context";
 import { useRichtextProps } from "../RichTextEditor/lib/use-richtext-props";
 
-export const renderContext = React.createContext<{
-  config: Config;
-  data: Data;
-  metadata: Metadata;
-}>({
-  config: { components: {} },
-  data: { root: {}, content: [] },
-  metadata: {},
-});
+import { renderContext } from "./context";
 
 export function Render<
   UserConfig extends Config = Config,

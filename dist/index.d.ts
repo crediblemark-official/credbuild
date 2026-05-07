@@ -3,7 +3,7 @@ export { v as Adaptor, A as AppState, w as ArrayField, x as ArrayState, y as AsF
 export { m as migrate, r as resolveAllData, t as transformProps, w as walkTree } from './walk-tree-B4ZvMfxS.js';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as react from 'react';
-import react__default, { ReactNode, SyntheticEvent, ReactElement, CSSProperties } from 'react';
+import { ReactNode, SyntheticEvent, ReactElement, CSSProperties } from 'react';
 import { A as AppStore, G as GetPermissions, R as RefreshPermissions, H as HistorySlice } from './index-CkSfgrvw.js';
 import '@tiptap/react';
 import '@tiptap/extension-blockquote';
@@ -169,11 +169,6 @@ declare namespace CredBuild {
     }) => react_jsx_runtime.JSX.Element;
 }
 
-declare const renderContext: react__default.Context<{
-    config: Config;
-    data: Data;
-    metadata: Metadata;
-}>;
 declare function Render<UserConfig extends Config = Config, G extends UserGenerics<UserConfig> = UserGenerics<UserConfig>>({ config, data, metadata, }: {
     config: UserConfig;
     data: Partial<G["UserData"] | Data>;
@@ -307,4 +302,4 @@ declare const outlinePlugin: () => Plugin;
 
 declare const legacySideBarPlugin: () => Plugin;
 
-export { Action, ActionBar, AutoField, Button, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, RichTextMenu, Separator, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, renderContext, setDeep, useCredBuild, useGetCredBuild };
+export { Action, ActionBar, AutoField, Button, ComponentData, Config, CredBuild, CredBuildAction, type CredBuildApi, Data, Drawer, DropZone, Field, FieldLabel, FieldProps, FieldTransforms, Group, IconButton, IframeConfig, InitialHistory, Label, Metadata, OnAction, Overrides, Permissions, Plugin, Render, ResolveDataTrigger, RichTextMenu, Separator, UiState, type UseCredBuildData, UserGenerics, Viewports, blocksPlugin, createUseCredBuild, fieldsPlugin, legacySideBarPlugin, outlinePlugin, registerOverlayPortal, setDeep, useCredBuild, useGetCredBuild };

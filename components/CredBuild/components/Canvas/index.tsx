@@ -15,7 +15,7 @@ import { UiState } from "../../../../types";
 import { Loader } from "../../../Loader";
 import { useShallow } from "zustand/react/shallow";
 import { useCanvasFrame } from "../../../../lib/frame-context";
-import { usePropsContext } from "../..";
+import { usePropsContext } from "../../context";
 import { defaultViewports } from "../../../ViewportControls/default-viewports";
 
 const getClassName = getClassNameFactory("CredBuildCanvas", styles);

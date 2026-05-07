@@ -54,58 +54,7 @@ import { toComponent } from "../../lib/data/to-component";
 import { Layout } from "./components/Layout";
 import { useSafeId } from "../../lib/use-safe-id";
 
-type CredBuildProps<
-  UserConfig extends Config = Config,
-  G extends UserGenerics<UserConfig> = UserGenerics<UserConfig>
-> = {
-  children?: ReactNode;
-  config: UserConfig;
-  data: Partial<G["UserData"] | Data>;
-  ui?: Partial<UiState>;
-  onChange?: (data: G["UserData"]) => void;
-  onPublish?: (data: G["UserData"]) => void;
-  onAction?: OnAction<G["UserData"]>;
-  permissions?: Partial<Permissions>;
-  plugins?: Plugin<UserConfig>[];
-  overrides?: Partial<Overrides<UserConfig>>;
-  fieldTransforms?: FieldTransforms<UserConfig>;
-  renderHeader?: (props: {
-    children: ReactNode;
-    dispatch: (action: CredBuildAction) => void;
-    state: G["UserAppState"];
-  }) => ReactElement;
-  renderHeaderActions?: (props: {
-    state: G["UserAppState"];
-    dispatch: (action: CredBuildAction) => void;
-  }) => ReactElement;
-  headerTitle?: string;
-  headerPath?: string;
-  viewports?: Viewports;
-  iframe?: IframeConfig;
-  dnd?: {
-    disableAutoScroll?: boolean;
-  };
-  initialHistory?: InitialHistory;
-  metadata?: Metadata;
-  height?: CSSProperties["height"];
-  _experimentalFullScreenCanvas?: boolean;
-  _experimentalVirtualization?: boolean;
-};
-
-const propsContext = createContext<Partial<CredBuildProps>>({});
-
-function PropsProvider<UserConfig extends Config = Config>(
-  props: CredBuildProps<UserConfig>
-) {
-  return (
-    <propsContext.Provider value={props as CredBuildProps}>
-      {props.children}
-    </propsContext.Provider>
-  );
-}
-
-export const usePropsContext = () =>
-  useContext<CredBuildProps>(propsContext as Context<CredBuildProps>);
+import { CredBuildProps, PropsProvider, usePropsContext } from "./context";
 
 function CredBuildProvider<
   UserConfig extends Config = Config,

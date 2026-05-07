@@ -43,54 +43,7 @@ import { scrollIntoView } from "../../lib/scroll-into-view";
 
 const DEBUG = false;
 
-type Events = DragDropEvents<Draggable, Droppable, DragDropManager>;
-type DragCbs = Partial<{
-  [eventName in keyof Events]: { id: string; fn: Events[eventName] }[];
-}>;
-
-const dragListenerContext = createContext<{
-  dragListeners: DragCbs;
-  setDragListeners?: Dispatch<SetStateAction<DragCbs>>;
-}>({
-  dragListeners: {},
-});
-
-type EventKeys = keyof Events;
-
-export function useDragListener(
-  type: EventKeys,
-  fn: Events[EventKeys],
-  deps: any[] = []
-) {
-  const { setDragListeners } = useContext(dragListenerContext);
-  const id = useId();
-  const fnRef = useRef(fn);
-
-  useEffect(() => {
-    fnRef.current = fn;
-  }, [fn]);
-
-  useEffect(() => {
-    if (setDragListeners) {
-      const wrappedFn = ((...args: any[]) => {
-      // @ts-ignore - wrapped function type inference
-         return fnRef.current(...args);
-      }) as Events[EventKeys];
-
-      setDragListeners((old) => ({
-        ...old,
-        [type]: [...(old[type] || []), { id, fn: wrappedFn }],
-      }));
-
-      return () => {
-        setDragListeners((old) => ({
-          ...old,
-          [type]: (old[type] || []).filter((item) => item.id !== id),
-        }));
-      };
-    }
-  }, [type, setDragListeners, id]);
-}
+import { dragListenerContext, useDragListener, Events, DragCbs } from "./context";
 
 type DeepestParams = {
   zone: string | null;

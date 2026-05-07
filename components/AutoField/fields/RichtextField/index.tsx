@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Type } from "lucide-react";
-import { FieldPropsInternal } from "../..";
+import { FieldPropsInternal } from "../../types";
 import { RichtextField as RichtextFieldType } from "../../../../types";
 import { EditorFallback } from "../../../RichTextEditor/components/EditorFallback";
 import { useDeepField } from "../../lib/use-deep-field";

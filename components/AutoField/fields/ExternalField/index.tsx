@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import type { FieldPropsInternal } from "../..";
+import { FieldPropsInternal } from "../../types";
 import type {
   ExternalField as ExternalFieldType,
   ExternalFieldWithAdaptor,

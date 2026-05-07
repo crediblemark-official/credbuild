@@ -1,7 +1,7 @@
 import getClassNameFactory from "../../../../lib/get-class-name-factory";
 import styles from "../../styles.module.css";
 import { Hash, Type } from "lucide-react";
-import { FieldPropsInternal } from "../..";
+import { FieldPropsInternal } from "../../types";
 
 import { useLocalValue } from "../../lib/use-local-value";
 

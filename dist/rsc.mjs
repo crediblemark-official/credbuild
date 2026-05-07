@@ -5,26 +5,20 @@ import {
   transformProps,
   useRichtextProps,
   useSlots
-} from "./chunk-4SQOX3ZQ.mjs";
-import "./chunk-IJHL7BIR.mjs";
-import "./chunk-CDMESQDA.mjs";
-import "./chunk-YH7AXYKP.mjs";
+} from "./chunk-JTNXSAIB.mjs";
+import "./chunk-AL77I3BV.mjs";
+import "./chunk-LVGIYPBQ.mjs";
+import "./chunk-BFHV72KK.mjs";
 import {
   rootAreaId,
   rootDroppableId,
   rootZone,
   setupZone,
   walkTree
-} from "./chunk-GUJDGRSM.mjs";
-import {
-  init_react_import
-} from "./chunk-B4BOBGYB.mjs";
-
-// bundle/rsc.tsx
-init_react_import();
+} from "./chunk-D4HNIB2M.mjs";
+import "./chunk-AFVEAZTD.mjs";
 
 // components/ServerRender/index.tsx
-init_react_import();
 import { Fragment, jsx } from "react/jsx-runtime";
 function DropZoneRenderItem({
   item,

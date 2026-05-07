@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, useEffect, useMemo, useState } from "react";
 import { getClassNameFactory } from "../../../../lib";
 import { IframeConfig, UiState } from "../../../../types";
-import { usePropsContext } from "../..";
+import { usePropsContext } from "../../context";
 import styles from "./styles.module.css";
 import { useInjectGlobalCss } from "../../../../lib/use-inject-css";
 import { useAppStore, useAppStoreApi } from "../../../../store";

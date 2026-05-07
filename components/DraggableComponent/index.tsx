@@ -22,12 +22,11 @@ import { ActionBar } from "../ActionBar";
 
 import { createPortal } from "react-dom";
 
-import { dropZoneContext, DropZoneProvider } from "../DropZone";
+import { dropZoneContext, DropZoneProvider, DropZoneContext, ZoneStoreContext } from "../DropZone/context";
 import { createDynamicCollisionDetector } from "../../lib/dnd/collision/dynamic";
 import { DragAxis } from "../../types";
 import { UniqueIdentifier } from "@dnd-kit/abstract";
 import { getDeepScrollPosition } from "../../lib/get-deep-scroll-position";
-import { DropZoneContext, ZoneStoreContext } from "../DropZone/context";
 import { useShallow } from "zustand/react/shallow";
 import { getItem } from "../../lib/data/get-item";
 import { useSortable } from "@dnd-kit/react/sortable";

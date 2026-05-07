@@ -17,11 +17,7 @@ The open-source visual editor for React. Build complex, high-performance page bu
 ## Installation
 
 ```bash
-npm install @crediblemark/build
-# or
-yarn add @crediblemark/build
-# or
-pnpm add @crediblemark/build
+bun add @crediblemark/build
 ```
 
 ## Quick Start

@@ -15,7 +15,7 @@ import { MenuBar } from "../../../MenuBar";
 import { Button } from "../../../Button";
 import { Config, Overrides, UiState, UserGenerics } from "../../../../types";
 import { DefaultOverride } from "../../../DefaultOverride";
-import { usePropsContext } from "../..";
+import { usePropsContext } from "../../context";
 import { getClassNameFactory, useResetAutoZoom } from "../../../../lib";
 import { ViewportControls } from "../../../ViewportControls";
 import { useShallow } from "zustand/react/shallow";

@@ -8,9 +8,6 @@ var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
-var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -42,75 +39,13 @@ var init_react_import = __esm({
   }
 });
 
-// ../node_modules/classnames/index.js
-var require_classnames = __commonJS({
-  "../node_modules/classnames/index.js"(exports2, module2) {
-    "use strict";
-    init_react_import();
-    (function() {
-      "use strict";
-      var hasOwn = {}.hasOwnProperty;
-      function classNames() {
-        var classes = "";
-        for (var i = 0; i < arguments.length; i++) {
-          var arg = arguments[i];
-          if (arg) {
-            classes = appendClass(classes, parseValue(arg));
-          }
-        }
-        return classes;
-      }
-      function parseValue(arg) {
-        if (typeof arg === "string" || typeof arg === "number") {
-          return arg;
-        }
-        if (typeof arg !== "object") {
-          return "";
-        }
-        if (Array.isArray(arg)) {
-          return classNames.apply(null, arg);
-        }
-        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
-          return arg.toString();
-        }
-        var classes = "";
-        for (var key in arg) {
-          if (hasOwn.call(arg, key) && arg[key]) {
-            classes = appendClass(classes, key);
-          }
-        }
-        return classes;
-      }
-      function appendClass(value, newClass) {
-        if (!newClass) {
-          return value;
-        }
-        if (value) {
-          return value + " " + newClass;
-        }
-        return value + newClass;
-      }
-      if (typeof module2 !== "undefined" && module2.exports) {
-        classNames.default = classNames;
-        module2.exports = classNames;
-      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
-        define("classnames", [], function() {
-          return classNames;
-        });
-      } else {
-        window.classNames = classNames;
-      }
-    })();
-  }
-});
-
 // lib/get-class-name-factory.ts
 var import_classnames, getClassNameFactory, get_class_name_factory_default;
 var init_get_class_name_factory = __esm({
   "lib/get-class-name-factory.ts"() {
     "use strict";
     init_react_import();
-    import_classnames = __toESM(require_classnames());
+    import_classnames = __toESM(require("classnames"));
     getClassNameFactory = (rootClass, styles2, config = { baseClass: "" }) => (options = {}) => {
       if (typeof options === "string") {
         const descendant = options;
@@ -139,16 +74,16 @@ var init_get_class_name_factory = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/ActionBar/styles.module.css/#css-module-data
 var init_css_module_data = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/ActionBar/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/ActionBar/styles.module.css#css-module
 var styles_module_default;
 var init_styles_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ActionBar/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/ActionBar/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data();
@@ -211,10 +146,10 @@ var init_ActionBar = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/shared/src/utils.js
+// node_modules/lucide-react/dist/esm/shared/src/utils.js
 var toKebabCase, toCamelCase, toPascalCase, mergeClasses, hasA11yProp;
 var init_utils = __esm({
-  "../node_modules/lucide-react/dist/esm/shared/src/utils.js"() {
+  "node_modules/lucide-react/dist/esm/shared/src/utils.js"() {
     "use strict";
     init_react_import();
     toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
@@ -239,10 +174,10 @@ var init_utils = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/defaultAttributes.js
+// node_modules/lucide-react/dist/esm/defaultAttributes.js
 var defaultAttributes;
 var init_defaultAttributes = __esm({
-  "../node_modules/lucide-react/dist/esm/defaultAttributes.js"() {
+  "node_modules/lucide-react/dist/esm/defaultAttributes.js"() {
     "use strict";
     init_react_import();
     defaultAttributes = {
@@ -259,10 +194,10 @@ var init_defaultAttributes = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/Icon.js
+// node_modules/lucide-react/dist/esm/Icon.js
 var import_react2, Icon;
 var init_Icon = __esm({
-  "../node_modules/lucide-react/dist/esm/Icon.js"() {
+  "node_modules/lucide-react/dist/esm/Icon.js"() {
     "use strict";
     init_react_import();
     import_react2 = require("react");
@@ -300,10 +235,10 @@ var init_Icon = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/createLucideIcon.js
+// node_modules/lucide-react/dist/esm/createLucideIcon.js
 var import_react3, createLucideIcon;
 var init_createLucideIcon = __esm({
-  "../node_modules/lucide-react/dist/esm/createLucideIcon.js"() {
+  "node_modules/lucide-react/dist/esm/createLucideIcon.js"() {
     "use strict";
     init_react_import();
     import_react3 = require("react");
@@ -328,10 +263,10 @@ var init_createLucideIcon = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/bold.js
+// node_modules/lucide-react/dist/esm/icons/bold.js
 var __iconNode, Bold;
 var init_bold = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/bold.js"() {
+  "node_modules/lucide-react/dist/esm/icons/bold.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -345,10 +280,10 @@ var init_bold = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/box.js
+// node_modules/lucide-react/dist/esm/icons/box.js
 var __iconNode2, Box;
 var init_box = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/box.js"() {
+  "node_modules/lucide-react/dist/esm/icons/box.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -367,10 +302,10 @@ var init_box = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/chart-column.js
+// node_modules/lucide-react/dist/esm/icons/chart-column.js
 var __iconNode3, ChartColumn;
 var init_chart_column = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/chart-column.js"() {
+  "node_modules/lucide-react/dist/esm/icons/chart-column.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -384,10 +319,10 @@ var init_chart_column = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/chevron-down.js
+// node_modules/lucide-react/dist/esm/icons/chevron-down.js
 var __iconNode4, ChevronDown;
 var init_chevron_down = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/chevron-down.js"() {
+  "node_modules/lucide-react/dist/esm/icons/chevron-down.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -396,10 +331,10 @@ var init_chevron_down = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/chevron-right.js
+// node_modules/lucide-react/dist/esm/icons/chevron-right.js
 var __iconNode5, ChevronRight;
 var init_chevron_right = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/chevron-right.js"() {
+  "node_modules/lucide-react/dist/esm/icons/chevron-right.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -408,10 +343,10 @@ var init_chevron_right = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/chevron-up.js
+// node_modules/lucide-react/dist/esm/icons/chevron-up.js
 var __iconNode6, ChevronUp;
 var init_chevron_up = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/chevron-up.js"() {
+  "node_modules/lucide-react/dist/esm/icons/chevron-up.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -420,10 +355,10 @@ var init_chevron_up = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/circle-check-big.js
+// node_modules/lucide-react/dist/esm/icons/circle-check-big.js
 var __iconNode7, CircleCheckBig;
 var init_circle_check_big = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/circle-check-big.js"() {
+  "node_modules/lucide-react/dist/esm/icons/circle-check-big.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -435,10 +370,10 @@ var init_circle_check_big = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/code.js
+// node_modules/lucide-react/dist/esm/icons/code.js
 var __iconNode8, Code;
 var init_code = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/code.js"() {
+  "node_modules/lucide-react/dist/esm/icons/code.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -450,10 +385,10 @@ var init_code = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/copy.js
+// node_modules/lucide-react/dist/esm/icons/copy.js
 var __iconNode9, Copy;
 var init_copy = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/copy.js"() {
+  "node_modules/lucide-react/dist/esm/icons/copy.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -465,10 +400,10 @@ var init_copy = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/corner-left-up.js
+// node_modules/lucide-react/dist/esm/icons/corner-left-up.js
 var __iconNode10, CornerLeftUp;
 var init_corner_left_up = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/corner-left-up.js"() {
+  "node_modules/lucide-react/dist/esm/icons/corner-left-up.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -480,10 +415,10 @@ var init_corner_left_up = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/credit-card.js
+// node_modules/lucide-react/dist/esm/icons/credit-card.js
 var __iconNode11, CreditCard;
 var init_credit_card = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/credit-card.js"() {
+  "node_modules/lucide-react/dist/esm/icons/credit-card.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -495,10 +430,10 @@ var init_credit_card = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js
+// node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js
 var __iconNode12, EllipsisVertical;
 var init_ellipsis_vertical = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js"() {
+  "node_modules/lucide-react/dist/esm/icons/ellipsis-vertical.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -511,10 +446,10 @@ var init_ellipsis_vertical = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/expand.js
+// node_modules/lucide-react/dist/esm/icons/expand.js
 var __iconNode13, Expand;
 var init_expand = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/expand.js"() {
+  "node_modules/lucide-react/dist/esm/icons/expand.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -532,10 +467,10 @@ var init_expand = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/external-link.js
+// node_modules/lucide-react/dist/esm/icons/external-link.js
 var __iconNode14, ExternalLink;
 var init_external_link = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/external-link.js"() {
+  "node_modules/lucide-react/dist/esm/icons/external-link.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -548,10 +483,10 @@ var init_external_link = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/file-text.js
+// node_modules/lucide-react/dist/esm/icons/file-text.js
 var __iconNode15, FileText;
 var init_file_text = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/file-text.js"() {
+  "node_modules/lucide-react/dist/esm/icons/file-text.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -572,10 +507,10 @@ var init_file_text = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/globe.js
+// node_modules/lucide-react/dist/esm/icons/globe.js
 var __iconNode16, Globe;
 var init_globe = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/globe.js"() {
+  "node_modules/lucide-react/dist/esm/icons/globe.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -588,10 +523,10 @@ var init_globe = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/grip-vertical.js
+// node_modules/lucide-react/dist/esm/icons/grip-vertical.js
 var __iconNode17, GripVertical;
 var init_grip_vertical = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/grip-vertical.js"() {
+  "node_modules/lucide-react/dist/esm/icons/grip-vertical.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -607,10 +542,10 @@ var init_grip_vertical = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/hash.js
+// node_modules/lucide-react/dist/esm/icons/hash.js
 var __iconNode18, Hash;
 var init_hash = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/hash.js"() {
+  "node_modules/lucide-react/dist/esm/icons/hash.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -624,10 +559,10 @@ var init_hash = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-1.js
+// node_modules/lucide-react/dist/esm/icons/heading-1.js
 var __iconNode19, Heading1;
 var init_heading_1 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-1.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-1.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -641,10 +576,10 @@ var init_heading_1 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-2.js
+// node_modules/lucide-react/dist/esm/icons/heading-2.js
 var __iconNode20, Heading2;
 var init_heading_2 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-2.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -658,10 +593,10 @@ var init_heading_2 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-3.js
+// node_modules/lucide-react/dist/esm/icons/heading-3.js
 var __iconNode21, Heading3;
 var init_heading_3 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-3.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-3.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -676,10 +611,10 @@ var init_heading_3 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-4.js
+// node_modules/lucide-react/dist/esm/icons/heading-4.js
 var __iconNode22, Heading4;
 var init_heading_4 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-4.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-4.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -694,10 +629,10 @@ var init_heading_4 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-5.js
+// node_modules/lucide-react/dist/esm/icons/heading-5.js
 var __iconNode23, Heading5;
 var init_heading_5 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-5.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-5.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -715,10 +650,10 @@ var init_heading_5 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading-6.js
+// node_modules/lucide-react/dist/esm/icons/heading-6.js
 var __iconNode24, Heading6;
 var init_heading_6 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading-6.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading-6.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -733,10 +668,10 @@ var init_heading_6 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/heading.js
+// node_modules/lucide-react/dist/esm/icons/heading.js
 var __iconNode25, Heading;
 var init_heading = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/heading.js"() {
+  "node_modules/lucide-react/dist/esm/icons/heading.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -749,10 +684,10 @@ var init_heading = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/image.js
+// node_modules/lucide-react/dist/esm/icons/image.js
 var __iconNode26, Image;
 var init_image = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/image.js"() {
+  "node_modules/lucide-react/dist/esm/icons/image.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -765,10 +700,10 @@ var init_image = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/info.js
+// node_modules/lucide-react/dist/esm/icons/info.js
 var __iconNode27, Info;
 var init_info = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/info.js"() {
+  "node_modules/lucide-react/dist/esm/icons/info.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -781,10 +716,10 @@ var init_info = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/italic.js
+// node_modules/lucide-react/dist/esm/icons/italic.js
 var __iconNode28, Italic;
 var init_italic = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/italic.js"() {
+  "node_modules/lucide-react/dist/esm/icons/italic.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -797,10 +732,10 @@ var init_italic = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/layers.js
+// node_modules/lucide-react/dist/esm/icons/layers.js
 var __iconNode29, Layers;
 var init_layers = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/layers.js"() {
+  "node_modules/lucide-react/dist/esm/icons/layers.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -831,10 +766,10 @@ var init_layers = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js
+// node_modules/lucide-react/dist/esm/icons/layout-dashboard.js
 var __iconNode30, LayoutDashboard;
 var init_layout_dashboard = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/layout-dashboard.js"() {
+  "node_modules/lucide-react/dist/esm/icons/layout-dashboard.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -848,10 +783,10 @@ var init_layout_dashboard = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/layout-grid.js
+// node_modules/lucide-react/dist/esm/icons/layout-grid.js
 var __iconNode31, LayoutGrid;
 var init_layout_grid = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/layout-grid.js"() {
+  "node_modules/lucide-react/dist/esm/icons/layout-grid.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -865,10 +800,10 @@ var init_layout_grid = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/layout-template.js
+// node_modules/lucide-react/dist/esm/icons/layout-template.js
 var __iconNode32, LayoutTemplate;
 var init_layout_template = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/layout-template.js"() {
+  "node_modules/lucide-react/dist/esm/icons/layout-template.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -881,10 +816,10 @@ var init_layout_template = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/link.js
+// node_modules/lucide-react/dist/esm/icons/link.js
 var __iconNode33, Link;
 var init_link = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/link.js"() {
+  "node_modules/lucide-react/dist/esm/icons/link.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -896,10 +831,10 @@ var init_link = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/list-ordered.js
+// node_modules/lucide-react/dist/esm/icons/list-ordered.js
 var __iconNode34, ListOrdered;
 var init_list_ordered = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/list-ordered.js"() {
+  "node_modules/lucide-react/dist/esm/icons/list-ordered.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -915,10 +850,10 @@ var init_list_ordered = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/list.js
+// node_modules/lucide-react/dist/esm/icons/list.js
 var __iconNode35, List;
 var init_list = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/list.js"() {
+  "node_modules/lucide-react/dist/esm/icons/list.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -934,10 +869,10 @@ var init_list = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/lock-open.js
+// node_modules/lucide-react/dist/esm/icons/lock-open.js
 var __iconNode36, LockOpen;
 var init_lock_open = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/lock-open.js"() {
+  "node_modules/lucide-react/dist/esm/icons/lock-open.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -949,10 +884,10 @@ var init_lock_open = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/lock.js
+// node_modules/lucide-react/dist/esm/icons/lock.js
 var __iconNode37, Lock;
 var init_lock = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/lock.js"() {
+  "node_modules/lucide-react/dist/esm/icons/lock.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -964,10 +899,10 @@ var init_lock = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/maximize-2.js
+// node_modules/lucide-react/dist/esm/icons/maximize-2.js
 var __iconNode38, Maximize2;
 var init_maximize_2 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/maximize-2.js"() {
+  "node_modules/lucide-react/dist/esm/icons/maximize-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -981,10 +916,10 @@ var init_maximize_2 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/megaphone.js
+// node_modules/lucide-react/dist/esm/icons/megaphone.js
 var __iconNode39, Megaphone;
 var init_megaphone = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/megaphone.js"() {
+  "node_modules/lucide-react/dist/esm/icons/megaphone.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1003,10 +938,10 @@ var init_megaphone = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/minimize-2.js
+// node_modules/lucide-react/dist/esm/icons/minimize-2.js
 var __iconNode40, Minimize2;
 var init_minimize_2 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/minimize-2.js"() {
+  "node_modules/lucide-react/dist/esm/icons/minimize-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1020,10 +955,10 @@ var init_minimize_2 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/minus.js
+// node_modules/lucide-react/dist/esm/icons/minus.js
 var __iconNode41, Minus;
 var init_minus = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/minus.js"() {
+  "node_modules/lucide-react/dist/esm/icons/minus.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1032,10 +967,10 @@ var init_minus = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/monitor.js
+// node_modules/lucide-react/dist/esm/icons/monitor.js
 var __iconNode42, Monitor;
 var init_monitor = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/monitor.js"() {
+  "node_modules/lucide-react/dist/esm/icons/monitor.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1048,10 +983,10 @@ var init_monitor = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/panel-left.js
+// node_modules/lucide-react/dist/esm/icons/panel-left.js
 var __iconNode43, PanelLeft;
 var init_panel_left = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/panel-left.js"() {
+  "node_modules/lucide-react/dist/esm/icons/panel-left.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1063,10 +998,10 @@ var init_panel_left = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/panel-right.js
+// node_modules/lucide-react/dist/esm/icons/panel-right.js
 var __iconNode44, PanelRight;
 var init_panel_right = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/panel-right.js"() {
+  "node_modules/lucide-react/dist/esm/icons/panel-right.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1078,10 +1013,10 @@ var init_panel_right = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/plus.js
+// node_modules/lucide-react/dist/esm/icons/plus.js
 var __iconNode45, Plus;
 var init_plus = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/plus.js"() {
+  "node_modules/lucide-react/dist/esm/icons/plus.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1093,10 +1028,10 @@ var init_plus = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/quote.js
+// node_modules/lucide-react/dist/esm/icons/quote.js
 var __iconNode46, Quote;
 var init_quote = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/quote.js"() {
+  "node_modules/lucide-react/dist/esm/icons/quote.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1120,10 +1055,10 @@ var init_quote = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js
+// node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js
 var __iconNode47, RectangleEllipsis;
 var init_rectangle_ellipsis = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js"() {
+  "node_modules/lucide-react/dist/esm/icons/rectangle-ellipsis.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1137,10 +1072,10 @@ var init_rectangle_ellipsis = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/redo-2.js
+// node_modules/lucide-react/dist/esm/icons/redo-2.js
 var __iconNode48, Redo2;
 var init_redo_2 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/redo-2.js"() {
+  "node_modules/lucide-react/dist/esm/icons/redo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1152,10 +1087,10 @@ var init_redo_2 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/search.js
+// node_modules/lucide-react/dist/esm/icons/search.js
 var __iconNode49, Search;
 var init_search = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/search.js"() {
+  "node_modules/lucide-react/dist/esm/icons/search.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1167,10 +1102,10 @@ var init_search = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/settings.js
+// node_modules/lucide-react/dist/esm/icons/settings.js
 var __iconNode50, Settings;
 var init_settings = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/settings.js"() {
+  "node_modules/lucide-react/dist/esm/icons/settings.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1188,10 +1123,10 @@ var init_settings = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/shapes.js
+// node_modules/lucide-react/dist/esm/icons/shapes.js
 var __iconNode51, Shapes;
 var init_shapes = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/shapes.js"() {
+  "node_modules/lucide-react/dist/esm/icons/shapes.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1210,10 +1145,10 @@ var init_shapes = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
+// node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
 var __iconNode52, SlidersHorizontal;
 var init_sliders_horizontal = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js"() {
+  "node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1232,10 +1167,10 @@ var init_sliders_horizontal = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/smartphone.js
+// node_modules/lucide-react/dist/esm/icons/smartphone.js
 var __iconNode53, Smartphone;
 var init_smartphone = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/smartphone.js"() {
+  "node_modules/lucide-react/dist/esm/icons/smartphone.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1247,10 +1182,10 @@ var init_smartphone = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/square-code.js
+// node_modules/lucide-react/dist/esm/icons/square-code.js
 var __iconNode54, SquareCode;
 var init_square_code = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/square-code.js"() {
+  "node_modules/lucide-react/dist/esm/icons/square-code.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1263,10 +1198,10 @@ var init_square_code = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/strikethrough.js
+// node_modules/lucide-react/dist/esm/icons/strikethrough.js
 var __iconNode55, Strikethrough;
 var init_strikethrough = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/strikethrough.js"() {
+  "node_modules/lucide-react/dist/esm/icons/strikethrough.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1279,10 +1214,10 @@ var init_strikethrough = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/tablet.js
+// node_modules/lucide-react/dist/esm/icons/tablet.js
 var __iconNode56, Tablet;
 var init_tablet = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/tablet.js"() {
+  "node_modules/lucide-react/dist/esm/icons/tablet.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1294,10 +1229,10 @@ var init_tablet = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/text-align-center.js
+// node_modules/lucide-react/dist/esm/icons/text-align-center.js
 var __iconNode57, TextAlignCenter;
 var init_text_align_center = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/text-align-center.js"() {
+  "node_modules/lucide-react/dist/esm/icons/text-align-center.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1310,10 +1245,10 @@ var init_text_align_center = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/text-align-end.js
+// node_modules/lucide-react/dist/esm/icons/text-align-end.js
 var __iconNode58, TextAlignEnd;
 var init_text_align_end = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/text-align-end.js"() {
+  "node_modules/lucide-react/dist/esm/icons/text-align-end.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1326,10 +1261,10 @@ var init_text_align_end = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/text-align-justify.js
+// node_modules/lucide-react/dist/esm/icons/text-align-justify.js
 var __iconNode59, TextAlignJustify;
 var init_text_align_justify = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/text-align-justify.js"() {
+  "node_modules/lucide-react/dist/esm/icons/text-align-justify.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1342,10 +1277,10 @@ var init_text_align_justify = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/text-align-start.js
+// node_modules/lucide-react/dist/esm/icons/text-align-start.js
 var __iconNode60, TextAlignStart;
 var init_text_align_start = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/text-align-start.js"() {
+  "node_modules/lucide-react/dist/esm/icons/text-align-start.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1358,10 +1293,10 @@ var init_text_align_start = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/toy-brick.js
+// node_modules/lucide-react/dist/esm/icons/toy-brick.js
 var __iconNode61, ToyBrick;
 var init_toy_brick = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/toy-brick.js"() {
+  "node_modules/lucide-react/dist/esm/icons/toy-brick.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1374,10 +1309,10 @@ var init_toy_brick = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/trash.js
+// node_modules/lucide-react/dist/esm/icons/trash.js
 var __iconNode62, Trash;
 var init_trash = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/trash.js"() {
+  "node_modules/lucide-react/dist/esm/icons/trash.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1390,10 +1325,10 @@ var init_trash = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/type.js
+// node_modules/lucide-react/dist/esm/icons/type.js
 var __iconNode63, Type;
 var init_type = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/type.js"() {
+  "node_modules/lucide-react/dist/esm/icons/type.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1406,10 +1341,10 @@ var init_type = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/underline.js
+// node_modules/lucide-react/dist/esm/icons/underline.js
 var __iconNode64, Underline;
 var init_underline = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/underline.js"() {
+  "node_modules/lucide-react/dist/esm/icons/underline.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1421,10 +1356,10 @@ var init_underline = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/undo-2.js
+// node_modules/lucide-react/dist/esm/icons/undo-2.js
 var __iconNode65, Undo2;
 var init_undo_2 = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/undo-2.js"() {
+  "node_modules/lucide-react/dist/esm/icons/undo-2.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1436,10 +1371,10 @@ var init_undo_2 = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/x.js
+// node_modules/lucide-react/dist/esm/icons/x.js
 var __iconNode66, X;
 var init_x = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/x.js"() {
+  "node_modules/lucide-react/dist/esm/icons/x.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1451,10 +1386,10 @@ var init_x = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/zoom-in.js
+// node_modules/lucide-react/dist/esm/icons/zoom-in.js
 var __iconNode67, ZoomIn;
 var init_zoom_in = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/zoom-in.js"() {
+  "node_modules/lucide-react/dist/esm/icons/zoom-in.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1468,10 +1403,10 @@ var init_zoom_in = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/icons/zoom-out.js
+// node_modules/lucide-react/dist/esm/icons/zoom-out.js
 var __iconNode68, ZoomOut;
 var init_zoom_out = __esm({
-  "../node_modules/lucide-react/dist/esm/icons/zoom-out.js"() {
+  "node_modules/lucide-react/dist/esm/icons/zoom-out.js"() {
     "use strict";
     init_react_import();
     init_createLucideIcon();
@@ -1484,9 +1419,9 @@ var init_zoom_out = __esm({
   }
 });
 
-// ../node_modules/lucide-react/dist/esm/lucide-react.js
+// node_modules/lucide-react/dist/esm/lucide-react.js
 var init_lucide_react = __esm({
-  "../node_modules/lucide-react/dist/esm/lucide-react.js"() {
+  "node_modules/lucide-react/dist/esm/lucide-react.js"() {
     "use strict";
     init_react_import();
     init_chart_column();
@@ -1560,16 +1495,16 @@ var init_lucide_react = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css/#css-module-data
 var init_css_module_data2 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css#css-module
 var IconButton_module_default;
 var init_IconButton_module = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/IconButton/IconButton.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/IconButton/IconButton.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data2();
@@ -3816,7 +3751,7 @@ var init_store = __esm({
   }
 });
 
-// ../node_modules/tiny-invariant/dist/esm/tiny-invariant.js
+// node_modules/tiny-invariant/dist/esm/tiny-invariant.js
 function invariant(condition, message) {
   if (condition) {
     return;
@@ -3830,7 +3765,7 @@ function invariant(condition, message) {
 }
 var isProduction, prefix;
 var init_tiny_invariant = __esm({
-  "../node_modules/tiny-invariant/dist/esm/tiny-invariant.js"() {
+  "node_modules/tiny-invariant/dist/esm/tiny-invariant.js"() {
     "use strict";
     init_react_import();
     isProduction = process.env.NODE_ENV === "production";
@@ -3838,10 +3773,10 @@ var init_tiny_invariant = __esm({
   }
 });
 
-// ../node_modules/css-box-model/dist/css-box-model.esm.js
+// node_modules/css-box-model/dist/css-box-model.esm.js
 var getRect, expand, shrink, noSpacing, createBox, parse, calculateBox, getBox;
 var init_css_box_model_esm = __esm({
-  "../node_modules/css-box-model/dist/css-box-model.esm.js"() {
+  "node_modules/css-box-model/dist/css-box-model.esm.js"() {
     "use strict";
     init_react_import();
     init_tiny_invariant();
@@ -4025,16 +3960,16 @@ var init_lib = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css/#css-module-data
 var init_css_module_data3 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css#css-module
 var styles_module_default4;
 var init_styles_module2 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Loader/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/Loader/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data3();
@@ -4148,16 +4083,16 @@ var init_IconButton2 = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css/#css-module-data
 var init_css_module_data4 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css#css-module
 var styles_module_default9;
 var init_styles_module3 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data4();
@@ -4165,16 +4100,16 @@ var init_styles_module3 = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/components/Control/styles.module.css/#css-module-data
 var init_css_module_data5 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/components/Control/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/components/Control/styles.module.css#css-module
 var styles_module_default10;
 var init_styles_module4 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextMenu/components/Control/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextMenu/components/Control/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data5();
@@ -4359,16 +4294,16 @@ var init_AlignJustify = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/Select/styles.module.css/#css-module-data
 var init_css_module_data6 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/Select/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Select/styles.module.css#css-module
 var styles_module_default11;
 var init_styles_module5 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Select/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/Select/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data6();
@@ -5334,16 +5269,16 @@ var init_inner = __esm({
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css/#css-module-data
 var init_css_module_data7 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css/#css-module-data"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css/#css-module-data"() {
   }
 });
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css#css-module
 var styles_module_default12;
 var init_styles_module6 = __esm({
-  "css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/RichTextEditor/styles.module.css#css-module"() {
+  "css-module:/home/crediblemark/Project/Credibuild/components/RichTextEditor/styles.module.css#css-module"() {
     "use strict";
     init_react_import();
     init_css_module_data7();
@@ -5852,11 +5787,11 @@ function RichTextRender({
 }) {
   const { tiptap = {}, options } = field;
   const { extensions = [] } = tiptap;
-  const loadedExtensions = (0, import_react59.useMemo)(
+  const loadedExtensions = (0, import_react60.useMemo)(
     () => [CredBuildRichText.configure(options), ...extensions],
     [extensions, options]
   );
-  const normalized = (0, import_react59.useMemo)(() => {
+  const normalized = (0, import_react60.useMemo)(() => {
     if (typeof content === "object" && content?.type === "doc") {
       return content;
     }
@@ -5874,18 +5809,18 @@ function RichTextRender({
     }
     return { type: "doc", content: [] };
   }, [content, loadedExtensions]);
-  const html = (0, import_react59.useMemo)(() => {
+  const html = (0, import_react60.useMemo)(() => {
     return (0, import_html.generateHTML)(normalized, loadedExtensions);
   }, [normalized, loadedExtensions]);
   return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: getClassName23(), children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "rich-text", dangerouslySetInnerHTML: { __html: html } }) });
 }
-var import_html, import_react59, import_jsx_runtime58, getClassName23;
+var import_html, import_react60, import_jsx_runtime58, getClassName23;
 var init_Render = __esm({
   "components/RichTextEditor/components/Render.tsx"() {
     "use strict";
     init_react_import();
     import_html = require("@tiptap/html");
-    import_react59 = require("react");
+    import_react60 = require("react");
     init_get_class_name_factory();
     init_styles_module6();
     init_extension();
@@ -5919,7 +5854,6 @@ __export(no_external_exports, {
   outlinePlugin: () => outlinePlugin,
   overrideKeys: () => overrideKeys,
   registerOverlayPortal: () => registerOverlayPortal,
-  renderContext: () => renderContext,
   resolveAllData: () => resolveAllData,
   setDeep: () => setDeep,
   transformProps: () => transformProps,
@@ -5988,7 +5922,7 @@ init_ActionBar();
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/AutoField/styles.module.css#css-module
 init_react_import();
 var styles_module_default2 = { "InputWrapper": "_InputWrapper_1q7gk_1", "Input-label": "_Input-label_1q7gk_5", "Input-labelIcon": "_Input-labelIcon_1q7gk_14", "Input-disabledIcon": "_Input-disabledIcon_1q7gk_21", "Input-input": "_Input-input_1q7gk_26", "Input": "_Input_1q7gk_1", "Input--readOnly": "_Input--readOnly_1q7gk_82", "Input-radioGroupItems": "_Input-radioGroupItems_1q7gk_93", "Input-radio": "_Input-radio_1q7gk_93", "Input-radioInner": "_Input-radioInner_1q7gk_110", "Input-radioInput": "_Input-radioInput_1q7gk_155" };
 
@@ -6002,7 +5936,7 @@ init_react_import();
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ArrayField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ArrayField/styles.module.css#css-module
 init_react_import();
 var styles_module_default3 = { "ArrayField": "_ArrayField_1q029_5", "ArrayField--isDraggingFrom": "_ArrayField--isDraggingFrom_1q029_13", "ArrayField-addButton": "_ArrayField-addButton_1q029_18", "ArrayField--hasItems": "_ArrayField--hasItems_1q029_33", "ArrayField-inner": "_ArrayField-inner_1q029_59", "ArrayFieldItem": "_ArrayFieldItem_1q029_67", "ArrayFieldItem--isDragging": "_ArrayFieldItem--isDragging_1q029_78", "ArrayFieldItem--isExpanded": "_ArrayFieldItem--isExpanded_1q029_82", "ArrayFieldItem-summary": "_ArrayFieldItem-summary_1q029_97", "ArrayFieldItem--noFields": "_ArrayFieldItem--noFields_1q029_122", "ArrayField--addDisabled": "_ArrayField--addDisabled_1q029_131", "ArrayFieldItem-body": "_ArrayFieldItem-body_1q029_170", "ArrayFieldItem-fieldset": "_ArrayFieldItem-fieldset_1q029_179", "ArrayFieldItem-rhs": "_ArrayFieldItem-rhs_1q029_187", "ArrayFieldItem-actions": "_ArrayFieldItem-actions_1q029_193" };
 
@@ -6070,7 +6004,7 @@ init_react_import();
 init_lib();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DragIcon/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/DragIcon/styles.module.css#css-module
 init_react_import();
 var styles_module_default5 = { "DragIcon": "_DragIcon_ei1r9_1", "DragIcon--disabled": "_DragIcon--disabled_ei1r9_8" };
 
@@ -7113,7 +7047,7 @@ var import_react23 = require("react");
 init_react_import();
 var import_react22 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ExternalInput/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/ExternalInput/styles.module.css#css-module
 init_react_import();
 var styles_module_default6 = { "ExternalInput-actions": "_ExternalInput-actions_1gpb4_1", "ExternalInput-button": "_ExternalInput-button_1gpb4_5", "ExternalInput--dataSelected": "_ExternalInput--dataSelected_1gpb4_24", "ExternalInput--readOnly": "_ExternalInput--readOnly_1gpb4_31", "ExternalInput-detachButton": "_ExternalInput-detachButton_1gpb4_35", "ExternalInput": "_ExternalInput_1gpb4_1", "ExternalInputModal": "_ExternalInputModal_1gpb4_79", "ExternalInputModal-grid": "_ExternalInputModal-grid_1gpb4_89", "ExternalInputModal--filtersToggled": "_ExternalInputModal--filtersToggled_1gpb4_100", "ExternalInputModal-filters": "_ExternalInputModal-filters_1gpb4_105", "ExternalInputModal-masthead": "_ExternalInputModal-masthead_1gpb4_124", "ExternalInputModal-tableWrapper": "_ExternalInputModal-tableWrapper_1gpb4_133", "ExternalInputModal-table": "_ExternalInputModal-table_1gpb4_133", "ExternalInputModal-thead": "_ExternalInputModal-thead_1gpb4_149", "ExternalInputModal-th": "_ExternalInputModal-th_1gpb4_149", "ExternalInputModal-td": "_ExternalInputModal-td_1gpb4_164", "ExternalInputModal-tr": "_ExternalInputModal-tr_1gpb4_169", "ExternalInputModal-tbody": "_ExternalInputModal-tbody_1gpb4_176", "ExternalInputModal--hasData": "_ExternalInputModal--hasData_1gpb4_202", "ExternalInputModal-loadingBanner": "_ExternalInputModal-loadingBanner_1gpb4_206", "ExternalInputModal--isLoading": "_ExternalInputModal--isLoading_1gpb4_223", "ExternalInputModal-searchForm": "_ExternalInputModal-searchForm_1gpb4_227", "ExternalInputModal-search": "_ExternalInputModal-search_1gpb4_227", "ExternalInputModal-searchIcon": "_ExternalInputModal-searchIcon_1gpb4_264", "ExternalInputModal-searchIconText": "_ExternalInputModal-searchIconText_1gpb4_289", "ExternalInputModal-searchInput": "_ExternalInputModal-searchInput_1gpb4_299", "ExternalInputModal-searchActions": "_ExternalInputModal-searchActions_1gpb4_313", "ExternalInputModal-searchActionIcon": "_ExternalInputModal-searchActionIcon_1gpb4_326", "ExternalInputModal-footerContainer": "_ExternalInputModal-footerContainer_1gpb4_330", "ExternalInputModal-footer": "_ExternalInputModal-footer_1gpb4_330", "ExternalInputModal-field": "_ExternalInputModal-field_1gpb4_343" };
 
@@ -7126,7 +7060,7 @@ init_react_import();
 var import_react20 = require("react");
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Modal/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Modal/styles.module.css#css-module
 init_react_import();
 var styles_module_default7 = { "Modal": "_Modal_b422s_1", "Modal--isOpen": "_Modal--isOpen_b422s_15", "Modal-inner": "_Modal-inner_b422s_19" };
 
@@ -7162,7 +7096,7 @@ var Modal = ({
 // components/Heading/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Heading/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Heading/styles.module.css#css-module
 init_react_import();
 var styles_module_default8 = { "Heading": "_Heading_1tpsl_1", "Heading--xxxxl": "_Heading--xxxxl_1tpsl_12", "Heading--xxxl": "_Heading--xxxl_1tpsl_18", "Heading--xxl": "_Heading--xxl_1tpsl_22", "Heading--xl": "_Heading--xl_1tpsl_26", "Heading--l": "_Heading--l_1tpsl_30", "Heading--m": "_Heading--m_1tpsl_34", "Heading--s": "_Heading--s_1tpsl_38", "Heading--xs": "_Heading--xs_1tpsl_42" };
 
@@ -7193,7 +7127,7 @@ init_react_import();
 init_react_import();
 var import_react21 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Button/Button.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Button/Button.module.css#css-module
 init_react_import();
 var Button_module_default = { "Button": "_Button_164uz_1", "Button--medium": "_Button--medium_164uz_29", "Button--large": "_Button--large_164uz_34", "Button-icon": "_Button-icon_164uz_38", "Button--primary": "_Button--primary_164uz_42", "Button--secondary": "_Button--secondary_164uz_63", "Button--flush": "_Button--flush_164uz_80", "Button--disabled": "_Button--disabled_164uz_84", "Button--fullWidth": "_Button--fullWidth_164uz_92", "Button-spinner": "_Button-spinner_164uz_97" };
 
@@ -7783,7 +7717,7 @@ var RichtextField = ({
 init_react_import();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/AutoField/fields/ObjectField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/AutoField/fields/ObjectField/styles.module.css#css-module
 init_react_import();
 var styles_module_default13 = { "ObjectField": "_ObjectField_b2xjm_5", "ObjectField-fieldset": "_ObjectField-fieldset_b2xjm_13" };
 
@@ -8099,7 +8033,7 @@ function AutoField(props) {
 // components/Drawer/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Drawer/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Drawer/styles.module.css#css-module
 init_react_import();
 var styles_module_default14 = { "Drawer": "_Drawer_e1509_1", "Drawer-draggable": "_Drawer-draggable_e1509_7", "Drawer-draggableBg": "_Drawer-draggableBg_e1509_11", "DrawerItem-draggable": "_DrawerItem-draggable_e1509_21", "DrawerItem--disabled": "_DrawerItem--disabled_e1509_34", "DrawerItem": "_DrawerItem_e1509_21", "Drawer--isDraggingFrom": "_Drawer--isDraggingFrom_e1509_43", "DrawerItem-default": "_DrawerItem-default_e1509_44", "DrawerItem-name": "_DrawerItem-name_e1509_61" };
 
@@ -8123,7 +8057,7 @@ var import_react68 = require("react");
 init_react_import();
 var import_react52 = require("react");
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DraggableComponent/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/DraggableComponent/styles.module.css#css-module
 init_react_import();
 var styles_module_default15 = { "DraggableComponent": "_DraggableComponent_yrtpz_1", "DraggableComponent-overlayWrapper": "_DraggableComponent-overlayWrapper_yrtpz_12", "DraggableComponent-overlay": "_DraggableComponent-overlay_yrtpz_12", "DraggableComponent-loadingOverlay": "_DraggableComponent-loadingOverlay_yrtpz_34", "DraggableComponent--hover": "_DraggableComponent--hover_yrtpz_50", "DraggableComponent--isSelected": "_DraggableComponent--isSelected_yrtpz_57", "DraggableComponent-actionsOverlay": "_DraggableComponent-actionsOverlay_yrtpz_71", "DraggableComponent-actions": "_DraggableComponent-actions_yrtpz_71" };
 
@@ -8858,7 +8792,7 @@ init_setup_zone();
 init_root_droppable_id();
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/DropZone/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/DropZone/styles.module.css#css-module
 init_react_import();
 var styles_module_default16 = { "DropZone": "_DropZone_1vmgt_1", "DropZone--hasChildren": "_DropZone--hasChildren_1vmgt_11", "DropZone--isAreaSelected": "_DropZone--isAreaSelected_1vmgt_24", "DropZone--hoveringOverArea": "_DropZone--hoveringOverArea_1vmgt_25", "DropZone--isRootZone": "_DropZone--isRootZone_1vmgt_25", "DropZone--isDestination": "_DropZone--isDestination_1vmgt_35", "DropZone-item": "_DropZone-item_1vmgt_47", "DropZone-hitbox": "_DropZone-hitbox_1vmgt_51", "DropZone--isEnabled": "_DropZone--isEnabled_1vmgt_59", "DropZone--isAnimating": "_DropZone--isAnimating_1vmgt_68" };
 
@@ -9054,16 +8988,21 @@ var useDragAxis = (ref, collisionAxis) => {
 // components/DropZone/index.tsx
 var import_shallow6 = require("zustand/react/shallow");
 
-// components/Render/index.tsx
+// components/Render/context.tsx
 init_react_import();
-init_root_droppable_id();
+var import_react58 = __toESM(require("react"));
+var renderContext = import_react58.default.createContext({
+  config: { components: {} },
+  data: { root: {}, content: [] },
+  metadata: {}
+});
 
 // lib/use-slots.tsx
 init_react_import();
 
 // lib/field-transforms/use-field-transforms.tsx
 init_react_import();
-var import_react58 = require("react");
+var import_react59 = require("react");
 init_map_fields();
 
 // lib/field-transforms/build-mappers.ts
@@ -9092,14 +9031,14 @@ function buildMappers(transforms, readOnly, forceReadOnly) {
 
 // lib/field-transforms/use-field-transforms.tsx
 function useFieldTransforms(config, item, transforms, readOnly, forceReadOnly) {
-  const mappers = (0, import_react58.useMemo)(
+  const mappers = (0, import_react59.useMemo)(
     () => buildMappers(transforms, readOnly, forceReadOnly),
     [transforms, readOnly, forceReadOnly]
   );
-  const transformedProps = (0, import_react58.useMemo)(() => {
+  const transformedProps = (0, import_react59.useMemo)(() => {
     return mapFields(item, mappers, config).props;
   }, [config, item, mappers]);
-  const mergedProps = (0, import_react58.useMemo)(
+  const mergedProps = (0, import_react59.useMemo)(
     () => ({ ...item.props, ...transformedProps }),
     [item.props, transformedProps]
   );
@@ -9133,9 +9072,6 @@ function useSlots(config, item, renderSlotEdit, renderSlotRender = renderSlotEdi
   );
 }
 
-// components/Render/index.tsx
-var import_react62 = __toESM(require("react"));
-
 // components/SlotRender/index.tsx
 init_react_import();
 var import_shallow5 = require("zustand/react/shallow");
@@ -9143,11 +9079,11 @@ init_store();
 
 // components/SlotRender/server.tsx
 init_react_import();
-var import_react61 = require("react");
+var import_react62 = require("react");
 
 // components/RichTextEditor/lib/use-richtext-props.tsx
 init_react_import();
-var import_react60 = require("react");
+var import_react61 = require("react");
 
 // components/RichTextEditor/components/RenderFallback.tsx
 init_react_import();
@@ -9210,10 +9146,10 @@ var findAllRichtextKeys = (fields, path = []) => {
   return result;
 };
 function useRichtextProps(fields, props) {
-  const richtextKeys = (0, import_react60.useMemo)(() => findAllRichtextKeys(fields), [fields]);
-  const richtextProps = (0, import_react60.useMemo)(() => {
+  const richtextKeys = (0, import_react61.useMemo)(() => findAllRichtextKeys(fields), [fields]);
+  const richtextProps = (0, import_react61.useMemo)(() => {
     if (!richtextKeys?.length) return {};
-    const RichTextRender3 = (0, import_react60.lazy)(
+    const RichTextRender3 = (0, import_react61.lazy)(
       () => Promise.resolve().then(() => (init_Render(), Render_exports)).then((m) => ({
         default: m.RichTextRender
       }))
@@ -9221,7 +9157,7 @@ function useRichtextProps(fields, props) {
     let result = { ...props };
     for (const { path, field } of richtextKeys) {
       result = mapDeep(result, path, (content) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-        import_react60.Suspense,
+        import_react61.Suspense,
         {
           fallback: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(RichTextRenderFallback, { content }),
           children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(RichTextRender3, { content, field })
@@ -9257,7 +9193,7 @@ var Item2 = ({
     }
   );
 };
-var SlotRender = (0, import_react61.forwardRef)(
+var SlotRender = (0, import_react62.forwardRef)(
   function SlotRenderInternal({ className, style, content, config, metadata, as }, ref) {
     const El = as ?? "div";
     return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(El, { className, style, ref, children: content.map((item) => {
@@ -9302,56 +9238,6 @@ var ContextSlotRender = ({
     }
   );
 };
-
-// components/Render/index.tsx
-var import_jsx_runtime62 = require("react/jsx-runtime");
-var renderContext = import_react62.default.createContext({
-  config: { components: {} },
-  data: { root: {}, content: [] },
-  metadata: {}
-});
-function Render({
-  config,
-  data,
-  metadata = {}
-}) {
-  const defaultedData = {
-    ...data,
-    root: data.root || {},
-    content: data.content || []
-  };
-  const rootProps = "props" in defaultedData.root ? defaultedData.root.props : defaultedData.root;
-  const title = rootProps?.title || "";
-  const pageProps = {
-    ...rootProps,
-    credbuild: {
-      renderDropZone: DropZonePure,
-      isEditing: false,
-      dragRef: null,
-      metadata
-    },
-    title,
-    editMode: false,
-    id: "credbuild-root"
-  };
-  const propsWithSlots = useSlots(
-    config,
-    { type: "root", props: pageProps },
-    (props) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SlotRender, { ...props, config, metadata })
-  );
-  const richtextProps = useRichtextProps(config.root?.fields, pageProps);
-  const nextContextValue = (0, import_react62.useMemo)(
-    () => ({
-      mode: "render",
-      depth: 0
-    }),
-    []
-  );
-  if (config.root?.render) {
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneRenderPure, { zone: rootZone }) }) }) });
-  }
-  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DropZoneRenderPure, { zone: rootZone }) }) });
-}
 
 // components/DropZone/index.tsx
 init_flatten_node();
@@ -9457,7 +9343,7 @@ var registerOverlayPortal = (el, opts = {}) => {
 // components/InlineTextField/index.tsx
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/InlineTextField/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/InlineTextField/styles.module.css#css-module
 init_react_import();
 var styles_module_default17 = { "InlineTextField": "_InlineTextField_104qp_1" };
 
@@ -9475,7 +9361,7 @@ var getSelectorForId = (state, id) => {
 };
 
 // components/InlineTextField/index.tsx
-var import_jsx_runtime63 = require("react/jsx-runtime");
+var import_jsx_runtime62 = require("react/jsx-runtime");
 var getClassName24 = get_class_name_factory_default("InlineTextField", styles_module_default17);
 var InlineTextFieldInternal = ({
   propPath,
@@ -9534,7 +9420,7 @@ var InlineTextFieldInternal = ({
   }, [appStoreApi, ref, value, disableLineBreaks, componentId, propPath]);
   const [isHovering, setIsHovering] = (0, import_react64.useState)(false);
   const [isFocused, setIsFocused] = (0, import_react64.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
     "span",
     {
       className: getClassName24(),
@@ -9573,11 +9459,11 @@ var InlineTextFieldInternal = ({
 var InlineTextField = (0, import_react64.memo)(InlineTextFieldInternal);
 
 // lib/field-transforms/default-transforms/inline-text-transform.tsx
-var import_jsx_runtime64 = require("react/jsx-runtime");
+var import_jsx_runtime63 = require("react/jsx-runtime");
 var getInlineTextTransform = () => ({
   text: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable) {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         InlineTextField,
         {
           propPath,
@@ -9592,7 +9478,7 @@ var getInlineTextTransform = () => ({
   },
   textarea: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable) {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         InlineTextField,
         {
           propPath,
@@ -9606,7 +9492,7 @@ var getInlineTextTransform = () => ({
   },
   custom: ({ value, componentId, field, propPath, isReadOnly }) => {
     if (field.contentEditable && typeof value === "string") {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         InlineTextField,
         {
           propPath,
@@ -9624,7 +9510,7 @@ var getInlineTextTransform = () => ({
 init_react_import();
 init_store();
 var import_react65 = require("react");
-var import_jsx_runtime65 = require("react/jsx-runtime");
+var import_jsx_runtime64 = require("react/jsx-runtime");
 var Editor3 = (0, import_react65.lazy)(
   () => Promise.resolve().then(() => (init_Editor(), Editor_exports)).then((m) => ({
     default: m.Editor
@@ -9703,7 +9589,7 @@ var InlineEditorWrapper = (0, import_react65.memo)(
       [field, componentId, appStoreApi, id]
     );
     if (!field.contentEditable)
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(RichTextRenderFallback, { content: value }), children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(RichTextRender2, { content: value, field }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RichTextRenderFallback, { content: value }), children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RichTextRender2, { content: value, field }) });
     const editorProps = {
       content: value,
       onChange: handleChange,
@@ -9713,13 +9599,13 @@ var InlineEditorWrapper = (0, import_react65.memo)(
       id,
       name: propPath
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
       "div",
       {
         ref: portalRef,
         onClick: onClickHandler,
         onClickCapture: onClickCaptureHandler,
-        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Editor3, { ...editorProps }) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_react65.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(EditorFallback, { ...editorProps }), children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Editor3, { ...editorProps }) })
       }
     );
   }
@@ -9729,10 +9615,10 @@ var getRichTextTransform = () => ({
   richtext: ({ value, componentId, field, propPath, isReadOnly }) => {
     const { contentEditable = true, tiptap } = field;
     if (contentEditable === false || isReadOnly) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(RichTextRender2, { content: value, field });
+      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RichTextRender2, { content: value, field });
     }
     const id = `${componentId}_${field.type}_${propPath}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
       InlineEditorWrapper,
       {
         value,
@@ -9776,12 +9662,12 @@ function shallowEqual(obj1, obj2, keysToIgnore = []) {
 }
 
 // components/MemoizeComponent/index.tsx
-var import_jsx_runtime66 = require("react/jsx-runtime");
+var import_jsx_runtime65 = require("react/jsx-runtime");
 var RenderComponent = ({
   Component,
   componentProps: renderProps
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Component, { ...renderProps });
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Component, { ...renderProps });
 };
 var MemoizeComponent = (0, import_react66.memo)(RenderComponent, (prev, next) => {
   let credbuildEquals = true;
@@ -9809,7 +9695,7 @@ var getFrame = () => {
 };
 
 // components/DropZone/VirtualizedDropZone.tsx
-var import_jsx_runtime67 = require("react/jsx-runtime");
+var import_jsx_runtime66 = require("react/jsx-runtime");
 var ROOT_ZONE_VIRTUALIZATION_OVERSCAN = 5;
 var DEFAULT_VIRTUALIZED_ITEM_HEIGHT = 320;
 var measuredItemHeights = /* @__PURE__ */ new Map();
@@ -9947,7 +9833,7 @@ var VirtualizedDropZone = ({
       const gapSize = Math.max(virtualItem.start - previousEnd, 0);
       if (gapSize > 0) {
         items.push(
-          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
             "div",
             {
               style: { height: `${gapSize}px` }
@@ -9969,7 +9855,7 @@ var VirtualizedDropZone = ({
     const trailingGap = Math.max(totalSize - previousEnd, 0);
     if (trailingGap > 0) {
       items.push(
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
           "div",
           {
             style: { height: `${trailingGap}px` }
@@ -9980,11 +9866,11 @@ var VirtualizedDropZone = ({
     }
     return items;
   }, [totalSize, virtualItems, getMeasureRef, contentIds, renderItem]);
-  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_jsx_runtime67.Fragment, { children: renderedItems });
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_jsx_runtime66.Fragment, { children: renderedItems });
 };
 
 // components/DropZone/index.tsx
-var import_jsx_runtime68 = (
+var import_jsx_runtime67 = (
   // Safe to use this since the HTML is set by the user
   require("react/jsx-runtime")
 );
@@ -9997,11 +9883,11 @@ var InsertPreview = ({
   override
 }) => {
   if (element) {
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { dangerouslySetInnerHTML: { __html: element.outerHTML } });
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { dangerouslySetInnerHTML: { __html: element.outerHTML } });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DrawerItemInner, { name: label, children: override });
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DrawerItemInner, { name: label, children: override });
 };
-var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, { ...props });
+var DropZoneEditPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZoneEdit, { ...props });
 var DropZoneChild = ({
   zoneCompound,
   componentId,
@@ -10085,7 +9971,7 @@ var DropZoneChild = ({
   const userFieldTransforms = useAppStore((s) => s.fieldTransforms);
   const combinedFieldTransforms = (0, import_react68.useMemo)(
     () => ({
-      ...getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone })),
+      ...getSlotTransform(DropZoneEditPure, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(ContextSlotRender, { componentId, zone: slotProps.zone })),
       ...getInlineTextTransform(),
       ...getRichTextTransform(),
       ...plugins.reduce(
@@ -10104,13 +9990,13 @@ var DropZoneChild = ({
     isLoading
   );
   if (!item) return;
-  const Render2 = componentConfig ? componentConfig.render : () => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { style: { padding: 48, textAlign: "center" }, children: [
+  const Render2 = componentConfig ? componentConfig.render : () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { style: { padding: 48, textAlign: "center" }, children: [
     "No configuration for ",
     item.type
   ] });
   let componentType = item.type;
   const isInserting = "previewType" in item ? item.previewType === "insert" : false;
-  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
     DraggableComponent,
     {
       id: componentId,
@@ -10127,7 +10013,7 @@ var DropZoneChild = ({
       itemRef,
       children: (dragRef) => {
         if (componentConfig?.inline && !isInserting) {
-          return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             MemoizeComponent,
             {
               Component: Render2,
@@ -10138,14 +10024,14 @@ var DropZoneChild = ({
             }
           );
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { ref: dragRef, children: isInserting ? /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { ref: dragRef, children: isInserting ? /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           InsertPreview,
           {
             label,
             override: overrides.componentItem ?? overrides.drawerItem,
             element: "element" in item && item.element ? item.element : void 0
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        ) : /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           MemoizeComponent,
           {
             Component: Render2,
@@ -10314,7 +10200,7 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
     const El = as ?? "div";
     const isRootAreaZone = (areaId ?? rootAreaId) === rootAreaId && depth === 0;
     const shouldVirtualizeItems = _experimentalVirtualization && isRootAreaZone;
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
       El,
       {
         className: `${getClassName25({
@@ -10333,12 +10219,12 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
           "--min-empty-height": minEmptyHeight,
           backgroundColor: RENDER_DEBUG ? getRandomColor() : style?.backgroundColor
         },
-        children: shouldVirtualizeItems ? /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        children: shouldVirtualizeItems ? /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           VirtualizedDropZone,
           {
             contentIds: contentIdsWithPreview,
             zoneCompound,
-            renderItem: (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+            renderItem: (props) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
               DropZoneChildMemo,
               {
                 zoneCompound,
@@ -10352,7 +10238,7 @@ var DropZoneEdit = (0, import_react68.forwardRef)(
               props.componentId
             )
           }
-        ) : contentIdsWithPreview.map((componentId, i) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        ) : contentIdsWithPreview.map((componentId, i) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           DropZoneChildMemo,
           {
             zoneCompound,
@@ -10374,7 +10260,7 @@ var DropZoneRenderItem = ({
   metadata
 }) => {
   const Component = config.components[item.type];
-  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
+  const props = useSlots(config, item, (slotProps) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(SlotRenderPure, { ...slotProps, config, metadata }));
   const nextContextValue = (0, import_react68.useMemo)(
     () => ({
       areaId: props.id,
@@ -10383,7 +10269,7 @@ var DropZoneRenderItem = ({
     [props]
   );
   const richtextProps = useRichtextProps(Component.fields, props);
-  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
     Component.render,
     {
       ...props,
@@ -10396,7 +10282,7 @@ var DropZoneRenderItem = ({
     }
   ) }, props.id);
 };
-var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, { ...props });
+var DropZoneRenderPure = (props) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZoneRender, { ...props });
 var DropZoneRender = (0, import_react68.forwardRef)(
   function DropZoneRenderInternal({ className, style, zone, as }, ref) {
     const ctx = (0, import_react68.useContext)(dropZoneContext);
@@ -10420,10 +10306,10 @@ var DropZoneRender = (0, import_react68.forwardRef)(
     if (!data || !config) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(El, { className, style, ref, children: content.map((item) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(El, { className, style, ref, children: content.map((item) => {
       const Component = config.components[item.type];
       if (Component) {
-        return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           DropZoneRenderItem,
           {
             config,
@@ -10437,14 +10323,14 @@ var DropZoneRender = (0, import_react68.forwardRef)(
     }) });
   }
 );
-var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZone, { ...props });
+var DropZonePure = (props) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZone, { ...props });
 var DropZone = (0, import_react68.forwardRef)(
   function DropZone2(props, ref) {
     const ctx = (0, import_react68.useContext)(dropZoneContext);
     if (ctx?.mode === "edit") {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneEdit, { ...props, ref }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_jsx_runtime67.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZoneEdit, { ...props, ref }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_jsx_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneRender, { ...props, ref }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_jsx_runtime67.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DropZoneRender, { ...props, ref }) });
   }
 );
 
@@ -10807,7 +10693,7 @@ function getDeepDir(el) {
 
 // components/DragDropContext/index.tsx
 var import_state = require("@dnd-kit/state");
-var import_jsx_runtime69 = require("react/jsx-runtime");
+var import_jsx_runtime68 = require("react/jsx-runtime");
 var DEBUG3 = false;
 var dragListenerContext = (0, import_react71.createContext)({
   dragListeners: {}
@@ -11015,14 +10901,14 @@ var DragDropContextClient = ({
     }),
     []
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
     dragListenerContext.Provider,
     {
       value: {
         dragListeners,
         setDragListeners
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         import_react70.DragDropProvider,
         {
           plugins,
@@ -11244,7 +11130,7 @@ var DragDropContextClient = ({
             const entryEl = getFrame()?.querySelector("[data-credbuild-entry]");
             entryEl?.setAttribute("data-credbuild-dragging", "true");
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ZoneStoreProvider, { store: zoneStore, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DropZoneProvider, { value: nextContextValue, children }) })
+          children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ZoneStoreProvider, { store: zoneStore, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DropZoneProvider, { value: nextContextValue, children }) })
         }
       )
     }
@@ -11258,12 +11144,12 @@ var DragDropContext = ({
   if (status === "LOADING") {
     return children;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DragDropContextClient, { disableAutoScroll, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DragDropContextClient, { disableAutoScroll, children });
 };
 
 // components/Drawer/index.tsx
 var import_react73 = require("@dnd-kit/react");
-var import_jsx_runtime70 = require("react/jsx-runtime");
+var import_jsx_runtime69 = require("react/jsx-runtime");
 var getClassName26 = get_class_name_factory_default("Drawer", styles_module_default14);
 var getClassNameItem2 = get_class_name_factory_default("DrawerItem", styles_module_default14);
 var DrawerItemInner = ({
@@ -11274,10 +11160,10 @@ var DrawerItemInner = ({
   isDragDisabled
 }) => {
   const CustomInner = (0, import_react72.useMemo)(
-    () => children || (({ children: children2 }) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("default"), children: children2 })),
+    () => children || (({ children: children2 }) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassNameItem2("default"), children: children2 })),
     [children]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     "div",
     {
       className: getClassNameItem2({ disabled: isDragDisabled }),
@@ -11285,9 +11171,9 @@ var DrawerItemInner = ({
       onMouseDown: (e) => e.preventDefault(),
       "data-testid": dragRef ? `drawer-item:${name}` : "",
       "data-credbuild-drawer-item": true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(CustomInner, { name, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("draggableWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: getClassNameItem2("draggable"), children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("name"), children: label ?? name }),
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassNameItem2("icon"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(DragIcon, {}) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(CustomInner, { name, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassNameItem2("draggableWrapper"), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: getClassNameItem2("draggable"), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassNameItem2("name"), children: label ?? name }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassNameItem2("icon"), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DragIcon, {}) })
       ] }) }) })
     }
   );
@@ -11305,9 +11191,9 @@ var DrawerItemDraggable = ({
     disabled: isDragDisabled,
     type: "drawer"
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: getClassName26("draggable"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName26("draggableBg"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(DrawerItemInner, { name, label, children }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName26("draggableFg"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: getClassName26("draggable"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassName26("draggableBg"), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DrawerItemInner, { name, label, children }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: getClassName26("draggableFg"), children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       DrawerItemInner,
       {
         name,
@@ -11341,7 +11227,7 @@ var DrawerItem = ({
     },
     [resolvedId]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     DrawerItemDraggable,
     {
       name,
@@ -11374,7 +11260,7 @@ var Drawer = ({
     collisionPriority: 0
     // Never collide with this, but we use it so NestedDroppablePlugin respects the Drawer
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     "div",
     {
       className: getClassName26(),
@@ -11393,7 +11279,7 @@ init_IconButton2();
 
 // components/CredBuild/index.tsx
 init_react_import();
-var import_react95 = require("react");
+var import_react96 = require("react");
 init_store();
 
 // components/CredBuild/components/Fields/index.tsx
@@ -11402,7 +11288,7 @@ init_Loader();
 init_root_droppable_id();
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Fields/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Fields/styles.module.css#css-module
 init_react_import();
 var styles_module_default18 = { "CredBuildFields": "_CredBuildFields_slc6y_1", "CredBuildFields--isLoading": "_CredBuildFields--isLoading_slc6y_6", "CredBuildFields-loadingOverlay": "_CredBuildFields-loadingOverlay_slc6y_10", "CredBuildFields-loadingOverlayInner": "_CredBuildFields-loadingOverlayInner_slc6y_25", "CredBuildFields-field": "_CredBuildFields-field_slc6y_32", "CredBuildFields--wrapFields": "_CredBuildFields--wrapFields_slc6y_36" };
 
@@ -11411,12 +11297,12 @@ init_lib();
 var import_react74 = require("react");
 init_fields();
 var import_shallow7 = require("zustand/react/shallow");
-var import_jsx_runtime71 = require("react/jsx-runtime");
+var import_jsx_runtime70 = require("react/jsx-runtime");
 var getClassName27 = get_class_name_factory_default("CredBuildFields", styles_module_default18);
 var DefaultFields = ({
   children
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_jsx_runtime71.Fragment, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_jsx_runtime70.Fragment, { children });
 };
 var createOnChange = (fieldName, appStore) => async (value, updatedUi) => {
   const { dispatch, state, selectedItem, resolveComponentData: resolveComponentData2 } = appStore.getState();
@@ -11498,7 +11384,7 @@ var FieldsChildInner = ({ fieldName }) => {
   }, [appStore, fieldStore, fieldName]);
   if (!field || !id || !visible) return null;
   if (field.type === "slot") return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName27("field"), children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("field"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
     AutoFieldPrivate,
     {
       field,
@@ -11515,7 +11401,7 @@ var FieldsChild = ({ fieldName }) => {
     const value = appStore.getState().getCurrentData().props?.[fieldName];
     return { [fieldName]: value };
   }, [appStore, fieldName]);
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(fieldContextStore.Provider, { value: initialValue, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(FieldsChildInner, { fieldName }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(fieldContextStore.Provider, { value: initialValue, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(FieldsChildInner, { fieldName }) });
 };
 var FieldsChildMemo = (0, import_react74.memo)(FieldsChild);
 var FieldsInternal = ({ wrapFields = true }) => {
@@ -11539,7 +11425,7 @@ var FieldsInternal = ({ wrapFields = true }) => {
   );
   const isLoading = fieldsLoading || componentResolving;
   const Wrapper = (0, import_react74.useMemo)(() => overrides.fields || DefaultFields, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(
     "form",
     {
       className: getClassName27({ wrapFields }),
@@ -11547,8 +11433,8 @@ var FieldsInternal = ({ wrapFields = true }) => {
         e.preventDefault();
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Wrapper, { isLoading, itemSelector, children: fieldNames.map((fieldName) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(FieldsChildMemo, { fieldName }, fieldName)) }),
-        isLoading && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName27("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName27("loadingOverlayInner"), children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Loader, { size: 16 }) }) })
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Wrapper, { isLoading, itemSelector, children: fieldNames.map((fieldName) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(FieldsChildMemo, { fieldName }, fieldName)) }),
+        isLoading && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("loadingOverlay"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("div", { className: getClassName27("loadingOverlayInner"), children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Loader, { size: 16 }) }) })
       ]
     }
   );
@@ -11565,7 +11451,7 @@ var import_react76 = require("react");
 // components/ComponentList/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ComponentList/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/ComponentList/styles.module.css#css-module
 init_react_import();
 var styles_module_default19 = { "ComponentList": "_ComponentList_1jl8i_1", "ComponentList--isExpanded": "_ComponentList--isExpanded_1jl8i_5", "ComponentList-content": "_ComponentList-content_1jl8i_9", "ComponentList-title": "_ComponentList-title_1jl8i_17", "ComponentList-titleIcon": "_ComponentList-titleIcon_1jl8i_53" };
 
@@ -11574,7 +11460,7 @@ init_get_class_name_factory();
 var import_react75 = require("react");
 init_store();
 init_lucide_react();
-var import_jsx_runtime72 = require("react/jsx-runtime");
+var import_jsx_runtime71 = require("react/jsx-runtime");
 var getClassName28 = get_class_name_factory_default("ComponentList", styles_module_default19);
 var ComponentListItem = ({
   name,
@@ -11593,7 +11479,7 @@ var ComponentListItem = ({
       );
     }
   }, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: overrides.componentItem ?? overrides.drawerItem });
+  return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer.Item, { label, name, isDragDisabled: !canInsert, children: overrides.componentItem ?? overrides.drawerItem });
 };
 var ComponentList = ({
   children,
@@ -11604,8 +11490,8 @@ var ComponentList = ({
   const setUi = useAppStore((s) => s.setUi);
   const componentList = useAppStore((s) => s.state.ui.componentList);
   const { expanded = true } = componentList[id] || {};
-  return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)("div", { className: getClassName28({ isExpanded: expanded }), children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { className: getClassName28({ isExpanded: expanded }), children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
       "button",
       {
         type: "button",
@@ -11621,21 +11507,21 @@ var ComponentList = ({
         }),
         title: expanded ? `Collapse${title ? ` ${title}` : ""}` : `Expand${title ? ` ${title}` : ""}`,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-            id.toLowerCase().includes("hero") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(LayoutTemplate, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("content") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(FileText, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("marketing") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Megaphone, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("layout") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Box, { size: 12, strokeWidth: 2.5 }),
-            id.toLowerCase().includes("basic") && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Settings, { size: 12, strokeWidth: 2.5 }),
-            id === "other" && /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Layers, { size: 12, strokeWidth: 2.5 }),
-            /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { children: title?.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+            id.toLowerCase().includes("hero") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(LayoutTemplate, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("content") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(FileText, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("marketing") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Megaphone, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("layout") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Box, { size: 12, strokeWidth: 2.5 }),
+            id.toLowerCase().includes("basic") && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Settings, { size: 12, strokeWidth: 2.5 }),
+            id === "other" && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Layers, { size: 12, strokeWidth: 2.5 }),
+            /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { children: title?.replace(/[\u2600-\u27BF]|[\uD83C][\uDF00-\uDFFF]|[\uD83D][\uDC00-\uDE4F]|[\uD83D][\uDE80-\uDEFF]/g, "").trim() })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { className: getClassName28("titleIcon"), children: expanded ? /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ChevronUp, { size: 12 }) : /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ChevronDown, { size: 12 }) })
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName28("titleIcon"), children: expanded ? /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChevronUp, { size: 12 }) : /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChevronDown, { size: 12 }) })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime72.jsx)("div", { className: getClassName28("content"), children: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Drawer, { children: children || Object.keys(config.components).map((componentKey) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("div", { className: getClassName28("content"), children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Drawer, { children: children || Object.keys(config.components).map((componentKey) => {
+      return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
         ComponentListItem,
         {
           label: config.components[componentKey]["label"] ?? componentKey,
@@ -11650,7 +11536,7 @@ ComponentList.Item = ComponentListItem;
 
 // lib/use-component-list.tsx
 init_store();
-var import_jsx_runtime73 = require("react/jsx-runtime");
+var import_jsx_runtime72 = require("react/jsx-runtime");
 var useComponentList = () => {
   const [componentList, setComponentList] = (0, import_react76.useState)();
   const config = useAppStore((s) => s.config);
@@ -11670,14 +11556,14 @@ var useComponentList = () => {
           if (category.visible === false) {
             return null;
           }
-          return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             ComponentList,
             {
               id: categoryKey,
               title: category.title || categoryKey,
               children: category.components.map((componentName, i) => {
                 const componentConf = config.components[componentName] || {};
-                return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+                return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
                   ComponentList.Item,
                   {
                     label: componentConf["label"] ?? componentName,
@@ -11697,14 +11583,14 @@ var useComponentList = () => {
       );
       if (remainingComponents.length > 0 && !uiComponentList.other?.components && uiComponentList.other?.visible !== false) {
         _componentList.push(
-          /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             ComponentList,
             {
               id: "other",
               title: uiComponentList.other?.title || "Other",
               children: remainingComponents.map((componentName, i) => {
                 const componentConf = config.components[componentName] || {};
-                return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+                return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
                   ComponentList.Item,
                   {
                     name: componentName,
@@ -11728,7 +11614,7 @@ var useComponentList = () => {
 // components/CredBuild/components/Components/index.tsx
 init_store();
 var import_react77 = require("react");
-var import_jsx_runtime74 = require("react/jsx-runtime");
+var import_jsx_runtime73 = require("react/jsx-runtime");
 var Components = () => {
   const overrides = useAppStore((s) => s.overrides);
   const componentList = useComponentList();
@@ -11740,13 +11626,13 @@ var Components = () => {
     }
     return overrides.components || overrides.drawer || "div";
   }, [overrides]);
-  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Wrapper, { children: componentList ? componentList : /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(ComponentList, { id: "all" }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Wrapper, { children: componentList ? componentList : /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(ComponentList, { id: "all" }) });
 };
 
 // components/CredBuild/components/Preview/index.tsx
 init_react_import();
 init_root_droppable_id();
-var import_react79 = require("react");
+var import_react80 = require("react");
 init_store();
 
 // components/AutoFrame/index.tsx
@@ -11754,7 +11640,7 @@ init_react_import();
 var import_react78 = require("react");
 var import_object_hash = __toESM(require("object-hash"));
 var import_react_dom3 = require("react-dom");
-var import_jsx_runtime75 = require("react/jsx-runtime");
+var import_jsx_runtime74 = require("react/jsx-runtime");
 var styleSelector = 'style, link[rel="stylesheet"]';
 var collectStyles = (doc) => {
   const collected = [];
@@ -11968,7 +11854,7 @@ var CopyHostStyles = ({
       observer.disconnect();
     };
   }, [debug, doc, onStylesLoaded, win]);
-  return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_jsx_runtime75.Fragment, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_jsx_runtime74.Fragment, { children });
 };
 var autoFrameContext = (0, import_react78.createContext)({});
 var useFrame = () => (0, import_react78.useContext)(autoFrameContext);
@@ -12018,7 +11904,7 @@ function AutoFrame({
       }
     }
   }, [frameRef, loaded, stylesLoaded]);
-  return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
     "iframe",
     {
       ...props,
@@ -12029,7 +11915,7 @@ function AutoFrame({
       onLoad: () => {
         setLoaded(true);
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(autoFrameContext.Provider, { value: ctx, children: loaded && mountTarget && /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(autoFrameContext.Provider, { value: ctx, children: loaded && mountTarget && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
         CopyHostStyles,
         {
           debug,
@@ -12043,17 +11929,67 @@ function AutoFrame({
 AutoFrame.displayName = "AutoFrame";
 var AutoFrame_default = AutoFrame;
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Preview/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Preview/styles.module.css#css-module
 init_react_import();
 var styles_module_default20 = { "CredBuildPreview": "_CredBuildPreview_1z08a_1", "CredBuildPreview-frame": "_CredBuildPreview-frame_1z08a_6" };
 
 // components/CredBuild/components/Preview/index.tsx
 init_lib();
+
+// components/Render/index.tsx
+init_react_import();
+init_root_droppable_id();
+var import_react79 = require("react");
+var import_jsx_runtime75 = require("react/jsx-runtime");
+function Render({
+  config,
+  data,
+  metadata = {}
+}) {
+  const defaultedData = {
+    ...data,
+    root: data.root || {},
+    content: data.content || []
+  };
+  const rootProps = "props" in defaultedData.root ? defaultedData.root.props : defaultedData.root;
+  const title = rootProps?.title || "";
+  const pageProps = {
+    ...rootProps,
+    credbuild: {
+      renderDropZone: DropZonePure,
+      isEditing: false,
+      dragRef: null,
+      metadata
+    },
+    title,
+    editMode: false,
+    id: "credbuild-root"
+  };
+  const propsWithSlots = useSlots(
+    config,
+    { type: "root", props: pageProps },
+    (props) => /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(SlotRender, { ...props, config, metadata })
+  );
+  const richtextProps = useRichtextProps(config.root?.fields, pageProps);
+  const nextContextValue = (0, import_react79.useMemo)(
+    () => ({
+      mode: "render",
+      depth: 0
+    }),
+    []
+  );
+  if (config.root?.render) {
+    return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(config.root.render, { ...propsWithSlots, ...richtextProps, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneRenderPure, { zone: rootZone }) }) }) });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(renderContext.Provider, { value: { config, data: defaultedData, metadata }, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneProvider, { value: nextContextValue, children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(DropZoneRenderPure, { zone: rootZone }) }) });
+}
+
+// components/CredBuild/components/Preview/index.tsx
 var import_jsx_runtime76 = require("react/jsx-runtime");
 var getClassName29 = get_class_name_factory_default("CredBuildPreview", styles_module_default20);
 var useBubbleIframeEvents = (ref) => {
   const status = useAppStore((s) => s.status);
-  (0, import_react79.useEffect)(() => {
+  (0, import_react80.useEffect)(() => {
     if (ref.current && status === "READY") {
       const iframe = ref.current;
       const handlePointerMove = (event) => {
@@ -12101,7 +12037,7 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
   const renderData = useAppStore(
     (s) => s.state.ui.previewMode === "edit" ? null : s.state.data
   );
-  const Page = (0, import_react79.useCallback)(
+  const Page = (0, import_react80.useCallback)(
     (pageProps) => {
       const propsWithSlots = useSlots(
         config,
@@ -12120,9 +12056,9 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
     },
     [config]
   );
-  const Frame = (0, import_react79.useMemo)(() => overrides.iframe, [overrides]);
+  const Frame = (0, import_react80.useMemo)(() => overrides.iframe, [overrides]);
   const rootProps = root.props || root;
-  const ref = (0, import_react79.useRef)(null);
+  const ref = (0, import_react80.useRef)(null);
   useBubbleIframeEvents(ref);
   const inner = !renderData ? /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
     Page,
@@ -12138,7 +12074,7 @@ var Preview2 = ({ id = "credbuild-preview" }) => {
       children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(DropZonePure, { zone: rootDroppableId })
     }
   ) : /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Render, { data: renderData, config, metadata });
-  (0, import_react79.useEffect)(() => {
+  (0, import_react80.useEffect)(() => {
     if (!iframe.enabled) {
       setStatus("READY");
     }
@@ -12195,7 +12131,7 @@ init_react_import();
 // components/LayerTree/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/LayerTree/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/LayerTree/styles.module.css#css-module
 init_react_import();
 var styles_module_default21 = { "LayerTree": "_LayerTree_nus40_1", "LayerTree-zoneTitle": "_LayerTree-zoneTitle_nus40_11", "LayerTree-helper": "_LayerTree-helper_nus40_17", "Layer": "_Layer_nus40_1", "Layer-inner": "_Layer-inner_nus40_29", "Layer--containsZone": "_Layer--containsZone_nus40_35", "Layer-clickable": "_Layer-clickable_nus40_39", "Layer--isSelected": "_Layer--isSelected_nus40_58", "Layer-chevron": "_Layer-chevron_nus40_79", "Layer--childIsSelected": "_Layer--childIsSelected_nus40_80", "Layer-zones": "_Layer-zones_nus40_84", "Layer-title": "_Layer-title_nus40_98", "Layer-name": "_Layer-name_nus40_107", "Layer-icon": "_Layer-icon_nus40_113", "Layer-zoneIcon": "_Layer-zoneIcon_nus40_118" };
 
@@ -12203,7 +12139,7 @@ var styles_module_default21 = { "LayerTree": "_LayerTree_nus40_1", "LayerTree-zo
 init_get_class_name_factory();
 init_lucide_react();
 init_root_droppable_id();
-var import_react80 = require("react");
+var import_react81 = require("react");
 init_store();
 var import_react_virtual2 = require("@tanstack/react-virtual");
 var import_jsx_runtime77 = require("react/jsx-runtime");
@@ -12305,7 +12241,7 @@ var getScrollParent = (el) => {
   }
   return null;
 };
-var Layer = (0, import_react80.forwardRef)(function Layer2({
+var Layer = (0, import_react81.forwardRef)(function Layer2({
   childIsSelected,
   dataIndex,
   depth,
@@ -12315,13 +12251,13 @@ var Layer = (0, import_react80.forwardRef)(function Layer2({
   selectedPathIds
 }, ref) {
   const dispatch = useAppStore((s) => s.dispatch);
-  const zoneStore = (0, import_react80.useContext)(ZoneStoreContext);
+  const zoneStore = (0, import_react81.useContext)(ZoneStoreContext);
   const isHovering = useContextStore(
     ZoneStoreContext,
     (s) => s.hoveringComponent === node.itemId
   );
   const containsZone = node.childZones.length > 0;
-  const setItemSelector = (0, import_react80.useCallback)(
+  const setItemSelector = (0, import_react81.useCallback)(
     (itemSelector) => {
       dispatch({ type: "setUi", ui: { itemSelector } });
     },
@@ -12474,7 +12410,7 @@ var VirtualizedLayerTreeItems = ({
   selectedPathIds,
   tree
 }) => {
-  const listRef = (0, import_react80.useRef)(null);
+  const listRef = (0, import_react81.useRef)(null);
   const virtualizer = (0, import_react_virtual2.useVirtualizer)({
     count: tree.items.length,
     estimateSize: (index) => getEstimatedRowHeight(tree.items[index].itemId),
@@ -12566,7 +12502,7 @@ var LayerTree = ({
 
 // components/CredBuild/components/Outline/index.tsx
 init_store();
-var import_react81 = require("react");
+var import_react82 = require("react");
 
 // lib/data/find-zones-for-area.ts
 init_react_import();
@@ -12588,13 +12524,13 @@ var Outline = () => {
   const rootZones = useAppStore(
     (0, import_shallow8.useShallow)((s) => findZonesForArea(s.state, "root"))
   );
-  const selectedPathIds = (0, import_react81.useMemo)(() => {
+  const selectedPathIds = (0, import_react82.useMemo)(() => {
     const selectedPath = selectedId ? nodes[selectedId]?.path : null;
     return new Set(
       selectedPath?.map((candidate) => candidate.split(":")[0]).filter(Boolean) || []
     );
   }, [nodes, selectedId]);
-  const trees = (0, import_react81.useMemo)(
+  const trees = (0, import_react82.useMemo)(
     () => rootZones.map(
       (zoneCompound) => buildLayerTree({
         config,
@@ -12606,7 +12542,7 @@ var Outline = () => {
     ),
     [config, nodes, rootZones, zones]
   );
-  const Wrapper = (0, import_react81.useMemo)(() => outlineOverride || "div", [outlineOverride]);
+  const Wrapper = (0, import_react82.useMemo)(() => outlineOverride || "div", [outlineOverride]);
   return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Wrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
     LayerTree,
     {
@@ -12622,7 +12558,7 @@ init_default_viewports();
 
 // lib/use-loaded-overrides.ts
 init_react_import();
-var import_react82 = require("react");
+var import_react83 = require("react");
 
 // lib/load-overrides.ts
 init_react_import();
@@ -12665,7 +12601,7 @@ var useLoadedOverrides = ({
   overrides,
   plugins
 }) => {
-  return (0, import_react82.useMemo)(() => {
+  return (0, import_react83.useMemo)(() => {
     return loadOverrides({ overrides, plugins });
   }, [plugins, overrides]);
 };
@@ -12676,7 +12612,7 @@ init_permissions();
 
 // lib/use-credbuild.ts
 init_react_import();
-var import_react83 = require("react");
+var import_react84 = require("react");
 var import_zustand7 = require("zustand");
 init_make_state_public();
 init_get_item();
@@ -12780,7 +12716,7 @@ var generateUseCredBuild = (store, getState) => {
   };
   return storeData;
 };
-var UseCredBuildStoreContext = (0, import_react83.createContext)(
+var UseCredBuildStoreContext = (0, import_react84.createContext)(
   null
 );
 var convertToPickedStore = (store) => {
@@ -12794,7 +12730,7 @@ var convertToPickedStore = (store) => {
   };
 };
 var useRegisterUseCredBuildStore = (appStore) => {
-  const [useCredBuildStore] = (0, import_react83.useState)(
+  const [useCredBuildStore] = (0, import_react84.useState)(
     () => (0, import_zustand7.createStore)(
       () => generateUseCredBuild(
         convertToPickedStore(appStore.getState()),
@@ -12802,7 +12738,7 @@ var useRegisterUseCredBuildStore = (appStore) => {
       )
     )
   );
-  (0, import_react83.useEffect)(() => {
+  (0, import_react84.useEffect)(() => {
     return appStore.subscribe(
       (store) => convertToPickedStore(store),
       (pickedStore) => {
@@ -12816,7 +12752,7 @@ var useRegisterUseCredBuildStore = (appStore) => {
 };
 function createUseCredBuild() {
   return function useCredBuild2(selector) {
-    const useCredBuildApi = (0, import_react83.useContext)(UseCredBuildStoreContext);
+    const useCredBuildApi = (0, import_react84.useContext)(UseCredBuildStoreContext);
     if (!useCredBuildApi) {
       throw new Error("useCredBuild must be used inside <CredBuild>.");
     }
@@ -12828,7 +12764,7 @@ function createUseCredBuild() {
   };
 }
 function useCredBuild() {
-  (0, import_react83.useEffect)(() => {
+  (0, import_react84.useEffect)(() => {
     console.warn(
       "You're using the `useCredBuild` method without a selector, which may cause unnecessary re-renders. Replace with `createUseCredBuild` and provide a selector for improved performance."
     );
@@ -12836,7 +12772,7 @@ function useCredBuild() {
   return createUseCredBuild()((s) => s);
 }
 function useGetCredBuild() {
-  const useCredBuildApi = (0, import_react83.useContext)(UseCredBuildStoreContext);
+  const useCredBuildApi = (0, import_react84.useContext)(UseCredBuildStoreContext);
   if (!useCredBuildApi) {
     throw new Error("useCredBuildGet must be used inside <CredBuild>.");
   }
@@ -12851,23 +12787,23 @@ init_to_component();
 
 // components/CredBuild/components/Layout/index.tsx
 init_react_import();
-var import_react94 = require("react");
+var import_react95 = require("react");
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Layout/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Layout/styles.module.css#css-module
 init_react_import();
 var styles_module_default22 = { "CredBuildLayout": "_CredBuildLayout_ildl0_1", "CredBuildLayout-inner": "_CredBuildLayout-inner_ildl0_8", "CredBuildLayout--leftSideBarVisible": "_CredBuildLayout--leftSideBarVisible_ildl0_29", "CredBuildLayout--rightSideBarVisible": "_CredBuildLayout--rightSideBarVisible_ildl0_33", "CredBuild--hidePlugins": "_CredBuild--hidePlugins_ildl0_37", "CredBuildLayout-item": "_CredBuildLayout-item_ildl0_43", "CredBuildLayout-header": "_CredBuildLayout-header_ildl0_49", "CredBuildLayout-left": "_CredBuildLayout-left_ildl0_54", "CredBuildLayout-editor": "_CredBuildLayout-editor_ildl0_67", "CredBuildLayout-right": "_CredBuildLayout-right_ildl0_76", "CredBuildLayout-sidebar": "_CredBuildLayout-sidebar_ildl0_93", "CredBuildPluginTab": "_CredBuildPluginTab_ildl0_108", "CredBuildPluginTab--visible": "_CredBuildPluginTab--visible_ildl0_115", "CredBuildPluginTab-body": "_CredBuildPluginTab-body_ildl0_119", "CredBuildLayout--mounted": "_CredBuildLayout--mounted_ildl0_135" };
 
 // lib/use-inject-css.ts
 init_react_import();
-var import_react84 = require("react");
+var import_react85 = require("react");
 var styles = ``;
 var useInjectStyleSheet = (initialStyles, iframeEnabled) => {
-  const [el, setEl] = (0, import_react84.useState)();
-  (0, import_react84.useEffect)(() => {
+  const [el, setEl] = (0, import_react85.useState)();
+  (0, import_react85.useEffect)(() => {
     setEl(document.createElement("style"));
   }, []);
-  (0, import_react84.useEffect)(() => {
+  (0, import_react85.useEffect)(() => {
     if (!el || typeof window === "undefined") {
       return;
     }
@@ -12897,12 +12833,12 @@ init_use_hotkey();
 
 // lib/use-preview-mode-hotkeys.ts
 init_react_import();
-var import_react85 = require("react");
+var import_react86 = require("react");
 init_use_hotkey();
 init_store();
 var usePreviewModeHotkeys = () => {
   const appStore = useAppStoreApi();
-  const toggleInteractive = (0, import_react85.useCallback)(() => {
+  const toggleInteractive = (0, import_react86.useCallback)(() => {
     const dispatch = appStore.getState().dispatch;
     dispatch({
       type: "setUi",
@@ -12917,7 +12853,7 @@ var usePreviewModeHotkeys = () => {
 
 // components/CredBuild/components/Header/index.tsx
 init_react_import();
-var import_react88 = require("react");
+var import_react89 = require("react");
 init_store();
 init_lucide_react();
 init_IconButton();
@@ -12928,7 +12864,7 @@ init_lucide_react();
 init_IconButton();
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/MenuBar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/MenuBar/styles.module.css#css-module
 init_react_import();
 var styles_module_default23 = { "MenuBar": "_MenuBar_1m2ld_1", "MenuBar--menuOpen": "_MenuBar--menuOpen_1m2ld_14", "MenuBar-inner": "_MenuBar-inner_1m2ld_29", "MenuBar-history": "_MenuBar-history_1m2ld_45" };
 
@@ -12995,10 +12931,10 @@ init_react_import();
 init_lucide_react();
 init_IconButton2();
 init_store();
-var import_react86 = require("react");
+var import_react87 = require("react");
 init_lib();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/ViewportControls/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/ViewportControls/styles.module.css#css-module
 init_react_import();
 var styles_module_default24 = { "ViewportControls": "_ViewportControls_1e0ai_1", "ViewportControls--fullScreen": "_ViewportControls--fullScreen_1e0ai_5", "ViewportControls-toggleButton": "_ViewportControls-toggleButton_1e0ai_14", "ViewportControls--isExpanded": "_ViewportControls--isExpanded_1e0ai_38", "ViewportControls-actions": "_ViewportControls-actions_1e0ai_42", "ViewportControls-actionsInner": "_ViewportControls-actionsInner_1e0ai_46", "ViewportControls-divider": "_ViewportControls-divider_1e0ai_75", "ViewportControls-zoomSelect": "_ViewportControls-zoomSelect_1e0ai_81", "ViewportControls-zoom": "_ViewportControls-zoom_1e0ai_81", "ViewportButton-inner": "_ViewportButton-inner_1e0ai_111", "ViewportButton--isActive": "_ViewportButton--isActive_1e0ai_119" };
 
@@ -13052,7 +12988,7 @@ var ViewportControls = ({
   const defaultsContainAutoZoom = defaultZoomOptions.find(
     (option) => option.value === autoZoom
   );
-  const zoomOptions = (0, import_react86.useMemo)(
+  const zoomOptions = (0, import_react87.useMemo)(
     () => [
       ...defaultZoomOptions,
       ...defaultsContainAutoZoom ? [] : [
@@ -13064,13 +13000,13 @@ var ViewportControls = ({
     ].filter((a) => a.value <= autoZoom).sort((a, b) => a.value > b.value ? 1 : -1),
     [autoZoom, defaultsContainAutoZoom]
   );
-  const [activeViewport, setActiveViewport] = (0, import_react86.useState)(
+  const [activeViewport, setActiveViewport] = (0, import_react87.useState)(
     uiViewports.current.width
   );
-  (0, import_react86.useEffect)(() => {
+  (0, import_react87.useEffect)(() => {
     setActiveViewport(uiViewports.current.width);
   }, [uiViewports.current.width, uiViewports]);
-  const [isExpanded, setIsExpanded] = (0, import_react86.useState)(false);
+  const [isExpanded, setIsExpanded] = (0, import_react87.useState)(false);
   return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(
     "div",
     {
@@ -13170,14 +13106,14 @@ var import_shallow9 = require("zustand/react/shallow");
 
 // lib/frame-context.tsx
 init_react_import();
-var import_react87 = require("react");
+var import_react88 = require("react");
 var import_jsx_runtime82 = require("react/jsx-runtime");
-var FrameContext = (0, import_react87.createContext)(null);
+var FrameContext = (0, import_react88.createContext)(null);
 var FrameProvider = ({
   children
 }) => {
-  const frameRef = (0, import_react87.useRef)(null);
-  const value = (0, import_react87.useMemo)(
+  const frameRef = (0, import_react88.useRef)(null);
+  const value = (0, import_react88.useMemo)(
     () => ({
       frameRef
     }),
@@ -13186,14 +13122,14 @@ var FrameProvider = ({
   return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(FrameContext.Provider, { value, children });
 };
 var useCanvasFrame = () => {
-  const context = (0, import_react87.useContext)(FrameContext);
+  const context = (0, import_react88.useContext)(FrameContext);
   if (context === null) {
     throw new Error("useCanvasFrame must be used within a FrameProvider");
   }
   return context;
 };
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Header/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Header/styles.module.css#css-module
 init_react_import();
 var styles_module_default25 = { "CredBuildHeader": "_CredBuildHeader_qzv5u_1", "CredBuildHeader-inner": "_CredBuildHeader-inner_qzv5u_20", "CredBuildHeader-viewportTools": "_CredBuildHeader-viewportTools_qzv5u_28", "CredBuildHeader-leftActions": "_CredBuildHeader-leftActions_qzv5u_35", "CredBuildHeader-toggle": "_CredBuildHeader-toggle_qzv5u_41", "CredBuildHeader-leftSideBarToggle": "_CredBuildHeader-leftSideBarToggle_qzv5u_47", "CredBuildHeader-rightSideBarToggle": "_CredBuildHeader-rightSideBarToggle_qzv5u_48", "CredBuildHeader-title": "_CredBuildHeader-title_qzv5u_52", "CredBuildHeader-path": "_CredBuildHeader-path_qzv5u_57", "CredBuildHeader-tools": "_CredBuildHeader-tools_qzv5u_68", "CredBuildHeader-menuButton": "_CredBuildHeader-menuButton_qzv5u_75" };
 
@@ -13213,7 +13149,7 @@ var HeaderInner = ({
   } = usePropsContext();
   const dispatch = useAppStore((s) => s.dispatch);
   const appStore = useAppStoreApi();
-  const defaultHeaderRender = (0, import_react88.useMemo)(() => {
+  const defaultHeaderRender = (0, import_react89.useMemo)(() => {
     if (renderHeader) {
       console.warn(
         "`renderHeader` is deprecated. Please use `overrides.header` and the `useCredBuild` hook instead"
@@ -13227,7 +13163,7 @@ var HeaderInner = ({
     }
     return DefaultOverride;
   }, [renderHeader, dispatch]);
-  const defaultHeaderActionsRender = (0, import_react88.useMemo)(() => {
+  const defaultHeaderActionsRender = (0, import_react89.useMemo)(() => {
     if (renderHeaderActions) {
       console.warn(
         "`renderHeaderActions` is deprecated. Please use `overrides.headerActions` and the `useCredBuild` hook instead."
@@ -13247,7 +13183,7 @@ var HeaderInner = ({
   const CustomHeaderActions = useAppStore(
     (s) => s.overrides.headerActions || defaultHeaderActionsRender
   );
-  const [menuOpen, setMenuOpen] = (0, import_react88.useState)(false);
+  const [menuOpen, setMenuOpen] = (0, import_react89.useState)(false);
   const rootTitle = useAppStore((s) => {
     const rootData = s.state.indexes.nodes["root"]?.data;
     return rootData.props.title ?? "";
@@ -13276,7 +13212,7 @@ var HeaderInner = ({
   );
   const { frameRef } = useCanvasFrame();
   const resetAutoZoom = useResetAutoZoom(frameRef);
-  const toggleSidebars = (0, import_react88.useCallback)(
+  const toggleSidebars = (0, import_react89.useCallback)(
     (sidebar) => {
       const widerViewport = window.matchMedia("(min-width: 638px)").matches;
       const sideBarVisible = sidebar === "left" ? leftSideBarVisible : rightSideBarVisible;
@@ -13443,12 +13379,12 @@ var HeaderInner = ({
     }
   );
 };
-var Header = (0, import_react88.memo)(HeaderInner);
+var Header = (0, import_react89.memo)(HeaderInner);
 
 // components/SidebarSection/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/SidebarSection/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/SidebarSection/styles.module.css#css-module
 init_react_import();
 var styles_module_default26 = { "SidebarSection": "_SidebarSection_1oj6d_1", "SidebarSection-title": "_SidebarSection-title_1oj6d_12", "SidebarSection--noBorderTop": "_SidebarSection--noBorderTop_1oj6d_38", "SidebarSection-content": "_SidebarSection-content_1oj6d_42", "SidebarSection-breadcrumbLabel": "_SidebarSection-breadcrumbLabel_1oj6d_51", "SidebarSection-breadcrumbs": "_SidebarSection-breadcrumbs_1oj6d_80", "SidebarSection-breadcrumb": "_SidebarSection-breadcrumb_1oj6d_51", "SidebarSection-heading": "_SidebarSection-heading_1oj6d_92", "SidebarSection-loadingOverlay": "_SidebarSection-loadingOverlay_1oj6d_96" };
 
@@ -13459,7 +13395,7 @@ init_Loader();
 // components/Breadcrumbs/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/Breadcrumbs/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/Breadcrumbs/styles.module.css#css-module
 init_react_import();
 var styles_module_default27 = { "Breadcrumbs": "_Breadcrumbs_1e0gb_1", "Breadcrumbs-breadcrumbLabel": "_Breadcrumbs-breadcrumbLabel_1e0gb_7", "Breadcrumbs-breadcrumb": "_Breadcrumbs-breadcrumb_1e0gb_7" };
 
@@ -13469,14 +13405,14 @@ init_lucide_react();
 
 // lib/use-breadcrumbs.ts
 init_react_import();
-var import_react89 = require("react");
+var import_react90 = require("react");
 init_store();
 var useBreadcrumbs = (renderCount) => {
   const selectedId = useAppStore((s) => s.selectedItem?.props.id);
   const config = useAppStore((s) => s.config);
   const path = useAppStore((s) => s.state.indexes.nodes[selectedId]?.path);
   const appStore = useAppStoreApi();
-  return (0, import_react89.useMemo)(() => {
+  return (0, import_react90.useMemo)(() => {
     const breadcrumbs = path?.map((zoneCompound) => {
       const [componentId] = zoneCompound.split(":");
       if (componentId === "root") {
@@ -13556,10 +13492,10 @@ var SidebarSection = ({
 // components/CredBuild/components/Canvas/index.tsx
 init_react_import();
 init_css_box_model_esm();
-var import_react90 = require("react");
+var import_react91 = require("react");
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Canvas/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Canvas/styles.module.css#css-module
 init_react_import();
 var styles_module_default28 = { "CredBuildCanvas": "_CredBuildCanvas_1ivia_1", "CredBuildCanvas--fullScreen": "_CredBuildCanvas--fullScreen_1ivia_22", "CredBuildCanvas-inner": "_CredBuildCanvas-inner_1ivia_33", "CredBuildCanvas-root": "_CredBuildCanvas-root_1ivia_42", "CredBuildCanvas--ready": "_CredBuildCanvas--ready_1ivia_67", "CredBuildCanvas-loader": "_CredBuildCanvas-loader_1ivia_72", "CredBuildCanvas--showLoader": "_CredBuildCanvas--showLoader_1ivia_82" };
 
@@ -13612,17 +13548,17 @@ var Canvas = () => {
       viewports: s.state.ui.viewports
     }))
   );
-  const [showTransition, setShowTransition] = (0, import_react90.useState)(false);
-  const isResizingRef = (0, import_react90.useRef)(false);
-  const defaultRender = (0, import_react90.useMemo)(() => {
+  const [showTransition, setShowTransition] = (0, import_react91.useState)(false);
+  const isResizingRef = (0, import_react91.useRef)(false);
+  const defaultRender = (0, import_react91.useMemo)(() => {
     const CredBuildDefault = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(import_jsx_runtime86.Fragment, { children });
     return CredBuildDefault;
   }, []);
-  const CustomPreview = (0, import_react90.useMemo)(
+  const CustomPreview = (0, import_react91.useMemo)(
     () => overrides.preview || defaultRender,
     [overrides, defaultRender]
   );
-  const getFrameDimensions = (0, import_react90.useCallback)(() => {
+  const getFrameDimensions = (0, import_react91.useCallback)(() => {
     if (frameRef.current) {
       const frame = frameRef.current;
       const box = getBox(frame);
@@ -13630,7 +13566,7 @@ var Canvas = () => {
     }
     return { width: 0, height: 0 };
   }, [frameRef]);
-  (0, import_react90.useEffect)(() => {
+  (0, import_react91.useEffect)(() => {
     resetAutoZoom();
   }, [
     frameRef,
@@ -13640,7 +13576,7 @@ var Canvas = () => {
     viewports,
     resetAutoZoom
   ]);
-  (0, import_react90.useEffect)(() => {
+  (0, import_react91.useEffect)(() => {
     const { height: frameHeight } = getFrameDimensions();
     if (viewports.current.height === "auto") {
       const newRootHeight = frameHeight / zoomConfig.zoom;
@@ -13658,12 +13594,12 @@ var Canvas = () => {
     viewports,
     zoomConfig.rootHeight
   ]);
-  (0, import_react90.useEffect)(() => {
+  (0, import_react91.useEffect)(() => {
     if (ZOOM_ON_CHANGE) {
       resetAutoZoom();
     }
   }, [viewports.current.width, viewports, resetAutoZoom]);
-  (0, import_react90.useEffect)(() => {
+  (0, import_react91.useEffect)(() => {
     if (!frameRef.current) return;
     const resizeObserver = new ResizeObserver(() => {
       if (!isResizingRef.current) {
@@ -13675,14 +13611,14 @@ var Canvas = () => {
       resizeObserver.disconnect();
     };
   }, [frameRef, resetAutoZoom]);
-  const [showLoader, setShowLoader] = (0, import_react90.useState)(false);
-  (0, import_react90.useEffect)(() => {
+  const [showLoader, setShowLoader] = (0, import_react91.useState)(false);
+  (0, import_react91.useEffect)(() => {
     setTimeout(() => {
       setShowLoader(true);
     }, 500);
   }, []);
   const appStoreApi = useAppStoreApi();
-  (0, import_react90.useEffect)(() => {
+  (0, import_react91.useEffect)(() => {
     if (typeof window === "undefined") return;
     if (uiProp?.viewports?.current) return;
     const viewportWidth = window.innerWidth;
@@ -13783,15 +13719,15 @@ var Canvas = () => {
 
 // lib/use-sidebar-resize.ts
 init_react_import();
-var import_react91 = require("react");
+var import_react92 = require("react");
 init_store();
 function useSidebarResize(position, dispatch) {
-  const [width, setWidth] = (0, import_react91.useState)(null);
-  const sidebarRef = (0, import_react91.useRef)(null);
+  const [width, setWidth] = (0, import_react92.useState)(null);
+  const sidebarRef = (0, import_react92.useRef)(null);
   const storeWidth = useAppStore(
     (s) => position === "left" ? s.state.ui.leftSideBarWidth : s.state.ui.rightSideBarWidth
   );
-  (0, import_react91.useEffect)(() => {
+  (0, import_react92.useEffect)(() => {
     if (typeof window !== "undefined" && !storeWidth) {
       try {
         const savedWidths = localStorage.getItem("credbuild-sidebar-widths");
@@ -13816,12 +13752,12 @@ function useSidebarResize(position, dispatch) {
       }
     }
   }, [dispatch, position, storeWidth]);
-  (0, import_react91.useEffect)(() => {
+  (0, import_react92.useEffect)(() => {
     if (storeWidth !== void 0) {
       setWidth(storeWidth);
     }
   }, [storeWidth]);
-  const handleResizeEnd = (0, import_react91.useCallback)(
+  const handleResizeEnd = (0, import_react92.useCallback)(
     (width2) => {
       dispatch({
         type: "setUi",
@@ -13869,10 +13805,10 @@ init_react_import();
 
 // components/CredBuild/components/ResizeHandle/index.tsx
 init_react_import();
-var import_react92 = require("react");
+var import_react93 = require("react");
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/ResizeHandle/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/ResizeHandle/styles.module.css#css-module
 init_react_import();
 var styles_module_default29 = { "ResizeHandle": "_ResizeHandle_144bf_2", "ResizeHandle--left": "_ResizeHandle--left_144bf_16", "ResizeHandle--right": "_ResizeHandle--right_144bf_20" };
 
@@ -13888,11 +13824,11 @@ var ResizeHandle = ({
 }) => {
   const { frameRef } = useCanvasFrame();
   const resetAutoZoom = useResetAutoZoom(frameRef);
-  const handleRef = (0, import_react92.useRef)(null);
-  const isDragging = (0, import_react92.useRef)(false);
-  const startX = (0, import_react92.useRef)(0);
-  const startWidth = (0, import_react92.useRef)(0);
-  const handleMouseMove = (0, import_react92.useCallback)(
+  const handleRef = (0, import_react93.useRef)(null);
+  const isDragging = (0, import_react93.useRef)(false);
+  const startX = (0, import_react93.useRef)(0);
+  const startWidth = (0, import_react93.useRef)(0);
+  const handleMouseMove = (0, import_react93.useCallback)(
     (e) => {
       if (!isDragging.current) return;
       const delta = e.clientX - startX.current;
@@ -13903,7 +13839,7 @@ var ResizeHandle = ({
     },
     [onResize, position]
   );
-  const handleMouseUp = (0, import_react92.useCallback)(() => {
+  const handleMouseUp = (0, import_react93.useCallback)(() => {
     if (!isDragging.current) return;
     isDragging.current = false;
     document.body.style.cursor = "";
@@ -13918,7 +13854,7 @@ var ResizeHandle = ({
     onResizeEnd(finalWidth);
     resetAutoZoom();
   }, [onResizeEnd, handleMouseMove, resetAutoZoom, sidebarRef]);
-  const handleMouseDown = (0, import_react92.useCallback)(
+  const handleMouseDown = (0, import_react93.useCallback)(
     (e) => {
       isDragging.current = true;
       startX.current = e.clientX;
@@ -13948,7 +13884,7 @@ var ResizeHandle = ({
 // components/CredBuild/components/Sidebar/index.tsx
 init_get_class_name_factory();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Sidebar/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Sidebar/styles.module.css#css-module
 init_react_import();
 var styles_module_default30 = { "Sidebar": "_Sidebar_1kcif_1", "Sidebar--isVisible": "_Sidebar--isVisible_1kcif_13", "Sidebar--left": "_Sidebar--left_1kcif_17", "Sidebar--right": "_Sidebar--right_1kcif_29", "Sidebar-resizeHandle": "_Sidebar-resizeHandle_1kcif_42" };
 
@@ -13986,7 +13922,7 @@ var Sidebar = ({
 
 // lib/use-delete-hotkeys.ts
 init_react_import();
-var import_react93 = require("react");
+var import_react94 = require("react");
 init_use_hotkey();
 init_store();
 var isElementVisible = (element) => {
@@ -14022,7 +13958,7 @@ var shouldBlockDeleteHotkey = (e) => {
 };
 var useDeleteHotkeys = () => {
   const appStore = useAppStoreApi();
-  const deleteSelectedComponent = (0, import_react93.useCallback)(
+  const deleteSelectedComponent = (0, import_react94.useCallback)(
     (e) => {
       if (shouldBlockDeleteHotkey(e)) {
         return false;
@@ -14048,7 +13984,7 @@ var useDeleteHotkeys = () => {
 // components/CredBuild/components/Nav/index.tsx
 init_react_import();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/components/CredBuild/components/Nav/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/components/CredBuild/components/Nav/styles.module.css#css-module
 init_react_import();
 var styles_module_default31 = { "Nav": "_Nav_wbh7e_1", "Nav-list": "_Nav-list_wbh7e_9", "CredBuildHeader-path": "_CredBuildHeader-path_wbh7e_20", "NavItem": "_NavItem_wbh7e_38", "NavItem-link": "_NavItem-link_wbh7e_43", "NavItem-linkIcon": "_NavItem-linkIcon_wbh7e_64", "NavItem--active": "_NavItem--active_wbh7e_77", "NavItem--mobileOnly": "_NavItem--mobileOnly_wbh7e_90", "NavItem--desktopOnly": "_NavItem--desktopOnly_wbh7e_95" };
 
@@ -14098,7 +14034,7 @@ init_lucide_react();
 init_react_import();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/blocks/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/plugins/blocks/styles.module.css#css-module
 init_react_import();
 var styles_module_default32 = { "BlocksPlugin": "_BlocksPlugin_1ey1i_1" };
 
@@ -14117,7 +14053,7 @@ var blocksPlugin = () => ({
 init_react_import();
 init_lucide_react();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/outline/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/plugins/outline/styles.module.css#css-module
 init_react_import();
 var styles_module_default33 = { "OutlinePlugin": "_OutlinePlugin_q92j6_1" };
 
@@ -14137,7 +14073,7 @@ init_react_import();
 init_lucide_react();
 init_store();
 
-// css-module:/home/crediblemark/Project/NEXT_CMS/packages/plugins/fields/styles.module.css#css-module
+// css-module:/home/crediblemark/Project/Credibuild/plugins/fields/styles.module.css#css-module
 init_react_import();
 var styles_module_default34 = { "FieldsPlugin": "_FieldsPlugin_6as57_1", "FieldsPlugin-header": "_FieldsPlugin-header_6as57_7" };
 
@@ -14189,7 +14125,7 @@ var Layout = ({ children }) => {
     plugins,
     height
   } = usePropsContext();
-  const iframe = (0, import_react94.useMemo)(
+  const iframe = (0, import_react95.useMemo)(
     () => ({
       enabled: true,
       waitForStyles: true,
@@ -14216,7 +14152,7 @@ var Layout = ({ children }) => {
     sidebarRef: rightSidebarRef,
     handleResizeEnd: handleRightSidebarResizeEnd
   } = useSidebarResize("right", dispatch);
-  (0, import_react94.useEffect)(() => {
+  (0, import_react95.useEffect)(() => {
     if (!window.matchMedia("(min-width: 638px)").matches) {
       dispatch({
         type: "setUi",
@@ -14243,17 +14179,17 @@ var Layout = ({ children }) => {
     };
   }, [dispatch]);
   const overrides = useAppStore((s) => s.overrides);
-  const CustomCredBuild = (0, import_react94.useMemo)(
+  const CustomCredBuild = (0, import_react95.useMemo)(
     () => overrides.credbuild || DefaultOverride,
     [overrides]
   );
-  const [mounted, setMounted] = (0, import_react94.useState)(false);
-  (0, import_react94.useEffect)(() => {
+  const [mounted, setMounted] = (0, import_react95.useState)(false);
+  (0, import_react95.useEffect)(() => {
     setMounted(true);
   }, []);
   const ready = useAppStore((s) => s.status === "READY");
   useMonitorHotkeys();
-  (0, import_react94.useEffect)(() => {
+  (0, import_react95.useEffect)(() => {
     if (ready && iframe.enabled) {
       const frameDoc = getFrame();
       if (frameDoc) {
@@ -14273,12 +14209,12 @@ var Layout = ({ children }) => {
   const setUi = useAppStore((s) => s.setUi);
   const currentPlugin = useAppStore((s) => s.state.ui.plugin?.current);
   const appStoreApi = useAppStoreApi();
-  const [mobilePanelHeightMode, setMobilePanelHeightMode] = (0, import_react94.useState)("toggle");
-  const hasLegacySideBarPlugin = (0, import_react94.useMemo)(
+  const [mobilePanelHeightMode, setMobilePanelHeightMode] = (0, import_react95.useState)("toggle");
+  const hasLegacySideBarPlugin = (0, import_react95.useMemo)(
     () => !!plugins?.find((p) => p.name === "legacy-side-bar"),
     [plugins]
   );
-  const pluginItems = (0, import_react94.useMemo)(() => {
+  const pluginItems = (0, import_react95.useMemo)(() => {
     const details = {};
     const defaultPlugins = [blocksPlugin(), outlinePlugin()];
     const isLegacy = (plugin) => plugin.name === "legacy-side-bar" ? -1 : 0;
@@ -14323,7 +14259,7 @@ var Layout = ({ children }) => {
     });
     return details;
   }, [plugins, currentPlugin, leftSideBarVisible, hasLegacySideBarPlugin, setUi]);
-  (0, import_react94.useEffect)(() => {
+  (0, import_react95.useEffect)(() => {
     if (!currentPlugin) {
       const names = Object.keys(pluginItems);
       setUi({ plugin: { current: names[0] } });
@@ -14428,11 +14364,11 @@ var Layout = ({ children }) => {
 
 // components/CredBuild/index.tsx
 var import_jsx_runtime94 = require("react/jsx-runtime");
-var propsContext = (0, import_react95.createContext)({});
+var propsContext = (0, import_react96.createContext)({});
 function PropsProvider(props) {
   return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(propsContext.Provider, { value: props, children: props.children });
 }
-var usePropsContext = () => (0, import_react95.useContext)(propsContext);
+var usePropsContext = () => (0, import_react96.useContext)(propsContext);
 function CredBuildProvider({ children }) {
   const {
     config,
@@ -14451,7 +14387,7 @@ function CredBuildProvider({ children }) {
     _experimentalFullScreenCanvas,
     _experimentalVirtualization
   } = usePropsContext();
-  const iframe = (0, import_react95.useMemo)(
+  const iframe = (0, import_react96.useMemo)(
     () => ({
       enabled: true,
       waitForStyles: true,
@@ -14459,7 +14395,7 @@ function CredBuildProvider({ children }) {
     }),
     [_iframe]
   );
-  const [generatedAppState] = (0, import_react95.useState)(() => {
+  const [generatedAppState] = (0, import_react96.useState)(() => {
     const initial = { ...defaultAppState.ui, ...initialUi };
     let clientUiState = {};
     if (Object.keys(initialData?.root || {}).length > 0 && !initialData?.root?.props) {
@@ -14506,7 +14442,7 @@ function CredBuildProvider({ children }) {
     return walkAppState(newAppState, config);
   });
   const { appendData = true } = _initialHistory || {};
-  const [blendedHistories] = (0, import_react95.useState)(
+  const [blendedHistories] = (0, import_react96.useState)(
     [
       ..._initialHistory?.histories || [],
       ...appendData ? [{ state: generatedAppState }] : []
@@ -14521,7 +14457,7 @@ function CredBuildProvider({ children }) {
       };
     })
   );
-  const initialHistoryIndex = (0, import_react95.useMemo)(() => {
+  const initialHistoryIndex = (0, import_react96.useMemo)(() => {
     if (_initialHistory?.index !== void 0 && _initialHistory?.index >= 0 && _initialHistory?.index < blendedHistories.length) {
       return _initialHistory?.index;
     }
@@ -14532,7 +14468,7 @@ function CredBuildProvider({ children }) {
     overrides,
     plugins
   });
-  const loadedFieldTransforms = (0, import_react95.useMemo)(() => {
+  const loadedFieldTransforms = (0, import_react96.useMemo)(() => {
     const _plugins = plugins || [];
     const pluginFieldTransforms = _plugins.reduce(
       (acc, plugin) => ({ ...acc, ...plugin.fieldTransforms }),
@@ -14544,7 +14480,7 @@ function CredBuildProvider({ children }) {
     };
   }, [fieldTransforms, plugins]);
   const instanceId = useSafeId();
-  const generateAppStore = (0, import_react95.useCallback)(
+  const generateAppStore = (0, import_react96.useCallback)(
     (state) => {
       return {
         instanceId,
@@ -14575,15 +14511,15 @@ function CredBuildProvider({ children }) {
       loadedFieldTransforms
     ]
   );
-  const [appStore] = (0, import_react95.useState)(
+  const [appStore] = (0, import_react96.useState)(
     () => createAppStore(generateAppStore(initialAppState))
   );
-  (0, import_react95.useEffect)(() => {
+  (0, import_react96.useEffect)(() => {
     if (process.env.NODE_ENV !== "production") {
       window.__CREDBUILD_INTERNAL_DO_NOT_USE = { appStore };
     }
   }, [appStore]);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react96.useEffect)(() => {
     const state = appStore.getState().state;
     appStore.setState({
       ...generateAppStore(state)
@@ -14594,8 +14530,8 @@ function CredBuildProvider({ children }) {
     index: initialHistoryIndex,
     initialAppState
   });
-  const previousData = (0, import_react95.useRef)(null);
-  (0, import_react95.useEffect)(() => {
+  const previousData = (0, import_react96.useRef)(null);
+  (0, import_react96.useEffect)(() => {
     return appStore.subscribe(
       (s) => s.state.data,
       (data) => {
@@ -14609,7 +14545,7 @@ function CredBuildProvider({ children }) {
   }, [onChange, appStore]);
   useRegisterPermissionsSlice(appStore, permissions);
   const uCredBuildStore = useRegisterUseCredBuildStore(appStore);
-  (0, import_react95.useEffect)(() => {
+  (0, import_react96.useEffect)(() => {
     const { resolveAndCommitData } = appStore.getState();
     setTimeout(() => {
       resolveAndCommitData();
@@ -14913,7 +14849,6 @@ var legacySideBarPlugin = () => ({
   outlinePlugin,
   overrideKeys,
   registerOverlayPortal,
-  renderContext,
   resolveAllData,
   setDeep,
   transformProps,
@@ -14922,13 +14857,6 @@ var legacySideBarPlugin = () => ({
   walkTree
 });
 /*! Bundled license information:
-
-classnames/index.js:
-  (*!
-  	Copyright (c) 2018 Jed Watson.
-  	Licensed under the MIT License (MIT), see
-  	http://jedwatson.github.io/classnames
-  *)
 
 lucide-react/dist/esm/shared/src/utils.js:
 lucide-react/dist/esm/defaultAttributes.js:

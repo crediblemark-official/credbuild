@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { AutoFieldPrivate } from ".";
+import { AutoFieldPrivate } from "./AutoFieldInternal";
 import { NestedFieldProvider, useNestedFieldContext } from "./context";
 import { Field } from "../../types";
 

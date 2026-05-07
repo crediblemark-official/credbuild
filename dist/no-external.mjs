@@ -13,18 +13,17 @@ import {
   outlinePlugin,
   overrideKeys,
   registerOverlayPortal,
-  renderContext,
   setDeep,
   useCredBuild,
   useGetCredBuild
-} from "./chunk-VKBVSWU3.mjs";
-import "./chunk-VGDMWS44.mjs";
+} from "./chunk-TY2X63BY.mjs";
+import "./chunk-TOTTSVLZ.mjs";
 import {
   migrate,
   resolveAllData,
   transformProps
-} from "./chunk-4SQOX3ZQ.mjs";
-import "./chunk-IJHL7BIR.mjs";
+} from "./chunk-JTNXSAIB.mjs";
+import "./chunk-AL77I3BV.mjs";
 import {
   Action,
   ActionBar,
@@ -33,23 +32,18 @@ import {
   Label,
   RichTextMenu,
   Separator
-} from "./chunk-DSXRK4QJ.mjs";
-import "./chunk-VFD76OD5.mjs";
-import "./chunk-QF3GD5WQ.mjs";
-import "./chunk-HHBUU7WF.mjs";
-import "./chunk-U2NVBXAC.mjs";
-import "./chunk-3AJBFQU4.mjs";
-import "./chunk-CDMESQDA.mjs";
-import "./chunk-YH7AXYKP.mjs";
+} from "./chunk-DCQD54KQ.mjs";
+import "./chunk-NLN6ML4B.mjs";
+import "./chunk-EVXE5RY5.mjs";
+import "./chunk-DYF44UAV.mjs";
+import "./chunk-K6UGK57R.mjs";
+import "./chunk-SRASBLAE.mjs";
+import "./chunk-LVGIYPBQ.mjs";
+import "./chunk-BFHV72KK.mjs";
 import {
   walkTree
-} from "./chunk-GUJDGRSM.mjs";
-import {
-  init_react_import
-} from "./chunk-B4BOBGYB.mjs";
-
-// bundle/no-external.ts
-init_react_import();
+} from "./chunk-D4HNIB2M.mjs";
+import "./chunk-AFVEAZTD.mjs";
 export {
   Action,
   ActionBar,
@@ -73,7 +67,6 @@ export {
   outlinePlugin,
   overrideKeys,
   registerOverlayPortal,
-  renderContext,
   resolveAllData,
   setDeep,
   transformProps,
