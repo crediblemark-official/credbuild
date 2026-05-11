@@ -1,5 +1,6 @@
 /** Fallback component. Should not contain any tiptap imports (except for types) */
 
+import DOMPurify from "isomorphic-dompurify";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "@/components/RichTextEditor/styles.module.css";
 
@@ -10,7 +11,7 @@ export function RichTextRenderFallback({ content }: { content: string }) {
     <div className={getClassName()}>
       <div
         className="rich-text"
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
       />
     </div>
   );

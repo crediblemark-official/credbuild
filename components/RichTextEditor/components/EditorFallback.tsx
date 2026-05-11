@@ -1,6 +1,7 @@
 /** Fallback component. Should not contain any tiptap imports (except for types) */
 
 import { memo } from "react";
+import DOMPurify from "isomorphic-dompurify";
 import { EditorProps } from "@/components/RichTextEditor/types";
 import { LoadedRichTextMenuInner } from "@/components/RichTextMenu/inner";
 import { EditorInner } from "@/components/RichTextEditor/components/EditorInner";
@@ -21,7 +22,7 @@ export const EditorFallback = memo((props: EditorProps) => {
     >
       <div
         className="rich-text"
-        dangerouslySetInnerHTML={{ __html: props.content }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}
         contentEditable
       />
     </EditorInner>

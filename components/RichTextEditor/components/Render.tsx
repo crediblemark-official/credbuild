@@ -1,6 +1,7 @@
 import type { JSONContent } from "@tiptap/react";
 import { generateHTML, generateJSON } from "@tiptap/html";
 import { useMemo } from "react";
+import DOMPurify from "isomorphic-dompurify";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "@/components/RichTextEditor/styles.module.css";
 import { CredBuildRichText } from "@/components/RichTextEditor/extension";
@@ -50,9 +51,11 @@ export function RichTextRender({
     return generateHTML(normalized, loadedExtensions);
   }, [normalized, loadedExtensions]);
 
+  const sanitizedHtml = useMemo(() => DOMPurify.sanitize(html), [html]);
+
   return (
     <div className={getClassName()}>
-      <div className="rich-text" dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="rich-text" dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
     </div>
   );
 }
