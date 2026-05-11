@@ -10,6 +10,7 @@ import {
   useCallback,
   useContext,
   useRef,
+  memo,
 } from "react";
 import { ZoneStoreContext } from "@/components/DropZone/context";
 import { useAppStore } from "@/store";
@@ -176,7 +177,7 @@ const getScrollParent = (el: HTMLElement | null) => {
   return null;
 };
 
-const Layer = forwardRef(function Layer(
+const Layer = memo(forwardRef(function Layer(
   {
     childIsSelected,
     dataIndex,
@@ -300,9 +301,9 @@ const Layer = forwardRef(function Layer(
         ))}
     </li>
   );
-});
+}));
 
-const LayerTreeZone = ({
+const LayerTreeZone = memo(({
   depth,
   selectedId,
   selectedPathIds,
@@ -343,9 +344,9 @@ const LayerTreeZone = ({
       )}
     </>
   );
-};
+});
 
-const StaticLayerTreeItems = ({
+const StaticLayerTreeItems = memo(({
   depth,
   selectedId,
   selectedPathIds,
@@ -374,9 +375,9 @@ const StaticLayerTreeItems = ({
       ))}
     </ul>
   );
-};
+});
 
-const VirtualizedLayerTreeItems = ({
+const VirtualizedLayerTreeItems = memo(({
   depth,
   selectedId,
   selectedPathIds,
@@ -464,9 +465,9 @@ const VirtualizedLayerTreeItems = ({
       {renderedItems}
     </ul>
   );
-};
+});
 
-export const LayerTree = ({
+export const LayerTree = memo(({
   selectedId,
   selectedPathIds,
   trees,
@@ -488,4 +489,4 @@ export const LayerTree = ({
       ))}
     </>
   );
-};
+});

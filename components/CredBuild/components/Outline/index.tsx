@@ -1,10 +1,10 @@
 import { buildLayerTree, LayerTree } from "@/components/LayerTree";
 import { useAppStore } from "@/store";
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 import { findZonesForArea } from "@/lib/data/find-zones-for-area";
 import { useShallow } from "zustand/react/shallow";
 
-export const Outline = () => {
+export const Outline = memo(() => {
   const outlineOverride = useAppStore((s) => s.overrides.outline);
   const config = useAppStore((s) => s.config);
   const nodes = useAppStore((s) => s.state.indexes.nodes);
@@ -50,4 +50,4 @@ export const Outline = () => {
       />
     </Wrapper>
   );
-};
+});
