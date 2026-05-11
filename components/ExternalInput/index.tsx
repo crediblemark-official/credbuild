@@ -156,6 +156,8 @@ export const ExternalInput = ({
               onChange(null);
             }}
             disabled={readOnly}
+            title="Clear selection"
+            aria-label="Clear selection"
           >
             <Unlock size={16} />
           </button>
