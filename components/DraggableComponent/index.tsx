@@ -125,7 +125,12 @@ export const DraggableComponent = ({
   );
   const overrides = useAppStore((s) => s.overrides);
   const dispatch = useAppStore((s) => s.dispatch);
-  const iframe = useAppStore((s) => s.iframe);
+
+  // ⚡ Bolt: Performance Improvement
+  // 💡 What: Select a primitive (`iframe.enabled`) from the store instead of the whole `iframe` object.
+  // 🎯 Why: Previously, any change to other keys in the `iframe` object caused a new object reference, forcing a re-render of ALL `DraggableComponent` instances on the canvas.
+  // 📊 Impact: Prevents O(N) mass re-renders of the DraggableComponent instances when `iframe` data structurally changes but its active state hasn't.
+  const isIframeEnabled = useAppStore((s) => s.iframe.enabled);
   const lastMeasureRef = useRef(0);
 
   const ctx = useContext(dropZoneContext);
@@ -259,19 +264,19 @@ export const DraggableComponent = ({
 
   useEffect(() => {
     setPortalEl(
-      iframe.enabled
+      isIframeEnabled
         ? ref.current?.ownerDocument.body
         : ref.current?.closest<HTMLElement>("[data-credbuild-preview]") ??
             document.body
     );
-  }, [iframe.enabled]);
+  }, [isIframeEnabled]);
 
   const getStyle = useCallback(() => {
     if (!ref.current) return;
 
     const el = ref.current!;
     const rect = el.getBoundingClientRect();
-    const portalContainerEl = iframe.enabled
+    const portalContainerEl = isIframeEnabled
       ? null
       : el.closest<HTMLElement>("[data-credbuild-preview]");
 
@@ -318,7 +323,7 @@ export const DraggableComponent = ({
     };
 
     return style;
-  }, [iframe.enabled]);
+  }, [isIframeEnabled]);
 
   const [style, setStyle] = useState<CSSProperties>();
   const lastRectRef = useRef<DOMRectReadOnly | null>(null);
@@ -562,7 +567,7 @@ export const DraggableComponent = ({
         setIsVisible(false);
       }
     });
-  }, [hover, indicativeHover, isSelected, iframe, scheduleSync]);
+  }, [hover, indicativeHover, isSelected, isIframeEnabled, scheduleSync]);
 
   const [thisWasDragging, setThisWasDragging] = useState(false);
 
