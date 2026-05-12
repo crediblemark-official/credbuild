@@ -117,7 +117,7 @@ export const ViewportControls = ({
       className={getClassName({ isExpanded, fullScreen })}
       suppressHydrationWarning // Suppress hydration warning as frame is not visible until after load
     >
-      <div className={getClassName("actions")}>
+      <div id="viewport-menu-actions" className={getClassName("actions")}>
         <div className={getClassName("actionsInner")}>
           {viewports.map((viewport, i) => (
             <ActionButton
@@ -198,6 +198,9 @@ export const ViewportControls = ({
       <button
         className={getClassName("toggleButton")}
         title="Toggle viewport menu"
+        aria-label="Toggle viewport menu"
+        aria-expanded={isExpanded}
+        aria-controls="viewport-menu-actions"
         onClick={() => setIsExpanded((s) => !s)}
       >
         {isExpanded ? <X size={16} /> : <Monitor size={16} />}
