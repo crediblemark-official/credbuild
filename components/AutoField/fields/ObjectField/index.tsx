@@ -42,6 +42,8 @@ export const ObjectField = ({
         type="button"
         className={getClassName("header")}
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={`${id}-content`}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           {labelIcon || <LayoutTemplate size={12} strokeWidth={2.5} />}
@@ -56,7 +58,7 @@ export const ObjectField = ({
         </div>
       </button>
       {isOpen && (
-        <div className={getClassName("content")}>
+        <div id={`${id}-content`} className={getClassName("content")}>
           <fieldset className={getClassName("fieldset")}>
             {Object.keys(field.objectFields!).map((subName) => {
               const subField = field.objectFields![subName];
