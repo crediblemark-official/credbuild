@@ -70,6 +70,8 @@ const ComponentList = ({
         <button
           type="button"
           className={getClassName("title")}
+          aria-expanded={expanded}
+          aria-controls={`${id}-content`}
           onClick={() =>
             setUi({
               componentList: {
@@ -97,6 +99,7 @@ const ComponentList = ({
         </button>
       )}
       <div 
+        id={`${id}-content`}
         ref={parentRef}
         className={getClassName("content")} 
         style={{ 

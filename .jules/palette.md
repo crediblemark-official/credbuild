@@ -1,0 +1,3 @@
+## 2024-05-13 - Add ARIA Labels and State Indicators to Custom Interactive Components
+**Learning:** Custom interactive components like `ObjectField`, `ComponentList`, `ViewportControls`, and `ArrayField` often lack essential ARIA attributes such as `aria-expanded`, `aria-controls`, and `aria-label`. This makes them inaccessible to screen readers, which rely on these attributes to understand the state and purpose of the components.
+**Action:** When creating or updating custom interactive components, always include appropriate ARIA attributes. For collapsible sections, use `aria-expanded` and `aria-controls`. For icon-only buttons, use `aria-label` to provide a descriptive name.
