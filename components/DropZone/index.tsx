@@ -558,7 +558,9 @@ export const DropZoneEdit = forwardRef<HTMLDivElement, DropZoneProps>(
   }
 );
 
-const DropZoneRenderItem = ({
+// Memoized to prevent cascading re-renders when parent DropZoneRender changes
+// but the individual item props remain the same
+const DropZoneRenderItem = memo(({
   config,
   item,
   metadata,
@@ -596,7 +598,7 @@ const DropZoneRenderItem = ({
       />
     </DropZoneProvider>
   );
-};
+});
 
 export const DropZoneRenderPure = (props: DropZoneProps) => (
   <DropZoneRender {...props} />
