@@ -176,6 +176,7 @@ export const ViewportControls = ({
             <select
               className={getClassName("zoomSelect")}
               value={zoom.toString()}
+              aria-label="Zoom level"
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -198,6 +199,8 @@ export const ViewportControls = ({
       <button
         className={getClassName("toggleButton")}
         title="Toggle viewport menu"
+        aria-label="Toggle viewport menu"
+        aria-expanded={isExpanded}
         onClick={() => setIsExpanded((s) => !s)}
       >
         {isExpanded ? <X size={16} /> : <Monitor size={16} />}
