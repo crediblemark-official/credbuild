@@ -116,7 +116,9 @@ export const ResponsiveSliderField = ({
                             display: 'flex', alignItems: 'center',
                             transition: "all 0.1s ease"
                         }}
-                        title="Desktop"
+                        title="Desktop mode"
+                        aria-label="Desktop mode"
+                        aria-pressed={mode === "desktop"}
                     >
                         <DesktopIcon />
                     </button>
@@ -133,7 +135,9 @@ export const ResponsiveSliderField = ({
                             display: 'flex', alignItems: 'center',
                             transition: "all 0.1s ease"
                         }}
-                        title="Tablet"
+                        title="Tablet mode"
+                        aria-label="Tablet mode"
+                        aria-pressed={mode === "tablet"}
                     >
                         <TabletIcon />
                     </button>
@@ -150,7 +154,9 @@ export const ResponsiveSliderField = ({
                             display: 'flex', alignItems: 'center',
                             transition: "all 0.1s ease"
                         }}
-                        title="Mobile"
+                        title="Mobile mode"
+                        aria-label="Mobile mode"
+                        aria-pressed={mode === "mobile"}
                     >
                         <MobileIcon />
                     </button>
