@@ -524,6 +524,7 @@ export const ArrayField = ({
             <button
               type="button"
               className={getClassName("addButton")}
+              aria-label={`Add new ${label || name} item`}
               onClick={() => {
                 if (isDraggingAny) return;
 
