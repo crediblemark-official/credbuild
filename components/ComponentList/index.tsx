@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, memo } from "react";
 import { useAppStore } from "@/store";
 import { ChevronDown, ChevronUp, LayoutTemplate, FileText, Megaphone, Box, Settings, Layers } from "lucide-react";
 import { Drawer } from "@/components/Drawer";
@@ -8,7 +8,11 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 
 const getClassName = getClassNameFactory("ComponentList", styles);
 
-const ComponentListItem = ({
+// ⚡ PERFORMANCE: Wrapping ComponentListItem in React.memo prevents cascading re-renders
+// for off-screen/unmodified virtualized list items when unrelated global store state changes.
+// Measurement: Reduces React commit times during drag-and-drop operations and global state
+// updates by avoiding rendering O(n) unmounted/virtualized drawer items.
+const ComponentListItem = memo(({
   name,
   label,
 }: {
@@ -37,7 +41,7 @@ const ComponentListItem = ({
       {overrides.componentItem ?? overrides.drawerItem}
     </Drawer.Item>
   );
-};
+});
 
 const ComponentList = ({
   children,
