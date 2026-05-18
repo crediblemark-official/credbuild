@@ -1,3 +1,6 @@
 ## 2024-05-11 - LayerTree Memoization Pattern
 **Learning:** In highly nested, virtualized list components (like `LayerTree` and `DropZone` internals), failing to wrap pure presentational nodes with `React.memo` causes massive cascading re-renders when global UI state (like `selectedId` or hovering state) changes.
 **Action:** When working on complex tree structures or virtualized lists, proactively check if node-level components are memoized, especially if they are connected to a global store that updates frequently.
+## 2024-05-12 - Zustand Selectors in Memoized Components
+**Learning:** Even when list item components are wrapped in `React.memo`, they will still re-render if they subscribe to global state (via Zustand's `useAppStore`) and use a selector that returns a non-primitive value that frequently changes, or if the global state changes and the selector isn't optimized to avoid returning new references unnecessarily.
+**Action:** When memoizing list components connected to a global store, carefully audit all `useAppStore` selectors within the component to ensure they are returning primitive values (like booleans or strings that only change when necessary) rather than newly created objects, to fully realize the benefits of `React.memo`.
