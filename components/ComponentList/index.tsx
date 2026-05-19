@@ -1,10 +1,9 @@
 import styles from "./styles.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect } from "react";
 import { useAppStore } from "@/store";
 import { ChevronDown, ChevronUp, LayoutTemplate, FileText, Megaphone, Box, Settings, Layers } from "lucide-react";
 import { Drawer } from "@/components/Drawer";
-import { useVirtualizer } from "@tanstack/react-virtual";
 
 const getClassName = getClassNameFactory("ComponentList", styles);
 
@@ -51,18 +50,10 @@ const ComponentList = ({
   const config = useAppStore((s) => s.config);
   const setUi = useAppStore((s) => s.setUi);
   const componentList = useAppStore((s) => s.state.ui.componentList);
-  const parentRef = useRef<HTMLDivElement>(null);
 
   const { expanded = true } = componentList[id] || {};
 
   const components = Object.keys(config.components);
-  
-  const virtualizer = useVirtualizer({
-    count: components.length,
-    getScrollElement: () => parentRef.current,
-    estimateSize: () => 32, // Estimated height of each item
-    overscan: 5,
-  });
 
   return (
     <div className={getClassName({ isExpanded: expanded })}>
@@ -97,46 +88,25 @@ const ComponentList = ({
         </button>
       )}
       <div 
-        ref={parentRef}
         className={getClassName("content")} 
         style={{ 
-          maxHeight: expanded ? '500px' : '0px', 
-          overflowY: 'auto',
-          transition: 'max-height 0.3s ease-in-out'
+          overflow: "visible",
+          display: expanded ? "block" : "none"
         }}
       >
-        <div
-          style={{
-            height: `${virtualizer.getTotalSize()}px`,
-            width: '100%',
-            position: 'relative',
-          }}
-        >
-          <Drawer>
-            {children ||
-              virtualizer.getVirtualItems().map((virtualItem) => {
-                const componentKey = components[virtualItem.index];
-                return (
-                  <div
-                    key={virtualItem.key}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: `${virtualItem.size}px`,
-                      transform: `translateY(${virtualItem.start}px)`,
-                    }}
-                  >
-                    <ComponentListItem
-                      label={config.components[componentKey]["label"] ?? componentKey}
-                      name={componentKey}
-                    />
-                  </div>
-                );
-              })}
-          </Drawer>
-        </div>
+        <Drawer>
+          {children ||
+            components.map((componentKey, i) => {
+              return (
+                <ComponentListItem
+                  key={componentKey}
+                  label={config.components[componentKey]["label"] ?? componentKey}
+                  name={componentKey}
+                  index={i}
+                />
+              );
+            })}
+        </Drawer>
       </div>
     </div>
   );
