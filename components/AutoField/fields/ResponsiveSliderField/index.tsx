@@ -104,6 +104,7 @@ export const ResponsiveSliderField = ({
                     border: "1px solid var(--cb-border, #e2e8f0)"
                 }}>
                     <button
+                        type="button"
                         onClick={() => setMode("desktop")}
                         style={{
                             padding: "2px 5px",
@@ -117,10 +118,13 @@ export const ResponsiveSliderField = ({
                             transition: "all 0.1s ease"
                         }}
                         title="Desktop"
+                        aria-label="Desktop"
+                        aria-pressed={mode === "desktop"}
                     >
                         <DesktopIcon />
                     </button>
                     <button
+                        type="button"
                         onClick={() => setMode("tablet")}
                         style={{
                             padding: "2px 5px",
@@ -134,10 +138,13 @@ export const ResponsiveSliderField = ({
                             transition: "all 0.1s ease"
                         }}
                         title="Tablet"
+                        aria-label="Tablet"
+                        aria-pressed={mode === "tablet"}
                     >
                         <TabletIcon />
                     </button>
                     <button
+                        type="button"
                         onClick={() => setMode("mobile")}
                         style={{
                             padding: "2px 5px",
@@ -151,6 +158,8 @@ export const ResponsiveSliderField = ({
                             transition: "all 0.1s ease"
                         }}
                         title="Mobile"
+                        aria-label="Mobile"
+                        aria-pressed={mode === "mobile"}
                     >
                         <MobileIcon />
                     </button>
