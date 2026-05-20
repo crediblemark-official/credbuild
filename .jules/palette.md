@@ -1,0 +1,3 @@
+## 2025-02-23 - Accessibility of custom UI fields vs IconButton
+**Learning:** While the global `IconButton` component gracefully handles accessibility by internally hiding `title` props for screen readers, highly custom UI fields like `ResponsiveSliderField` and `ArrayField` often resort to native `<button>` tags with inline SVGs. These frequently lack crucial accessibility properties (`type="button"`, `aria-label`, `aria-pressed`).
+**Action:** When auditing or implementing custom UI fields in `components/AutoField/fields`, always proactively verify the semantic HTML structure of interactive elements rather than assuming they use standard library components.
