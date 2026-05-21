@@ -64,7 +64,7 @@ export const Button = ({
       disabled={disabled || loading}
       tabIndex={tabIndex}
       target={newTab ? "_blank" : undefined}
-      rel={newTab ? "noreferrer" : undefined}
+      rel={newTab ? "noopener noreferrer" : undefined}
       href={href}
       {...dataAttrs}
     >
