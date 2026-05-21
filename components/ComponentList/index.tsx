@@ -1,13 +1,13 @@
 import styles from "./styles.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, memo } from "react";
 import { useAppStore } from "@/store";
 import { ChevronDown, ChevronUp, LayoutTemplate, FileText, Megaphone, Box, Settings, Layers } from "lucide-react";
 import { Drawer } from "@/components/Drawer";
 
 const getClassName = getClassNameFactory("ComponentList", styles);
 
-const ComponentListItem = ({
+const ComponentListItem = memo(({
   name,
   label,
 }: {
@@ -36,7 +36,8 @@ const ComponentListItem = ({
       {overrides.componentItem ?? overrides.drawerItem}
     </Drawer.Item>
   );
-};
+});
+ComponentListItem.displayName = "ComponentListItem";
 
 const ComponentList = ({
   children,
