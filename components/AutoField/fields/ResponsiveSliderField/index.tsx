@@ -156,6 +156,9 @@ export const ResponsiveSliderField = ({
                     flexShrink: 0
                 }}>
                     <button
+                        type="button"
+                        aria-label="Desktop viewport"
+                        aria-pressed={mode === "desktop"}
                         onClick={() => changeGlobalViewport("desktop")}
                         style={{
                             padding: "2px 5px",
@@ -173,6 +176,9 @@ export const ResponsiveSliderField = ({
                         <DesktopIcon />
                     </button>
                     <button
+                        type="button"
+                        aria-label="Tablet viewport"
+                        aria-pressed={mode === "tablet"}
                         onClick={() => changeGlobalViewport("tablet")}
                         style={{
                             padding: "2px 5px",
@@ -190,6 +196,9 @@ export const ResponsiveSliderField = ({
                         <TabletIcon />
                     </button>
                     <button
+                        type="button"
+                        aria-label="Mobile viewport"
+                        aria-pressed={mode === "mobile"}
                         onClick={() => changeGlobalViewport("mobile")}
                         style={{
                             padding: "2px 5px",
