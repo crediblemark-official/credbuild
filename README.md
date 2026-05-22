@@ -14,6 +14,17 @@ The open-source visual editor for React. Build complex, high-performance page bu
 - **Magic Edit Mode**: Integrated pattern for `/edit` URL rewrites.
 - **React Server Components (RSC) Support**: Optimized for modern Next.js applications.
 
+## 🔌 Companion Block Library: `@crediblemark/build-ui`
+
+Accelerate your visual editor setup by pairing it with the official companion block library: **`@crediblemark/build-ui`**. It provides **45+ highly polished thematic blocks** (Hero sections, Navigation, Features, Grid lists, Accordions, and Footers) designed with clean Vanilla CSS that plug straight into your editor out of the box.
+
+Integrating the library is completely automated via the CLI:
+```bash
+npx credbuild add build-ui
+```
+
+---
+
 ## 🚀 Installation
 
 ```bash
