@@ -558,7 +558,11 @@ export const DropZoneEdit = forwardRef<HTMLDivElement, DropZoneProps>(
   }
 );
 
-const DropZoneRenderItem = ({
+// ⚡ Bolt: Wrapped DropZoneRenderItem in React.memo() to prevent unnecessary re-renders.
+// DropZoneRenderItem is a node-level component in a highly nested, virtualized list structure.
+// Without memoization, frequent global UI state changes (like selection or hover state)
+// cascade down and cause massive re-renders across all items, degrading drag-and-drop performance.
+const DropZoneRenderItem = memo(({
   config,
   item,
   metadata,
@@ -596,7 +600,7 @@ const DropZoneRenderItem = ({
       />
     </DropZoneProvider>
   );
-};
+});
 
 export const DropZoneRenderPure = (props: DropZoneProps) => (
   <DropZoneRender {...props} />
