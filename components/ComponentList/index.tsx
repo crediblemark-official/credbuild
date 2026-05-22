@@ -1,19 +1,21 @@
 import styles from "./styles.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
-import { ReactNode, useEffect } from "react";
-import { useAppStore } from "@/store";
+import { ReactNode, useEffect, memo } from "react";
+import { useAppStore, useAppStoreApi } from "@/store";
 import { ChevronDown, ChevronUp, LayoutTemplate, FileText, Megaphone, Box, Settings, Layers } from "lucide-react";
 import { Drawer } from "@/components/Drawer";
 
 const getClassName = getClassNameFactory("ComponentList", styles);
 
-const ComponentListItem = ({
+// ⚡ Bolt: Wrapped list items in React.memo to prevent massive cascading
+// re-renders of all pure presentational nodes when parent list UI state changes.
+const ComponentListItem = memo(({
   name,
   label,
 }: {
   name: string;
   label?: string;
-  index?: number; 
+  index?: number;
 }) => {
   const overrides = useAppStore((s) => s.overrides);
   const canInsert = useAppStore(
@@ -36,7 +38,7 @@ const ComponentListItem = ({
       {overrides.componentItem ?? overrides.drawerItem}
     </Drawer.Item>
   );
-};
+});
 
 const ComponentList = ({
   children,
@@ -48,10 +50,12 @@ const ComponentList = ({
   title?: string;
 }) => {
   const config = useAppStore((s) => s.config);
-  const setUi = useAppStore((s) => s.setUi);
-  const componentList = useAppStore((s) => s.state.ui.componentList);
 
-  const { expanded = true } = componentList[id] || {};
+  // ⚡ Bolt: Refactored selector to observe only the primitive `expanded` boolean
+  // rather than the whole `componentList` dictionary, preventing this list
+  // from re-rendering whenever *any* unrelated list is toggled.
+  const expanded = useAppStore((s) => s.state.ui.componentList[id]?.expanded ?? true);
+  const appStoreApi = useAppStoreApi();
 
   const components = Object.keys(config.components);
 
@@ -61,17 +65,20 @@ const ComponentList = ({
         <button
           type="button"
           className={getClassName("title")}
-          onClick={() =>
-            setUi({
+          aria-expanded={expanded}
+          aria-controls={`${id}-content`}
+          onClick={() => {
+            const currentComponentList = appStoreApi.getState().state.ui.componentList;
+            appStoreApi.getState().setUi({
               componentList: {
-                ...componentList,
+                ...currentComponentList,
                 [id]: {
-                  ...componentList[id],
+                  ...currentComponentList[id],
                   expanded: !expanded,
                 },
               },
-            })
-          }
+            });
+          }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {id.toLowerCase().includes("hero") && <LayoutTemplate size={12} strokeWidth={2.5} />}
@@ -87,9 +94,10 @@ const ComponentList = ({
           </div>
         </button>
       )}
-      <div 
-        className={getClassName("content")} 
-        style={{ 
+      <div
+        id={`${id}-content`}
+        className={getClassName("content")}
+        style={{
           overflow: "visible",
           display: expanded ? "block" : "none"
         }}
