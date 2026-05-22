@@ -74,8 +74,12 @@
     "test": "jest",
     "prepublishOnly": "bun run build"
   },
+  "bin": {
+    "credbuild": "./bin/credbuild.js"
+  },
   "files": [
     "dist",
+    "bin",
     "README.md",
     "LICENSE"
   ],

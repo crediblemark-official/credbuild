@@ -4,3 +4,4 @@ build
 .turbo
 *.log
 .DS_Store
+.jules
