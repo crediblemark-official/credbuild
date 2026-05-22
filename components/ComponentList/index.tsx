@@ -15,7 +15,7 @@ const ComponentListItem = memo(({
 }: {
   name: string;
   label?: string;
-  index?: number; 
+  index?: number;
 }) => {
   const overrides = useAppStore((s) => s.overrides);
   const canInsert = useAppStore(
@@ -65,6 +65,8 @@ const ComponentList = ({
         <button
           type="button"
           className={getClassName("title")}
+          aria-expanded={expanded}
+          aria-controls={`${id}-content`}
           onClick={() => {
             const currentComponentList = appStoreApi.getState().state.ui.componentList;
             appStoreApi.getState().setUi({
@@ -92,9 +94,10 @@ const ComponentList = ({
           </div>
         </button>
       )}
-      <div 
-        className={getClassName("content")} 
-        style={{ 
+      <div
+        id={`${id}-content`}
+        className={getClassName("content")}
+        style={{
           overflow: "visible",
           display: expanded ? "block" : "none"
         }}
