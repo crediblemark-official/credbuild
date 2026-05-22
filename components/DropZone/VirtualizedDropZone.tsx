@@ -143,12 +143,14 @@ export const VirtualizedDropZone = ({
     [pinnedIndexes]
   );
 
+  const activeOverscan = draggedItemId ? 12 : ROOT_ZONE_VIRTUALIZATION_OVERSCAN;
+
   const virtualizer = useVirtualizer<any, HTMLElement>({
     count: contentIds.length,
     getItemKey: (index) => contentIds[index],
     estimateSize: (index) => getEstimatedItemHeight(contentIds[index]),
     getScrollElement: () => iframeWindow ?? null,
-    overscan: ROOT_ZONE_VIRTUALIZATION_OVERSCAN,
+    overscan: activeOverscan,
     observeElementRect: (instance, cb) =>
       iframeWindow
         ? observeWindowRect(instance as any, cb)
@@ -176,6 +178,8 @@ export const VirtualizedDropZone = ({
     };
   }, [resolveIndex, virtualizer, zoneCompound, zoneStore]);
 
+  const observersRef = useRef(new Map<string, ResizeObserver>());
+
   const getMeasureRef = useCallback((componentId: string): Ref<HTMLElement> => {
     const cachedRef = measureRefsRef.current.get(componentId);
 
@@ -184,23 +188,47 @@ export const VirtualizedDropZone = ({
     }
 
     const measureRef = (element: HTMLElement | null) => {
+      // Disconnect previous observer for this component if it exists
+      const existingObserver = observersRef.current.get(componentId);
+      if (existingObserver) {
+        existingObserver.disconnect();
+        observersRef.current.delete(componentId);
+      }
+
       if (!element) {
         return;
       }
 
-      const height =
-        Math.ceil(element.getBoundingClientRect().height) ||
-        DEFAULT_VIRTUALIZED_ITEM_HEIGHT;
-
-      if (typeof height === "number" && height > 0) {
-        cacheMeasuredItemHeight(componentId, height);
+      // Initial measurement
+      const initialHeight = Math.ceil(element.getBoundingClientRect().height);
+      if (initialHeight > 0) {
+        cacheMeasuredItemHeight(componentId, initialHeight);
       }
+
+      // Dynamic ResizeObserver to watch for content/size changes
+      const observer = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const height = Math.ceil(element.getBoundingClientRect().height);
+          
+          if (height > 0) {
+            const cachedHeight = getEstimatedItemHeight(componentId);
+            if (height !== cachedHeight) {
+              cacheMeasuredItemHeight(componentId, height);
+              // Force virtualizer to recalculate layouts and re-render
+              virtualizer.measure();
+            }
+          }
+        }
+      });
+
+      observer.observe(element);
+      observersRef.current.set(componentId, observer);
     };
 
     measureRefsRef.current.set(componentId, measureRef);
 
     return measureRef;
-  }, []);
+  }, [virtualizer]);
 
   useEffect(() => {
     const validIds = new Set(contentIds);
@@ -208,9 +236,24 @@ export const VirtualizedDropZone = ({
     Array.from(measureRefsRef.current.keys()).forEach((componentId) => {
       if (!validIds.has(componentId)) {
         measureRefsRef.current.delete(componentId);
+        
+        const observer = observersRef.current.get(componentId);
+        if (observer) {
+          observer.disconnect();
+          observersRef.current.delete(componentId);
+        }
       }
     });
   }, [contentIds]);
+
+  // Cleanup all observers on unmount
+  useEffect(() => {
+    return () => {
+      observersRef.current.forEach((observer) => observer.disconnect());
+      observersRef.current.clear();
+    };
+  }, []);
+
 
   const virtualItems = virtualizer.getVirtualItems();
   const totalSize = virtualizer.getTotalSize();
