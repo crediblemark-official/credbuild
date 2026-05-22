@@ -33,6 +33,39 @@ The CLI tool will dynamically:
 - **Auto-inject companion styles** by prepending `@import "@crediblemark/build-ui/sidebar-neat.css";` to your global CSS stylesheet.
 - **Generate configuration files** by autogenerating `credbuild.config.tsx` configured with `buildUiPreset` exports if no config is found.
 
+### 🔍 Automatic Component Registry Scaffolding (`credbuild scan`)
+
+To automatically scan your React component directories and generate visual editor schemas, run our intelligent **Static Analysis CLI**:
+
+```bash
+npx credbuild scan [directory]
+```
+
+#### What it does:
+- **TypeScript AST-Driven & Fallback Regex Parser**: Dynamically detects your local project's `typescript` package to run a highly accurate AST analysis on your `.tsx` source files. If TypeScript is not installed, it automatically falls back to a robust and resilient regex-based engine.
+- **Smart Prop Field Mappings**:
+  - `string` ➔ `text` (and intelligently maps properties named `description`, `content`, `text`, or `body` to `textarea`).
+  - `boolean` ➔ `boolean`.
+  - `number` ➔ `number`.
+  - Union String Literals (e.g. `'primary' | 'secondary' | 'danger'`) ➔ `select` with populated options.
+- **Export Type Resolution**: Distinguishes default vs named exports (e.g. `export default function Card` ➔ `import Card from "..."` vs `export const Card` ➔ `import { Card } from "..."`).
+- **Configuration Scaffolding**: Generates a unified `credbuild.components.tsx` file in your root folder ready to be imported and merged directly in your main `credbuild.config.tsx`:
+
+```tsx
+import { buildUiPreset } from "@crediblemark/build-ui";
+import { customComponents } from "./credbuild.components";
+
+const config = {
+  ...buildUiPreset,
+  components: {
+    ...buildUiPreset.components,
+    ...customComponents
+  }
+};
+
+export default config;
+```
+
 ## 🏗️ Next.js Implementation Pattern
 
 To replicate the professional CMS setup used in `NEXT_CMS`, follow this architecture:
