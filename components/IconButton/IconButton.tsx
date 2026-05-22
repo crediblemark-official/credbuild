@@ -32,7 +32,13 @@ export const IconButton = ({
 }) => {
   const [loading, setLoading] = useState(false);
 
-  const ElementType = href ? "a" : "button";
+  // Sanitize href to prevent XSS via javascript: URLs
+  const safeHref =
+    href && href.trim().toLowerCase().startsWith("javascript:")
+      ? "#"
+      : href;
+
+  const ElementType = safeHref ? "a" : "button";
 
   const el = (
     <ElementType
@@ -53,8 +59,8 @@ export const IconButton = ({
       disabled={disabled || loading}
       tabIndex={tabIndex}
       target={newTab ? "_blank" : undefined}
-      rel={newTab ? "noreferrer" : undefined}
-      href={href}
+      rel={newTab ? "noopener noreferrer" : undefined}
+      href={safeHref}
       title={title}
       suppressHydrationWarning={suppressHydrationWarning}
     >
