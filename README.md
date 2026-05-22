@@ -20,6 +20,19 @@ The open-source visual editor for React. Build complex, high-performance page bu
 bun add @crediblemark/build
 ```
 
+### ⚡ Zero-Config Companion Scaffolding
+
+To instantly add and auto-configure companion block libraries (such as `@crediblemark/build-ui`) in your project, run our intelligent, zero-config CLI:
+
+```bash
+npx credbuild add build-ui
+```
+
+The CLI tool will dynamically:
+- **Detect your package manager** (`bun`, `pnpm`, `yarn`, or `npm`) by scanning local lockfiles and run the correct install command automatically.
+- **Auto-inject companion styles** by prepending `@import "@crediblemark/build-ui/sidebar-neat.css";` to your global CSS stylesheet.
+- **Generate configuration files** by autogenerating `credbuild.config.tsx` configured with `buildUiPreset` exports if no config is found.
+
 ## 🏗️ Next.js Implementation Pattern
 
 To replicate the professional CMS setup used in `NEXT_CMS`, follow this architecture:
