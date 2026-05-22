@@ -42,6 +42,7 @@ export const ObjectField = ({
         type="button"
         className={getClassName("header")}
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           {labelIcon || <LayoutTemplate size={12} strokeWidth={2.5} />}
