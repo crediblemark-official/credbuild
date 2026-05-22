@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { ResponsiveValue } from "@/types/Fields";
 import { SliderField } from "@/components/AutoField/fields/SliderField";
+import { useAppStore } from "@/store";
 
 // Icons (Simple SVGs)
 const DesktopIcon = () => (
@@ -35,7 +36,51 @@ export const ResponsiveSliderField = ({
     step = 1,
     defaultValue = 0
 }: ResponsiveSliderFieldProps) => {
-    const [mode, setMode] = useState<"desktop" | "tablet" | "mobile">("desktop");
+    // Access global store states and actions
+    const setUi = useAppStore((s) => s.setUi);
+    const viewportsState = useAppStore((s) => s.state.ui.viewports);
+    const zoomConfig = useAppStore((s) => s.zoomConfig);
+    const setZoomConfig = useAppStore((s) => s.setZoomConfig);
+    const viewportConfigOptions = useAppStore((s) => s.viewports);
+
+    // Map global viewport width to current mode ("desktop" | "tablet" | "mobile")
+    const getModeFromWidth = (width: string | number): "desktop" | "tablet" | "mobile" => {
+        if (width === "100%") return "desktop";
+        const w = typeof width === "string" ? parseInt(width) : width;
+        if (w <= 480) return "mobile";
+        if (w <= 900) return "tablet";
+        return "desktop";
+    };
+
+    const mode = getModeFromWidth(viewportsState.current.width);
+
+    // Set the global canvas viewport based on clicked field mode
+    const changeGlobalViewport = (targetMode: "desktop" | "tablet" | "mobile") => {
+        const targetIcon = targetMode === "mobile" ? "Smartphone" : targetMode === "tablet" ? "Tablet" : "Monitor";
+        
+        const matched = viewportConfigOptions.find(v => v.icon === targetIcon) || 
+                        viewportConfigOptions.find(v => {
+                            if (targetMode === "mobile") return v.width !== "100%" && parseInt(String(v.width)) <= 480;
+                            if (targetMode === "tablet") return v.width !== "100%" && parseInt(String(v.width)) > 480 && parseInt(String(v.width)) <= 900;
+                            return v.width === "100%" || parseInt(String(v.width)) > 900;
+                        }) || 
+                        viewportConfigOptions[0];
+
+        const isFullWidth = matched.width === "100%";
+        const uiViewport = {
+            ...matched,
+            height: matched.height || "auto",
+            zoom: isFullWidth ? 1 : zoomConfig.zoom,
+        };
+
+        if (isFullWidth) {
+            setZoomConfig({ ...zoomConfig, zoom: 1 });
+        }
+
+        setUi({
+            viewports: { ...viewportsState, current: uiViewport }
+        });
+    };
 
     // Helper to get current value safely
     const getCurrentValue = () => {
@@ -79,32 +124,39 @@ export const ResponsiveSliderField = ({
     };
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-            {/* Header with Label and Toggles */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0px" }}>
-                {label && (
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px", width: "100%" }}>
+            {/* Header with Label (if exists) */}
+            {label && (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "2px" }}>
                     <label style={{ 
                         fontSize: "10px", 
-                        fontWeight: 500, 
+                        fontWeight: 600, 
                         color: "var(--cb-silver-muted, #71717a)",
                         display: "flex",
                         alignItems: "center",
-                        gap: "4px"
+                        gap: "4px",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em"
                     }}>
                         {label}
                         <span style={{ fontSize: "9px", opacity: 0.5, fontWeight: "400" }}>({mode})</span>
                     </label>
-                )}
+                </div>
+            )}
 
+            {/* Controls Row (Toggles, Slider, Input all aligned horizontally) */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", width: "100%" }}>
+                {/* Toggles */}
                 <div style={{ 
                     display: "flex", 
                     backgroundColor: "var(--cb-bg-panel, #f1f5f9)", 
                     borderRadius: "4px", 
                     padding: "1px",
-                    border: "1px solid var(--cb-border, #e2e8f0)"
+                    border: "1px solid var(--cb-border, #e2e8f0)",
+                    flexShrink: 0
                 }}>
                     <button
-                        onClick={() => setMode("desktop")}
+                        onClick={() => changeGlobalViewport("desktop")}
                         style={{
                             padding: "2px 5px",
                             border: "none",
@@ -121,7 +173,7 @@ export const ResponsiveSliderField = ({
                         <DesktopIcon />
                     </button>
                     <button
-                        onClick={() => setMode("tablet")}
+                        onClick={() => changeGlobalViewport("tablet")}
                         style={{
                             padding: "2px 5px",
                             border: "none",
@@ -138,7 +190,7 @@ export const ResponsiveSliderField = ({
                         <TabletIcon />
                     </button>
                     <button
-                        onClick={() => setMode("mobile")}
+                        onClick={() => changeGlobalViewport("mobile")}
                         style={{
                             padding: "2px 5px",
                             border: "none",
@@ -155,18 +207,20 @@ export const ResponsiveSliderField = ({
                         <MobileIcon />
                     </button>
                 </div>
-            </div>
 
-            {/* The Actual Slider Input */}
-            <SliderField
-                value={getCurrentValue()}
-                onChange={handleChange}
-                unit={unit}
-                max={max}
-                min={min}
-                step={step}
-                useUnits={false}
-            />
+                {/* The Actual Slider Input */}
+                <div style={{ flex: 1 }}>
+                    <SliderField
+                        value={getCurrentValue()}
+                        onChange={handleChange}
+                        unit={unit}
+                        max={max}
+                        min={min}
+                        step={step}
+                        useUnits={false}
+                    />
+                </div>
+            </div>
         </div>
     );
 };

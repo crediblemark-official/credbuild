@@ -6,7 +6,7 @@
 }
 
 .SidebarSection:last-of-type {
-  flex-grow: 1;
+  flex-grow: 0;
 }
 
 .SidebarSection-title {
@@ -25,7 +25,7 @@
   background: #f3f4f6;
 }
 
-.SidebarSection-title h2, 
+.SidebarSection-title h2,
 .SidebarSection-title span {
   font-size: 10px;
   text-transform: uppercase;
@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-.SidebarSection--noBorderTop > .SidebarSection-title {
+.SidebarSection--noBorderTop>.SidebarSection-title {
   border-top: 0px;
 }
 
@@ -45,7 +45,7 @@
 
 .SidebarSection:last-of-type .SidebarSection-content {
   border-bottom: none;
-  flex-grow: 1;
+  flex-grow: 0;
 }
 
 .SidebarSection-breadcrumbLabel {

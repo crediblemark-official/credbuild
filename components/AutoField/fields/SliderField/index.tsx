@@ -10,6 +10,7 @@ export type SliderFieldProps = {
     unit?: string;
     defaultValue?: string | number;
     useUnits?: boolean;
+    style?: React.CSSProperties;
 };
 
 export const SliderField = ({
@@ -20,7 +21,8 @@ export const SliderField = ({
     step = 1,
     unit = "px",
     defaultValue = 0,
-    useUnits = true
+    useUnits = true,
+    style = {}
 }: SliderFieldProps) => {
     // Helper to safely parse any input to a number
     const parseValue = (val: string | number | undefined | null): number => {
@@ -63,7 +65,7 @@ export const SliderField = ({
     };
 
     return (
-        <div style={{ padding: "8px 0" }}>
+        <div style={{ padding: "0", ...style }}>
             <style dangerouslySetInnerHTML={{ __html: `
                 .cb-slider-input {
                     -webkit-appearance: none;

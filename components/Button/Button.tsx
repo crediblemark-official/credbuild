@@ -40,7 +40,13 @@ export const Button = ({
 
   useEffect(() => setLoading(loadingProp), [loadingProp]);
 
-  const ElementType = href ? "a" : type ? "button" : "span";
+  // Sanitize href to prevent XSS via javascript: URLs
+  const safeHref =
+    href && href.trim().toLowerCase().startsWith("javascript:")
+      ? "#"
+      : href;
+
+  const ElementType = safeHref ? "a" : type ? "button" : "span";
   const dataAttrs = filterDataAttrs(props);
 
   const el = (
@@ -64,8 +70,8 @@ export const Button = ({
       disabled={disabled || loading}
       tabIndex={tabIndex}
       target={newTab ? "_blank" : undefined}
-      rel={newTab ? "noreferrer" : undefined}
-      href={href}
+      rel={newTab ? "noopener noreferrer" : undefined}
+      href={safeHref}
       {...dataAttrs}
     >
       {icon && <div className={getClassName("icon")}>{icon}</div>}

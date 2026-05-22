@@ -58,6 +58,37 @@
   color: var(--cb-silver);
 }
 
+/* Global Sleek Scrollbars (applied inside iframe canvas html, body, and all scrollable divs) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4) !important;
+  border-radius: 10px !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.6) !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
 /* Scrollbars */
 .CredBuild ::-webkit-scrollbar {
   width: 4px;
@@ -135,6 +166,10 @@
   padding: 5px !important;
 }
 
+[class*="CredBuildFields-field"] {
+  padding: 2px 4px !important;
+}
+
 [class*="DrawerItem-draggable"]:hover {
   border-color: var(--cb-gold) !important;
   background-color: var(--cb-gold-faint) !important;
@@ -182,7 +217,7 @@
 }
 
 /* Global Form & Input Overrides (Sidebar Right) */
-.CredBuild input, 
+.CredBuild input:not([type="color"]), 
 .CredBuild textarea, 
 .CredBuild select,
 [class*="ExternalInput-input"],
@@ -198,12 +233,40 @@
   transition: all 0.2s ease !important;
 }
 
-.CredBuild input:focus, 
+.CredBuild input:not([type="color"]):focus, 
 .CredBuild textarea:focus, 
 .CredBuild select:focus {
   border-color: var(--cb-gold) !important;
   outline: none !important;
   box-shadow: 0 0 0 1px var(--cb-gold-glow) !important;
+}
+
+/* Color Picker Native Swatch Reset (Removes Chrome/Firefox native borders/lines inside swatch) */
+.CredBuild input[type="color"] {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: absolute !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+}
+
+.CredBuild input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0 !important;
+}
+
+.CredBuild input[type="color"]::-webkit-color-swatch {
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+.CredBuild input[type="color"]::-moz-color-swatch {
+  border: none !important;
+  border-radius: 2px !important;
 }
 
 /* Form Labels & Icons */
