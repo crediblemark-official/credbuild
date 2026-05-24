@@ -42,7 +42,6 @@ export const Components = () => {
     <Wrapper className={getClassName()}>
       <div className={getClassName("searchContainer")}>
         <div className={getClassName("searchWrapper")}>
-          <Search size={14} className={getClassName("searchIcon")} />
           <input
             type="text"
             className={getClassName("searchInput")}

@@ -28,9 +28,8 @@
 .SidebarSection-title h2,
 .SidebarSection-title span {
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
+  font-weight: 500;
+  opacity: 0.9;
   color: var(--credbuild-color-grey-05);
   margin: 0;
 }
