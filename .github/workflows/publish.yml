@@ -1,11 +1,13 @@
 name: Publish Package
 
 on:
-  release:
-    types: [published]
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  release:
+    types: [published]
 
 jobs:
   publish-npm:
@@ -30,7 +32,14 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build and Publish to npmjs
-        run: npm publish --access public
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          if npm view @crediblemark/build@$CURRENT_VERSION version &>/dev/null; then
+            echo "Version $CURRENT_VERSION is already published on npmjs.com. Skipping publish."
+          else
+            echo "Publishing version $CURRENT_VERSION to npmjs.com..."
+            npm publish --access public
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -64,6 +73,13 @@ jobs:
           sed -i 's/"name": "@crediblemark\/build"/"name": "@crediblemark-official\/build"/' package.json
 
       - name: Build and Publish to GitHub Packages
-        run: npm publish
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          if npm view @crediblemark-official/build@$CURRENT_VERSION --registry=https://npm.pkg.github.com/ version &>/dev/null; then
+            echo "Version $CURRENT_VERSION is already published on GitHub Packages. Skipping publish."
+          else
+            echo "Publishing version $CURRENT_VERSION to GitHub Packages..."
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
