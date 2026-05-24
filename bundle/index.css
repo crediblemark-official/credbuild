@@ -15,7 +15,8 @@
 }
 
 /* Light Mode */
-.CredBuild[data-theme="light"] {
+.CredBuild[data-theme="light"],
+.CredBuild:not(.dark) {
   --cb-bg-base: #f8fafc;
   --cb-bg-surface: #ffffff;
   --cb-bg-panel: #f1f5f9;
@@ -29,7 +30,8 @@
 }
 
 /* Dark Mode */
-.CredBuild[data-theme="dark"] {
+.CredBuild[data-theme="dark"],
+.CredBuild.dark {
   --cb-bg-base: #191919;
   --cb-bg-surface: #202020;
   --cb-bg-panel: #262626;
@@ -59,8 +61,8 @@
   --credbuild-color-grey-05: var(--cb-silver-muted);
   --credbuild-color-grey-04: var(--cb-silver);
   --credbuild-color-grey-03: var(--cb-silver);
-  --credbuild-color-grey-02: var(--cb-bg-panel);
-  --credbuild-color-grey-01: var(--cb-bg-base);
+  --credbuild-color-grey-02: var(--cb-silver);
+  --credbuild-color-grey-01: var(--cb-silver);
 
   /* Azure palette → accent (gold) */
   --credbuild-color-azure-12: var(--cb-bg-surface);

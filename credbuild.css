@@ -7,8 +7,9 @@
   --cb-radius-m: 5px;
 }
 
-/* --- LIGHT MODE (Explicitly set via data-theme="light") --- */
-.CredBuild[data-theme="light"] {
+/* --- LIGHT MODE --- */
+.CredBuild[data-theme="light"],
+.CredBuild:not(.dark) {
   --cb-bg-base: #f8fafc;        /* Slate 50 */
   --cb-bg-surface: #ffffff;     /* White */
   --cb-bg-panel: #f1f5f9;       /* Slate 100 */
@@ -20,8 +21,9 @@
   --cb-border: #e2e8f0;         /* Slate 200 */
 }
 
-/* --- DARK MODE (Explicitly set via data-theme="dark") --- */
-.CredBuild[data-theme="dark"] {
+/* --- DARK MODE --- */
+.CredBuild[data-theme="dark"],
+.CredBuild.dark {
   --cb-bg-base: #191919;        /* Neutral Black (NEXT_CMS match) */
   --cb-bg-surface: #202020;     /* Neutral Dark (NEXT_CMS card) */
   --cb-bg-panel: #262626;       /* Neutral Darker */
@@ -365,13 +367,35 @@ body::-webkit-scrollbar-thumb:hover,
 
 /* System-wide Variable Mapping Overrides */
 .CredBuild {
-  --credbuild-color-azure-05: var(--cb-gold);
-  --credbuild-color-azure-06: var(--cb-gold);
-  --credbuild-color-azure-07: var(--cb-gold);
-  --credbuild-color-azure-10: var(--cb-gold-glow);
-  --credbuild-color-azure-11: var(--cb-gold-glow);
+  /* Grey palette → tema */
   --credbuild-color-white: var(--cb-bg-surface);
+  --credbuild-color-grey-12: var(--cb-bg-surface);
   --credbuild-color-grey-11: var(--cb-bg-surface);
   --credbuild-color-grey-10: var(--cb-border);
   --credbuild-color-grey-09: var(--cb-bg-base);
+  --credbuild-color-grey-08: var(--cb-border);
+  --credbuild-color-grey-07: var(--cb-silver-muted);
+  --credbuild-color-grey-06: var(--cb-silver-muted);
+  --credbuild-color-grey-05: var(--cb-silver-muted);
+  --credbuild-color-grey-04: var(--cb-silver);
+  --credbuild-color-grey-03: var(--cb-silver);
+  --credbuild-color-grey-02: var(--cb-silver);
+  --credbuild-color-grey-01: var(--cb-silver);
+
+  /* Azure palette → accent (gold) */
+  --credbuild-color-azure-12: var(--cb-bg-surface);
+  --credbuild-color-azure-11: var(--cb-gold-glow);
+  --credbuild-color-azure-10: var(--cb-gold-glow);
+  --credbuild-color-azure-09: var(--cb-gold-faint);
+  --credbuild-color-azure-08: var(--cb-gold);
+  --credbuild-color-azure-07: var(--cb-gold);
+  --credbuild-color-azure-06: var(--cb-gold);
+  --credbuild-color-azure-05: var(--cb-gold);
+  --credbuild-color-azure-04: var(--cb-gold);
+  --credbuild-color-azure-03: var(--cb-gold);
+  --credbuild-color-azure-02: var(--cb-gold);
+
+  /* Indigo → selection highlight */
+  --credbuild-color-indigo-11: var(--cb-gold-ghost);
+  --credbuild-color-indigo-03: var(--cb-gold);
 }
