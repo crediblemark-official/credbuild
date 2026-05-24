@@ -42,12 +42,14 @@ export const Components = () => {
     <Wrapper className={getClassName()}>
       <div className={getClassName("searchContainer")}>
         <div className={getClassName("searchWrapper")}>
+          <Search size={14} className={getClassName("searchIcon")} aria-hidden="true" />
           <input
             type="text"
             className={getClassName("searchInput")}
             placeholder="Search blocks..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            aria-label="Search blocks"
           />
           {searchTerm && (
             <button
@@ -55,8 +57,9 @@ export const Components = () => {
               className={getClassName("clearButton")}
               onClick={() => setSearchTerm("")}
               title="Clear search"
+              aria-label="Clear search"
             >
-              <X size={12} />
+              <X size={12} aria-hidden="true" />
             </button>
           )}
         </div>
