@@ -75,7 +75,7 @@
     "prepublishOnly": "bun run build"
   },
   "bin": {
-    "credbuild": "./bin/credbuild.js"
+    "credbuild": "bin/credbuild.js"
   },
   "files": [
     "dist",
