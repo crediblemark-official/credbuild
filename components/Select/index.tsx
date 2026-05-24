@@ -22,7 +22,7 @@ const Item = ({
   onClick: () => void;
 }) => {
   return (
-    <button className={getItemClassName({ isSelected })} onClick={onClick}>
+    <button type="button" className={getItemClassName({ isSelected })} onClick={onClick}>
       {children}
     </button>
   );
@@ -63,7 +63,7 @@ export const Select = ({
       <Popover open={open} onOpenChange={setOpen}>
         {hasOptions ? (
           <PopoverTrigger asChild>
-            <button className={getClassName("button")}>
+            <button type="button" className={getClassName("button")}>
               <span className={getClassName("buttonIcon")}>{children}</span>
               <ChevronDown size={12} />
             </button>

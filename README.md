@@ -81,6 +81,34 @@ export default config;
 
 To replicate the professional CMS setup used in `NEXT_CMS`, follow this architecture:
 
+### 🚨 Next.js 14+ (App Router) Required Configurations
+
+When using CredBuild in a modern Next.js environment, you must apply the following configurations to bypass Webpack restrictions and development iframe rendering issues:
+
+**1. Webpack & Image Optimization (`next.config.ts`)**
+Bypass ESM errors for server-side DOM parsers (JSDOM, Parse5) and disable image optimization to allow arbitrary external images in the builder canvas.
+
+```typescript
+const nextConfig = {
+  serverExternalPackages: ['isomorphic-dompurify', 'jsdom', 'parse5'],
+  images: { unoptimized: true },
+  webpack: (config, { isServer, webpack }) => {
+    if (!isServer) {
+      config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^(parse5|jsdom|isomorphic-dompurify)$/ }));
+    }
+    return config;
+  }
+};
+export default nextConfig;
+```
+
+**2. Disable Editor Iframe in Development**
+Next.js injects CSS asynchronously in development mode. If the editor is rendered inside an iframe, the CSS will fail to load, resulting in 0px DropZones (blocks bouncing back). Pass `iframe={{ enabled: false }}` to the client component:
+
+```tsx
+<CredBuild config={config} data={data} iframe={{ enabled: false }} />
+```
+
 ### 1. Folder Structure
 Organize your project to keep the editor logic separate from your public site logic:
 ```

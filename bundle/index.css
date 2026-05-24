@@ -1,64 +1,112 @@
 @import url("https://rsms.me/inter/inter.css");
 @import "./core.css";
 
-/* CredBuild Core Theme Variables */
+/* ==========================================================================
+   Layer 2: THEMING
+   Tanggung jawab: Warna, font, border via CSS custom properties.
+   Teknik: Remap variabel internal CredBuild ke variabel tema --cb-*.
+   Aturan: TIDAK ADA !important kecuali untuk shell/iframe override.
+   ========================================================================== */
+
+/* --- Theme Variables Definition --- */
 .CredBuild {
   --credbuild-font-family: 'Inter', sans-serif;
   --cb-radius-m: 5px;
 }
 
-/* --- LIGHT MODE (Explicitly set via data-theme="light") --- */
+/* Light Mode */
 .CredBuild[data-theme="light"] {
-  --cb-bg-base: #f8fafc;        /* Slate 50 */
-  --cb-bg-surface: #ffffff;     /* White */
-  --cb-bg-panel: #f1f5f9;       /* Slate 100 */
-  --cb-gold: #d97706;           /* Amber 600 (Darker for light mode) */
+  --cb-bg-base: #f8fafc;
+  --cb-bg-surface: #ffffff;
+  --cb-bg-panel: #f1f5f9;
+  --cb-gold: #d97706;
   --cb-gold-glow: rgba(217, 119, 6, 0.1);
   --cb-gold-faint: rgba(217, 119, 6, 0.05);
-  --cb-silver: #0f172a;         /* Slate 900 (Dark text) */
-  --cb-silver-muted: #64748b;   /* Slate 500 */
-  --cb-border: #e2e8f0;         /* Slate 200 */
+  --cb-gold-ghost: rgba(217, 119, 6, 0.08);
+  --cb-silver: #0f172a;
+  --cb-silver-muted: #64748b;
+  --cb-border: #e2e8f0;
 }
 
-/* --- DARK MODE (Explicitly set via data-theme="dark") --- */
+/* Dark Mode */
 .CredBuild[data-theme="dark"] {
-  --cb-bg-base: #191919;        /* Neutral Black (NEXT_CMS match) */
-  --cb-bg-surface: #202020;     /* Neutral Dark (NEXT_CMS card) */
-  --cb-bg-panel: #262626;       /* Neutral Darker */
-  --cb-gold: #ffffff;           /* Pure White for icons in dark mode */
+  --cb-bg-base: #191919;
+  --cb-bg-surface: #202020;
+  --cb-bg-panel: #262626;
+  --cb-gold: #ffffff;
   --cb-gold-glow: rgba(255, 255, 255, 0.1);
   --cb-gold-faint: rgba(255, 255, 255, 0.05);
-  --cb-silver: #ffffff;         /* White text */
-  --cb-silver-muted: #a1a1aa;   /* Zinc 400 (NEXT_CMS muted) */
-  --cb-border: #2f2f2f;         /* Neutral Border (NEXT_CMS match) */
+  --cb-gold-ghost: rgba(255, 255, 255, 0.08);
+  --cb-silver: #ffffff;
+  --cb-silver-muted: #a1a1aa;
+  --cb-border: #2f2f2f;
 }
 
-/* Forceful Overrides for Studio Shell */
+/* --- Internal Variable Remapping ---
+   Ini adalah inti dari arsitektur baru.
+   CSS Modules sudah menggunakan --credbuild-color-* secara native.
+   Dengan memetakan ulang, semua komponen otomatis mengikuti tema. */
 .CredBuild {
-  background-color: var(--cb-bg-base) !important;
-  color: var(--cb-silver) !important;
-  font-family: var(--credbuild-font-family) !important;
+  /* Grey palette → tema */
+  --credbuild-color-white: var(--cb-bg-surface);
+  --credbuild-color-grey-12: var(--cb-bg-surface);
+  --credbuild-color-grey-11: var(--cb-bg-surface);
+  --credbuild-color-grey-10: var(--cb-border);
+  --credbuild-color-grey-09: var(--cb-bg-base);
+  --credbuild-color-grey-08: var(--cb-border);
+  --credbuild-color-grey-07: var(--cb-silver-muted);
+  --credbuild-color-grey-06: var(--cb-silver-muted);
+  --credbuild-color-grey-05: var(--cb-silver-muted);
+  --credbuild-color-grey-04: var(--cb-silver);
+  --credbuild-color-grey-03: var(--cb-silver);
+  --credbuild-color-grey-02: var(--cb-bg-panel);
+  --credbuild-color-grey-01: var(--cb-bg-base);
+
+  /* Azure palette → accent (gold) */
+  --credbuild-color-azure-12: var(--cb-bg-surface);
+  --credbuild-color-azure-11: var(--cb-gold-glow);
+  --credbuild-color-azure-10: var(--cb-gold-glow);
+  --credbuild-color-azure-09: var(--cb-gold-faint);
+  --credbuild-color-azure-08: var(--cb-gold);
+  --credbuild-color-azure-07: var(--cb-gold);
+  --credbuild-color-azure-06: var(--cb-gold);
+  --credbuild-color-azure-05: var(--cb-gold);
+  --credbuild-color-azure-04: var(--cb-gold);
+  --credbuild-color-azure-03: var(--cb-gold);
+  --credbuild-color-azure-02: var(--cb-gold);
+
+  /* Indigo → selection highlight */
+  --credbuild-color-indigo-11: var(--cb-gold-ghost);
+  --credbuild-color-indigo-03: var(--cb-gold);
+
+  /* Rose → icon accent (keep as-is for visual variety) */
+  /* --credbuild-color-rose-07 stays default */
+
+  /* Font */
+  --credbuild-font-family: 'Inter', sans-serif;
 }
 
-/* Header Overhaul */
-.CredBuildHeader {
-  background: var(--cb-bg-base) !important;
-  border-bottom: 1px solid var(--cb-border) !important;
-  height: 48px !important;
+/* --- Shell Styling ---
+   Properti yang harus memaksa karena menyangkut shell utama. */
+.CredBuild {
+  background-color: var(--cb-bg-base);
+  color: var(--cb-silver);
+  font-family: var(--credbuild-font-family);
 }
 
-/* Global Icon Enforcing - dynamic color based on parent text */
-.CredBuild svg {
-  color: currentColor !important;
-  stroke: currentColor !important;
-}
-
-/* Clean Typography */
-.CredBuild h1, .CredBuild h2, .CredBuild h3, .CredBuild h4, .CredBuild p, .CredBuild span, .CredBuild div {
+/* Typography inheritance */
+.CredBuild h1, .CredBuild h2, .CredBuild h3, .CredBuild h4,
+.CredBuild p, .CredBuild span, .CredBuild div {
   color: var(--cb-silver);
 }
 
-/* Scrollbars */
+/* Icons follow parent color */
+.CredBuild svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+/* --- Scrollbar --- */
 .CredBuild ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -77,213 +125,100 @@
   background: var(--cb-gold);
 }
 
-/* Form inputs & interactive elements */
+/* --- Button Transitions --- */
 .CredBuild button {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Forceful Overrides for Sidebars & Header */
-[class*="Layout-left"], [class*="Layout-right"], [class*="Layout-header"], [class*="Sidebar"] {
-  background-color: var(--cb-bg-surface) !important;
-  border-color: var(--cb-border) !important;
-  color: var(--cb-silver) !important;
-}
-
-[class*="Layout-header"] {
-  background-color: var(--cb-bg-base) !important;
-}
-
-/* Fix for Nav Tabs Visibility */
-[class*="Nav"] {
-  background-color: var(--cb-bg-surface) !important;
-  border-bottom: 1px solid var(--cb-border) !important;
-}
-
-[class*="NavItem-link"] {
-  color: var(--cb-silver-muted) !important;
-}
-
-[class*="NavItem--active"] [class*="NavItem-link"] {
-  color: var(--cb-gold) !important;
-}
-
-/* Canvas Area Reset */
-[class*="Layout-editor"] {
-  background-color: var(--cb-bg-base) !important;
-}
-
-/* Brute-force Theme for Drawer & Items */
-[class*="Drawer"] {
-  background-color: var(--cb-bg-base) !important;
-}
-
-[class*="DrawerItem-default"], 
-[class*="DrawerItem-draggable"], 
-[class*="DrawerItem-draggableWrapper"],
-[class*="Drawer-draggableBg"] {
-  background-color: var(--cb-bg-surface) !important;
-  color: var(--cb-silver) !important;
-  border: 1px solid var(--cb-border) !important;
-  padding: 4px 8px !important;
-}
-
+/* --- Drawer Item Hover ---
+   DrawerItem membutuhkan override karena CSS module-nya
+   tidak menggunakan variabel --cb-* untuk hover state. */
 [class*="DrawerItem-draggable"]:hover {
-  border-color: var(--cb-gold) !important;
-  background-color: var(--cb-gold-faint) !important;
+  border-color: var(--cb-gold);
+  background-color: var(--cb-gold-faint);
 }
 
-/* Fix for Typography in Drawer Items */
-[class*="DrawerItem-name"] {
-  color: var(--cb-silver) !important;
-  font-weight: 500;
-}
-
-/* Ensure icons in drawer are Muted by default, white on hover */
-[class*="DrawerItem-icon"] svg,
-[class*="DrawerItem-draggable"] svg {
-  color: var(--cb-silver-muted) !important;
-  stroke: var(--cb-silver-muted) !important;
-  opacity: 0.7 !important;
-}
-
-[class*="DrawerItem-draggable"]:hover svg {
-  color: var(--cb-silver) !important;
-  stroke: var(--cb-silver) !important;
-  opacity: 1 !important;
-}
-
-/* Category Headers (e.g., HERO SECTIONS) - Refined for NEXT_CMS taste */
-[class*="ComponentList-title"] {
-  background-color: transparent !important;
-  color: var(--cb-silver-muted) !important;
-  border-radius: 0 !important;
-  margin-bottom: 2px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  opacity: 1 !important;
-  padding: 8px 10px !important;
-  border-bottom: 1px solid var(--cb-border) !important;
-}
-
-[class*="ComponentList-title"]:hover {
-  background-color: var(--cb-gold-faint) !important;
-}
-
-/* Global Form & Input Overrides (Sidebar Right) */
-.CredBuild input, 
-.CredBuild textarea, 
-.CredBuild select,
-[class*="ExternalInput-input"],
-[class*="Select-select"] {
-  background-color: var(--cb-bg-base) !important;
-  background: var(--cb-bg-base) !important;
-  border: 1px solid var(--cb-border) !important;
-  border-radius: var(--cb-radius-m) !important;
-  color: var(--cb-silver) !important;
-  padding: 6px 10px !important;
-  font-size: 12px !important;
-  width: 100% !important;
-  transition: all 0.2s ease !important;
-}
-
-.CredBuild input:focus, 
-.CredBuild textarea:focus, 
-.CredBuild select:focus {
-  border-color: var(--cb-gold) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 1px var(--cb-gold-glow) !important;
-}
-
-/* Form Labels & Icons */
-[class*="AutoField-label"], [class*="SidebarSection-title"], [class*="Heading-item"] {
-  color: var(--cb-silver-muted) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  margin-top: 6px !important;
-  margin-bottom: 4px !important;
-}
-
-/* Sidebar Sections */
-[class*="SidebarSection"] {
-  border-bottom: 1px solid var(--cb-border) !important;
-  background-color: transparent !important;
-}
-
-/* Multi-select/Custom Inputs */
-[class*="Select-button"] {
-  background-color: var(--cb-bg-base) !important;
-  border-color: var(--cb-border) !important;
-  color: var(--cb-silver) !important;
-}
-
-/* Extreme Sidebar Overrides for Fields & Arrays */
-[class*="SidebarSection-content"],
-[class*="Field-array"],
-[class*="ArrayField"],
-[class*="Sidebar"] div[class*="Section-"],
-[class*="Sidebar"] div[class*="Field-"] {
-  background-color: transparent !important;
-  background: transparent !important;
-  border-color: var(--cb-border) !important;
-}
-
-/* Ensure the actual item boxes inside the array are consistent */
-[class*="Array-item"], 
-[class*="Field-list"] > div {
-  background-color: var(--cb-bg-surface) !important;
-  border: 1px solid var(--cb-border) !important;
-  border-radius: var(--cb-radius-m) !important;
-  color: var(--cb-silver) !important;
-  padding: 6px !important;
-  margin-bottom: 3px !important;
-}
-
-/* Luxury Secondary Buttons (Dashboard, View Web) */
-[class*="Button--secondary"] {
-  background-color: var(--cb-bg-surface) !important;
-  border: 1px solid var(--cb-border) !important;
-  color: var(--cb-silver-muted) !important;
-}
-
-[class*="Button--secondary"]:hover {
-  background-color: var(--cb-bg-panel) !important;
-  border-color: var(--cb-gold) !important;
-  color: var(--cb-gold) !important;
-}
-
-/* Force the Publish/Primary Button to be GOLD */
-.CredBuild button[class*="primary"], 
+/* --- Primary/Publish Button ---
+   Button ini perlu style khusus yang tidak ada di CSS modules. */
+.CredBuild button[class*="primary"],
 .CredBuild button[class*="Publish"],
-.CredBuild button[class*="Button--primary"] {
-  background-color: var(--cb-gold) !important;
+.CredBuild button[class*="Button--primary"],
+[class*="PublishButton"] button {
   background: var(--cb-gold) !important;
   color: var(--cb-bg-base) !important;
   border: none !important;
-  opacity: 1 !important;
-  padding: 6px 18px !important;
-  border-radius: var(--cb-radius-m) !important;
-  font-weight: 700 !important;
-  transition: all 0.2s ease !important;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.CredBuild button[class*="primary"]:hover {
-  background-color: #fcd34d !important; /* Lighter gold */
-  box-shadow: 0 0 15px var(--cb-gold-glow) !important;
-  transform: translateY(-1px);
+[class*="PublishButton"]:hover button {
+  filter: brightness(1.1);
+  box-shadow: 0 0 20px var(--cb-gold-glow), 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px) scale(1.02);
 }
 
-/* System-wide Variable Mapping Overrides */
-.CredBuild {
-  --credbuild-color-azure-05: var(--cb-gold);
-  --credbuild-color-azure-06: var(--cb-gold);
-  --credbuild-color-azure-07: var(--cb-gold);
-  --credbuild-color-azure-10: var(--cb-gold-glow);
-  --credbuild-color-azure-11: var(--cb-gold-glow);
-  --credbuild-color-white: var(--cb-bg-surface);
-  --credbuild-color-grey-11: var(--cb-bg-surface);
-  --credbuild-color-grey-10: var(--cb-border);
-  --credbuild-color-grey-09: var(--cb-bg-base);
+[class*="PublishButton"] button svg {
+  color: var(--cb-bg-base);
+  stroke: var(--cb-bg-base);
+}
+
+/* --- Secondary Button --- */
+[class*="Button--secondary"] {
+  background-color: var(--cb-bg-surface);
+  border: 1px solid var(--cb-border);
+  color: var(--cb-silver-muted);
+}
+
+[class*="Button--secondary"]:hover {
+  background-color: var(--cb-bg-panel);
+  border-color: var(--cb-gold);
+  color: var(--cb-gold);
+}
+
+/* --- Color Picker Resets ---
+   Browser native controls need forcing. */
+.CredBuild input[type="color"] {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: absolute !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.CredBuild input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0 !important;
+}
+
+.CredBuild input[type="color"]::-webkit-color-swatch {
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+.CredBuild input[type="color"]::-moz-color-swatch {
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+/* --- Focus States ---
+   Konsisten untuk semua form inputs. */
+.CredBuild input:not([type="color"]):focus,
+.CredBuild textarea:focus,
+.CredBuild select:focus {
+  border-color: var(--cb-gold);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--cb-gold-glow);
 }

@@ -22,8 +22,6 @@
   padding-bottom: 2px;
   font-size: 9px;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   opacity: 0.7;
 }
 
@@ -73,6 +71,10 @@ select.Input-input {
   background-repeat: no-repeat;
   background-color: var(--credbuild-color-white);
   cursor: pointer;
+  height: auto;
+  line-height: normal;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 select.Input-input:dir(rtl) {

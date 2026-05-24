@@ -1,6 +1,6 @@
 {
   "name": "@crediblemark/build",
-  "version": "0.25.4",
+  "version": "0.25.5",
   "description": "The open-source visual editor for React",
   "author": "Rasyiqi Crediblemark",
   "repository": {
@@ -75,7 +75,7 @@
     "prepublishOnly": "bun run build"
   },
   "bin": {
-    "credbuild": "./bin/credbuild.js"
+    "credbuild": "bin/credbuild.js"
   },
   "files": [
     "dist",
