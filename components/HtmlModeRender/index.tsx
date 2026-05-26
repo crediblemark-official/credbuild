@@ -38,11 +38,8 @@ export const HtmlModeRender = ({
     <script>
       function sendHeight() {
         const body = document.body;
-        const html = document.documentElement;
-        const height = Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
+        // calculate content height safely, avoiding clientHeight/viewport height which prevents shrinking
+        const height = Math.max(body.scrollHeight, body.offsetHeight);
         window.parent.postMessage({ type: 'resize-iframe', id: '${id}', height: height }, '*');
       }
       window.addEventListener('load', sendHeight);
