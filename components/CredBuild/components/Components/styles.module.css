@@ -5,7 +5,7 @@
 }
 
 .CredBuildComponents-searchContainer {
-  padding: 4px 8px;
+  padding: 4px 4px;
   border-bottom: 1px solid var(--cb-border, #e2e8f0);
   background-color: var(--cb-bg-surface, #ffffff);
   position: relative;
