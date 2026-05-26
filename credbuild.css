@@ -343,7 +343,7 @@ body::-webkit-scrollbar-thumb:hover,
   background: var(--cb-gold) !important;
   color: var(--cb-bg-base) !important;
   border: none !important;
-  padding: 4px 12px !important;
+  padding: 4px 10px !important;
   border-radius: 5px !important;
   font-weight: 600 !important;
   text-transform: none !important;
@@ -351,7 +351,7 @@ body::-webkit-scrollbar-thumb:hover,
   font-size: 13px !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
   min-height: 28px !important;
   box-sizing: border-box !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;

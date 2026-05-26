@@ -220,7 +220,7 @@ const HeaderInner = <
                   const data = appStore.getState().state.data;
                   onPublish && onPublish(data as G["UserData"]);
                 }}
-                icon={<Zap size={14} fill="currentColor" />}
+                icon={<Zap size={12} />}
               >
                 Publish
               </Button>
@@ -455,7 +455,7 @@ const HeaderInner = <
                           .data as G["UserData"];
                         onPublish && onPublish(data);
                       }}
-                      icon={<Zap size={14} fill="currentColor" />}
+                      icon={<Zap size={12} />}
                     >
                       Publish
                     </Button>
