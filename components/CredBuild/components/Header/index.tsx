@@ -11,6 +11,9 @@ import {
   Sun,
   Moon,
   Zap,
+  Code,
+  Eye,
+  LayoutGrid,
 } from "lucide-react";
 import { Heading } from "@/components/Heading";
 import { IconButton } from "@/components/IconButton/IconButton";
@@ -110,6 +113,46 @@ const HeaderInner = <
 
     return rootData.props.title ?? "";
   });
+
+  const root = useAppStore((s) => s.state.data.root);
+  const rootProps = root?.props || root;
+  const isHtmlMode = rootProps?.mode === "html";
+  const htmlViewMode = rootProps?.htmlViewMode || (rootProps?.htmlCode ? "preview" : "code");
+
+  const handleSetViewMode = useCallback((modeVal: "code" | "preview") => {
+    dispatch({
+      type: "setData",
+      data: (currentData: any) => ({
+        ...currentData,
+        root: {
+          ...currentData.root,
+          props: {
+            ...currentData.root?.props,
+            htmlViewMode: modeVal,
+          }
+        }
+      })
+    });
+  }, [dispatch]);
+
+  const handleResetToBlocks = useCallback(() => {
+    dispatch({
+      type: "setData",
+      data: (currentData: any) => ({
+        ...currentData,
+        content: [],
+        root: {
+          ...currentData.root,
+          props: {
+            ...currentData.root?.props,
+            mode: "blocks",
+            htmlCode: "",
+            htmlViewMode: "code",
+          }
+        }
+      })
+    });
+  }, [dispatch]);
 
   const leftSideBarVisible = useAppStore((s) => s.state.ui.leftSideBarVisible);
   const rightSideBarVisible = useAppStore(
@@ -271,34 +314,109 @@ const HeaderInner = <
               </Heading>
             </div>
           </div>
-          <div className={getClassName("viewportTools")}>
-            <ViewportControls
-              fullScreen={_experimentalFullScreenCanvas}
-              autoZoom={zoomConfig.autoZoom}
-              zoom={zoomConfig.zoom}
-              onViewportChange={(viewport) => {
-                const isFullWidth = viewport.width === "100%";
-                
-                const uiViewport = {
-                  ...viewport,
-                  height: viewport.height || "auto",
-                  zoom: isFullWidth ? 1 : zoomConfig.zoom,
-                };
+          <div className={getClassName("viewportTools")} style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            {isHtmlMode && (
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}>
+                <div style={{
+                  display: "flex",
+                  background: "var(--credbuild-color-grey-09)",
+                  padding: 2,
+                  borderRadius: 6,
+                  border: "1px solid var(--credbuild-color-grey-10)",
+                }}>
+                  <button
+                    type="button"
+                    onClick={() => handleSetViewMode("code")}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "4px 10px",
+                      borderRadius: 4,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      border: "none",
+                      background: htmlViewMode === "code" ? "var(--credbuild-color-white)" : "transparent",
+                      color: "var(--credbuild-color-black)",
+                      opacity: htmlViewMode === "code" ? 1 : 0.6,
+                      boxShadow: htmlViewMode === "code" ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
+                      transition: "all 0.15s ease",
+                    }}
+                  >
+                    <Code size={12} />
+                    Edit Kode
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSetViewMode("preview")}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "4px 10px",
+                      borderRadius: 4,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      border: "none",
+                      background: htmlViewMode === "preview" ? "var(--credbuild-color-white)" : "transparent",
+                      color: "var(--credbuild-color-black)",
+                      opacity: htmlViewMode === "preview" ? 1 : 0.6,
+                      boxShadow: htmlViewMode === "preview" ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
+                      transition: "all 0.15s ease",
+                    }}
+                  >
+                    <Eye size={12} />
+                    Lihat Hasil
+                  </button>
+                </div>
 
-                const newUi: Partial<UiState> = {
-                  viewports: { ...viewports, current: uiViewport },
-                };
+                <Button
+                  type="button"
+                  onClick={handleResetToBlocks}
+                  variant="secondary"
+                  size="medium"
+                  icon={<LayoutGrid size={14} />}
+                >
+                  Kembali ke Mode Blok
+                </Button>
+              </div>
+            )}
 
-                if (isFullWidth) {
-                  setZoomConfig({ ...zoomConfig, zoom: 1 });
-                }
+            {(!isHtmlMode || htmlViewMode === "preview") && (
+              <ViewportControls
+                fullScreen={_experimentalFullScreenCanvas}
+                autoZoom={zoomConfig.autoZoom}
+                zoom={zoomConfig.zoom}
+                onViewportChange={(viewport) => {
+                  const isFullWidth = viewport.width === "100%";
+                  
+                  const uiViewport = {
+                    ...viewport,
+                    height: viewport.height || "auto",
+                    zoom: isFullWidth ? 1 : zoomConfig.zoom,
+                  };
 
-                setUi(newUi);
-              }}
-              onZoom={(zoom) => {
-                setZoomConfig({ ...zoomConfig, zoom });
-              }}
-            />
+                  const newUi: Partial<UiState> = {
+                    viewports: { ...viewports, current: uiViewport },
+                  };
+
+                  if (isFullWidth) {
+                    setZoomConfig({ ...zoomConfig, zoom: 1 });
+                  }
+
+                  setUi(newUi);
+                }}
+                onZoom={(zoom) => {
+                  setZoomConfig({ ...zoomConfig, zoom });
+                }}
+              />
+            )}
           </div>
           <div className={getClassName("tools")}>
             <div className={getClassName("menuButton")}>

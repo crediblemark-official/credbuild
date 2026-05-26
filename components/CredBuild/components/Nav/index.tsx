@@ -31,9 +31,8 @@ export const MenuItem = ({
       })}
     >
       {onClick && (
-        <div className={getClassNameItem("link")} onClick={onClick}>
+        <div className={getClassNameItem("link")} onClick={onClick} title={label}>
           {icon && <span className={getClassNameItem("linkIcon")}>{icon}</span>}
-          <span className={getClassNameItem("linkLabel")}>{label}</span>
         </div>
       )}
     </li>

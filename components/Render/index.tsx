@@ -12,6 +12,7 @@ import React, { useMemo } from "react";
 import { SlotRender } from "@/components/SlotRender";
 import { DropZoneContext } from "@/components/DropZone/context";
 import { useRichtextProps } from "@/components/RichTextEditor/lib/use-richtext-props";
+import { HtmlModeRender } from "@/components/HtmlModeRender";
 
 import { renderContext } from "./context";
 
@@ -39,6 +40,15 @@ export function Render<
       ? defaultedData.root.props
       : defaultedData.root;
   const title = rootProps?.title || "";
+
+  // Check if we are in HTML Mode
+  if (rootProps?.mode === "html") {
+    return (
+      <renderContext.Provider value={{ config, data: defaultedData, metadata }}>
+        <HtmlModeRender htmlCode={rootProps.htmlCode} isEditing={false} />
+      </renderContext.Provider>
+    );
+  }
 
   const pageProps = {
     ...rootProps,

@@ -25,6 +25,8 @@ import { PluginInternal } from "@/types/Internal";
 import { blocksPlugin } from "@/plugins/blocks";
 import { outlinePlugin } from "@/plugins/outline";
 import { fieldsPlugin } from "@/plugins/fields";
+import { codePlugin } from "@/plugins/code";
+
 
 const getClassName = getClassNameFactory("CredBuild", styles);
 const getLayoutClassName = getClassNameFactory("CredBuildLayout", styles);
@@ -207,7 +209,11 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
     const details: Record<string, MenuItem & { render: () => ReactElement }> =
       {};
 
-    const defaultPlugins: PluginInternal[] = [blocksPlugin(), outlinePlugin()];
+    const defaultPlugins: PluginInternal[] = [
+      blocksPlugin(),
+      outlinePlugin(),
+      codePlugin(),
+    ];
 
     const isLegacy = (plugin: PluginInternal) =>
       plugin.name === "legacy-side-bar" ? -1 : 0;

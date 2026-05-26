@@ -41,3 +41,5 @@ export * from "@/plugins/blocks";
 export * from "@/plugins/fields";
 export * from "@/plugins/outline";
 export * from "@/plugins/legacy-side-bar";
+export * from "@/plugins/code";
+

@@ -125,6 +125,7 @@ export const DraggableComponent = ({
   );
   const overrides = useAppStore((s) => s.overrides);
   const dispatch = useAppStore((s) => s.dispatch);
+  const appStore = useAppStoreApi();
 
   // ⚡ Bolt: Performance Improvement
   // 💡 What: Select a primitive (`iframe.enabled`) from the store instead of the whole `iframe` object.
@@ -314,11 +315,13 @@ export const DraggableComponent = ({
             (portalContainerRect?.top ?? 0),
         };
 
+    const zoomMultiplier = isIframeEnabled ? 1 : appStore.getState().zoomConfig.zoom;
+
     const style: CSSProperties = {
-      left: `${rect.left + scroll.x}px`,
-      top: `${rect.top + scroll.y}px`,
-      height: `${rect.height}px`,
-      width: `${rect.width}px`,
+      left: `${(rect.left + scroll.x) / zoomMultiplier}px`,
+      top: `${(rect.top + scroll.y) / zoomMultiplier}px`,
+      height: `${rect.height / zoomMultiplier}px`,
+      width: `${rect.width / zoomMultiplier}px`,
       position: targetIsFixed ? "fixed" : undefined,
     };
 
@@ -446,7 +449,7 @@ export const DraggableComponent = ({
     [index, zoneCompound, isSelected, _experimentalFullScreenCanvas, dispatch, zoneStore]
   );
 
-  const appStore = useAppStoreApi();
+  // appStore is already defined above
 
   const onSelectParent = useCallback(() => {
     const { nodes, zones } = appStore.getState().state.indexes;

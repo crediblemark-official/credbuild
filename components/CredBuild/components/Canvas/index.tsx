@@ -57,6 +57,7 @@ export const Canvas = () => {
     leftSideBarWidth,
     rightSideBarWidth,
     viewports,
+    root,
   } = useAppStore(
     useShallow((s) => ({
       leftSideBarVisible: s.state.ui.leftSideBarVisible,
@@ -64,8 +65,13 @@ export const Canvas = () => {
       leftSideBarWidth: s.state.ui.leftSideBarWidth,
       rightSideBarWidth: s.state.ui.rightSideBarWidth,
       viewports: s.state.ui.viewports,
+      root: s.state.data.root,
     }))
   );
+
+  // Viewport controls should always work, regardless of iframe.enabled
+  const isNonFullWidth = viewports.current.width !== "100%";
+  const shouldApplyViewport = true;
 
   const [showTransition, setShowTransition] = useState(false);
   const isResizingRef = useRef(false);
@@ -111,9 +117,30 @@ export const Canvas = () => {
 
   // Constrain height
   useEffect(() => {
-    const { height: frameHeight } = getFrameDimensions();
+    const updateRootHeight = () => {
+      const iframeEl = frameRef.current?.querySelector("iframe");
+      if (iframeEl) {
+        try {
+          const doc = iframeEl.contentDocument;
+          if (doc && doc.body) {
+            const contentHeight = doc.body.scrollHeight || doc.documentElement.scrollHeight;
+            if (contentHeight > 0) {
+              const newRootHeight = contentHeight;
+              if (zoomConfig.rootHeight !== newRootHeight) {
+                setZoomConfig({
+                  ...zoomConfig,
+                  rootHeight: newRootHeight,
+                });
+              }
+              return;
+            }
+          }
+        } catch (e) {
+          // Ignore cross-origin warnings
+        }
+      }
 
-    if (viewports.current.height === "auto") {
+      const { height: frameHeight } = getFrameDimensions();
       const newRootHeight = frameHeight / zoomConfig.zoom;
 
       if (zoomConfig.rootHeight !== newRootHeight) {
@@ -122,6 +149,24 @@ export const Canvas = () => {
           rootHeight: newRootHeight,
         });
       }
+    };
+
+    if (viewports.current.height === "auto") {
+      updateRootHeight();
+
+      const iframeEl = frameRef.current?.querySelector("iframe");
+      if (iframeEl) {
+        try {
+          const doc = iframeEl.contentDocument;
+          if (doc && doc.body) {
+            const observer = new ResizeObserver(updateRootHeight);
+            observer.observe(doc.body);
+            return () => observer.disconnect();
+          }
+        } catch (e) {
+          // Ignore
+        }
+      }
     }
   }, [
     zoomConfig.zoom,
@@ -129,6 +174,7 @@ export const Canvas = () => {
     setZoomConfig,
     viewports,
     zoomConfig.rootHeight,
+    frameRef,
   ]);
 
   // Zoom whenever state changes, even if external driver
@@ -207,7 +253,7 @@ export const Canvas = () => {
       closestViewport = fullWidthViewport;
     }
 
-    if (iframe.enabled) {
+    {
       const s = appStoreApi.getState();
 
       const appState = {
@@ -270,14 +316,14 @@ export const Canvas = () => {
         <div
           className={getClassName("root")}
           style={{
-            width: iframe.enabled ? viewports.current.width : "100%",
+            width: viewports.current.width || "100%",
             height: (!zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight)) ? '100%' : zoomConfig.rootHeight,
             minHeight: "100%",
-            transform: iframe.enabled ? `scale(${zoomConfig.zoom})` : undefined,
+            transform: `scale(${zoomConfig.zoom})`,
             transition: showTransition
               ? `width ${TRANSITION_DURATION}ms ease-out, height ${TRANSITION_DURATION}ms ease-out, transform ${TRANSITION_DURATION}ms ease-out`
               : "",
-            overflow: iframe.enabled ? undefined : "auto",
+            overflow: isNonFullWidth ? undefined : "auto",
           }}
           suppressHydrationWarning // Suppress hydration warning as frame is not visible until after load
           id="credbuild-canvas-root"

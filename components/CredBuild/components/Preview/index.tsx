@@ -1,10 +1,12 @@
 import { DropZoneEditPure, DropZonePure } from "@/components/DropZone";
 import { rootDroppableId } from "@/lib/root-droppable-id";
-import { RefObject, useCallback, useEffect, useRef, useMemo } from "react";
+import { RefObject, useCallback, useEffect, useRef, useMemo, useState } from "react";
 import { useAppStore } from "@/store";
 import AutoFrame, { autoFrameContext } from "@/components/AutoFrame";
 import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/lib";
+import { HtmlModeRender } from "@/components/HtmlModeRender";
+import { Code, Eye, LayoutGrid } from "lucide-react";
 import { DefaultRootRenderProps } from "@/types";
 import { Render } from "@/components/Render";
 import { BubbledPointerEvent } from "@/lib/bubble-pointer-event";
@@ -109,12 +111,115 @@ export const Preview = ({ id = "credbuild-preview" }: { id?: string }) => {
 
   // DEPRECATED
   const rootProps = root.props || root;
+  const isHtmlMode = rootProps?.mode === "html";
+  const htmlViewMode = rootProps?.htmlViewMode || (rootProps?.htmlCode ? "preview" : "code");
+  const htmlCode = rootProps?.htmlCode || "";
 
   const ref = useRef<HTMLIFrameElement>(null);
 
   useBubbleIframeEvents(ref);
 
-  const inner = !renderData ? (
+  const [localCode, setLocalCode] = useState(htmlCode);
+
+  // Sync localCode with htmlCode
+  useEffect(() => {
+    setLocalCode(htmlCode);
+  }, [htmlCode]);
+
+  // Debounce saving localCode to the store
+  useEffect(() => {
+    if (localCode === htmlCode) return;
+
+    const timer = setTimeout(() => {
+      dispatch({
+        type: "setData",
+        data: (currentData: any) => {
+          if (currentData.root?.props?.htmlCode === localCode) {
+            return currentData;
+          }
+          return {
+            ...currentData,
+            root: {
+              ...currentData.root,
+              props: {
+                ...currentData.root?.props,
+                htmlCode: localCode,
+              }
+            }
+          };
+        }
+      });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [localCode, htmlCode, dispatch]);
+
+  const handleSaveOnBlur = () => {
+    dispatch({
+      type: "setData",
+      data: (currentData: any) => {
+        if (currentData.root?.props?.htmlCode === localCode) {
+          return currentData;
+        }
+        return {
+          ...currentData,
+          root: {
+            ...currentData.root,
+            props: {
+              ...currentData.root?.props,
+              htmlCode: localCode,
+            }
+          }
+        };
+      }
+    });
+  };
+
+  const handleSetViewMode = (modeVal: "code" | "preview") => {
+    dispatch({
+      type: "setData",
+      data: (currentData: any) => ({
+        ...currentData,
+        root: {
+          ...currentData.root,
+          props: {
+            ...currentData.root?.props,
+            htmlViewMode: modeVal,
+          }
+        }
+      })
+    });
+  };
+
+  const handleResetToBlocks = () => {
+    dispatch({
+      type: "setData",
+      data: (currentData: any) => ({
+        ...currentData,
+        content: [],
+        root: {
+          ...currentData.root,
+          props: {
+            ...currentData.root?.props,
+            mode: "blocks",
+            htmlCode: "",
+            htmlViewMode: "code",
+          }
+        }
+      })
+    });
+  };
+
+  const isHtmlCodeEditActive = isHtmlMode && !renderData && htmlViewMode === "code";
+  const isHtmlPreviewActive = isHtmlMode && !renderData && htmlViewMode === "preview";
+
+  const inner = rootProps?.mode === "html" ? (
+    !renderData ? (
+      <HtmlModeRender htmlCode={rootProps.htmlCode} isEditing={true} />
+    ) : (
+      <Render data={renderData} config={config} metadata={metadata} />
+    )
+  ) : !renderData ? (
     <Page
       {...rootProps}
       credbuild={{
@@ -137,11 +242,81 @@ export const Preview = ({ id = "credbuild-preview" }: { id?: string }) => {
     }
   }, [iframe.enabled, setStatus]);
 
+  if (isHtmlCodeEditActive) {
+    return (
+      <div
+        className={getClassName()}
+        id={id}
+        data-credbuild-preview
+        style={{ height: "100%", display: "flex", flexDirection: "column" }}
+      >
+        {/* Editor Area */}
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          background: "#020617",
+          position: "relative",
+        }}>
+          <div style={{
+            display: "flex",
+            flex: 1,
+            position: "relative",
+            overflow: "hidden",
+          }}>
+            <div style={{
+              width: 45,
+              background: "#0b0f19",
+              borderRight: "1px solid #1e293b",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              padding: "16px 8px 16px 0",
+              fontFamily: "Menlo, Monaco, Consolas, monospace",
+              fontSize: 12,
+              color: "#475569",
+              userSelect: "none",
+              lineHeight: 1.6,
+            }}>
+              {Array.from({ length: Math.max(localCode.split("\n").length, 25) }).map((_, i) => (
+                <div key={i}>{i + 1}</div>
+              ))}
+            </div>
+
+            <textarea
+              value={localCode}
+              onChange={(e) => setLocalCode(e.target.value)}
+              onBlur={handleSaveOnBlur}
+              placeholder="<!-- Tempel kode HTML/Tailwind di sini -->&#10;<section class='bg-zinc-900 text-white p-12'>&#10;  <h1 class='text-3xl font-bold'>Hello World</h1>&#10;</section>"
+              spellCheck={false}
+              style={{
+                flex: 1,
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                color: "#e2e8f0",
+                fontFamily: "Menlo, Monaco, Consolas, 'Fira Code', monospace",
+                fontSize: 13,
+                lineHeight: 1.6,
+                padding: "16px 20px",
+                resize: "none",
+                height: "100%",
+                width: "100%",
+                overflowY: "auto",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={getClassName()}
       id={id}
       data-credbuild-preview
+      style={{ height: "100%", display: "flex", flexDirection: "column" }}
       onClick={(e) => {
         const el = e.target as Element;
 
@@ -153,39 +328,42 @@ export const Preview = ({ id = "credbuild-preview" }: { id?: string }) => {
         }
       }}
     >
-      {iframe.enabled ? (
-        <AutoFrame
-          id="preview-frame"
-          className={getClassName("frame")}
-          data-rfd-iframe
-          onReady={() => {
-            setStatus("READY");
-          }}
-          onNotReady={() => {
-            setStatus("MOUNTED");
-          }}
-          frameRef={ref}
-        >
-          <autoFrameContext.Consumer>
-            {({ document }) => {
-              if (Frame) {
-                return <Frame document={document}>{inner}</Frame>;
-              }
-
-              return inner;
+      <div style={{ flex: 1, position: "relative", minHeight: 0, height: "100%" }}>
+        {iframe.enabled ? (
+          <AutoFrame
+            id="preview-frame"
+            className={getClassName("frame")}
+            data-rfd-iframe
+            onReady={() => {
+              setStatus("READY");
             }}
-          </autoFrameContext.Consumer>
-        </AutoFrame>
-      ) : (
-        <div
-          id="preview-frame"
-          className={getClassName("frame")}
-          ref={ref}
-          data-credbuild-entry
-        >
-          {inner}
-        </div>
-      )}
+            onNotReady={() => {
+              setStatus("MOUNTED");
+            }}
+            frameRef={ref}
+          >
+            <autoFrameContext.Consumer>
+              {({ document }) => {
+                if (Frame) {
+                  return <Frame document={document}>{inner}</Frame>;
+                }
+
+                return inner;
+              }}
+            </autoFrameContext.Consumer>
+          </AutoFrame>
+        ) : (
+          <div
+            id="preview-frame"
+            className={getClassName("frame")}
+            ref={ref}
+            data-credbuild-entry
+            style={{ height: "100%", width: "100%" }}
+          >
+            {inner}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
