@@ -8,6 +8,7 @@ on:
       - 'v*'
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   publish-npm:
@@ -31,14 +32,10 @@ jobs:
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 
-      - name: Adjust scope for npmjs
-        run: |
-          sed -i 's/"name": "@crediblemark\\/build"/"name": "@crediblemark-official\\/build"/' package.json
-
       - name: Build and Publish to npmjs
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          if npm view @crediblemark-official/build@$CURRENT_VERSION version &>/dev/null; then
+          if npm view @crediblemark/build@$CURRENT_VERSION version &>/dev/null; then
             echo "Version $CURRENT_VERSION is already published on npmjs.com. Skipping publish."
           else
             echo "Publishing version $CURRENT_VERSION to npmjs.com..."
