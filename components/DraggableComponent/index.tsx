@@ -59,9 +59,11 @@ const DefaultActionBar = ({
   <ActionBar>
     <ActionBar.Group>
       {parentAction}
+      {children}
+    </ActionBar.Group>
+    <ActionBar.Group>
       {label && <ActionBar.Label label={label} />}
     </ActionBar.Group>
-    <ActionBar.Group>{children}</ActionBar.Group>
   </ActionBar>
 );
 
