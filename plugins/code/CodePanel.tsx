@@ -8,7 +8,10 @@ const getClassName = getClassNameFactory("CodePanel", styles);
 
 export const CodePanel = () => {
   const [copied, setCopied] = useState(false);
-  const [promptType, setPromptType] = useState<"with-header" | "no-header">("with-header");
+  const [topic, setTopic] = useState("");
+  const [promptType, setPromptType] = useState<
+    "header-footer" | "header-no-footer" | "no-header-footer" | "no-header-no-footer"
+  >("header-footer");
 
   const dispatch = useAppStore((s) => s.dispatch);
   const root = useAppStore((s) => s.state.data.root);
@@ -16,27 +19,36 @@ export const CodePanel = () => {
   const rootProps = root?.props || root;
   const currentMode = rootProps?.mode || "blocks";
 
-  const aiPromptWithHeader = `Buatkan desain landing page lengkap dan premium dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS. Halaman harus memuat struktur lengkap seperti Header/Navigation, Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer.
+  const generatePrompt = (variant: string, landingPageTopic: string) => {
+    const topicDesc = landingPageTopic.trim() 
+      ? `untuk "${landingPageTopic.trim()}"`
+      : "lengkap dan premium";
+
+    let structureRequirements = "";
+    
+    if (variant === "header-footer") {
+      structureRequirements = "1. STRUKTUR LENGKAP: Halaman HARUS memuat seluruh bagian berikut secara lengkap: Header/Navigation menu di bagian paling atas, Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer di bagian paling bawah.";
+    } else if (variant === "header-no-footer") {
+      structureRequirements = "1. DENGAN HEADER & TANPA FOOTER: Halaman HARUS memuat Header/Navigation menu di bagian paling atas, Hero Section, Features/Layanan, Testimoni, dan Call-to-Action (CTA). Namun, pastikan sama sekali TIDAK ada bagian Footer di bagian bawah halaman.";
+    } else if (variant === "no-header-footer") {
+      structureRequirements = "1. TANPA HEADER & DENGAN FOOTER: Halaman HARUS memuat Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer di bagian paling bawah. Namun, pastikan sama sekali TIDAK ada bagian Header/Navigation/Navbar di bagian atas halaman.";
+    } else { // no-header-no-footer
+      structureRequirements = "1. TANPA HEADER & TANPA FOOTER: Halaman HARUS memuat Hero Section, Features/Layanan, Testimoni, dan Call-to-Action (CTA). Pastikan sama sekali TIDAK ada bagian Header/Navigation/Navbar di bagian atas, dan TIDAK ada bagian Footer di bagian bawah halaman.";
+    }
+
+    return `Buatkan desain landing page ${topicDesc} dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS.
 
 Ketentuan penulisan kode:
-1. STRUKTUR BERSIH: Gunakan elemen semantik HTML5 seperti <section>, <header>, atau <div> sebagai wrapper utama per seksi. JANGAN sertakan tag <html>, <body>, <head>, atau <script>.
-2. MOBILE-FIRST & RESPONSIF: Desain harus sepenuhnya responsif. Mulai dari layout ponsel (default), lalu gunakan breakpoint (sm:, md:, lg:, xl:) secara terstruktur untuk layar yang lebih besar.
-3. ESTETIKA MODERN & PREMIUM: Gunakan skema warna harmonis (misal: warna gelap bernuansa glassmorphism, gradasi halus, border tipis semi-transparan, efek hover mikro interaktif).
-4. COMPACT & EFISIEN: Hindari padding/margin berlebih yang membuat halaman kosong melompong. Pastikan konten padat, terbaca dengan baik, dan memiliki rasio grid/flexbox yang rapi.
-5. BEBAS JAVASCRIPT: Seluruh interaktivitas dasar (seperti hover, focus, state) harus ditangani murni menggunakan utilitas kelas CSS Tailwind.`;
-
-  const aiPromptNoHeader = `Buatkan desain landing page lengkap dan premium TANPA bagian Header/Navigation dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS. Halaman harus memuat struktur lengkap seperti Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer (tanpa memuat menu navigasi atau header di bagian atas).
-
-Ketentuan penulisan kode:
-1. STRUKTUR BERSIH: Gunakan elemen semantik HTML5 seperti <section>, <header>, atau <div> sebagai wrapper utama per seksi. JANGAN sertakan tag <html>, <body>, <head>, atau <script>.
-2. TANPA HEADER: Pastikan sama sekali tidak ada bagian Header/Navbar/Navigation menu di bagian atas halaman. Desain harus langsung dimulai dengan Hero Section yang menarik dan berdampak tinggi.
+${structureRequirements}
+2. STRUKTUR BERSIH: Gunakan elemen semantik HTML5 seperti <section>, <header>, atau <div> sebagai wrapper utama per seksi. JANGAN sertakan tag <html>, <body>, <head>, atau <script>.
 3. MOBILE-FIRST & RESPONSIF: Desain harus sepenuhnya responsif. Mulai dari layout ponsel (default), lalu gunakan breakpoint (sm:, md:, lg:, xl:) secara terstruktur untuk layar yang lebih besar.
 4. ESTETIKA MODERN & PREMIUM: Gunakan skema warna harmonis (misal: warna gelap bernuansa glassmorphism, gradasi halus, border tipis semi-transparan, efek hover mikro interaktif).
 5. COMPACT & EFISIEN: Hindari padding/margin berlebih yang membuat halaman kosong melompong. Pastikan konten padat, terbaca dengan baik, dan memiliki rasio grid/flexbox yang rapi.
 6. BEBAS JAVASCRIPT: Seluruh interaktivitas dasar (seperti hover, focus, state) harus ditangani murni menggunakan utilitas kelas CSS Tailwind.`;
+  };
 
   const handleCopyPrompt = () => {
-    const selectedPrompt = promptType === "with-header" ? aiPromptWithHeader : aiPromptNoHeader;
+    const selectedPrompt = generatePrompt(promptType, topic);
     navigator.clipboard.writeText(selectedPrompt);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -153,35 +165,82 @@ Ketentuan penulisan kode:
           </button>
         </div>
 
+        <div style={{ marginBottom: 12 }}>
+          <div className={getClassName("optionTitle")} style={{ marginBottom: 6 }}>Topik / Jenis Landing Page</div>
+          <input
+            type="text"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            placeholder="Contoh: Klinik Gigi, SaaS AI, Agensi Desain..."
+            style={{
+              boxSizing: "border-box",
+              width: "100%",
+              padding: "8px 10px",
+              fontSize: "12px",
+              borderRadius: "5px",
+              border: "1px solid var(--cb-border)",
+              backgroundColor: "var(--cb-bg-base)",
+              color: "var(--cb-silver)",
+              outline: "none",
+              transition: "border-color 0.2s",
+            }}
+            onFocus={(e) => e.target.style.borderColor = "var(--cb-gold)"}
+            onBlur={(e) => e.target.style.borderColor = "var(--cb-border)"}
+          />
+        </div>
+
         <div className={getClassName("optionsSection")} style={{ marginBottom: 12 }}>
+          <div className={getClassName("optionTitle")} style={{ marginBottom: 6 }}>Varian Struktur Template</div>
           <div className={getClassName("radioGroup")}>
             <label className={getClassName("radioLabel")}>
               <input
                 type="radio"
                 name="promptType"
-                value="with-header"
-                checked={promptType === "with-header"}
-                onChange={() => setPromptType("with-header")}
+                value="header-footer"
+                checked={promptType === "header-footer"}
+                onChange={() => setPromptType("header-footer")}
                 className={getClassName("radioInput")}
               />
-              <span>Dengan Header</span>
+              <span>Dengan Header & Footer</span>
             </label>
             <label className={getClassName("radioLabel")}>
               <input
                 type="radio"
                 name="promptType"
-                value="no-header"
-                checked={promptType === "no-header"}
-                onChange={() => setPromptType("no-header")}
+                value="header-no-footer"
+                checked={promptType === "header-no-footer"}
+                onChange={() => setPromptType("header-no-footer")}
                 className={getClassName("radioInput")}
               />
-              <span>Tanpa Header</span>
+              <span>Dengan Header, Tanpa Footer</span>
+            </label>
+            <label className={getClassName("radioLabel")}>
+              <input
+                type="radio"
+                name="promptType"
+                value="no-header-footer"
+                checked={promptType === "no-header-footer"}
+                onChange={() => setPromptType("no-header-footer")}
+                className={getClassName("radioInput")}
+              />
+              <span>Tanpa Header, Dengan Footer</span>
+            </label>
+            <label className={getClassName("radioLabel")}>
+              <input
+                type="radio"
+                name="promptType"
+                value="no-header-no-footer"
+                checked={promptType === "no-header-no-footer"}
+                onChange={() => setPromptType("no-header-no-footer")}
+                className={getClassName("radioInput")}
+              />
+              <span>Tanpa Keduanya</span>
             </label>
           </div>
         </div>
 
-        <div className={getClassName("promptText")}>
-          {promptType === "with-header" ? aiPromptWithHeader : aiPromptNoHeader}
+        <div className={getClassName("promptText")} style={{ maxHeight: 110 }}>
+          {generatePrompt(promptType, topic)}
         </div>
       </div>
     </div>

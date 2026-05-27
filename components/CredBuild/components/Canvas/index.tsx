@@ -69,6 +69,11 @@ export const Canvas = () => {
     }))
   );
 
+  const rootProps = root?.props || root;
+  const isHtmlMode = rootProps?.mode === "html";
+  const htmlViewMode = rootProps?.htmlViewMode || (rootProps?.htmlCode ? "preview" : "code");
+  const isHtmlCodeEditActive = isHtmlMode && htmlViewMode === "code";
+
   // Viewport controls should always work, regardless of iframe.enabled
   const isNonFullWidth = viewports.current.width !== "100%";
   const shouldApplyViewport = true;
@@ -318,6 +323,7 @@ export const Canvas = () => {
         showLoader,
         fullScreen: _experimentalFullScreenCanvas,
       })}
+      style={isHtmlCodeEditActive ? { overflow: "hidden" } : undefined}
       onClick={(e) => {
         const el = e.target as Element;
 
@@ -333,18 +339,31 @@ export const Canvas = () => {
         }
       }}
     >
-      <div className={getClassName("inner")} ref={frameRef}>
+      <div
+        className={getClassName("inner")}
+        ref={frameRef}
+        style={{
+          minHeight: "100%",
+          height: isHtmlCodeEditActive
+            ? "100%"
+            : ((!zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight))
+              ? "100%"
+              : `${zoomConfig.rootHeight * zoomConfig.zoom}px`),
+        }}
+      >
         <div
           className={getClassName("root")}
           style={{
-            width: viewports.current.width || "100%",
-            height: (!zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight)) ? '100%' : zoomConfig.rootHeight,
+            width: isHtmlCodeEditActive ? "100%" : (viewports.current.width || "100%"),
+            height: isHtmlCodeEditActive
+              ? "100%"
+              : ((!zoomConfig.rootHeight || isNaN(zoomConfig.rootHeight)) ? '100%' : zoomConfig.rootHeight),
             minHeight: "100%",
-            transform: `scale(${zoomConfig.zoom})`,
+            transform: isHtmlCodeEditActive ? "none" : `scale(${zoomConfig.zoom})`,
             transition: showTransition
               ? `width ${TRANSITION_DURATION}ms ease-out, height ${TRANSITION_DURATION}ms ease-out, transform ${TRANSITION_DURATION}ms ease-out`
               : "",
-            overflow: isNonFullWidth ? undefined : "auto",
+            overflow: isHtmlCodeEditActive ? "hidden" : (isNonFullWidth ? undefined : "auto"),
           }}
           suppressHydrationWarning // Suppress hydration warning as frame is not visible until after load
           id="credbuild-canvas-root"

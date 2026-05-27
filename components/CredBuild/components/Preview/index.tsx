@@ -251,59 +251,20 @@ export const Preview = ({ id = "credbuild-preview" }: { id?: string }) => {
         style={{ height: "100%", display: "flex", flexDirection: "column" }}
       >
         {/* Editor Area */}
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          background: "#020617",
-          position: "relative",
-        }}>
+        <div className={getClassName("htmlEditor")}>
           <div style={{
             display: "flex",
             flex: 1,
             position: "relative",
             overflow: "hidden",
           }}>
-            <div style={{
-              width: 45,
-              background: "#0b0f19",
-              borderRight: "1px solid #1e293b",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              padding: "16px 8px 16px 0",
-              fontFamily: "Menlo, Monaco, Consolas, monospace",
-              fontSize: 12,
-              color: "#475569",
-              userSelect: "none",
-              lineHeight: 1.6,
-            }}>
-              {Array.from({ length: Math.max(localCode.split("\n").length, 25) }).map((_, i) => (
-                <div key={i}>{i + 1}</div>
-              ))}
-            </div>
-
             <textarea
               value={localCode}
               onChange={(e) => setLocalCode(e.target.value)}
               onBlur={handleSaveOnBlur}
               placeholder="<!-- Tempel kode HTML/Tailwind di sini -->&#10;<section class='bg-zinc-900 text-white p-12'>&#10;  <h1 class='text-3xl font-bold'>Hello World</h1>&#10;</section>"
               spellCheck={false}
-              style={{
-                flex: 1,
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                color: "#e2e8f0",
-                fontFamily: "Menlo, Monaco, Consolas, 'Fira Code', monospace",
-                fontSize: 13,
-                lineHeight: 1.6,
-                padding: "16px 20px",
-                resize: "none",
-                height: "100%",
-                width: "100%",
-                overflowY: "auto",
-              }}
+              className={getClassName("htmlTextarea")}
             />
           </div>
         </div>

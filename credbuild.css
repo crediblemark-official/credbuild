@@ -220,7 +220,7 @@ body::-webkit-scrollbar-thumb:hover,
 
 /* Global Form & Input Overrides (Sidebar Right) */
 .CredBuild input:not([type="color"]), 
-.CredBuild textarea, 
+.CredBuild textarea:not([class*="htmlTextarea"]):not([class*="cb-ai"]), 
 .CredBuild select,
 [class*="ExternalInput-input"],
 [class*="Select-select"] {
@@ -239,7 +239,7 @@ body::-webkit-scrollbar-thumb:hover,
 }
 
 .CredBuild input:not([type="color"]):focus, 
-.CredBuild textarea:focus, 
+.CredBuild textarea:not([class*="htmlTextarea"]):not([class*="cb-ai"]):focus, 
 .CredBuild select:focus {
   border-color: var(--cb-gold) !important;
   outline: none !important;

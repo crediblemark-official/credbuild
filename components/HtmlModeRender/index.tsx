@@ -47,7 +47,14 @@ export const HtmlModeRender = ({
         const body = document.body;
         // calculate content height safely, avoiding clientHeight/viewport height which prevents shrinking
         const height = Math.max(body.scrollHeight, body.offsetHeight);
-        window.parent.postMessage({ type: 'resize-iframe', id: '${id}', height: height }, '*');
+        try {
+          window.parent.postMessage({ type: 'resize-iframe', id: '${id}', height: height }, '*');
+          if (window.top && window.top !== window.parent) {
+            window.top.postMessage({ type: 'resize-iframe', id: '${id}', height: height }, '*');
+          }
+        } catch (e) {
+          // Ignore
+        }
       }
       window.addEventListener('load', sendHeight);
       window.addEventListener('resize', sendHeight);

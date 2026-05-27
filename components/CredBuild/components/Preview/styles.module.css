@@ -8,3 +8,37 @@
   height: 100%;
   width: 100%;
 }
+
+.CredBuildPreview-htmlEditor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid var(--credbuild-color-grey-09, #dcdcdc);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.CredBuildPreview-htmlTextarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: Menlo, Monaco, Consolas, 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  resize: none;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Dark mode override */
+:global(.dark) .CredBuildPreview-htmlEditor {
+  background-color: #020617;
+  color: #e2e8f0;
+  border-color: #1e293b;
+}
