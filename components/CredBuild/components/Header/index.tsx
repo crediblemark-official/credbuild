@@ -216,10 +216,12 @@ const HeaderInner = <
             </Button>
             <span className="PublishButton">
               <Button
+                type="button"
                 onClick={() => {
                   const data = appStore.getState().state.data;
-                  onPublish && onPublish(data as G["UserData"]);
+                  return onPublish ? onPublish(data as G["UserData"]) : undefined;
                 }}
+                variant="secondary"
                 icon={<Zap size={12} />}
               >
                 Publish
@@ -450,11 +452,13 @@ const HeaderInner = <
                   </Button>
                   <span className="PublishButton">
                     <Button
+                      type="button"
                       onClick={() => {
                         const data = appStore.getState().state
                           .data as G["UserData"];
-                        onPublish && onPublish(data);
+                        return onPublish ? onPublish(data) : undefined;
                       }}
+                      variant="secondary"
                       icon={<Zap size={12} />}
                     >
                       Publish

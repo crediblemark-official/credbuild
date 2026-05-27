@@ -9,6 +9,13 @@ export const HtmlModeRender = ({
 }) => {
   const id = useId().replace(/:/g, "");
   const [iframeHeight, setIframeHeight] = useState("100vh");
+  const [tailwindUrl, setTailwindUrl] = useState("https://cdn.tailwindcss.com");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setTailwindUrl(`${window.location.origin}/tailwind.js`);
+    }
+  }, []);
 
   // Listen to resize messages from the sandboxed iframe
   useEffect(() => {
@@ -55,6 +62,7 @@ export const HtmlModeRender = ({
 
   const needsTailwind =
     htmlCode.includes("cdn.tailwindcss.com") ||
+    htmlCode.includes("tailwind.js") ||
     htmlCode.includes("tailwindcss") ||
     /\b(bg-|text-|p[xy]?[-0-9]|m[xy]?[-0-9]|flex|grid|border-|rounded-|shadow-|justify-|items-|gap-|relative|absolute|hidden|w-|h-|leading-|tracking-|font-|transition|duration-|ease-|hover:|focus:|sm:|md:|lg:|xl:)/.test(
       htmlCode
@@ -66,33 +74,47 @@ export const HtmlModeRender = ({
     htmlCode.includes("<body") ||
     htmlCode.includes("<head>");
 
+  const scrollbarHideStyle = `
+    <style>
+      html, body {
+        overflow: hidden !important;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+      }
+      ::-webkit-scrollbar {
+        display: none !important;
+      }
+    </style>
+  `;
+
   let srcDoc = "";
   if (isStandalone) {
     let processed = htmlCode;
     if (processed.includes("</body>")) {
-      processed = processed.replace("</body>", `${resizeScript}</body>`);
+      processed = processed.replace("</body>", `${resizeScript}${scrollbarHideStyle}</body>`);
     } else {
-      processed = processed + resizeScript;
+      processed = processed + resizeScript + scrollbarHideStyle;
     }
 
     if (
       needsTailwind &&
       !processed.includes("cdn.tailwindcss.com") &&
+      !processed.includes("tailwind.js") &&
       !processed.includes("tailwindcss")
     ) {
       if (processed.includes("</head>")) {
         processed = processed.replace(
           "</head>",
-          `<script src="https://cdn.tailwindcss.com"></script></head>`
+          `<script src="${tailwindUrl}"></script></head>`
         );
       } else if (processed.includes("<head>")) {
         processed = processed.replace(
           "<head>",
-          `<head><script src="https://cdn.tailwindcss.com"></script>`
+          `<head><script src="${tailwindUrl}"></script>`
         );
       } else {
         processed =
-          `<script src="https://cdn.tailwindcss.com"></script>` + processed;
+          `<script src="${tailwindUrl}"></script>` + processed;
       }
     }
     srcDoc = processed;
@@ -103,15 +125,21 @@ export const HtmlModeRender = ({
         <head>
           ${
             needsTailwind
-              ? `<script src="https://cdn.tailwindcss.com"></script>`
+              ? `<script src="${tailwindUrl}"></script>`
               : ""
           }
           <style>
             *, *::before, *::after { box-sizing: border-box; }
-            body {
+            html, body {
               margin: 0;
               padding: 0;
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+              overflow: hidden !important;
+              -ms-overflow-style: none !important;
+              scrollbar-width: none !important;
+            }
+            ::-webkit-scrollbar {
+              display: none !important;
             }
             img, iframe, video {
               max-width: 100%;
@@ -130,6 +158,7 @@ export const HtmlModeRender = ({
     <div style={{ width: "100%" }}>
       <iframe
         srcDoc={srcDoc}
+        scrolling="no"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
         title="Html Mode Sandboxed Canvas"
         loading="lazy"

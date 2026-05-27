@@ -334,16 +334,14 @@ body::-webkit-scrollbar-thumb:hover,
 }
 
 /* Force the Publish/Primary Button to be GOLD with PREMIUM Style */
+/* Solid Primary Button */
 .CredBuild [class*="Button--primary"],
-.CredBuild [class*="PublishButton"] [class*="Button"],
 .CredBuild button[class*="primary"], 
-.CredBuild button[class*="Publish"],
-.CredBuild button[class*="Button--primary"],
-[class*="PublishButton"] button {
+.CredBuild button[class*="Button--primary"] {
   background: var(--cb-gold) !important;
   color: var(--cb-bg-base) !important;
   border: none !important;
-  padding: 4px 10px !important;
+  padding: 4px 12px !important;
   border-radius: 5px !important;
   font-weight: 600 !important;
   text-transform: none !important;
@@ -351,24 +349,82 @@ body::-webkit-scrollbar-thumb:hover,
   font-size: 13px !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 8px !important;
   min-height: 28px !important;
   box-sizing: border-box !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
 }
 
-.CredBuild [class*="PublishButton"]:hover [class*="Button"],
-[class*="PublishButton"]:hover button {
-  filter: brightness(1.1);
-  box-shadow: 0 0 20px var(--cb-gold-glow), 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+/* Outline Publish Button (Matching View Web style but in Gold) */
+.CredBuild [class*="PublishButton"] button,
+.CredBuild [class*="PublishButton"] a,
+.CredBuild button[class*="Publish"],
+[class*="PublishButton"] button {
+  background-color: var(--cb-bg-surface) !important;
+  color: var(--cb-gold) !important;
+  border: 1px solid var(--cb-gold) !important;
+  padding: 4px 12px !important;
+  border-radius: 5px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+  font-size: 13px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 28px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.CredBuild [class*="PublishButton"]:hover button:not(:disabled),
+.CredBuild [class*="PublishButton"]:hover a:not([class*="disabled"]),
+[class*="PublishButton"]:hover button:not(:disabled) {
+  background-color: var(--cb-gold-faint) !important;
+  border-color: var(--cb-gold) !important;
+  color: var(--cb-gold) !important;
+  filter: brightness(1.05);
+  box-shadow: 0 0 10px var(--cb-gold-glow), 0 2px 5px rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-1px) scale(1.02);
 }
 
-.CredBuild [class*="PublishButton"] [class*="Button"] svg,
+.CredBuild [class*="PublishButton"] button svg,
+.CredBuild [class*="PublishButton"] a svg,
 [class*="PublishButton"] button svg {
-  color: var(--cb-bg-base) !important;
-  stroke: var(--cb-bg-base) !important;
+  color: var(--cb-gold) !important;
+  stroke: var(--cb-gold) !important;
+}
+
+/* Disabled & Loading States for Publish Button */
+.CredBuild [class*="PublishButton"] button:disabled,
+.CredBuild [class*="PublishButton"] button[disabled],
+.CredBuild [class*="PublishButton"] a[class*="disabled"],
+[class*="PublishButton"] button:disabled,
+[class*="PublishButton"] button[disabled] {
+  background-color: var(--cb-bg-surface) !important;
+  color: var(--cb-silver-muted) !important;
+  border-color: var(--cb-border) !important;
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.CredBuild [class*="PublishButton"] button:disabled svg,
+.CredBuild [class*="PublishButton"] button[disabled] svg,
+.CredBuild [class*="PublishButton"] a[class*="disabled"] svg,
+[class*="PublishButton"] button:disabled svg,
+[class*="PublishButton"] button[disabled] svg {
+  color: var(--cb-silver-muted) !important;
+  stroke: var(--cb-silver-muted) !important;
+}
+
+/* Publish Button Wrapper Layout Alignment */
+[class*="PublishButton"] {
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 /* System-wide Variable Mapping Overrides */

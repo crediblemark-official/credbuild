@@ -8,6 +8,7 @@ const getClassName = getClassNameFactory("CodePanel", styles);
 
 export const CodePanel = () => {
   const [copied, setCopied] = useState(false);
+  const [promptType, setPromptType] = useState<"with-header" | "no-header">("with-header");
 
   const dispatch = useAppStore((s) => s.dispatch);
   const root = useAppStore((s) => s.state.data.root);
@@ -15,7 +16,7 @@ export const CodePanel = () => {
   const rootProps = root?.props || root;
   const currentMode = rootProps?.mode || "blocks";
 
-  const aiPrompt = `Buatkan desain landing page lengkap dan premium dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS. Halaman harus memuat struktur lengkap seperti Header/Navigation, Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer.
+  const aiPromptWithHeader = `Buatkan desain landing page lengkap dan premium dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS. Halaman harus memuat struktur lengkap seperti Header/Navigation, Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer.
 
 Ketentuan penulisan kode:
 1. STRUKTUR BERSIH: Gunakan elemen semantik HTML5 seperti <section>, <header>, atau <div> sebagai wrapper utama per seksi. JANGAN sertakan tag <html>, <body>, <head>, atau <script>.
@@ -24,8 +25,19 @@ Ketentuan penulisan kode:
 4. COMPACT & EFISIEN: Hindari padding/margin berlebih yang membuat halaman kosong melompong. Pastikan konten padat, terbaca dengan baik, dan memiliki rasio grid/flexbox yang rapi.
 5. BEBAS JAVASCRIPT: Seluruh interaktivitas dasar (seperti hover, focus, state) harus ditangani murni menggunakan utilitas kelas CSS Tailwind.`;
 
+  const aiPromptNoHeader = `Buatkan desain landing page lengkap dan premium TANPA bagian Header/Navigation dengan pendekatan mobile-first, modern, rapi, dan compact (padat & elegan) menggunakan HTML murni dan utilitas kelas Tailwind CSS. Halaman harus memuat struktur lengkap seperti Hero Section, Features/Layanan, Testimoni, Call-to-Action (CTA), dan Footer (tanpa memuat menu navigasi atau header di bagian atas).
+
+Ketentuan penulisan kode:
+1. STRUKTUR BERSIH: Gunakan elemen semantik HTML5 seperti <section>, <header>, atau <div> sebagai wrapper utama per seksi. JANGAN sertakan tag <html>, <body>, <head>, atau <script>.
+2. TANPA HEADER: Pastikan sama sekali tidak ada bagian Header/Navbar/Navigation menu di bagian atas halaman. Desain harus langsung dimulai dengan Hero Section yang menarik dan berdampak tinggi.
+3. MOBILE-FIRST & RESPONSIF: Desain harus sepenuhnya responsif. Mulai dari layout ponsel (default), lalu gunakan breakpoint (sm:, md:, lg:, xl:) secara terstruktur untuk layar yang lebih besar.
+4. ESTETIKA MODERN & PREMIUM: Gunakan skema warna harmonis (misal: warna gelap bernuansa glassmorphism, gradasi halus, border tipis semi-transparan, efek hover mikro interaktif).
+5. COMPACT & EFISIEN: Hindari padding/margin berlebih yang membuat halaman kosong melompong. Pastikan konten padat, terbaca dengan baik, dan memiliki rasio grid/flexbox yang rapi.
+6. BEBAS JAVASCRIPT: Seluruh interaktivitas dasar (seperti hover, focus, state) harus ditangani murni menggunakan utilitas kelas CSS Tailwind.`;
+
   const handleCopyPrompt = () => {
-    navigator.clipboard.writeText(aiPrompt);
+    const selectedPrompt = promptType === "with-header" ? aiPromptWithHeader : aiPromptNoHeader;
+    navigator.clipboard.writeText(selectedPrompt);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -140,8 +152,36 @@ Ketentuan penulisan kode:
             )}
           </button>
         </div>
+
+        <div className={getClassName("optionsSection")} style={{ marginBottom: 12 }}>
+          <div className={getClassName("radioGroup")}>
+            <label className={getClassName("radioLabel")}>
+              <input
+                type="radio"
+                name="promptType"
+                value="with-header"
+                checked={promptType === "with-header"}
+                onChange={() => setPromptType("with-header")}
+                className={getClassName("radioInput")}
+              />
+              <span>Dengan Header</span>
+            </label>
+            <label className={getClassName("radioLabel")}>
+              <input
+                type="radio"
+                name="promptType"
+                value="no-header"
+                checked={promptType === "no-header"}
+                onChange={() => setPromptType("no-header")}
+                className={getClassName("radioInput")}
+              />
+              <span>Tanpa Header</span>
+            </label>
+          </div>
+        </div>
+
         <div className={getClassName("promptText")}>
-          {aiPrompt}
+          {promptType === "with-header" ? aiPromptWithHeader : aiPromptNoHeader}
         </div>
       </div>
     </div>
