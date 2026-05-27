@@ -177,6 +177,27 @@ export const Canvas = () => {
     frameRef,
   ]);
 
+  // Listen to resize messages from the sandboxed iframe (specifically for HTML mode)
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (
+        event.data &&
+        event.data.type === "resize-iframe"
+      ) {
+        const newRootHeight = event.data.height;
+        if (zoomConfig.rootHeight !== newRootHeight) {
+          setZoomConfig({
+            ...zoomConfig,
+            rootHeight: newRootHeight,
+          });
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [zoomConfig, setZoomConfig]);
+
   // Zoom whenever state changes, even if external driver
   useEffect(() => {
     if (ZOOM_ON_CHANGE) {
