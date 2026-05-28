@@ -114,10 +114,16 @@ const HeaderInner = <
     return rootData.props.title ?? "";
   });
 
-  const root = useAppStore((s) => s.state.data.root);
-  const rootProps = root?.props || root;
-  const isHtmlMode = rootProps?.mode === "html";
-  const htmlViewMode = rootProps?.htmlViewMode || (rootProps?.htmlCode ? "preview" : "code");
+  const { isHtmlMode, htmlViewMode } = useAppStore(
+    useShallow((s) => {
+      const root = s.state.data.root;
+      const rootProps = root?.props || root;
+      return {
+        isHtmlMode: rootProps?.mode === "html",
+        htmlViewMode: rootProps?.htmlViewMode || (rootProps?.htmlCode ? "preview" : "code")
+      };
+    })
+  );
 
   const handleSetViewMode = useCallback((modeVal: "code" | "preview") => {
     dispatch({
