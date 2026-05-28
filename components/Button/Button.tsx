@@ -40,11 +40,14 @@ export const Button = ({
 
   useEffect(() => setLoading(loadingProp), [loadingProp]);
 
-  // Sanitize href to prevent XSS via javascript: URLs
-  const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
-      ? "#"
-      : href;
+  // Sanitize href to prevent XSS via malicious protocols
+  let safeHref = href;
+  if (href) {
+    const stripped = href.replace(/[\u0000-\u001F\u007F-\u009F\s]/g, "").toLowerCase();
+    if (stripped.startsWith("javascript:") || stripped.startsWith("vbscript:") || stripped.startsWith("data:")) {
+      safeHref = "#";
+    }
+  }
 
   const ElementType = safeHref ? "a" : type ? "button" : "span";
   const dataAttrs = filterDataAttrs(props);
