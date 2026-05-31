@@ -11,6 +11,8 @@ import {
   useContext,
   useRef,
   memo,
+  createContext,
+  useState,
 } from "react";
 import { ZoneStoreContext } from "@/components/DropZone/context";
 import { useAppStore } from "@/store";
@@ -24,6 +26,23 @@ const DEFAULT_LAYER_ROW_HEIGHT = 32;
 const LAYER_TREE_VIRTUALIZATION_OVERSCAN = 8;
 const MIN_VIRTUALIZED_LAYER_COUNT = 25;
 const measuredRowHeights = new Map<string, number>();
+
+type DraggedItemInfo = {
+  itemId: string;
+  index: number;
+  zoneCompound: string;
+};
+
+type DragContextType = {
+  draggedItem: DraggedItemInfo | null;
+  setDraggedItem: (item: DraggedItemInfo | null) => void;
+  hoveredItemId: string | null;
+  setHoveredItemId: (id: string | null) => void;
+  hoverPosition: "before" | "after" | null;
+  setHoverPosition: (pos: "before" | "after" | null) => void;
+};
+
+const DragContext = createContext<DragContextType | null>(null);
 
 export type LayerZoneTree = {
   items: LayerNodeTree[];
@@ -198,7 +217,9 @@ const Layer = memo(forwardRef(function Layer(
   ref: ForwardedRef<HTMLLIElement>
 ) {
   const dispatch = useAppStore((s) => s.dispatch);
+  const nodes = useAppStore((s) => s.state.indexes.nodes);
   const zoneStore = useContext(ZoneStoreContext);
+  const dragCtx = useContext(DragContext);
   const isHovering = useContextStore(
     ZoneStoreContext,
     (s) => s.hoveringComponent === node.itemId
@@ -241,7 +262,100 @@ const Layer = memo(forwardRef(function Layer(
       })}
       data-index={dataIndex}
       data-credbuild-layer-tree-id={node.itemId}
+      draggable={true}
+      onDragStart={(e) => {
+        dragCtx?.setDraggedItem({
+          itemId: node.itemId,
+          index: node.index,
+          zoneCompound: node.zoneCompound,
+        });
+        e.dataTransfer.effectAllowed = "move";
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+        if (!dragCtx || !dragCtx.draggedItem || dragCtx.draggedItem.itemId === node.itemId) return;
+
+        // Prevent dropping parent inside child zone
+        const targetNodeIndex = nodes[node.itemId];
+        if (targetNodeIndex?.path.some((p: string) => p.split(":")[0] === dragCtx.draggedItem?.itemId)) {
+          return;
+        }
+
+        const rect = e.currentTarget.getBoundingClientRect();
+        const hoverClientY = e.clientY - rect.top;
+        const threshold = rect.height / 2;
+        const position = hoverClientY < threshold ? "before" : "after";
+
+        dragCtx.setHoveredItemId(node.itemId);
+        dragCtx.setHoverPosition(position);
+      }}
+      onDragLeave={() => {
+        if (dragCtx?.hoveredItemId === node.itemId) {
+          dragCtx.setHoveredItemId(null);
+          dragCtx.setHoverPosition(null);
+        }
+      }}
+      onDrop={(e) => {
+        e.preventDefault();
+        if (!dragCtx || !dragCtx.draggedItem || dragCtx.draggedItem.itemId === node.itemId) return;
+
+        let destIndex = node.index;
+        if (dragCtx.draggedItem.zoneCompound === node.zoneCompound) {
+          if (dragCtx.hoverPosition === "before") {
+            destIndex = dragCtx.draggedItem.index > node.index ? node.index : node.index - 1;
+          } else {
+            destIndex = dragCtx.draggedItem.index > node.index ? node.index + 1 : node.index;
+          }
+        } else {
+          destIndex = dragCtx.hoverPosition === "before" ? node.index : node.index + 1;
+        }
+
+        dispatch({
+          type: "move",
+          sourceIndex: dragCtx.draggedItem.index,
+          sourceZone: dragCtx.draggedItem.zoneCompound,
+          destinationIndex: destIndex,
+          destinationZone: node.zoneCompound,
+        });
+
+        // Set the UI item selector to follow the moved item
+        dispatch({
+          type: "setUi",
+          ui: {
+            itemSelector: {
+              index: destIndex,
+              zone: node.zoneCompound,
+            },
+          },
+        });
+
+        dragCtx.setDraggedItem(null);
+        dragCtx.setHoveredItemId(null);
+        dragCtx.setHoverPosition(null);
+      }}
+      onDragEnd={() => {
+        dragCtx?.setDraggedItem(null);
+        dragCtx?.setHoveredItemId(null);
+        dragCtx?.setHoverPosition(null);
+      }}
+      style={{
+        opacity: dragCtx?.draggedItem?.itemId === node.itemId ? 0.4 : 1,
+        position: "relative",
+      }}
     >
+      {dragCtx?.hoveredItemId === node.itemId && dragCtx?.hoverPosition && (
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            height: "2px",
+            background: "linear-gradient(to right, var(--cb-gold, #d4af37), #f3e5ab)",
+            zIndex: 10,
+            ...(dragCtx.hoverPosition === "before" ? { top: 0 } : { bottom: 0 })
+          }}
+        />
+      )}
       <div className={getClassNameLayer("inner")}>
         <button
           type="button"
@@ -476,8 +590,21 @@ export const LayerTree = memo(({
   selectedPathIds: Set<string>;
   trees: LayerZoneTree[];
 }) => {
+  const [draggedItem, setDraggedItem] = useState<DraggedItemInfo | null>(null);
+  const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
+  const [hoverPosition, setHoverPosition] = useState<"before" | "after" | null>(null);
+
   return (
-    <>
+    <DragContext.Provider
+      value={{
+        draggedItem,
+        setDraggedItem,
+        hoveredItemId,
+        setHoveredItemId,
+        hoverPosition,
+        setHoverPosition,
+      }}
+    >
       {trees.map((tree) => (
         <LayerTreeZone
           depth={0}
@@ -487,6 +614,6 @@ export const LayerTree = memo(({
           tree={tree}
         />
       ))}
-    </>
+    </DragContext.Provider>
   );
 });
