@@ -40,9 +40,12 @@ export const Button = ({
 
   useEffect(() => setLoading(loadingProp), [loadingProp]);
 
-  // Sanitize href to prevent XSS via javascript: URLs
+  // Sanitize href to prevent XSS via javascript:, vbscript:, and data: URLs
+  const sanitized = href?.replace(/[\u0000-\u001F\u007F-\u009F\s]/g, "").toLowerCase() || "";
   const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
+    sanitized.startsWith("javascript:") ||
+    sanitized.startsWith("vbscript:") ||
+    sanitized.startsWith("data:")
       ? "#"
       : href;
 
