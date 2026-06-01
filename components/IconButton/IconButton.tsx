@@ -32,11 +32,10 @@ export const IconButton = ({
 }) => {
   const [loading, setLoading] = useState(false);
 
-  // Sanitize href to prevent XSS via javascript: URLs
-  const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
-      ? "#"
-      : href;
+  // Sanitize href to prevent XSS via malicious protocols
+  const cleanHref = href ? href.replace(/[\u0000-\u001F\u007F-\u009F\s]/g, "").toLowerCase() : "";
+  const isMalicious = cleanHref.startsWith("javascript:") || cleanHref.startsWith("vbscript:") || cleanHref.startsWith("data:");
+  const safeHref = isMalicious ? "#" : href;
 
   const ElementType = safeHref ? "a" : "button";
 
