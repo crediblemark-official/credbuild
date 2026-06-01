@@ -14,6 +14,7 @@ import {
   createContext,
   useState,
 } from "react";
+import { useShallow } from "zustand/react/shallow";
 import { ZoneStoreContext } from "@/components/DropZone/context";
 import { useAppStore } from "@/store";
 import { useContextStore } from "@/lib/use-context-store";
@@ -217,7 +218,11 @@ const Layer = memo(forwardRef(function Layer(
   ref: ForwardedRef<HTMLLIElement>
 ) {
   const dispatch = useAppStore((s) => s.dispatch);
-  const nodes = useAppStore((s) => s.state.indexes.nodes);
+  // ⚡ Bolt: Only subscribe to the path of this specific node to prevent
+  // the entire tree from re-rendering whenever *any* node changes.
+  const nodePath = useAppStore(
+    useShallow((s) => s.state.indexes.nodes[node.itemId]?.path || [])
+  );
   const zoneStore = useContext(ZoneStoreContext);
   const dragCtx = useContext(DragContext);
   const isHovering = useContextStore(
@@ -276,8 +281,7 @@ const Layer = memo(forwardRef(function Layer(
         if (!dragCtx || !dragCtx.draggedItem || dragCtx.draggedItem.itemId === node.itemId) return;
 
         // Prevent dropping parent inside child zone
-        const targetNodeIndex = nodes[node.itemId];
-        if (targetNodeIndex?.path.some((p: string) => p.split(":")[0] === dragCtx.draggedItem?.itemId)) {
+        if (nodePath.some((p: string) => p.split(":")[0] === dragCtx.draggedItem?.itemId)) {
           return;
         }
 
