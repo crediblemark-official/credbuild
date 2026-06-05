@@ -41,8 +41,9 @@ export const Button = ({
   useEffect(() => setLoading(loadingProp), [loadingProp]);
 
   // Sanitize href to prevent XSS via javascript: URLs
+  const cleanHref = href ? href.replace(/[\u0000-\u001F\u007F-\u009F\s]/g, '').toLowerCase() : '';
   const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
+    cleanHref.startsWith("javascript:") || cleanHref.startsWith("vbscript:") || cleanHref.startsWith("data:")
       ? "#"
       : href;
 
