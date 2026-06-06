@@ -44,6 +44,8 @@ export const Action = ({
     className={getActionClassName({ active, disabled })}
     onClick={onClick}
     title={label}
+    aria-label={label}
+    aria-pressed={active ? true : undefined}
     tabIndex={0}
     disabled={disabled}
   >
