@@ -15,7 +15,7 @@ import {
   useState,
 } from "react";
 import { ZoneStoreContext } from "@/components/DropZone/context";
-import { useAppStore } from "@/store";
+import { useAppStore, useAppStoreApi } from "@/store";
 import { useContextStore } from "@/lib/use-context-store";
 import { NodeIndex, ZoneIndex } from "@/types/Internal";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -217,7 +217,7 @@ const Layer = memo(forwardRef(function Layer(
   ref: ForwardedRef<HTMLLIElement>
 ) {
   const dispatch = useAppStore((s) => s.dispatch);
-  const nodes = useAppStore((s) => s.state.indexes.nodes);
+  const appStoreApi = useAppStoreApi();
   const zoneStore = useContext(ZoneStoreContext);
   const dragCtx = useContext(DragContext);
   const isHovering = useContextStore(
@@ -276,7 +276,9 @@ const Layer = memo(forwardRef(function Layer(
         if (!dragCtx || !dragCtx.draggedItem || dragCtx.draggedItem.itemId === node.itemId) return;
 
         // Prevent dropping parent inside child zone
-        const targetNodeIndex = nodes[node.itemId];
+        // ⚡ Bolt: Fetch nodes lazily inside the event handler instead of subscribing
+        // to prevent massive cascading re-renders across the virtualized list
+        const targetNodeIndex = appStoreApi.getState().state.indexes.nodes[node.itemId];
         if (targetNodeIndex?.path.some((p: string) => p.split(":")[0] === dragCtx.draggedItem?.itemId)) {
           return;
         }
