@@ -5,6 +5,7 @@ import styles from "./Button.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import { Loader } from "@/components/Loader";
 import { filterDataAttrs } from "@/lib/filter-data-attrs";
+import { sanitizeHref } from "@/lib/sanitize-href";
 
 const getClassName = getClassNameFactory("Button", styles);
 
@@ -40,11 +41,8 @@ export const Button = ({
 
   useEffect(() => setLoading(loadingProp), [loadingProp]);
 
-  // Sanitize href to prevent XSS via javascript: URLs
-  const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
-      ? "#"
-      : href;
+  // Sanitize href to prevent XSS via malicious URLs
+  const safeHref = sanitizeHref(href);
 
   const ElementType = safeHref ? "a" : type ? "button" : "span";
   const dataAttrs = filterDataAttrs(props);
