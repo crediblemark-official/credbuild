@@ -196,8 +196,10 @@ export const ViewportControls = ({
       </div>
 
       <button
+        type="button"
         className={getClassName("toggleButton")}
         title="Toggle viewport menu"
+        aria-label="Toggle viewport menu"
         aria-expanded={isExpanded}
         onClick={() => setIsExpanded((s) => !s)}
       >
