@@ -2,6 +2,7 @@ import { ReactNode, SyntheticEvent, useState } from "react";
 import styles from "./IconButton.module.css";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import { Loader } from "@/components/Loader";
+import { sanitizeHref } from "@/lib/sanitize-href";
 
 const getClassName = getClassNameFactory("IconButton", styles);
 
@@ -32,11 +33,8 @@ export const IconButton = ({
 }) => {
   const [loading, setLoading] = useState(false);
 
-  // Sanitize href to prevent XSS via javascript: URLs
-  const safeHref =
-    href && href.trim().toLowerCase().startsWith("javascript:")
-      ? "#"
-      : href;
+  // Sanitize href to prevent XSS via malicious URLs
+  const safeHref = sanitizeHref(href);
 
   const ElementType = safeHref ? "a" : "button";
 
