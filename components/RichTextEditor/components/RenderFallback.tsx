@@ -1,6 +1,6 @@
 /** Fallback component. Should not contain any tiptap imports (except for types) */
 
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "@/lib/dompurify";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "@/components/RichTextEditor/styles.module.css";
 
