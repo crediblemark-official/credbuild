@@ -360,6 +360,7 @@ const Layer = memo(forwardRef(function Layer(
         <button
           type="button"
           className={getClassNameLayer("clickable")}
+          aria-expanded={containsZone ? shouldRenderChildren : undefined}
           onClick={() => {
             if (isSelected) {
               setItemSelector(null);
