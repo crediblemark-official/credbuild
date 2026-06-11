@@ -9,7 +9,7 @@ import {
   useMemo,
   useRef,
 } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "@/lib/dompurify";
 import { DraggableComponent } from "@/components/DraggableComponent";
 import { setupZone } from "@/lib/data/setup-zone";
 import { rootAreaId, rootDroppableId } from "@/lib/root-droppable-id";
