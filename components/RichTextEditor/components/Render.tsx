@@ -1,7 +1,7 @@
 import type { JSONContent } from "@tiptap/react";
 import { generateHTML, generateJSON } from "@tiptap/html";
 import { useMemo } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "@/lib/dompurify";
 import getClassNameFactory from "@/lib/get-class-name-factory";
 import styles from "@/components/RichTextEditor/styles.module.css";
 import { CredBuildRichText } from "@/components/RichTextEditor/extension";
