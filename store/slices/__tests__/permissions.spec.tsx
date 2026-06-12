@@ -1,5 +1,4 @@
 import { renderHook, act, waitFor } from "@testing-library/react";
-import { renderHook, act, waitFor } from "@testing-library/react";
 import { useRegisterPermissionsSlice } from "@/store/slices/permissions";
 import { defaultAppState, createAppStore } from "@/store";
 import { rootDroppableId } from "@/lib/root-droppable-id";
