@@ -28,6 +28,8 @@ export const ColorPickerField = ({ value, onChange }: ColorPickerFieldProps) => 
                             onChange(e.target.value);
                         }
                     }}
+                    aria-label="Choose color"
+                    title="Choose color"
                     style={{
                         position: "absolute",
                         top: "-50%",
@@ -46,6 +48,8 @@ export const ColorPickerField = ({ value, onChange }: ColorPickerFieldProps) => 
                 value={value || ""}
                 placeholder="#RRGGBB"
                 onChange={(e) => onChange(e.target.value)}
+                aria-label="Color hex value"
+                title="Color hex value"
                 style={{
                     flex: 1,
                     padding: "4px 8px",
