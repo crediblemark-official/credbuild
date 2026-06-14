@@ -38,6 +38,7 @@ export function ListSelectLoaded() {
       value={currentValue ?? "p"}
       defaultValue="p"
       renderDefaultIcon={List}
+      title="List style"
     />
   );
 }

@@ -43,6 +43,7 @@ export function AlignSelectLoaded() {
       value={currentValue}
       defaultValue="left"
       renderDefaultIcon={AlignLeft}
+      title="Text alignment"
     />
   );
 }

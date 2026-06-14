@@ -40,6 +40,7 @@ export function HeadingSelectLoaded() {
       value={currentValue ?? "p"}
       defaultValue="p"
       renderDefaultIcon={Heading}
+      title="Heading level"
     />
   );
 }
