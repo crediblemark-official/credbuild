@@ -14,6 +14,7 @@ export function ListSelectFallback() {
       value="p"
       defaultValue="p"
       renderDefaultIcon={List}
+      title="List style"
     />
   );
 }

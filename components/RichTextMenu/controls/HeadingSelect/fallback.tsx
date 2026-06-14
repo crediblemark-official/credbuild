@@ -14,6 +14,7 @@ export function HeadingSelectFallback() {
       value="p"
       defaultValue="p"
       renderDefaultIcon={Heading}
+      title="Heading level"
     />
   );
 }
