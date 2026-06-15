@@ -16,6 +16,7 @@ export type SliderFieldProps = {
 export const SliderField = ({
     value,
     onChange,
+    label,
     min = 0,
     max = 100,
     step = 1,
@@ -98,6 +99,8 @@ export const SliderField = ({
             `}} />
             <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <input
+                    aria-label={label ? `Adjust ${label}` : "Adjust value"}
+                    title={label ? `Adjust ${label}` : "Adjust value"}
                     type="range"
                     min={min}
                     max={max}
@@ -109,6 +112,8 @@ export const SliderField = ({
                 />
                 <div style={{ display: "flex", gap: "2px" }}>
                     <input
+                        aria-label={label ? `${label} value` : "Value"}
+                        title={label ? `${label} value` : "Value"}
                         type="number"
                         min={min}
                         max={max}
@@ -131,6 +136,8 @@ export const SliderField = ({
                     />
                     {useUnits && (
                         <select
+                            aria-label={label ? `${label} unit` : "Select unit"}
+                            title={label ? `${label} unit` : "Select unit"}
                             value={currentUnit}
                             onChange={handleUnitChange}
                             className="cb-select-input"
