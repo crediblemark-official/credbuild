@@ -349,6 +349,7 @@ const HeaderInner = <
                       boxShadow: htmlViewMode === "code" ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
                       transition: "all 0.15s ease",
                     }}
+                    aria-pressed={htmlViewMode === "code"}
                   >
                     <Code size={12} />
                     Edit Kode
@@ -372,6 +373,7 @@ const HeaderInner = <
                       boxShadow: htmlViewMode === "preview" ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
                       transition: "all 0.15s ease",
                     }}
+                    aria-pressed={htmlViewMode === "preview"}
                   >
                     <Eye size={12} />
                     Lihat Hasil
