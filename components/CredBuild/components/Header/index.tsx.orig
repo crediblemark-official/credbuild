@@ -241,30 +241,30 @@ const HeaderInner = <
         <div className={getClassName("inner")}>
           <div className={getClassName("leftActions")}>
             <div style={{ marginRight: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
-              <Button 
-                href="/dashboard" 
-                variant="secondary" 
+              <Button
+                href="/dashboard"
+                variant="secondary"
                 size="medium"
                 icon={<LayoutDashboard size={14} />}
               >
                 Dashboard
               </Button>
-              
+
               <IconButton
                 type="button"
                 onClick={() => {
                   const editorEl = document.querySelector('.CredBuild');
                   if (!editorEl) return;
-                  
+
                   const isDark = editorEl.classList.contains('dark');
                   const newTheme = isDark ? 'light' : 'dark';
-                  
+
                   if (isDark) {
                     editorEl.classList.remove('dark');
                   } else {
                     editorEl.classList.add('dark');
                   }
-                  
+
                   localStorage.setItem('credbuild-theme', newTheme);
                   window.dispatchEvent(new CustomEvent('credbuild-theme-change', { detail: newTheme }));
                 }}
@@ -332,7 +332,6 @@ const HeaderInner = <
                 }}>
                   <button
                     type="button"
-                    aria-pressed={htmlViewMode === "code"}
                     onClick={() => handleSetViewMode("code")}
                     style={{
                       display: "flex",
@@ -356,7 +355,6 @@ const HeaderInner = <
                   </button>
                   <button
                     type="button"
-                    aria-pressed={htmlViewMode === "preview"}
                     onClick={() => handleSetViewMode("preview")}
                     style={{
                       display: "flex",
@@ -399,7 +397,7 @@ const HeaderInner = <
                 zoom={zoomConfig.zoom}
                 onViewportChange={(viewport) => {
                   const isFullWidth = viewport.width === "100%";
-                  
+
                   const uiViewport = {
                     ...viewport,
                     height: viewport.height || "auto",
