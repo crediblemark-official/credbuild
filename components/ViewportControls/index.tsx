@@ -174,6 +174,8 @@ export const ViewportControls = ({
           <div className={getClassName("zoom")}>
             <div className={getClassName("divider")} />
             <select
+              title="Zoom level"
+              aria-label="Zoom level"
               className={getClassName("zoomSelect")}
               value={zoom.toString()}
               onClick={(e) => {
