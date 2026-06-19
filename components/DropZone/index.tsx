@@ -9,7 +9,7 @@ import {
   useMemo,
   useRef,
 } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "@/lib/dompurify";
 import { DraggableComponent } from "@/components/DraggableComponent";
 import { setupZone } from "@/lib/data/setup-zone";
 import { rootAreaId, rootDroppableId } from "@/lib/root-droppable-id";
@@ -84,7 +84,7 @@ const InsertPreview = ({
   if (element) {
     return (
       // Safe to use this since the HTML is set by the user
-      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(element.outerHTML) }} />
+      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(element.outerHTML, { ADD_ATTR: ["target"] }) }} />
     );
   }
 
