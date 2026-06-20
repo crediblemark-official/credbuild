@@ -13,6 +13,7 @@ import {
   memo,
   createContext,
   useState,
+  useMemo,
 } from "react";
 import { ZoneStoreContext } from "@/components/DropZone/context";
 import { useAppStore, useAppStoreApi } from "@/store";
@@ -594,17 +595,20 @@ export const LayerTree = memo(({
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
   const [hoverPosition, setHoverPosition] = useState<"before" | "after" | null>(null);
 
+  // ⚡ Bolt: Memoize the DragContext value to prevent cascading re-renders across the deeply nested,
+  // virtualized LayerTree components during state updates (e.g., rapid drag-and-drop hover events).
+  // Impact: Significant reduction in unnecessary renders for all context consumers.
+  const contextValue = useMemo(() => ({
+    draggedItem,
+    setDraggedItem,
+    hoveredItemId,
+    setHoveredItemId,
+    hoverPosition,
+    setHoverPosition,
+  }), [draggedItem, hoveredItemId, hoverPosition]);
+
   return (
-    <DragContext.Provider
-      value={{
-        draggedItem,
-        setDraggedItem,
-        hoveredItemId,
-        setHoveredItemId,
-        hoverPosition,
-        setHoverPosition,
-      }}
-    >
+    <DragContext.Provider value={contextValue}>
       {trees.map((tree) => (
         <LayerTreeZone
           depth={0}
