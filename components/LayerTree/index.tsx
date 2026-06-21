@@ -9,7 +9,7 @@ import {
   forwardRef,
   useCallback,
   useContext,
-  useRef,
+  useRef, useMemo,
   memo,
   createContext,
   useState,
@@ -594,17 +594,20 @@ export const LayerTree = memo(({
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
   const [hoverPosition, setHoverPosition] = useState<"before" | "after" | null>(null);
 
+  // Memoizing the context value prevents unnecessary re-renders of all context
+  // consumers (including deeply nested virtualized items) when LayerTree re-renders
+  // with a new object reference on every pass.
+  const contextValue = useMemo(() => ({
+    draggedItem,
+    setDraggedItem,
+    hoveredItemId,
+    setHoveredItemId,
+    hoverPosition,
+    setHoverPosition,
+  }), [draggedItem, hoveredItemId, hoverPosition]);
+
   return (
-    <DragContext.Provider
-      value={{
-        draggedItem,
-        setDraggedItem,
-        hoveredItemId,
-        setHoveredItemId,
-        hoverPosition,
-        setHoverPosition,
-      }}
-    >
+    <DragContext.Provider value={contextValue}>
       {trees.map((tree) => (
         <LayerTreeZone
           depth={0}
