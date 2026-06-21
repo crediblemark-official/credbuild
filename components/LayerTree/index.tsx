@@ -13,6 +13,7 @@ import {
   memo,
   createContext,
   useState,
+  useMemo,
 } from "react";
 import { ZoneStoreContext } from "@/components/DropZone/context";
 import { useAppStore, useAppStoreApi } from "@/store";
@@ -594,16 +595,18 @@ export const LayerTree = memo(({
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
   const [hoverPosition, setHoverPosition] = useState<"before" | "after" | null>(null);
 
+  const dragContextValue = useMemo(() => ({
+    draggedItem,
+    setDraggedItem,
+    hoveredItemId,
+    setHoveredItemId,
+    hoverPosition,
+    setHoverPosition,
+  }), [draggedItem, hoveredItemId, hoverPosition]);
+
   return (
     <DragContext.Provider
-      value={{
-        draggedItem,
-        setDraggedItem,
-        hoveredItemId,
-        setHoveredItemId,
-        hoverPosition,
-        setHoverPosition,
-      }}
+      value={dragContextValue}
     >
       {trees.map((tree) => (
         <LayerTreeZone
