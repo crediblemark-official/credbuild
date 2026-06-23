@@ -333,6 +333,7 @@ const HeaderInner = <
                   <button
                     type="button"
                     onClick={() => handleSetViewMode("code")}
+                    aria-pressed={htmlViewMode === "code"}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -356,6 +357,7 @@ const HeaderInner = <
                   <button
                     type="button"
                     onClick={() => handleSetViewMode("preview")}
+                    aria-pressed={htmlViewMode === "preview"}
                     style={{
                       display: "flex",
                       alignItems: "center",
