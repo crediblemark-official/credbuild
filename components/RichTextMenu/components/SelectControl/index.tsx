@@ -11,12 +11,14 @@ export function SelectControl<ValueType extends string = string>({
   options,
   value,
   defaultValue,
+  title,
 }: {
   renderDefaultIcon: JSXElementConstructor<any>;
   onChange: (val: ValueType) => void;
   options: Option<ValueType>[];
   value: ValueType;
   defaultValue: ValueType;
+  title?: string;
 }) {
   const { inline, readOnly } = useControlContext();
 
@@ -41,6 +43,7 @@ export function SelectControl<ValueType extends string = string>({
       defaultValue={defaultValue}
       mode={inline ? "actionBar" : "standalone"}
       disabled={readOnly}
+      title={title}
     >
       <Node />
     </Select>

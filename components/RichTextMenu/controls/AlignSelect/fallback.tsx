@@ -14,6 +14,7 @@ export function AlignSelectFallback() {
       value="left"
       defaultValue="left"
       renderDefaultIcon={AlignLeft}
+      title="Text alignment"
     />
   );
 }

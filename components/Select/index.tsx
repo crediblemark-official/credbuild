@@ -36,6 +36,8 @@ export const Select = ({
   defaultValue,
   mode,
   disabled = false,
+  title,
+  ariaLabel,
 }: {
   children: ReactNode;
   options: { icon?: React.FC; label: string; value: string }[];
@@ -44,6 +46,8 @@ export const Select = ({
   defaultValue?: any;
   mode: "actionBar" | "standalone";
   disabled?: boolean;
+  title?: string;
+  ariaLabel?: string;
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -63,14 +67,23 @@ export const Select = ({
       <Popover open={open} onOpenChange={setOpen}>
         {hasOptions ? (
           <PopoverTrigger asChild>
-            <button type="button" className={getClassName("button")}>
+            <button
+              type="button"
+              className={getClassName("button")}
+              title={title}
+              aria-label={ariaLabel || title}
+            >
               <span className={getClassName("buttonIcon")}>{children}</span>
               <ChevronDown size={12} />
             </button>
           </PopoverTrigger>
         ) : (
           <div>
-            <div className={getClassName("button")}>
+            <div
+              className={getClassName("button")}
+              title={title}
+              aria-label={ariaLabel || title}
+            >
               <span className={getClassName("buttonIcon")}>{children}</span>
               <ChevronDown size={12} />
             </div>
