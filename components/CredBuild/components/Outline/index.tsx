@@ -15,15 +15,14 @@ export const Outline = memo(() => {
     useShallow((s) => findZonesForArea(s.state, "root"))
   );
 
+  const selectedPath = selectedId ? nodes[selectedId]?.path : null;
   const selectedPathIds = useMemo(() => {
-    const selectedPath = selectedId ? nodes[selectedId]?.path : null;
-
     return new Set(
       selectedPath
         ?.map((candidate) => candidate.split(":")[0])
         .filter(Boolean) || []
     );
-  }, [nodes, selectedId]);
+  }, [selectedPath]);
 
   const trees = useMemo(
     () =>
