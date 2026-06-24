@@ -131,6 +131,8 @@ export const SliderField = ({
                     />
                     {useUnits && (
                         <select
+                            aria-label="Select unit"
+                            title="Select unit"
                             value={currentUnit}
                             onChange={handleUnitChange}
                             className="cb-select-input"
