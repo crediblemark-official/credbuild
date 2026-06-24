@@ -30,6 +30,7 @@ export const SelectField = ({
     >
       <select
         id={id}
+        aria-label={label || name}
         title={label || name}
         className={getClassName("input")}
         disabled={readOnly}
