@@ -41,10 +41,19 @@ export function Render<
       : defaultedData.root;
   const title = rootProps?.title || "";
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  // This prevents unnecessary cascading re-renders across the Render tree's consumer components
+  // when the parent component re-renders.
+  const renderContextValue = useMemo(() => ({
+    config,
+    data: defaultedData,
+    metadata,
+  }), [config, defaultedData, metadata]);
+
   // Check if we are in HTML Mode
   if (rootProps?.mode === "html") {
     return (
-      <renderContext.Provider value={{ config, data: defaultedData, metadata }}>
+      <renderContext.Provider value={renderContextValue}>
         <HtmlModeRender htmlCode={rootProps.htmlCode} isEditing={false} />
       </renderContext.Provider>
     );
@@ -81,7 +90,7 @@ export function Render<
 
   if (config.root?.render) {
     return (
-      <renderContext.Provider value={{ config, data: defaultedData, metadata }}>
+      <renderContext.Provider value={renderContextValue}>
         <DropZoneProvider value={nextContextValue}>
           <config.root.render {...propsWithSlots} {...richtextProps}>
             <DropZoneRenderPure zone={rootZone} />
@@ -92,7 +101,7 @@ export function Render<
   }
 
   return (
-    <renderContext.Provider value={{ config, data: defaultedData, metadata }}>
+    <renderContext.Provider value={renderContextValue}>
       <DropZoneProvider value={nextContextValue}>
         <DropZoneRenderPure zone={rootZone} />
       </DropZoneProvider>
