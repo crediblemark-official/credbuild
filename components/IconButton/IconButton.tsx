@@ -7,7 +7,7 @@ import { sanitizeHref } from "@/lib/sanitize-href";
 const getClassName = getClassNameFactory("IconButton", styles);
 
 export const IconButton = ({
-  active = false,
+  active,
   children,
   href,
   onClick,
@@ -55,6 +55,8 @@ export const IconButton = ({
       }}
       type={type}
       disabled={disabled || loading}
+      aria-pressed={active !== undefined ? active : undefined}
+      aria-busy={loading ? "true" : undefined}
       tabIndex={tabIndex}
       target={newTab ? "_blank" : undefined}
       rel={newTab ? "noopener noreferrer" : undefined}
@@ -65,10 +67,10 @@ export const IconButton = ({
       <span className={getClassName("title")}>{title}</span>
       {children}
       {loading && (
-        <>
+        <span aria-hidden="true">
           &nbsp;&nbsp;
           <Loader size={14} />
-        </>
+        </span>
       )}
     </ElementType>
   );
