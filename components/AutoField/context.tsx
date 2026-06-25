@@ -60,10 +60,14 @@ export const NestedFieldProvider = ({
     [name, wildcardName, readOnlyFields, subPath, wildcardSubPath]
   );
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  // This prevents unnecessary cascading re-renders across the AutoField consumers
+  // when the parent component re-renders and the fields have not changed.
+  // We declare the hook at the top level of the component to follow rules of hooks.
+  const contextValue = useMemo(() => ({ readOnlyFields: subReadOnlyFields, localName: subName }), [subReadOnlyFields, subName]);
+
   return (
-    <NestedFieldContext.Provider
-      value={{ readOnlyFields: subReadOnlyFields, localName: subName }}
-    >
+    <NestedFieldContext.Provider value={contextValue}>
       {children}
     </NestedFieldContext.Provider>
   );
