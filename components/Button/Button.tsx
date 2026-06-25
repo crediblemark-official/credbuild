@@ -56,6 +56,7 @@ export const Button = ({
         fullWidth,
         [size]: true,
       })}
+      aria-busy={loading ? "true" : undefined}
       onClick={(e) => {
         if (!onClick) return;
 
@@ -75,7 +76,7 @@ export const Button = ({
       {icon && <div className={getClassName("icon")}>{icon}</div>}
       {children}
       {loading && (
-        <div className={getClassName("spinner")}>
+        <div className={getClassName("spinner")} aria-hidden="true">
           <Loader size={14} />
         </div>
       )}
