@@ -61,13 +61,14 @@ export const IconButton = ({
       href={safeHref}
       title={title}
       suppressHydrationWarning={suppressHydrationWarning}
+      aria-busy={loading ? "true" : undefined}
     >
       <span className={getClassName("title")}>{title}</span>
       {children}
       {loading && (
         <>
           &nbsp;&nbsp;
-          <Loader size={14} />
+          <Loader size={14} aria-hidden="true" />
         </>
       )}
     </ElementType>

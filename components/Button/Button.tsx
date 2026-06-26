@@ -70,13 +70,14 @@ export const Button = ({
       target={newTab ? "_blank" : undefined}
       rel={newTab ? "noopener noreferrer" : undefined}
       href={safeHref}
+      aria-busy={loading ? "true" : undefined}
       {...dataAttrs}
     >
       {icon && <div className={getClassName("icon")}>{icon}</div>}
       {children}
       {loading && (
         <div className={getClassName("spinner")}>
-          <Loader size={14} />
+          <Loader size={14} aria-hidden="true" />
         </div>
       )}
     </ElementType>
