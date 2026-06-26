@@ -296,13 +296,19 @@ const DragDropContextClient = ({
     []
   );
 
+  // ⚡ Bolt: Memoize the dragListenerContext.Provider value object to maintain referential equality.
+  // This prevents massive cascading re-renders in pure presentational consumers (like DrawerItem)
+  // whenever DragDropContextClient renders without drag state changes.
+  const dragListenerContextValue = useMemo(
+    () => ({
+      dragListeners,
+      setDragListeners,
+    }),
+    [dragListeners, setDragListeners]
+  );
+
   return (
-    <dragListenerContext.Provider
-      value={{
-        dragListeners,
-        setDragListeners,
-      }}
-    >
+    <dragListenerContext.Provider value={dragListenerContextValue}>
       <DragDropProvider
         plugins={plugins}
         sensors={sensors}
