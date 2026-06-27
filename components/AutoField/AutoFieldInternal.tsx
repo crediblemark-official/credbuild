@@ -175,12 +175,15 @@ export function AutoFieldInternal<
     throw new Error(`Field type for ${field.type} did not exist.`);
   }
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  const contextValue = useMemo(() => ({
+    readOnlyFields: nestedFieldContext.readOnlyFields || readOnly || {},
+    localName: nestedFieldContext.localName ?? mergedProps.name,
+  }), [nestedFieldContext.readOnlyFields, nestedFieldContext.localName, readOnly, mergedProps.name]);
+
   return (
     <NestedFieldContext.Provider
-      value={{
-        readOnlyFields: nestedFieldContext.readOnlyFields || readOnly || {},
-        localName: nestedFieldContext.localName ?? mergedProps.name,
-      }}
+      value={contextValue}
     >
       <div
         className={getClassNameWrapper({ [field.type]: true })}

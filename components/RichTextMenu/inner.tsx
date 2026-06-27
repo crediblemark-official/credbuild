@@ -82,9 +82,14 @@ export const LoadedRichTextMenuInner = ({
 
   const Menu = useMemo(() => renderMenu || DefaultMenu, [renderMenu]);
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  const contextValue = useMemo(() => ({
+    editor, editorState, inline, options: field.options, readOnly
+  }), [editor, editorState, inline, field.options, readOnly]);
+
   return (
     <ControlContext.Provider
-      value={{ editor, editorState, inline, options: field.options, readOnly }}
+      value={contextValue}
     >
       {inline ? (
         <InlineMenu

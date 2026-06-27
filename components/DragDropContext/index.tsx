@@ -296,12 +296,15 @@ const DragDropContextClient = ({
     []
   );
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  const dragListenerContextValue = useMemo(() => ({
+    dragListeners,
+    setDragListeners,
+  }), [dragListeners, setDragListeners]);
+
   return (
     <dragListenerContext.Provider
-      value={{
-        dragListeners,
-        setDragListeners,
-      }}
+      value={dragListenerContextValue}
     >
       <DragDropProvider
         plugins={plugins}
