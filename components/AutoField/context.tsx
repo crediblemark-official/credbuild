@@ -60,9 +60,15 @@ export const NestedFieldProvider = ({
     [name, wildcardName, readOnlyFields, subPath, wildcardSubPath]
   );
 
+  // ⚡ Bolt: Memoize the Context Provider value to preserve referential equality.
+  const contextValue = useMemo(() => ({
+    readOnlyFields: subReadOnlyFields,
+    localName: subName
+  }), [subReadOnlyFields, subName]);
+
   return (
     <NestedFieldContext.Provider
-      value={{ readOnlyFields: subReadOnlyFields, localName: subName }}
+      value={contextValue}
     >
       {children}
     </NestedFieldContext.Provider>
