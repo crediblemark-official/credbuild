@@ -60,6 +60,8 @@ export const IconButton = ({
       rel={newTab ? "noopener noreferrer" : undefined}
       href={safeHref}
       title={title}
+      aria-label={title}
+      aria-pressed={active}
       suppressHydrationWarning={suppressHydrationWarning}
     >
       <span className={getClassName("title")}>{title}</span>
